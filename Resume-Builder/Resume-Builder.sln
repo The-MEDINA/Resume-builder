@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35312.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "Resume-Builder", "Resume-Builder\Resume-Builder.esproj", "{B699899E-7DFF-4E4C-B8F6-8317C5329DCE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{82738DCE-5909-4CB7-8534-DFBEBF82F6E3}"
+	ProjectSection(SolutionItems) = preProject
+		index.html = index.html
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B699899E-7DFF-4E4C-B8F6-8317C5329DCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B699899E-7DFF-4E4C-B8F6-8317C5329DCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B699899E-7DFF-4E4C-B8F6-8317C5329DCE}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{B699899E-7DFF-4E4C-B8F6-8317C5329DCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B699899E-7DFF-4E4C-B8F6-8317C5329DCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B699899E-7DFF-4E4C-B8F6-8317C5329DCE}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B8F9B2DD-BCC4-45B5-979D-5C9C2E38592C}
+	EndGlobalSection
+EndGlobal
