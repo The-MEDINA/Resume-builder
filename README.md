@@ -10,3 +10,4 @@ the goal of this project is a few things:
 * make filters so you can sort by only what you wanna see & what's relavant
 * DON'T MAKE IT LOOK SO BORING UGHHHH
 * functional (optional)
+* New idea let people leave a link to resumes they made with this on their own places
