@@ -2,14 +2,12 @@ import('./p5.js')
 // setting up the canvas (I think)
 function setup()
 {
-    var canvas = createCanvas(400, 400)
+    var canvas = createCanvas(windowWidth-20, windowHeight)
     canvas.parent('fixp5js')
 }
 function draw()
 {
-    strokeWeight(3)
-    fill('#FF0000')
-    rect(0, 0, 100, 100)
+    background('#FAFAFA')
 }
 //console.log(canvas.width);
 //console.log(canvas.height);
