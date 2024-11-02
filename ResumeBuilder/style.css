@@ -19,6 +19,14 @@ float: left;
     margin: auto;
     width: 50%;
 }
+button {
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    padding: 20px;
+    color: white;
+    background: #BC88C2;
+}
 body {
     padding-top: 45px;
     background-color: lightgray;
