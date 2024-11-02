@@ -1,4 +1,4 @@
-import('./p5.js')
+import('./libraries/p5.js')
 // setting up the canvas (I think)
 function setup()
 {
