@@ -1,14 +1,19 @@
+// Initial setup.
 import('./libraries/p5.js')
-// setting up the canvas (I think)
+let canvasWidth;
+let canvasHeight;
 function setup()
 {
-    var canvas = createCanvas(windowWidth-20, windowHeight)
+    canvasWidth = windowWidth - 20;
+    canvasHeight = windowHeight;
+    var canvas = createCanvas(windowWidth/2, windowHeight)
     canvas.parent('fixp5js')
+}
+function windowResized()
+{
+    resizeCanvas(windowWidth/2, windowHeight);
 }
 function draw()
 {
     background('#FAFAFA')
 }
-//console.log(canvas.width);
-//console.log(canvas.height);
-//context.fillRect(0, 0, canvas.width, 100);
