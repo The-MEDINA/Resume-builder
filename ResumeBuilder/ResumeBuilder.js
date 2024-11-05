@@ -1,4 +1,5 @@
 import('./libraries/p5.js')
+import('./libraries/ResumeElements.js')
 function setup()
 {
     canvasWidth = windowWidth * 0.9;
