@@ -1,11 +1,12 @@
 .topnav {
     background-color: #b0197e;
-    position:fixed;
-    top:0;
+    position: fixed;
+    top: 0;
     width: 100%;
     margin: 0;
     padding: 0;
     overflow: visible;
+    z-index: 99999;
 }
 .topnav a {
 float: left;
@@ -14,10 +15,12 @@ float: left;
     padding: 14px 16px;
     text-decoration: none;
     font-size: 17px;
+    z-index: 99999;
 }
 .editor {
     margin: auto;
-    width: 50%;
+    width: 90%;
+    /*please tell me there's a better way than to manually center these*/
 }
 button {
     font-size: 20px;
@@ -28,7 +31,7 @@ button {
     background: #BC88C2;
 }
 body {
-    padding-top: 45px;
+    padding-top: 60px;
     background-color: lightgray;
     margin: 0;
 }

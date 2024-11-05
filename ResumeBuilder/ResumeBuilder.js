@@ -1,17 +1,14 @@
-// Initial setup.
 import('./libraries/p5.js')
-let canvasWidth;
-let canvasHeight;
-let button;
 function setup()
 {
-    canvasWidth = windowWidth/2;
+    canvasWidth = windowWidth * 0.9;
     canvasHeight = windowHeight;
-    var canvas = createCanvas(windowWidth / 2, windowHeight)
-    button = createButton('click me')
+    var canvas = createCanvas(windowWidth * 0.9, windowHeight*2)
     canvas.parent('fixp5js')
-    button.position(windowWidth/2 -50, 200+10)
+    button = createButton('click me')
+    button.position(windowWidth/2 -50, 60)
     button.mousePressed(testCode)  
+    button.style("z-index: 1")
 }
 /*function windowResized()
 {
@@ -19,7 +16,9 @@ function setup()
 }*/
 function draw()
 {
-    background('#FAFAFA')
+    background('#DFDFDF')
+    fill('#FAFAFA')
+    rect(300, 100, 750, windowHeight)
 }
 function testCode()
 {
