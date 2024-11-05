@@ -17,9 +17,12 @@ function setup()
 }*/
 function draw()
 {
+    // background and page
     background('#DFDFDF')
     fill('#FAFAFA')
-    rect(canvasWidth/2-340, 100, 680, 1000)
+    rect(canvasWidth / 2 - 340, 100, 680, 1000)
+
+
 }
 function testCode()
 {

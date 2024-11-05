@@ -1,2 +1,7 @@
-// JavaScript source code
-console.log("wack");
+class Title
+{
+    constructor(setName)
+    {
+        Name = setName
+    }
+}
