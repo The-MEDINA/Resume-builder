@@ -13,13 +13,13 @@ function setup()
 }
 /*function windowResized()
 {
-    resizeCanvas(windowWidth/2, windowHeight);
+    resizeCanvas(windowWidth*0.9, windowHeight*2);
 }*/
 function draw()
 {
     background('#DFDFDF')
     fill('#FAFAFA')
-    rect(300, 100, 750, windowHeight)
+    rect(canvasWidth/2-340, 100, 680, 1000)
 }
 function testCode()
 {

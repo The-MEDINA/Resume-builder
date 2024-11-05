@@ -20,6 +20,8 @@ float: left;
 .editor {
     margin: auto;
     width: 90%;
+    display: flex;
+    align-content: center;
     /*please tell me there's a better way than to manually center these*/
 }
 button {
