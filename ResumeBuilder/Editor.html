@@ -8,17 +8,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Template</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        canvas {
+            background: #eee;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
 </head>
 
 <body>
+    <canvas id="myCanvas" width="480" height="320">
+        <script src="./ResumeBuilder.js" type="module"></script>
+    </canvas>
     <div class="topnav">
         <a style="font-family: Roboto,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Arial,sans-serif">Oh my god why did it take so long to learn how to do this</a>
     </div>
     <div class="editor">
         <div id="fixp5js">
-            <script src="./ResumeBuilder.js" type="module"></script>
         </div>
     </div>
-    <canvas></canvas>
 </body>
 </html>
