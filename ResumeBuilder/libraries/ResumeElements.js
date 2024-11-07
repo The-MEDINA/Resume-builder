@@ -1,7 +1,8 @@
-class Title
+export class Title
 {
-    constructor(setName)
+    constructor(Name)
     {
-        Name = setName
+        titlename = Name
+        console.log("PLEASE")
     }
 }
