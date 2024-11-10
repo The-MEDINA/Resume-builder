@@ -1,9 +1,17 @@
 console.log("crying 2")
-export class Title
+export class ResumeElements
 {
-    constructor(Name)
+    constructor()
     {
-        titlename = Name
         console.log("PLEASE")
+    }
+}
+export class Title extends ResumeElements
+{
+    constructor(name)
+    {
+        super();
+        var fullName = name;
+        console.log("please x2")
     }
 }
