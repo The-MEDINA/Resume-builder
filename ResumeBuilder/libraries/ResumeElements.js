@@ -1,4 +1,3 @@
-console.log("crying 2")
 export class ResumeElements
 {
     constructor()
@@ -11,7 +10,12 @@ export class Title extends ResumeElements
     constructor(name)
     {
         super();
-        var fullName = name;
+        this.fullName = name;
         console.log("please x2")
+    }
+    /// Prints the full name that was given.
+    Print()
+    {
+        return this.fullName;
     }
 }

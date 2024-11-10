@@ -1,15 +1,16 @@
 import { ResumeElements, Title } from './libraries/ResumeElements.js'
-console.log("crying")
-console.log("making sure it's still running")
+//uncomment this console.log if things don't seem to be updating.
+//console.log("crying")
     var
         // Obtain a reference to the canvas element using its id.
         htmlCanvas = document.getElementById('theCanvas'),
         // Obtain a graphics context on the canvas element for drawing.
-        context = htmlCanvas.getContext('2d');
+    context = htmlCanvas.getContext('2d');
 
+const theResume = [];
+theResume[0] = new Title("this is the title");
     // Start listening to resize events and draw canvas.
     initialize();
-
     function initialize() {
         // Register an event listener to call the resizeCanvas() function 
         // each time the window is resized.
@@ -25,9 +26,10 @@ console.log("making sure it's still running")
         context.lineWidth = '5';
         context.strokeRect(0, 0, window.innerWidth, window.innerHeight);
         context.font = "50px Arial";
-        context.fillText("Hello World", 10, 80);
-        const testing = new ResumeElements();
-        const testing2 = new Title("aaa");
+        for (let i = 0; i < theResume.length; i++) // oh my god I have javascript for loop
+        {
+            context.fillText(theResume[i].Print(), 0, 80);
+        }
     }
 
     // Runs each time the DOM window resize event fires.
