@@ -1,16 +1,15 @@
 import { ResumeElements, Title } from './libraries/ResumeElements.js'
 //uncomment this console.log if things don't seem to be updating.
 //console.log("crying")
-    var
-        // Obtain a reference to the canvas element using its id.
-        htmlCanvas = document.getElementById('theCanvas'),
-        // Obtain a graphics context on the canvas element for drawing.
-    context = htmlCanvas.getContext('2d');
-
-const theResume = [];
-theResume[0] = new Title("this is the title");
+    // Obtain a reference to the canvas element using its id.
+    // Obtain a graphics context on the canvas element for drawing.
+    var htmlCanvas = document.getElementById('theCanvas'), context = htmlCanvas.getContext('2d');
+    const theResume = [];
+    theResume[0] = new Title("this is the title");
+    
     // Start listening to resize events and draw canvas.
     initialize();
+    
     function initialize() {
         // Register an event listener to call the resizeCanvas() function 
         // each time the window is resized.
@@ -19,8 +18,7 @@ theResume[0] = new Title("this is the title");
         resizeCanvas();
     }
 
-    // Display custom canvas. In this case it's a blue, 5 pixel 
-    // border that resizes along with the browser window.
+    // Display custom canvas.
     function redraw() {
         context.strokeStyle = 'blue';
         context.lineWidth = '5';
