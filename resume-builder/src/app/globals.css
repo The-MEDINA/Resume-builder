@@ -29,3 +29,6 @@ body {
   overflow: visible;
   z-index: 99999;
 }
+.content {
+  padding-top: 50px;
+}
