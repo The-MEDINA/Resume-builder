@@ -47,3 +47,7 @@ body {
 .tweakElements {
   /*Just in case I need to tweak something (VSCode please stop yelling at me it hurts my feelings)*/
 }
+#title {
+  text-align: center;
+  font-size: 50px;
+}
