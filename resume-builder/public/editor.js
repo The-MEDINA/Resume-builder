@@ -6,6 +6,7 @@ const addElements = document.createElement("div");
 const tweakElements = document.createElement("div");
 const spacer = document.createElement("div");
 let listOfElements = [];
+let ElementEdits = [];
 
 // Adding classes to elements created.
 grid.classList.add('editor-grid');
@@ -38,17 +39,30 @@ testbutton.addEventListener('click', AddAnElement);
 addElements.appendChild(testbutton);
 
 // Functions
+// Adds elements to the resume.
 function AddAnElement()
 {
     listOfElements.push(document.createElement("p"));
+    ElementEdits.push(document.createElement("div"));
+    ElementEdits[ElementEdits.length-1].appendChild(CreateEditButton());
     DrawElements();
 }
 
+//  Draws all elements onto the resume.
 function DrawElements()
 {
     for (let i = 0; i < listOfElements.length; i++)
     {
         listOfElements[i].textContent = ("added element " + (i));
-        resume.appendChild(listOfElements[i])
+        resume.appendChild(listOfElements[i]);
+        tweakElements.appendChild(ElementEdits[i]);
     }
+}
+
+// Creates an edit button inside of a <div> 
+function CreateEditButton()
+{
+    const thisButton = document.createElement("button");
+    thisButton.textContent = "Edit element " + (ElementEdits.length-1) + " button";
+    return thisButton;
 }
