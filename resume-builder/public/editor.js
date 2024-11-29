@@ -5,6 +5,7 @@ const resume = document.createElement("div");
 const addElements = document.createElement("div");
 const tweakElements = document.createElement("div");
 const spacer = document.createElement("div");
+let listOfElements = [];
 
 // Adding classes to elements created.
 grid.classList.add('editor-grid');
@@ -29,3 +30,25 @@ grid.appendChild(tweakElements);
 addElements.appendChild(p); 
 resume.appendChild(q);
 tweakElements.appendChild(r);
+
+// testing button
+const testbutton = document.createElement("button");
+testbutton.textContent = 'hello there';
+testbutton.addEventListener('click', AddAnElement);
+addElements.appendChild(testbutton);
+
+// Functions
+function AddAnElement()
+{
+    listOfElements.push(document.createElement("p"));
+    DrawElements();
+}
+
+function DrawElements()
+{
+    for (let i = 0; i < listOfElements.length; i++)
+    {
+        listOfElements[i].textContent = ("added element " + (i));
+        resume.appendChild(listOfElements[i])
+    }
+}

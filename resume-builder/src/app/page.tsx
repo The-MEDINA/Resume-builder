@@ -10,59 +10,6 @@ export default function Home() {
       <div id="app">
         <Script src="editor.js"/>
       </div>
-      <p>I *MIGHT* be learning how to fullstack guys c:</p>
-      <p>this is all super basic</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
-      <p>scroll please</p>
     </div>
     </div>
   );
