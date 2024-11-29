@@ -32,15 +32,18 @@ body {
 .content {
   padding-top: 50px;
 }
-.test-grid {
+.editor-grid {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr
 }
 .addElements {
   position: fixed;
+  width: 25%;
   top: 50;
 }
 .resume {
+  /*These are here for later.*/
 }
 .tweakElements {
+  /*Just in case I need to tweak something (VSCode please stop yelling at me it hurts my feelings)*/
 }
