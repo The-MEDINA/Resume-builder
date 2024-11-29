@@ -1,18 +1,30 @@
-// 1. Select the div element using the id property
+
 const app = document.getElementById("app");
-// 2. Create a new <p></p> element programmatically
+
+const grid = document.createElement("div");
+const resume = document.createElement("div");
+const addElements = document.createElement("div");
+const tweakElements = document.createElement("div");
+const spacer = document.createElement("div");
+
 const p = document.createElement("p");
 const q = document.createElement("p");
-const grid = document.createElement("div");
+const r = document.createElement("p");
 
-// testing??
 grid.classList.add('test-grid');
-// it worked :>
+addElements.classList.add('addElements');
+resume.classList.add('resume');
+tweakElements.classList.add('tweakElements');
 
-// 3. Add the text content
-p.textContent = "text element from editor.js here";
-q.textContent = "can I add another?";
+p.textContent = "Add elements column";
+q.textContent = "Resume column";
+r.textContent = "Change elements column";
 // 4. Append the p element to the div element
-grid.appendChild(p);
-grid.appendChild(q);
+grid.appendChild(spacer);    
+grid.appendChild(resume);    
+grid.appendChild(tweakElements);   
+addElements.appendChild(p); 
+resume.appendChild(q);
+tweakElements.appendChild(r);
 app?.appendChild(grid);
+app?.appendChild(addElements);

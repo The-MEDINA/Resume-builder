@@ -34,5 +34,13 @@ body {
 }
 .test-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr
+  grid-template-columns: 1fr 2fr 1fr
+}
+.addElements {
+  position: fixed;
+  top: 50;
+}
+.resume {
+}
+.tweakElements {
 }

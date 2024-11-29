@@ -7,10 +7,6 @@ export default function Home() {
         <a>it was so easy to bring this over</a>
     </div>
     <div className="content">
-    <p>So is this one hidden?</p>
-      <p>This too?</p>
-      <p>visible</p>
-      <p>it's all visible now cause I fixed it c:</p>
       <div id="app">
         <Script src="editor.js"/>
       </div>
