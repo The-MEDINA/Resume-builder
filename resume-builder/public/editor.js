@@ -1,4 +1,4 @@
-/// Setup of the editor here.
+/// === Setup === Setup === Setup === Setup === Setup === Setup === Setup === Setup === Setup ===
 const app = document.getElementById("app");
 const grid = document.createElement("div");
 const resume = document.createElement("div");
@@ -32,27 +32,28 @@ addElements.appendChild(p);
 resume.appendChild(q);
 tweakElements.appendChild(r);
 
-// testing button
+// Add title button
 const addTitleButton = document.createElement("button");
 addTitleButton.textContent = '|Add a title|';
 addTitleButton.addEventListener('click', AddTitle);
 addElements.appendChild(addTitleButton);
 
-// testing button2
+// Add element button
 const addElementButton = document.createElement("button");
 addElementButton.textContent = '|Add an element|';
 addElementButton.addEventListener('click', AddElement);
 addElements.appendChild(addElementButton);
 
-// Functions
+// === Functions === Functions === Functions === Functions === Functions === Functions === Functions === Functions ===
 // Adds a title to the resume.
 function AddTitle()
 {
     listOfElements.push(document.createElement("div"));
     listOfElements[listOfElements.length-1].classList.add('Title');
     listOfElements[listOfElements.length-1].appendChild(CreateTitle());
+    listOfElements[listOfElements.length-1].setAttribute("index",[ElementEdits.length]);
     ElementEdits.push(document.createElement("div"));
-    ElementEdits[ElementEdits.length-1].appendChild(CreateEditButton());
+    ElementEdits[ElementEdits.length-1].appendChild(CreateEditButton(ElementEdits.length-1));
     ElementEdits[ElementEdits.length-1].setAttribute("index",[ElementEdits.length-1]);
     DrawElements();
 }
@@ -63,8 +64,9 @@ function AddElement()
     listOfElements.push(document.createElement("div"));
     listOfElements[listOfElements.length-1].classList.add('Element');
     listOfElements[listOfElements.length-1].appendChild(CreateElement());
+    listOfElements[listOfElements.length-1].setAttribute("index",[ElementEdits.length]);
     ElementEdits.push(document.createElement("div"));
-    ElementEdits[ElementEdits.length-1].appendChild(CreateEditButton());
+    ElementEdits[ElementEdits.length-1].appendChild(CreateEditButton(ElementEdits.length-1));
     ElementEdits[ElementEdits.length-1].setAttribute("index",[ElementEdits.length-1]);
     DrawElements();
 }
@@ -80,18 +82,18 @@ function DrawElements()
 }
 
 // Creates an edit button inside of a <div> 
-function CreateEditButton()
+function CreateEditButton(_index)
 {
     const thisButton = document.createElement("button");
-    if (listOfElements[listOfElements.length-1].classList.contains("Title"))
+    if (listOfElements[_index].classList.contains("Title"))
     {
-        thisButton.textContent = "Edit title " + (ElementEdits.length-1) + " button";
-        ElementEdits[ElementEdits.length-1].setAttribute("index",[ElementEdits.length-1]);
+        thisButton.textContent = "Edit title " + (_index) + " button";
+        ElementEdits[_index].setAttribute("index",[_index]);
         thisButton.addEventListener('click', function() {TitleDropDownMenu(thisButton.parentElement.getAttribute("index"))});
     }
     else
     {
-        thisButton.textContent = "Edit element " + (ElementEdits.length-1) + " button";
+        thisButton.textContent = "Edit element " + (_index) + " button";
     }
     return thisButton;
 }
@@ -116,18 +118,48 @@ function CreateElement()
 function TitleDropDownMenu(elementIndex)
 {
     let intIndex = +elementIndex; // oh my god... this... this is NASTY
-    alert("ok " + intIndex);
-    while (ElementEdits[intIndex].firstChild) {
+    while (ElementEdits[intIndex].firstChild) 
+    {
         ElementEdits[intIndex].removeChild(ElementEdits[intIndex].lastChild);
-      }
+    }
     const deleteButton = document.createElement("button");
-    deleteButton.textContent = 'Delete Title ' + intIndex;
-    //addElementButton.addEventListener('click', AddElement);
+    deleteButton.textContent = '|Delete Title ' + intIndex + '|';
+    deleteButton.addEventListener('click', function() {DeleteSomething(intIndex)});
     ElementEdits[intIndex].appendChild(deleteButton);
+    const backButton = document.createElement("button");
+    backButton.textContent = '|Back|';
+    backButton.addEventListener('click', function() {AdjustElements(intIndex)});
+    ElementEdits[intIndex].appendChild(backButton);
 }
 
-/// TODO:
-// make delete button call a function
-// the function should delete an element from both listOfElements and ElementEdits (I think?)
-// then either the function or another function should adjust attribute index
-// plus fix any other issues that might arise
+// Deletes something from the resume according to its index attribute.
+function DeleteSomething(_index)
+{
+    while (document.querySelector("[index=\"" + _index + "\"]") != null)
+    {
+        const removeThese = document.querySelector("[index=\"" + _index + "\"]"); 
+        removeThese.remove();        
+    }
+    listOfElements.splice(_index,1);   
+    ElementEdits.splice(_index,1);    
+    AdjustElements();
+    DrawElements();
+}
+
+// Adjusts the indeces and messes with the buttons to prevent any bugs and wacky situations.
+function AdjustElements()
+{
+    for (let i = 0; i < ElementEdits.length; i++)
+    {
+        listOfElements[i].setAttribute("index",i);
+        ElementEdits[i].setAttribute("index",i);   
+    }
+    for (let i = 0; i < ElementEdits.length; i++)
+        {
+            while (ElementEdits[i].firstChild) 
+            {
+                ElementEdits[i].removeChild(ElementEdits[i].lastChild);
+            }
+            ElementEdits[i].appendChild(CreateEditButton(i));
+        }
+}
