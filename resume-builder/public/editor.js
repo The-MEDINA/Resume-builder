@@ -122,10 +122,17 @@ function TitleDropDownMenu(elementIndex)
     {
         ElementEdits[intIndex].removeChild(ElementEdits[intIndex].lastChild);
     }
+    // Delete Button.
     const deleteButton = document.createElement("button");
     deleteButton.textContent = '|Delete Title ' + intIndex + '|';
     deleteButton.addEventListener('click', function() {DeleteSomething(intIndex)});
     ElementEdits[intIndex].appendChild(deleteButton);
+    // Update text Button.
+    const TextButton = document.createElement("button");
+    TextButton.textContent = '|Title text @ ' + intIndex + '|';
+    TextButton.addEventListener('click', function() {ChangeTitleText(intIndex)});
+    ElementEdits[intIndex].appendChild(TextButton);
+    // Back Button.
     const backButton = document.createElement("button");
     backButton.textContent = '|Back|';
     backButton.addEventListener('click', function() {AdjustElements(intIndex)});
@@ -142,6 +149,21 @@ function DeleteSomething(_index)
     }
     listOfElements.splice(_index,1);   
     ElementEdits.splice(_index,1);    
+    AdjustElements();
+    DrawElements();
+}
+
+// Changes the text of a title.
+function ChangeTitleText(_index)
+{
+    let text = prompt("Update the Title text:");
+    for (let i = 0; i < listOfElements[_index].childNodes.length; i++)
+    {
+        if (listOfElements[_index].children[i].id == "title")
+        {
+            listOfElements[_index].children[i].textContent = text;
+        }
+    }
     AdjustElements();
     DrawElements();
 }
