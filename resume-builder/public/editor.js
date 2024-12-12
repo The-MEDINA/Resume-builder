@@ -18,9 +18,9 @@ tweakElements.classList.add('tweakElements');
 const p = document.createElement("p");
 const q = document.createElement("p");
 const r = document.createElement("p");
-p.textContent = "Add elements column";
-q.textContent = "Resume column";
-r.textContent = "Change elements column";
+p.textContent = "Add elements column (Here you select elements to add)";
+q.textContent = "Resume column (goal is to click on each element to edit)";
+r.textContent = "Change elements column (edit everything about the element on the side)";
 
 // Append elements to create the editor.
 app?.appendChild(grid);
@@ -101,7 +101,7 @@ function CreateEditButton(_index)
 // Creates the title with a <p> element inside of a <div> 
 function CreateTitle()
 {
-    const thisTitle = document.createElement("p");
+    const thisTitle = document.createElement("button");
     thisTitle.setAttribute("id","title");
     thisTitle.textContent = "Title " + (ElementEdits.length);
     return thisTitle;
@@ -109,7 +109,7 @@ function CreateTitle()
 // Creates a basic element with a <p> element inside of a <div> 
 function CreateElement()
 {
-    const thisElement = document.createElement("p");
+    const thisElement = document.createElement("button");
     thisElement.textContent = "Element " + (ElementEdits.length);
     return thisElement;
 }
