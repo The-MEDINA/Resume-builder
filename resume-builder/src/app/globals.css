@@ -53,6 +53,16 @@ body {
   justify-content: center;
   align-items: center;
 }
+.Element{
+  padding-bottom: 10px;
+}
 #title {
   font-size: 50px;
+}
+#elementHeader {
+  font-weight: bold;
+}
+#elementDate {
+  font-size: small;
+  vertical-align: top;
 }

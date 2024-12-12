@@ -63,7 +63,9 @@ function AddElement()
 {
     listOfElements.push(document.createElement("div"));
     listOfElements[listOfElements.length-1].classList.add('Element');
-    listOfElements[listOfElements.length-1].appendChild(CreateElement());
+    listOfElements[listOfElements.length-1].appendChild(CreateHeader());
+    listOfElements[listOfElements.length-1].appendChild(CreateDate());
+    listOfElements[listOfElements.length-1].appendChild(CreateDescription());
     listOfElements[listOfElements.length-1].setAttribute("index",[ElementEdits.length]);
     ElementEdits.push(document.createElement("div"));
     ElementEdits[ElementEdits.length-1].appendChild(CreateEditButton(ElementEdits.length-1));
@@ -106,12 +108,37 @@ function CreateTitle()
     thisTitle.textContent = "Title " + (ElementEdits.length);
     return thisTitle;
 }
-// Creates a basic element with a <p> element inside of a <div> 
-function CreateElement()
+// Creates a basic elementHeader with a <button> element inside of a <div> 
+function CreateHeader()
 {
-    const thisElement = document.createElement("button");
-    thisElement.textContent = "Element " + (ElementEdits.length);
-    return thisElement;
+    const elementHeaderDiv = document.createElement("div");
+    const elementHeader = document.createElement("button");
+    elementHeader.setAttribute("id","elementHeader");
+    elementHeader.textContent = "Job title or something - location |E" + (ElementEdits.length);
+    elementHeaderDiv.appendChild(elementHeader);
+    return elementHeaderDiv;
+}
+
+// Creates a basic date with a <button> element inside of a <div> 
+function CreateDate()
+{
+    const elementDateDiv = document.createElement("div");
+    const elementDate = document.createElement("button");
+    elementDate.setAttribute("id","elementDate");
+    elementDate.textContent = "DateStart - DateEnd |E" + (ElementEdits.length);
+    elementDateDiv.appendChild(elementDate);
+    return elementDateDiv;
+}
+
+// Creates a basic date with a <button> element inside of a <div> 
+function CreateDescription()
+{
+    const createDescDiv = document.createElement("div");
+    const elementDesc = document.createElement("button");
+    elementDesc.setAttribute("id","elementDesc");
+    elementDesc.textContent = "Description of something |E" + (ElementEdits.length);
+    createDescDiv.appendChild(elementDesc);
+    return createDescDiv;
 }
 
 // adds the dropdown menu for title edit buttons.
