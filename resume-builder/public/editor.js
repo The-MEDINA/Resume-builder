@@ -114,6 +114,7 @@ function CreateHeader()
     const elementHeaderDiv = document.createElement("div");
     const elementHeader = document.createElement("button");
     elementHeader.setAttribute("id","elementHeader");
+    elementHeader.addEventListener('click', function() {ChangeText(elementHeader)});
     elementHeader.textContent = "Job title or something - location |E" + (ElementEdits.length);
     elementHeaderDiv.appendChild(elementHeader);
     return elementHeaderDiv;
@@ -167,6 +168,8 @@ function TitleDropDownMenu(elementIndex)
 }
 
 // Deletes something from the resume according to its index attribute.
+// So after doing some more javascript coding... It seems that I may or may not have overcomplicated this function.
+// I'm not crying, you are.
 function DeleteSomething(_index)
 {
     while (document.querySelector("[index=\"" + _index + "\"]") != null)
@@ -193,6 +196,24 @@ function ChangeTitleText(_index)
     }
     AdjustElements();
     DrawElements();
+}
+
+// Adds an input field to take user input from, and changes the element that called it.
+function ChangeText(element)
+{
+    const scannerDiv = document.createElement("div");
+    const scanner = document.createElement("input");
+    scannerDiv.appendChild(scanner);
+    element.parentNode.appendChild(scannerDiv);
+    scanner.addEventListener('keypress', function (event) {if (event.key == "Enter") FinishChangeText(scannerDiv, element, scanner.value)});
+}
+
+// Goes with ChangeText. Finishes up changing text.
+// I moved this to another method thinking it would make the code look nicer. I guess it did, but.. man, this method is NOT needed
+function FinishChangeText(scannerDivToRemove, elementToChange, valueToChangeWith)
+{
+    scannerDivToRemove.remove();
+    elementToChange.textContent = valueToChangeWith;  
 }
 
 // Adjusts the indeces and messes with the buttons to prevent any bugs and wacky situations.
