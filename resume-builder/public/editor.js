@@ -103,10 +103,13 @@ function CreateEditButton(_index)
 // Creates the title with a <p> element inside of a <div> 
 function CreateTitle()
 {
+    const titleDiv = document.createElement("div");
     const thisTitle = document.createElement("button");
     thisTitle.setAttribute("id","title");
+    thisTitle.addEventListener('click', function() {ChangeText(thisTitle)});
     thisTitle.textContent = "Title " + (ElementEdits.length);
-    return thisTitle;
+    titleDiv.appendChild(thisTitle);
+    return titleDiv;
 }
 // Creates a basic elementHeader with a <button> element inside of a <div> 
 function CreateHeader()
@@ -126,6 +129,7 @@ function CreateDate()
     const elementDateDiv = document.createElement("div");
     const elementDate = document.createElement("button");
     elementDate.setAttribute("id","elementDate");
+    elementDate.addEventListener('click', function() {ChangeText(elementDate)});
     elementDate.textContent = "DateStart - DateEnd |E" + (ElementEdits.length);
     elementDateDiv.appendChild(elementDate);
     return elementDateDiv;
@@ -137,6 +141,7 @@ function CreateDescription()
     const createDescDiv = document.createElement("div");
     const elementDesc = document.createElement("button");
     elementDesc.setAttribute("id","elementDesc");
+    elementDesc.addEventListener('click', function() {ChangeText(elementDesc)});
     elementDesc.textContent = "Description of something |E" + (ElementEdits.length);
     createDescDiv.appendChild(elementDesc);
     return createDescDiv;
@@ -199,10 +204,18 @@ function ChangeTitleText(_index)
 }
 
 // Adds an input field to take user input from, and changes the element that called it.
+// attach an event listener with this function to a resume element and it should be editable. (in theory)
 function ChangeText(element)
 {
+    while (document.querySelector("[id=\"temporary\"]") != null)
+        {
+            const removeThese = document.querySelector("[id=\"temporary\"]"); 
+            removeThese.remove();        
+        }
     const scannerDiv = document.createElement("div");
+    scannerDiv.setAttribute("id","temporary");
     const scanner = document.createElement("input");
+    scanner.classList.add("scanner");
     scannerDiv.appendChild(scanner);
     element.parentNode.appendChild(scannerDiv);
     scanner.addEventListener('keypress', function (event) {if (event.key == "Enter") FinishChangeText(scannerDiv, element, scanner.value)});
@@ -212,6 +225,17 @@ function ChangeText(element)
 // I moved this to another method thinking it would make the code look nicer. I guess it did, but.. man, this method is NOT needed
 function FinishChangeText(scannerDivToRemove, elementToChange, valueToChangeWith)
 {
+    if (valueToChangeWith == null || valueToChangeWith == "")
+    {
+        elementToChange.parentNode.remove();
+        // this is such a bad fix... but it *does* work. The plan is to rewrite this for loop so that this isn't so nasty.
+        for (let i = 0; i < ElementEdits.length; i++){
+            if (listOfElements[i].children.length == 0){
+                DeleteSomething(i);
+                i -= 1;
+            }
+        }
+    }
     scannerDivToRemove.remove();
     elementToChange.textContent = valueToChangeWith;  
 }
@@ -233,3 +257,8 @@ function AdjustElements()
             ElementEdits[i].appendChild(CreateEditButton(i));
         }
 }
+
+// TODO:
+// change it so that if an element child or whatever its called has nothing in it, remove the div that contains it.
+// If an element has nothing in it, delete it.
+// make sure when they're deleted, the indeces and list are adjusted.
