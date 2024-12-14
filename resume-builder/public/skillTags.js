@@ -57,6 +57,10 @@ export function DefaultList()
     skillTags[2][1][0][1].push(["Soloist"]);
     skillTags[2][1].push(["Music Composition"]);
 
+    //Noskill. (remove this and patch the code later)
+    //skillTags.push(["Return", new Array]);
+
+
     // Log it for testing.
     //console.log(skillTags);
     return skillTags;

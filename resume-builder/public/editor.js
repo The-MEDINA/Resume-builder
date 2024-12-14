@@ -156,7 +156,7 @@ function CreateSkillTag()
     const skillTagDiv = document.createElement("div");
     const skillTag = document.createElement("button");
     skillTag.setAttribute("id","blankSkillTag");
-    skillTag.addEventListener('click', function() {SkillDropDownMenu(skillTag)});
+    skillTag.addEventListener('click', function() {SkillDropDownMenu(skillTag, listOfSkills, null)});
     skillTag.textContent = "Add a skill";
     skillTagDiv.appendChild(skillTag);
     return skillTagDiv;
@@ -223,38 +223,33 @@ function AdjustElements()
 }
 
 // this function might be very difficult to implement
-function SkillDropDownMenu(skillTag)
+function SkillDropDownMenu(skillTag, skillList, tagName)
 {
-    if (skillTag.children.length != 0)
-    {
         while (document.querySelector("[class=\"skillDropDown\"]") != null)
             {
                 const removeThese = document.querySelector("[class=\"skillDropDown\"]"); 
                 removeThese.remove();        
             }
-    }
-    else
-    {
         let parentdiv = document.createElement("div");
+        parentdiv.classList.add("skillDropDown")
         parentdiv.setAttribute("id","temporary");
         for (let i = 0; i < listOfSkills.length; i++)
         {
             let div = document.createElement("div")
             let option = document.createElement("button");
-            div.setAttribute("id","temporary");
-            parentdiv.classList.add("skillDropDown")
             option.textContent = listOfSkills[i][0];
+            option.addEventListener('click', function() {CloseDropDownMenu()});
+            div.setAttribute("id","temporary");
             div.appendChild(option)
             parentdiv.appendChild(div)
-            skillTag.appendChild(parentdiv);
+            skillTag.parentNode.appendChild(parentdiv);
         }
-    }
 }
-function CloseDropDownMenu(skillTag)
+function CloseDropDownMenu()
 {
-    while (document.querySelector("[id=\"temporary\"]") != null)
+    while (document.querySelector("[class=\"skillDropDown\"]") != null)
         {
-            const removeThese = document.querySelector("[id=\"temporary\"]"); 
+            const removeThese = document.querySelector("[class=\"skillDropDown\"]"); 
             removeThese.remove();        
         }
 }
