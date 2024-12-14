@@ -1,7 +1,8 @@
 import {Test, Setup, DefaultList} from "/skillTags.js";
 /// === Setup === Setup === Setup === Setup === Setup === Setup === Setup === Setup === Setup ===
 Setup();
-DefaultList();
+let listOfSkills = DefaultList();
+console.log(listOfSkills);
 const app = document.getElementById("app");
 const grid = document.createElement("div");
 const resume = document.createElement("div");
@@ -155,7 +156,7 @@ function CreateSkillTag()
     const skillTagDiv = document.createElement("div");
     const skillTag = document.createElement("button");
     skillTag.setAttribute("id","blankSkillTag");
-    //elementDesc.addEventListener('click', function() {ChangeText(elementDesc)});
+    skillTag.addEventListener('click', function() {SkillDropDownMenu(skillTag)});
     skillTag.textContent = "Add a skill";
     skillTagDiv.appendChild(skillTag);
     return skillTagDiv;
@@ -172,21 +173,6 @@ function DeleteSomething(_index)
         removeThese.remove();        
     }
     listOfElements.splice(_index,1);   
-    AdjustElements();
-    DrawElements();
-}
-
-// Changes the text of a title.
-function ChangeTitleText(_index)
-{
-    let text = prompt("Update the Title text:");
-    for (let i = 0; i < listOfElements[_index].childNodes.length; i++)
-    {
-        if (listOfElements[_index].children[i].id == "title")
-        {
-            listOfElements[_index].children[i].textContent = text;
-        }
-    }
     AdjustElements();
     DrawElements();
 }
@@ -234,6 +220,43 @@ function AdjustElements()
     {
         listOfElements[i].setAttribute("index",i);
     }
+}
+
+// this function might be very difficult to implement
+function SkillDropDownMenu(skillTag)
+{
+    if (skillTag.children.length != 0)
+    {
+        while (document.querySelector("[class=\"skillDropDown\"]") != null)
+            {
+                const removeThese = document.querySelector("[class=\"skillDropDown\"]"); 
+                removeThese.remove();        
+            }
+    }
+    else
+    {
+        let parentdiv = document.createElement("div");
+        parentdiv.setAttribute("id","temporary");
+        for (let i = 0; i < listOfSkills.length; i++)
+        {
+            let div = document.createElement("div")
+            let option = document.createElement("button");
+            div.setAttribute("id","temporary");
+            parentdiv.classList.add("skillDropDown")
+            option.textContent = listOfSkills[i][0];
+            div.appendChild(option)
+            parentdiv.appendChild(div)
+            skillTag.appendChild(parentdiv);
+        }
+    }
+}
+function CloseDropDownMenu(skillTag)
+{
+    while (document.querySelector("[id=\"temporary\"]") != null)
+        {
+            const removeThese = document.querySelector("[id=\"temporary\"]"); 
+            removeThese.remove();        
+        }
 }
 
 // So... I'm.. not sure, how to approach the skill tags now.

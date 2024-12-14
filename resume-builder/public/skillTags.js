@@ -29,7 +29,7 @@ export function Setup()
 }
 export function DefaultList()
 {
-    skillTags = [];
+    skillTags = []; 
     // Programming section.
     skillTags.push(["programming", new Array]);
     skillTags[0][1].push(["Web-Dev", new Array]);
@@ -57,10 +57,9 @@ export function DefaultList()
     skillTags[2][1][0][1].push(["Soloist"]);
     skillTags[2][1].push(["Music Composition"]);
 
-
-
     // Log it for testing.
-    console.log(skillTags);
+    //console.log(skillTags);
+    return skillTags;
 }
 /* DEFAULT SKILLS LIST */
 /*PROGRAMMING

@@ -66,10 +66,19 @@ body {
   font-size: small;
   vertical-align: top;
 }
+#elementDesc {
+  text-align: left;
+}
 .scanner{
   visibility: visible;
   border: solid;
 }
 #blankSkillTag{
   font-style: italic;
+}
+.skillDropDown{
+  background-color: #cbcbcb;
+  display: block;
+  position: absolute;
+  text-align: left;
 }
