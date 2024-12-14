@@ -8,7 +8,7 @@ export default function Home() {
     </div>
     <div className="content">
       <div id="app">
-        <Script src="editor.js"/>
+        <Script type="module" src="editor.js"/>
       </div>
     </div>
     </div>

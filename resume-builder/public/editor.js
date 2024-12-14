@@ -1,4 +1,7 @@
+import {Test, Setup, DefaultList} from "/skillTags.js";
 /// === Setup === Setup === Setup === Setup === Setup === Setup === Setup === Setup === Setup ===
+Setup();
+DefaultList();
 const app = document.getElementById("app");
 const grid = document.createElement("div");
 const resume = document.createElement("div");
@@ -69,6 +72,7 @@ function AddElement()
     listOfElements[listOfElements.length-1].appendChild(CreateHeader());
     listOfElements[listOfElements.length-1].appendChild(CreateDate());
     listOfElements[listOfElements.length-1].appendChild(CreateDescription());
+    listOfElements[listOfElements.length-1].appendChild(CreateSkillTag());
     listOfElements[listOfElements.length-1].setAttribute("index",[listOfElements.length-1]);
     DrawElements();
 }
@@ -105,7 +109,7 @@ function CreateTitle()
     const thisTitle = document.createElement("button");
     thisTitle.setAttribute("id","title");
     thisTitle.addEventListener('click', function() {ChangeText(thisTitle)});
-    thisTitle.textContent = "Title " + (listOfElements.length-1);
+    thisTitle.textContent = ("Title");
     titleDiv.appendChild(thisTitle);
     return titleDiv;
 }
@@ -116,7 +120,7 @@ function CreateHeader()
     const elementHeader = document.createElement("button");
     elementHeader.setAttribute("id","elementHeader");
     elementHeader.addEventListener('click', function() {ChangeText(elementHeader)});
-    elementHeader.textContent = "Job title or something - location |E" + (listOfElements.length-1);
+    elementHeader.textContent = "Job title - location";
     elementHeaderDiv.appendChild(elementHeader);
     return elementHeaderDiv;
 }
@@ -128,7 +132,7 @@ function CreateDate()
     const elementDate = document.createElement("button");
     elementDate.setAttribute("id","elementDate");
     elementDate.addEventListener('click', function() {ChangeText(elementDate)});
-    elementDate.textContent = "DateStart - DateEnd |E" + (listOfElements.length-1);
+    elementDate.textContent = "DateStart - DateEnd";
     elementDateDiv.appendChild(elementDate);
     return elementDateDiv;
 }
@@ -140,9 +144,21 @@ function CreateDescription()
     const elementDesc = document.createElement("button");
     elementDesc.setAttribute("id","elementDesc");
     elementDesc.addEventListener('click', function() {ChangeText(elementDesc)});
-    elementDesc.textContent = "Description of something |E" + (listOfElements.length-1);
+    elementDesc.textContent = "Description of something";
     createDescDiv.appendChild(elementDesc);
     return createDescDiv;
+}
+
+// creates a skillTag with a <button> element inside of a <div>
+function CreateSkillTag()
+{
+    const skillTagDiv = document.createElement("div");
+    const skillTag = document.createElement("button");
+    skillTag.setAttribute("id","blankSkillTag");
+    //elementDesc.addEventListener('click', function() {ChangeText(elementDesc)});
+    skillTag.textContent = "Add a skill";
+    skillTagDiv.appendChild(skillTag);
+    return skillTagDiv;
 }
 
 // Deletes something from the resume according to its index attribute.
@@ -219,3 +235,26 @@ function AdjustElements()
         listOfElements[i].setAttribute("index",i);
     }
 }
+
+// So... I'm.. not sure, how to approach the skill tags now.
+// I want them to be editable by the user, so I have to save them somewhere.
+// It's best to move that to another script that saves, loads, and defaults how the tags are set up.
+// I also do want another page that's purely a skill tag editor, that the resume editor can see the changes from.
+// I also need the blank skill tag to make a dropdown menu when it's clicked. Then, you select the skill.
+// I also want the skill tags themselves to be somewhat stylized with an image and text inside a button.
+// This sounds... scary now.
+// oh also the skill tags should be in like a list of lists, going from most general skill to specific
+// (Ex: Programming list -> Languages list -> JS or something like that)
+// It sounds like I need a cookie to save something for now.
+// Later on, if I manage to figure out CSH account integration, I could probably save there.
+
+// so... get skilltags working
+// get blank skilltags to pull from working skilltags (or something)
+// make dropdowns work
+// ???
+// proper skilltag
+
+// oh yeah skilltags also need to pull an image then (f*ck)
+
+// This sounds like a good idea to add saving and loading to the resume
+// oh god I might have to learn how to make and use JSON or something AAA

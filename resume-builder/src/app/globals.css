@@ -70,3 +70,6 @@ body {
   visibility: visible;
   border: solid;
 }
+#blankSkillTag{
+  font-style: italic;
+}
