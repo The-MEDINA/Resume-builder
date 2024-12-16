@@ -2,7 +2,7 @@ import {Test, Setup, DefaultList} from "/skillTags.js";
 /// === Setup === Setup === Setup === Setup === Setup === Setup === Setup === Setup === Setup ===
 Setup();
 let listOfSkills = DefaultList();
-console.log(listOfSkills);
+//console.log(listOfSkills);
 const app = document.getElementById("app");
 const grid = document.createElement("div");
 const resume = document.createElement("div");
@@ -70,11 +70,11 @@ function AddElement()
 {
     listOfElements.push(document.createElement("div"));
     listOfElements[listOfElements.length-1].classList.add('Element');
+    listOfElements[listOfElements.length-1].setAttribute("index",[listOfElements.length-1]);
     listOfElements[listOfElements.length-1].appendChild(CreateHeader());
     listOfElements[listOfElements.length-1].appendChild(CreateDate());
     listOfElements[listOfElements.length-1].appendChild(CreateDescription());
-    listOfElements[listOfElements.length-1].appendChild(CreateSkillTag());
-    listOfElements[listOfElements.length-1].setAttribute("index",[listOfElements.length-1]);
+    listOfElements[listOfElements.length-1].appendChild(PrepareSkillTag(listOfElements.length-1));
     DrawElements();
 }
 
@@ -134,19 +134,47 @@ function CreateDescription()
     return createDescDiv;
 }
 
-// creates a skillTag with a <button> element inside of a <div>
-function CreateSkillTag()
+function PrepareSkillTag(index)
 {
     const skillTagDiv = document.createElement("div");
-    const skillTag = document.createElement("button");
-    skillTag.setAttribute("id","blankSkillTag");
-    skillTag.addEventListener('mouseover', function() {CloseDropDownMenu(); SkillDropDownMenu(skillTag, listOfSkills, null)});
-    skillTag.addEventListener('click', function() {CloseDropDownMenu()});
-    skillTag.textContent = "Add a skill";
-    skillTagDiv.appendChild(skillTag);
+    skillTagDiv.classList.add("skills");
+    skillTagDiv.appendChild(CreateSkillTag(skillTagDiv, index));
     return skillTagDiv;
 }
+// creates a skillTag with a <button> element
+function CreateSkillTag(skillTagDiv, index)
+{
+    const skillTag = document.createElement("button");
+    skillTag.setAttribute("id","blankSkillTag");
+    skillTag.setAttribute("index",index);
+    skillTag.addEventListener('mouseover', function() {CloseDropDownMenu(); SkillDropDownMenu(skillTag, listOfSkills, null, skillTagDiv, index)});
+    skillTag.addEventListener('click', function() {CloseDropDownMenu()});
+    skillTag.textContent = "Add a skill";
+    return skillTag;
+}
 
+function FinishedSkillTag(skillName, parent, index)
+{
+    //console.log(parent)
+    while (document.querySelector("[id=\"temporary\"]") != null)
+    {
+        const removeThese = document.querySelector("[id=\"temporary\"]"); 
+        removeThese.remove();        
+    }
+    //console.log(document.querySelectorAll("[id=\"blankSkillTag\"]"));
+    //console.log(document.querySelectorAll("[index=\"" + index + "\"]"));
+    //console.log(document.querySelector("[id=\"blankSkillTag\"][index=\"" + index + "\"]"));
+    document.querySelector("[id=\"blankSkillTag\"][index=\"" + index + "\"]").remove();    
+    parent.appendChild(CreateTag(skillName))
+    parent.appendChild(CreateSkillTag(parent, index));
+}
+
+function CreateTag(skillName)
+{
+    const finalskill = document.createElement("button");
+    finalskill.textContent = skillName;
+    return finalskill
+}
 // Deletes something from the resume according to its index attribute.
 // So after doing some more javascript coding... It seems that I may or may not have overcomplicated this function.
 // I'm not crying, you are.
@@ -208,31 +236,26 @@ function AdjustElements()
 }
 
 // this function might be very difficult to implement
-function SkillDropDownMenu(skillTag, skillList, tagName)
+function SkillDropDownMenu(skillTag, skillList, tagName, parent, index)
 {
-        /*while (document.querySelector("[class=\"skillDropDown\"]") != null)
+    //console.log(parent)
+    let parentdiv = document.createElement("div");
+    parentdiv.classList.add("skillDropDown")
+    parentdiv.setAttribute("id","temporary");
+    if (HasSubSkill(skillList))
+    {
+        for (let i = 0; i < skillList.length; i++)
             {
-                const removeThese = document.querySelector("[class=\"skillDropDown\"]"); 
-                removeThese.remove();        
-            }*/
-        let parentdiv = document.createElement("div");
-        parentdiv.classList.add("skillDropDown")
-        parentdiv.setAttribute("id","temporary");
-        if (HasSubSkill(skillList))
-        {
-            for (let i = 0; i < skillList.length; i++)
-                {
-                    let div = document.createElement("div")
-                    let option = document.createElement("button");
-                    console.log(skillList[i][0]);
-                    option.textContent = skillList[i][0];
-                    // I hate this, why did I do this ;-;
-                    option.addEventListener('mouseover', function() {SkillDropDownMenu(option, searchSkillList(skillList, option.textContent), option.textContent)});
-                    div.setAttribute("id","temporary");
-                    div.appendChild(option)
-                    parentdiv.appendChild(div)
-                    skillTag.parentNode.appendChild(parentdiv);
-                }
+                let div = document.createElement("div")
+                let option = document.createElement("button");
+                option.textContent = skillList[i][0];
+                option.addEventListener('mouseover', function() {SkillDropDownMenu(option, searchSkillList(skillList, option.textContent), option.textContent, parent, index)});
+                option.addEventListener('click', function() {FinishedSkillTag(option.textContent, parent, index)});
+                div.setAttribute("id","temporary");
+                div.appendChild(option)
+                parentdiv.appendChild(div)
+                skillTag.parentNode.appendChild(parentdiv);
+            }
         }
 }
 
@@ -243,7 +266,6 @@ function searchSkillList(skillList, skillName)
     {
         if (skillList[i][0] == skillName)
         {
-            console.log(skillList[i][1])
             return skillList[i][1]
         }
     }
