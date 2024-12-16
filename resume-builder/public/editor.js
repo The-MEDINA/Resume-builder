@@ -87,22 +87,6 @@ function DrawElements()
     }
 }
 
-// Creates an edit button inside of a <div> 
-function CreateEditButton(_index)
-{
-    const thisButton = document.createElement("button");
-    if (listOfElements[_index].classList.contains("Title"))
-    {
-        thisButton.textContent = "Edit title " + (_index) + " button";
-        thisButton.addEventListener('click', function() {TitleDropDownMenu(thisButton.parentElement.getAttribute("index"))});
-    }
-    else
-    {
-        thisButton.textContent = "Edit element " + (_index) + " button";
-    }
-    return thisButton;
-}
-
 // Creates the title with a <p> element inside of a <div> 
 function CreateTitle()
 {
@@ -156,7 +140,8 @@ function CreateSkillTag()
     const skillTagDiv = document.createElement("div");
     const skillTag = document.createElement("button");
     skillTag.setAttribute("id","blankSkillTag");
-    skillTag.addEventListener('click', function() {SkillDropDownMenu(skillTag, listOfSkills, null)});
+    skillTag.addEventListener('mouseover', function() {CloseDropDownMenu(); SkillDropDownMenu(skillTag, listOfSkills, null)});
+    skillTag.addEventListener('click', function() {CloseDropDownMenu()});
     skillTag.textContent = "Add a skill";
     skillTagDiv.appendChild(skillTag);
     return skillTagDiv;
@@ -225,26 +210,57 @@ function AdjustElements()
 // this function might be very difficult to implement
 function SkillDropDownMenu(skillTag, skillList, tagName)
 {
-        while (document.querySelector("[class=\"skillDropDown\"]") != null)
+        /*while (document.querySelector("[class=\"skillDropDown\"]") != null)
             {
                 const removeThese = document.querySelector("[class=\"skillDropDown\"]"); 
                 removeThese.remove();        
-            }
+            }*/
         let parentdiv = document.createElement("div");
         parentdiv.classList.add("skillDropDown")
         parentdiv.setAttribute("id","temporary");
-        for (let i = 0; i < listOfSkills.length; i++)
+        if (HasSubSkill(skillList))
         {
-            let div = document.createElement("div")
-            let option = document.createElement("button");
-            option.textContent = listOfSkills[i][0];
-            option.addEventListener('click', function() {CloseDropDownMenu()});
-            div.setAttribute("id","temporary");
-            div.appendChild(option)
-            parentdiv.appendChild(div)
-            skillTag.parentNode.appendChild(parentdiv);
+            for (let i = 0; i < skillList.length; i++)
+                {
+                    let div = document.createElement("div")
+                    let option = document.createElement("button");
+                    console.log(skillList[i][0]);
+                    option.textContent = skillList[i][0];
+                    // I hate this, why did I do this ;-;
+                    option.addEventListener('mouseover', function() {SkillDropDownMenu(option, searchSkillList(skillList, option.textContent), option.textContent)});
+                    div.setAttribute("id","temporary");
+                    div.appendChild(option)
+                    parentdiv.appendChild(div)
+                    skillTag.parentNode.appendChild(parentdiv);
+                }
         }
 }
+
+// Goes in companion with SkillDropDownMenu. Searches the list given for a specific skill name.
+function searchSkillList(skillList, skillName)
+{
+    for (let i = 0; i < skillList.length; i++)
+    {
+        if (skillList[i][0] == skillName)
+        {
+            console.log(skillList[i][1])
+            return skillList[i][1]
+        }
+    }
+}
+
+function HasSubSkill(skillList)
+{
+    if (skillList == undefined)
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+}
+
 function CloseDropDownMenu()
 {
     while (document.querySelector("[class=\"skillDropDown\"]") != null)

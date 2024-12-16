@@ -42,12 +42,6 @@ body {
   width: 15%;
   top: 50;
 }
-.resume {
-  /*These are here for later.*/
-}
-.tweakElements {
-  /*Just in case I need to tweak something (VSCode please stop yelling at me it hurts my feelings)*/
-}
 .Title{
   display: flex;
   justify-content: center;
@@ -81,4 +75,5 @@ body {
   display: block;
   position: absolute;
   text-align: left;
+  border: solid;
 }
