@@ -10,8 +10,12 @@ another array = ["Frontend"]
 yeah, pretty bad.
 But the user is also supposed to be able to move these skills around and add new ones as they please.
 Just to allow for custom sorting of skills for the resume.
+
+currently making an array of skills that look like folders instead.
 */
 let skillTags = [];
+let stringAddresses = [];
+console.log(stringAddresses);
 
 /* Functions */
 // Test function. 
@@ -32,30 +36,53 @@ export function DefaultList()
     skillTags = []; 
     // Programming section.
     skillTags.push(["Programming", new Array]);
+    stringAddresses.push("Programming");
     skillTags[0][1].push(["Web-Dev", new Array]);
+    stringAddresses.push("Programming|Web-Dev");
     skillTags[0][1][0][1].push(["Frontend"]);
+    stringAddresses.push("Programming|Web-Dev|Frontend");
     skillTags[0][1][0][1].push(["Backend"]);
+    stringAddresses.push("Programming|Web-Dev|Backend");
     skillTags[0][1][0][1].push(["Fullstack"]);
+    stringAddresses.push("Programming|Web-Dev|Fullstack");
     skillTags[0][1].push(["Java"]);
+    stringAddresses.push("Programming|Java");
     skillTags[0][1].push(["JavaScript"]);
+    stringAddresses.push("Programming|JavaScript");
     skillTags[0][1].push(["C#"]);
+    stringAddresses.push("Programming|C#");
     skillTags[0][1].push(["C++"]);
+    stringAddresses.push("Programming|C++");
     skillTags[0][1].push(["C"]);
+    stringAddresses.push("Programming|C");
     skillTags[0][1].push(["Python"]);
+    stringAddresses.push("Programming|Python");
     skillTags[0][1].push(["Rust"]);
+    stringAddresses.push("Programming|Rust");
     //GameDev Section.
     skillTags.push(["Game-Dev", new Array]);
+    stringAddresses.push("Game-Dev");
     skillTags[1][1].push(["Game Design"]);
+    stringAddresses.push("Game-Dev|Game Design");
     skillTags[1][1].push(["Game Development"]);
+    stringAddresses.push("Game-Dev|Game Development");
     skillTags[1][1].push(["Game Testing"]);
+    stringAddresses.push("Game-Dev|Game Testing");
     //Music section.
     skillTags.push(["Music", new Array]);
+    stringAddresses.push("Music");
     skillTags[2][1].push(["Music Performance", new Array]);
+    stringAddresses.push("Music|Music Performance");
     skillTags[2][1][0][1].push(["Band"]);
+    stringAddresses.push("Music|Music Performance|Band");
     skillTags[2][1][0][1].push(["Orchestra"]);
+    stringAddresses.push("Music|Music Performance|Orchestra");
     skillTags[2][1][0][1].push(["Ensemble"]);
+    stringAddresses.push("Music|Music Performance|Ensemble");
     skillTags[2][1][0][1].push(["Soloist"]);
+    stringAddresses.push("Music|Music Performance|Soloist");
     skillTags[2][1].push(["Music Composition"]);
+    stringAddresses.push("Music|Music Composition");
 
     //Noskill. (remove this and patch the code later)
     //skillTags.push(["Return", new Array]);
@@ -64,6 +91,10 @@ export function DefaultList()
     // Log it for testing.
     //console.log(skillTags);
     return skillTags;
+}
+export function DefaultAddresses()
+{
+    return stringAddresses;
 }
 /* DEFAULT SKILLS LIST */
 /*PROGRAMMING

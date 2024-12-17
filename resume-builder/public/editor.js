@@ -172,7 +172,11 @@ function CreateTag(skillName)
     const finalSkill = document.createElement("p");
     finalSkill.addEventListener('click', function() {finalSkillDiv.remove()});
     finalSkill.textContent = skillName;
+    const image = ImageSelect(skillName);
+    finalSkillDiv.appendChild(image);
     finalSkillDiv.appendChild(finalSkill);
+    finalSkill.classList.add("skillText");
+    image.classList.add("skillImage");
     return finalSkillDiv
 }
 // Deletes something from the resume according to its index attribute.
@@ -290,26 +294,3 @@ function CloseDropDownMenu()
             removeThese.remove();        
         }
 }
-
-// So... I'm.. not sure, how to approach the skill tags now.
-// I want them to be editable by the user, so I have to save them somewhere.
-// It's best to move that to another script that saves, loads, and defaults how the tags are set up.
-// I also do want another page that's purely a skill tag editor, that the resume editor can see the changes from.
-// I also need the blank skill tag to make a dropdown menu when it's clicked. Then, you select the skill.
-// I also want the skill tags themselves to be somewhat stylized with an image and text inside a button.
-// This sounds... scary now.
-// oh also the skill tags should be in like a list of lists, going from most general skill to specific
-// (Ex: Programming list -> Languages list -> JS or something like that)
-// It sounds like I need a cookie to save something for now.
-// Later on, if I manage to figure out CSH account integration, I could probably save there.
-
-// so... get skilltags working
-// get blank skilltags to pull from working skilltags (or something)
-// make dropdowns work
-// ???
-// proper skilltag
-
-// oh yeah skilltags also need to pull an image then (f*ck)
-
-// This sounds like a good idea to add saving and loading to the resume
-// oh god I might have to learn how to make and use JSON or something AAA

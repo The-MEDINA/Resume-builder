@@ -81,3 +81,9 @@ body {
   display: inline-block;
   border: solid;
 }
+.skillText{
+  display: inline-block;
+}
+.skillImage{
+  display: inline-block;
+}
