@@ -31,7 +31,7 @@ export function DefaultList()
 {
     skillTags = []; 
     // Programming section.
-    skillTags.push(["programming", new Array]);
+    skillTags.push(["Programming", new Array]);
     skillTags[0][1].push(["Web-Dev", new Array]);
     skillTags[0][1][0][1].push(["Frontend"]);
     skillTags[0][1][0][1].push(["Backend"]);

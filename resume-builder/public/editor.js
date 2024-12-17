@@ -1,8 +1,8 @@
 import {Test, Setup, DefaultList} from "/skillTags.js";
+import { ImageSelect } from "/ImageHandler.js";
 /// === Setup === Setup === Setup === Setup === Setup === Setup === Setup === Setup === Setup ===
 Setup();
 let listOfSkills = DefaultList();
-//console.log(listOfSkills);
 const app = document.getElementById("app");
 const grid = document.createElement("div");
 const resume = document.createElement("div");
@@ -155,15 +155,11 @@ function CreateSkillTag(skillTagDiv, index)
 
 function FinishedSkillTag(skillName, parent, index)
 {
-    //console.log(parent)
     while (document.querySelector("[id=\"temporary\"]") != null)
     {
         const removeThese = document.querySelector("[id=\"temporary\"]"); 
         removeThese.remove();        
     }
-    //console.log(document.querySelectorAll("[id=\"blankSkillTag\"]"));
-    //console.log(document.querySelectorAll("[index=\"" + index + "\"]"));
-    //console.log(document.querySelector("[id=\"blankSkillTag\"][index=\"" + index + "\"]"));
     document.querySelector("[id=\"blankSkillTag\"][index=\"" + index + "\"]").remove();    
     parent.appendChild(CreateTag(skillName))
     parent.appendChild(CreateSkillTag(parent, index));
@@ -171,9 +167,13 @@ function FinishedSkillTag(skillName, parent, index)
 
 function CreateTag(skillName)
 {
-    const finalskill = document.createElement("button");
-    finalskill.textContent = skillName;
-    return finalskill
+    const finalSkillDiv = document.createElement("div");
+    finalSkillDiv.classList.add("finishedSkill");
+    const finalSkill = document.createElement("p");
+    finalSkill.addEventListener('click', function() {finalSkillDiv.remove()});
+    finalSkill.textContent = skillName;
+    finalSkillDiv.appendChild(finalSkill);
+    return finalSkillDiv
 }
 // Deletes something from the resume according to its index attribute.
 // So after doing some more javascript coding... It seems that I may or may not have overcomplicated this function.
@@ -238,7 +238,6 @@ function AdjustElements()
 // this function might be very difficult to implement
 function SkillDropDownMenu(skillTag, skillList, tagName, parent, index)
 {
-    //console.log(parent)
     let parentdiv = document.createElement("div");
     parentdiv.classList.add("skillDropDown")
     parentdiv.setAttribute("id","temporary");
