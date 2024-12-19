@@ -61,6 +61,7 @@ function AddTitle()
     listOfElements[listOfElements.length-1].classList.add('Title');
     listOfElements[listOfElements.length-1].appendChild(CreateTitle());
     listOfElements[listOfElements.length-1].setAttribute("index",[listOfElements.length-1]);
+    listOfElements[listOfElements.length-1].appendChild(AddMovementButtons());
     DrawElements();
 }
 
@@ -74,6 +75,7 @@ function AddElement()
     listOfElements[listOfElements.length-1].appendChild(CreateDate());
     listOfElements[listOfElements.length-1].appendChild(CreateDescription());
     listOfElements[listOfElements.length-1].appendChild(PrepareSkillTag(listOfElements.length-1));
+    listOfElements[listOfElements.length-1].appendChild(AddMovementButtons());
     DrawElements();
 }
 
@@ -146,7 +148,7 @@ function CreateSkillTag(skillTagDiv, index)
     const skillTag = document.createElement("button");
     skillTag.setAttribute("id","blankSkillTag");
     skillTag.setAttribute("index",index);
-    skillTag.addEventListener('mouseover', function() {CloseDropDownMenu(); SkillDropDownMenu(skillTag, listOfSkills, null, skillTagDiv, index)});
+    skillTag.addEventListener('mouseover', function() {CloseDropDownMenu(); SkillDropDownMenu(skillTag, listOfSkills, null, skillTagDiv, skillTag.getAttribute("index"))});
     skillTag.addEventListener('click', function() {CloseDropDownMenu()});
     skillTag.textContent = "Add a skill";
     return skillTag;
@@ -178,9 +180,49 @@ function CreateTag(skillName)
     image.classList.add("skillImage");
     return finalSkillDiv
 }
+
+function AddMovementButtons()
+{
+    const buttonsDiv = document.createElement("div");
+    buttonsDiv.classList.add("buttons");
+    const moveUp = document.createElement("button");
+    moveUp.textContent = "|^|";
+    moveUp.addEventListener('click', function() {MoveElementUp(+this.parentNode.parentNode.getAttribute("index"))});
+    const moveDown = document.createElement("button");
+    moveDown.textContent = "|v|";
+    moveDown.addEventListener('click', function() {MoveElementDown(+this.parentNode.parentNode.getAttribute("index"))});
+    buttonsDiv.appendChild(moveUp);
+    buttonsDiv.appendChild(moveDown);
+    return buttonsDiv;
+}
+function MoveElementUp(index)
+{
+    if (index != 0)
+    {
+        console.log("up OK")
+        const hold = listOfElements[index-1];
+        listOfElements[index-1] = listOfElements[index];
+        listOfElements[index] = hold;
+        AdjustElements();
+        DrawElements();
+    }
+}
+function MoveElementDown(index)
+{
+    if (index != listOfElements.length-1)
+        {
+            console.log("down OK")
+            const hold = listOfElements[index+1];
+            listOfElements[index+1] = listOfElements[index];
+            listOfElements[index] = hold;
+            AdjustElements();
+            DrawElements();
+        }
+}
 // Deletes something from the resume according to its index attribute.
 // So after doing some more javascript coding... It seems that I may or may not have overcomplicated this function.
 // I'm not crying, you are.
+// After further re-evaluation.. maybe I didn't? It's hard to tell.
 function DeleteSomething(_index)
 {
     while (document.querySelector("[index=\"" + _index + "\"]") != null)
@@ -205,6 +247,7 @@ function ChangeText(element)
     const scannerDiv = document.createElement("div");
     scannerDiv.setAttribute("id","temporary");
     const scanner = document.createElement("input");
+    scanner.value = element.textContent;
     scanner.classList.add("scanner");
     scannerDiv.appendChild(scanner);
     element.parentNode.appendChild(scannerDiv);
@@ -219,7 +262,7 @@ function FinishChangeText(scannerDivToRemove, elementToChange, valueToChangeWith
         elementToChange.parentNode.remove();
         // this is such a bad fix... but it *does* work. The plan is to rewrite this for loop so that this isn't so nasty.
         for (let i = 0; i < listOfElements.length; i++){
-            if ((listOfElements[i].children.length == 1 && !listOfElements[i].classList.contains("Title")) || (listOfElements[i].children.length == 0 && listOfElements[i].classList.contains("Title")) ){
+            if ((listOfElements[i].children.length == 2 && !listOfElements[i].classList.contains("Title")) || (listOfElements[i].children.length == 1 && listOfElements[i].classList.contains("Title")) ){
                 DeleteSomething(i);
                 i -= 1;
             }
@@ -241,7 +284,6 @@ function AdjustElements()
     {
         skillTagList[i].setAttribute("index",skillTagList[i].parentNode.parentNode.getAttribute("index"));
     }
-    //document.querySelector("[id=\"blankSkillTag\"][index=\"" + index + "\"]")
 }
 
 // this function might be very difficult to implement
@@ -302,4 +344,3 @@ function CloseDropDownMenu()
 
 // So... the next steps:
 // Rewrite the skillTags so that we only need the list of strings to use them
-// make it so you can move existing sections around without deleting and remaking them from scratch
