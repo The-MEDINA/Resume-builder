@@ -11,7 +11,6 @@ const tweakElements = document.createElement("div");
 const skillTags = document.createElement("div");
 const spacer = document.createElement("div");
 let listOfElements = [];
-let ElementEdits = [];
 
 // Adding classes to elements created.
 grid.classList.add('editor-grid');
@@ -141,7 +140,7 @@ function PrepareSkillTag(index)
     skillTagDiv.appendChild(CreateSkillTag(skillTagDiv, index));
     return skillTagDiv;
 }
-// creates a skillTag with a <button> element
+
 function CreateSkillTag(skillTagDiv, index)
 {
     const skillTag = document.createElement("button");
@@ -220,7 +219,7 @@ function FinishChangeText(scannerDivToRemove, elementToChange, valueToChangeWith
         elementToChange.parentNode.remove();
         // this is such a bad fix... but it *does* work. The plan is to rewrite this for loop so that this isn't so nasty.
         for (let i = 0; i < listOfElements.length; i++){
-            if (listOfElements[i].children.length == 0){
+            if ((listOfElements[i].children.length == 1 && !listOfElements[i].classList.contains("Title")) || (listOfElements[i].children.length == 0 && listOfElements[i].classList.contains("Title")) ){
                 DeleteSomething(i);
                 i -= 1;
             }
@@ -237,6 +236,12 @@ function AdjustElements()
     {
         listOfElements[i].setAttribute("index",i);
     }
+    const skillTagList = document.querySelectorAll("[id=\"blankSkillTag\"]");
+    for (let i = 0; i < skillTagList.length; i++)
+    {
+        skillTagList[i].setAttribute("index",skillTagList[i].parentNode.parentNode.getAttribute("index"));
+    }
+    //document.querySelector("[id=\"blankSkillTag\"][index=\"" + index + "\"]")
 }
 
 // this function might be very difficult to implement
@@ -294,3 +299,7 @@ function CloseDropDownMenu()
             removeThese.remove();        
         }
 }
+
+// So... the next steps:
+// Rewrite the skillTags so that we only need the list of strings to use them
+// make it so you can move existing sections around without deleting and remaking them from scratch

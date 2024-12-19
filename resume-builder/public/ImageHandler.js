@@ -38,16 +38,3 @@ export function ImageSelect(skillName)
     final.src = src;
     return final;   
 }
-/*
-function SetImage(src, srcPrevious)
-{
-    srcPrevious = src;
-    final.src = src
-}
-
-function RevertImage(src, srcPrevious)
-{
-    src = srcPrevious
-    final.src = src;
-}
-*/
