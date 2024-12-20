@@ -1,7 +1,8 @@
-import {Test, Setup, DefaultList, DefaultAddresses, SpecifySkills } from "/skillTags.js";
+import {Test, Setup, DefaultList} from "/skillTags.js";
 import { ImageSelect } from "/ImageHandler.js";
 /// === Setup === Setup === Setup === Setup === Setup === Setup === Setup === Setup === Setup ===
 Setup();
+let listOfSkills = DefaultList();
 const app = document.getElementById("app");
 const grid = document.createElement("div");
 const resume = document.createElement("div");
@@ -134,7 +135,6 @@ function CreateDescription()
     return createDescDiv;
 }
 
-// Creates the initial blank skill tag that each element comes with.
 function PrepareSkillTag(index)
 {
     const skillTagDiv = document.createElement("div");
@@ -143,54 +143,17 @@ function PrepareSkillTag(index)
     return skillTagDiv;
 }
 
-// The starter skill tag that every element starts with.
-// I... kind of forgot why I moved it to another function.
 function CreateSkillTag(skillTagDiv, index)
 {
     const skillTag = document.createElement("button");
     skillTag.setAttribute("id","blankSkillTag");
     skillTag.setAttribute("index",index);
-    skillTag.addEventListener('mouseover', function() {CloseDropDownMenu(); SkillDropDownMenu(skillTag, null, null, skillTagDiv, skillTag.getAttribute("index"))});
+    skillTag.addEventListener('mouseover', function() {CloseDropDownMenu(); SkillDropDownMenu(skillTag, listOfSkills, null, skillTagDiv, skillTag.getAttribute("index"))});
     skillTag.addEventListener('click', function() {CloseDropDownMenu()});
     skillTag.textContent = "Add a skill";
     return skillTag;
 }
 
-// this function might be very difficult to implement
-function SkillDropDownMenu(skillTag, skillName, tagName, parent, index)
-{
-    let parentdiv = document.createElement("div");
-    parentdiv.classList.add("skillDropDown")
-    parentdiv.setAttribute("id","temporary");
-    const realList = SpecifySkills(skillName);
-    if (realList.length != 0)
-    {
-        for (let i = 0; i < realList.length; i++)
-        {
-            let div = document.createElement("div")
-            let option = document.createElement("button");
-            option.textContent = realList[i];
-            option.addEventListener('mouseover', function() {SkillDropDownMenu(option, option.textContent, option.textContent, parent, index)});
-            option.addEventListener('click', function() {FinishedSkillTag(option.textContent, parent, index)});
-            div.setAttribute("id","temporary");
-            div.appendChild(option)
-            parentdiv.appendChild(div)
-            skillTag.parentNode.appendChild(parentdiv);
-        }
-    }
-}
-
-// Closes the dropdown.
-function CloseDropDownMenu()
-{
-    while (document.querySelector("[class=\"skillDropDown\"]") != null)
-    {
-        const removeThese = document.querySelector("[class=\"skillDropDown\"]"); 
-        removeThese.remove();        
-    }
-}
-
-// Starts the process to add a proper skill to an element.
 function FinishedSkillTag(skillName, parent, index)
 {
     while (document.querySelector("[id=\"temporary\"]") != null)
@@ -203,7 +166,6 @@ function FinishedSkillTag(skillName, parent, index)
     parent.appendChild(CreateSkillTag(parent, index));
 }
 
-// Creates the actual skill requested.
 function CreateTag(skillName)
 {
     const finalSkillDiv = document.createElement("div");
@@ -219,7 +181,6 @@ function CreateTag(skillName)
     return finalSkillDiv
 }
 
-// These three functions give an element the ability to be moved around in the list.
 function AddMovementButtons()
 {
     const buttonsDiv = document.createElement("div");
@@ -325,14 +286,61 @@ function AdjustElements()
     }
 }
 
-//TODO:
-// ACTUALLY work on the skills column (put skills in there when they appear in the reume and add a dropdown menu to decide whether to display on the resume)
-// Figure out how to embed stuff into a cookie or URL somehow
-// Figure out how to get stuff from said cookie or URL
-// Avoid using a file that the user has to upload
-// Figure out a way to make a presentation page
+// this function might be very difficult to implement
+function SkillDropDownMenu(skillTag, skillList, tagName, parent, index)
+{
+    let parentdiv = document.createElement("div");
+    parentdiv.classList.add("skillDropDown")
+    parentdiv.setAttribute("id","temporary");
+    if (HasSubSkill(skillList))
+    {
+        for (let i = 0; i < skillList.length; i++)
+            {
+                let div = document.createElement("div")
+                let option = document.createElement("button");
+                option.textContent = skillList[i][0];
+                option.addEventListener('mouseover', function() {SkillDropDownMenu(option, searchSkillList(skillList, option.textContent), option.textContent, parent, index)});
+                option.addEventListener('click', function() {FinishedSkillTag(option.textContent, parent, index)});
+                div.setAttribute("id","temporary");
+                div.appendChild(option)
+                parentdiv.appendChild(div)
+                skillTag.parentNode.appendChild(parentdiv);
+            }
+        }
+}
 
-// Farther into the future:
-// CSH Account integration
-// A page to mix up and add custom skills
-// A Section or Separator element
+// Goes in companion with SkillDropDownMenu. Searches the list given for a specific skill name.
+function searchSkillList(skillList, skillName)
+{
+    for (let i = 0; i < skillList.length; i++)
+    {
+        if (skillList[i][0] == skillName)
+        {
+            return skillList[i][1]
+        }
+    }
+}
+
+function HasSubSkill(skillList)
+{
+    if (skillList == undefined)
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+}
+
+function CloseDropDownMenu()
+{
+    while (document.querySelector("[class=\"skillDropDown\"]") != null)
+        {
+            const removeThese = document.querySelector("[class=\"skillDropDown\"]"); 
+            removeThese.remove();        
+        }
+}
+
+// So... the next steps:
+// Rewrite the skillTags so that we only need the list of strings to use them
