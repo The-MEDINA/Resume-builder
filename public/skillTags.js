@@ -48,6 +48,10 @@ export function DefaultList()
     stringAddresses.push("Music|Music Performance|Ensemble");
     stringAddresses.push("Music|Music Performance|Soloist");
     stringAddresses.push("Music|Music Composition");
+    //Esports section.
+    stringAddresses.push("Esports");
+    stringAddresses.push("Esports|Esports Competition");
+    stringAddresses.push("Esports|Tournament Organizing");
     //Noskill. (remove this and patch the code later)
     //skillTags.push(["Return", new Array]);
 }
@@ -128,4 +132,10 @@ export function SpecifySkills(skillName)
     }
     MUSIC COMPOSITION
 }*/
+/*ESPORTS
+{
+    ESPORTS COMPETITION
+    TOURNAMENT ORGANIZING
+}
+*/
 /* DefaultList() should create a cookie with skilltags organized this way by default. */

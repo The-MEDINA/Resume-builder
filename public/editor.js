@@ -324,3 +324,15 @@ function AdjustElements()
         skillTagList[i].setAttribute("index",skillTagList[i].parentNode.parentNode.getAttribute("index"));
     }
 }
+
+//TODO:
+// ACTUALLY work on the skills column (put skills in there when they appear in the reume and add a dropdown menu to decide whether to display on the resume)
+// Figure out how to embed stuff into a cookie or URL somehow
+// Figure out how to get stuff from said cookie or URL
+// Avoid using a file that the user has to upload
+// Figure out a way to make a presentation page
+
+// Farther into the future:
+// CSH Account integration
+// A page to mix up and add custom skills
+// A Section or Separator element
