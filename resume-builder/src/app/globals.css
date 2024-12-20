@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --background: #ededed;
+    --foreground: #0a0a0a;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+.topnav {
+  background-color: #b0197e;
+  color:#ededed;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  margin: 0;
+  padding: 12;
+  overflow: visible;
+  z-index: 99999;
+}
+.content {
+  padding-top: 50px;
+}
+.editor-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 1fr
+}
+.addElements {
+  position: fixed;
+  width: 15%;
+  top: 50;
+}
+.Title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Element{
+  padding-bottom: 10px;
+}
+#title {
+  font-size: 50px;
+}
+#elementHeader {
+  font-weight: bold;
+}
+#elementDate {
+  font-size: small;
+  vertical-align: top;
+}
+#elementDesc {
+  text-align: left;
+}
+.scanner{
+  visibility: visible;
+  border: solid;
+}
+#blankSkillTag{
+  font-style: italic;
+}
+.skillDropDown{
+  background-color: #cbcbcb;
+  display: block;
+  position: absolute;
+  text-align: left;
+  border: solid;
+}
+.finishedSkill{
+  display: inline-block;
+  border: solid;
+}
+.skillText{
+  display: inline-block;
+}
+.skillImage{
+  display: inline-block;
+  height: 32px;
+}
