@@ -86,4 +86,5 @@ body {
 }
 .skillImage{
   display: inline-block;
+  height: 32px;
 }

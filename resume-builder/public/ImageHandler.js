@@ -8,9 +8,7 @@ let skillAddresses = DefaultAddresses();
 export function ImageSelect(skillName)
 {
     let skillAddress = [];
-    // so for some reason, skillAddresses doubles in length here??? what
-    // so the length/2 is just a quick fix until I find the culprit (cause I'm so lost on why it's happening)
-    for (let i = 0; i < skillAddresses.length/2; i++)
+    for (let i = 0; i < skillAddresses.length; i++)
     {
         if (skillAddresses[i].includes(skillName) && !(skillAddresses[i].includes(skillName + "|")))
         {
