@@ -48,8 +48,6 @@ export function DefaultList()
     stringAddresses.push("Music|Music Performance|Ensemble");
     stringAddresses.push("Music|Music Performance|Soloist");
     stringAddresses.push("Music|Music Composition");
-    //Noskill. (remove this and patch the code later)
-    //skillTags.push(["Return", new Array]);
 }
 export function DefaultAddresses()
 {
@@ -95,6 +93,17 @@ export function SpecifySkills(skillName)
     return sortedSkills;
 }
 
+export function SpecifySkillAddress(skillName)
+{
+    for (let i = 0; i < stringAddresses.length; i++)
+    {
+        const address = stringAddresses[i].split("|");
+        if (address[address.length-1] == skillName)
+        {
+            return address;
+        }
+    }
+}
 /* DEFAULT SKILLS LIST */
 /*PROGRAMMING
 {

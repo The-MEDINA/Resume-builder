@@ -88,3 +88,6 @@ body {
   display: inline-block;
   height: 32px;
 }
+#showSkill{
+  border: solid;
+}

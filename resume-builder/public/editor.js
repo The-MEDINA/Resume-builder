@@ -1,4 +1,4 @@
-import {Test, Setup, DefaultList, DefaultAddresses, SpecifySkills } from "/skillTags.js";
+import {Test, Setup, SpecifySkills, SpecifySkillAddress } from "/skillTags.js";
 import { ImageSelect } from "/ImageHandler.js";
 /// === Setup === Setup === Setup === Setup === Setup === Setup === Setup === Setup === Setup ===
 Setup();
@@ -10,6 +10,7 @@ const tweakElements = document.createElement("div");
 const skillTags = document.createElement("div");
 const spacer = document.createElement("div");
 let listOfElements = [];
+let listOfSkills = [];
 
 // Adding classes to elements created.
 grid.classList.add('editor-grid');
@@ -201,6 +202,7 @@ function FinishedSkillTag(skillName, parent, index)
     document.querySelector("[id=\"blankSkillTag\"][index=\"" + index + "\"]").remove();    
     parent.appendChild(CreateTag(skillName))
     parent.appendChild(CreateSkillTag(parent, index));
+    AddToSkillColumn(skillName);
 }
 
 // Creates the actual skill requested.
@@ -209,7 +211,7 @@ function CreateTag(skillName)
     const finalSkillDiv = document.createElement("div");
     finalSkillDiv.classList.add("finishedSkill");
     const finalSkill = document.createElement("p");
-    finalSkill.addEventListener('click', function() {finalSkillDiv.remove()});
+    finalSkill.addEventListener('click', function() {finalSkillDiv.remove(); AdjustSkillColumn()});
     finalSkill.textContent = skillName;
     const image = ImageSelect(skillName);
     finalSkillDiv.appendChild(image);
@@ -219,6 +221,52 @@ function CreateTag(skillName)
     return finalSkillDiv
 }
 
+// adds a skill to the skill column if it's not already there. Also lets you choose to hide the skills.
+function AddToSkillColumn(skillName)
+{
+    const listInSkillColumn = document.querySelectorAll("[class=\"skillColumn\"]");
+    const totalSkills = SpecifySkillAddress(skillName);
+    for (let j = 0; j < totalSkills.length; j++)
+    {
+        let skillFound = false;
+        for (let i = 0; i < listInSkillColumn.length; i++)
+            {
+                if (listInSkillColumn[i].lastChild.textContent == totalSkills[j])
+                {
+                    skillFound = true;
+                }
+            }
+            if (skillFound == false)
+            {
+                const skillDiv = document.createElement("div");
+                skillDiv.setAttribute("id","showSkill");
+                skillDiv.classList.add("skillColumn");
+                const skillText = document.createElement("p");
+                skillText.textContent = totalSkills[j];
+                const skillImg = ImageSelect(totalSkills[j]);
+                skillDiv.appendChild(skillImg);
+                skillDiv.appendChild(skillText);
+                skillText.classList.add("skillText");
+                skillImg.classList.add("skillImage");
+                listOfSkills.push(skillDiv);
+                skillTags.append(skillDiv);
+            }
+    }
+}
+
+function AdjustSkillColumn()
+{
+    const skillsToAdjust = document.querySelectorAll("[class=\"finishedSkill\"]");
+    while (document.querySelector("[class=\"skillColumn\"]") != null)
+    {
+        const removeThese = document.querySelector("[class=\"skillColumn\"]");
+        removeThese.remove();        
+    }
+    for (let i = 0; i < skillsToAdjust.length; i++)
+    {
+        AddToSkillColumn(skillsToAdjust[i].lastChild.textContent);
+    }
+}
 // These three functions give an element the ability to be moved around in the list.
 function AddMovementButtons()
 {
@@ -272,6 +320,7 @@ function DeleteSomething(_index)
     listOfElements.splice(_index,1);   
     AdjustElements();
     DrawElements();
+    AdjustSkillColumn();
 }
 
 // Adds an input field to take user input from, and changes the element that called it.
