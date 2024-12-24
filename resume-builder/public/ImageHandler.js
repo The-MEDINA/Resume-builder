@@ -14,6 +14,7 @@ export async function ImageSetup(img, skillName)
             let potentialMatch = skillAddresses[i].split("|");
             if (potentialMatch[potentialMatch.length-1].length == skillName.length)
             {
+                potentialMatch[potentialMatch.length-1] = ImageExceptions(potentialMatch[potentialMatch.length-1]);
                 skillAddress = potentialMatch
                 //console.log(skillAddress);
             }
@@ -32,4 +33,13 @@ export async function ImageSetup(img, skillName)
         .catch(() => { src = srcPrevious } )
     }
     img.src = src;
+}
+
+// I don't know why C#.png doesn't work, or why switch/case doesn't either...
+// That's the only reason for this method's existence.
+// just making it a method if anything else like this shows up.
+function ImageExceptions(src)
+{
+    if (src == "C#") src = "C sharp";
+    return src;
 }
