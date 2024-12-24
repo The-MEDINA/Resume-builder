@@ -3,9 +3,8 @@ import { DefaultList, DefaultAddresses } from "/skillTags.js";
 let path = [];
 let listOfSkills = DefaultList();
 let skillAddresses = DefaultAddresses();
-//console.log(skillAddresses);
-//ImageSelect("Frontend")
-export function ImageSelect(skillName)
+
+export async function ImageSetup(img, skillName)
 {
     let skillAddress = [];
     for (let i = 0; i < skillAddresses.length; i++)
@@ -25,18 +24,12 @@ export function ImageSelect(skillName)
     let final = null;
     for (let i = 0; i < skillAddress.length; i++)
     {
-        final = document.createElement("img");
         src = ("img/" + skillAddress[i] + ".png");
+        final = new Image();
         final.src = src;
-        if (final.width == 0)
-        {
-            src = srcPrevious
-        }
-        else
-        {
-            srcPrevious = src
-        }
+        await final.decode()
+        .then(() => { srcPrevious = src } )
+        .catch(() => { src = srcPrevious } )
     }
-    final.src = src;
-    return final;   
+    img.src = src;
 }

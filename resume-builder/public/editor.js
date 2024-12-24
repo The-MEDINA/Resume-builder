@@ -1,5 +1,5 @@
 import {Test, Setup, SpecifySkills, SpecifySkillAddress } from "/skillTags.js";
-import { ImageSelect } from "/ImageHandler.js";
+import { ImageSetup } from "/ImageHandler.js";
 /// === Setup === Setup === Setup === Setup === Setup === Setup === Setup === Setup === Setup ===
 Setup();
 const app = document.getElementById("app");
@@ -213,7 +213,8 @@ function CreateTag(skillName)
     const finalSkill = document.createElement("p");
     finalSkill.addEventListener('click', function() {finalSkillDiv.remove(); AdjustSkillColumn()});
     finalSkill.textContent = skillName;
-    const image = ImageSelect(skillName);
+    const image = document.createElement("img")
+    ImageSetup(image, skillName);
     finalSkillDiv.appendChild(image);
     finalSkillDiv.appendChild(finalSkill);
     finalSkill.classList.add("skillText");
@@ -243,7 +244,8 @@ function AddToSkillColumn(skillName)
                 skillDiv.classList.add("skillColumn");
                 const skillText = document.createElement("p");
                 skillText.textContent = totalSkills[j];
-                const skillImg = ImageSelect(totalSkills[j]);
+                const skillImg = document.createElement("img")
+                ImageSetup(skillImg, totalSkills[j]);
                 skillDiv.appendChild(skillImg);
                 skillDiv.appendChild(skillText);
                 skillText.classList.add("skillText");
