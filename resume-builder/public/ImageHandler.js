@@ -12,8 +12,12 @@ export function ImageSelect(skillName)
     {
         if (skillAddresses[i].includes(skillName) && !(skillAddresses[i].includes(skillName + "|")))
         {
-            skillAddress = skillAddresses[i].split("|");
-            console.log(skillAddress);
+            let potentialMatch = skillAddresses[i].split("|");
+            if (potentialMatch[potentialMatch.length-1].length == skillName.length)
+            {
+                skillAddress = potentialMatch
+                //console.log(skillAddress);
+            }
         }
     }
     let src = "img/Generic.png";

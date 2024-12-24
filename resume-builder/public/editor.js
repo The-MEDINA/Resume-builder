@@ -23,11 +23,11 @@ tweakElements.classList.add('tweakElements');
 const p = document.createElement("p");
 const q = document.createElement("p");
 const r = document.createElement("p");
-const s = document.createElement("p");
+//const s = document.createElement("p");
 p.textContent = "Add elements column (Here you select elements to add)";
 q.textContent = "Resume column (goal is to click on each element to edit)";
 r.textContent = "Change elements column (edit everything about the element on the side)";
-s.textContent = "skills column (where the fun part is, the tags :>)";
+//s.textContent = "skills column (where the fun part is, the tags :>)";
 
 // Append elements to create the editor.
 app?.appendChild(grid);
@@ -39,7 +39,7 @@ grid.appendChild(tweakElements);
 addElements.appendChild(p); 
 resume.appendChild(q);
 tweakElements.appendChild(r);
-skillTags.appendChild(s);
+//skillTags.appendChild(s);
 
 // Add title button
 const addTitleButton = document.createElement("button");
@@ -161,7 +161,7 @@ function CreateSkillTag(skillTagDiv, index)
 function SkillDropDownMenu(skillTag, skillName, tagName, parent, index)
 {
     let parentdiv = document.createElement("div");
-    parentdiv.classList.add("skillDropDown")
+    parentdiv.classList.add("skillDropDown");
     parentdiv.setAttribute("id","temporary");
     const realList = SpecifySkills(skillName);
     if (realList.length != 0)
@@ -248,25 +248,86 @@ function AddToSkillColumn(skillName)
                 skillDiv.appendChild(skillText);
                 skillText.classList.add("skillText");
                 skillImg.classList.add("skillImage");
+                skillText.addEventListener('mouseover', function() {SkillColumnDropDownMenu(skillDiv)});
+                skillText.addEventListener('click', function() {CloseDropDownMenu()});
                 listOfSkills.push(skillDiv);
                 skillTags.append(skillDiv);
             }
     }
 }
 
+function SkillColumnDropDownMenu(parent)
+{
+    CloseDropDownMenu();
+    const dropDownDiv = document.createElement("div");
+    dropDownDiv.classList.add("skillDropDown");
+    dropDownDiv.setAttribute("id","temporary");
+    const status = document.createElement("p");
+    const toggle = document.createElement("button");
+    toggle.textContent = "toggle"
+    if (parent.getAttribute("id") == "showSkill")
+    {
+        status.textContent = "Status: shown"
+    }
+    else
+    {
+        status.textContent = "Status: hidden"
+    }
+    toggle.addEventListener('click', function() {ToggleSkillVisibility(parent)});
+    dropDownDiv.appendChild(status);
+    dropDownDiv.appendChild(toggle);
+    parent.appendChild(dropDownDiv);
+}
+
+function ToggleSkillVisibility(parent)
+{
+    if (parent.getAttribute("id") == "showSkill")
+    {
+        parent.setAttribute("id","hideSkill");
+    }
+    else
+    {
+        parent.setAttribute("id","showSkill");
+    }
+    CloseDropDownMenu();
+}
+
+// I feel like this function is ridiculously overcomplicated...
 function AdjustSkillColumn()
 {
     const skillsToAdjust = document.querySelectorAll("[class=\"finishedSkill\"]");
-    while (document.querySelector("[class=\"skillColumn\"]") != null)
-    {
-        const removeThese = document.querySelector("[class=\"skillColumn\"]");
-        removeThese.remove();        
-    }
+    let remainingSkills = [];
     for (let i = 0; i < skillsToAdjust.length; i++)
     {
-        AddToSkillColumn(skillsToAdjust[i].lastChild.textContent);
+        if (!remainingSkills.includes(skillsToAdjust[i].lastChild.textContent))
+        {
+            let skillsToRemember = SpecifySkillAddress(skillsToAdjust[i].lastChild.textContent)
+            for (let j = 0; j < skillsToRemember.length; j++)
+            {
+                remainingSkills.push(skillsToRemember[j]);
+            }
+        }
+    } 
+    const skillColumn = document.querySelectorAll("[class=\"skillColumn\"]");
+    for (let i = 0; i < skillColumn.length; i++)
+    {
+        if (!remainingSkills.includes(skillColumn[i].lastChild.textContent))
+        {
+            skillColumn[i].remove();
+            listOfSkills.splice(i, 1, "remove");
+        }
     }
+    for (let i = 0; i < listOfSkills.length; i++)
+    {
+        if (listOfSkills[i] == "remove")
+        {
+            listOfSkills.splice(i, 1);
+            i--;
+        }
+    }
+    //console.log(listOfSkills);
 }
+
 // These three functions give an element the ability to be moved around in the list.
 function AddMovementButtons()
 {
@@ -286,7 +347,7 @@ function MoveElementUp(index)
 {
     if (index != 0)
     {
-        console.log("up OK")
+        //console.log("up OK")
         const hold = listOfElements[index-1];
         listOfElements[index-1] = listOfElements[index];
         listOfElements[index] = hold;
@@ -298,7 +359,7 @@ function MoveElementDown(index)
 {
     if (index != listOfElements.length-1)
         {
-            console.log("down OK")
+            //console.log("down OK")
             const hold = listOfElements[index+1];
             listOfElements[index+1] = listOfElements[index];
             listOfElements[index] = hold;

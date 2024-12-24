@@ -91,3 +91,6 @@ body {
 #showSkill{
   border: solid;
 }
+#hideSkill{
+  border: dashed;
+}
