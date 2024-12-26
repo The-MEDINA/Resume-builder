@@ -1,10 +1,11 @@
-import Image from "next/image";
 import Script from "next/script";
+import Link from "next/link";
 export default function Home() {
   return (
     <div>
-    <div className="topnav">
-        <a>it was so easy to bring this over</a>
+<div className="topnav">
+        <a>Resume Maker</a>
+        <Link href="/Display">|huh|</Link>
     </div>
     <div className="content">
       <div id="app">
