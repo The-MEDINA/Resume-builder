@@ -4,7 +4,6 @@ simply add a skill by appending a string to the list.
 to add a subskill, add its parent skill before the subskill, but separate it with a "|".
 */
 let stringAddresses = [];
-console.log(stringAddresses);
 
 /* Functions */
 // Test function. 
@@ -13,14 +12,69 @@ export function Test()
     console.log("skillTags.js OK")
 }
 
+// Searches for a cookie, and either makes a new one if one isn't found, or replaces the skills with the contents of the cookie.
 export function Setup()
 {
-    const d = new Date();
-    d.setTime(d.getTime() *1.01);
-    let expires = "expires="+ d.toUTCString();
-    document.cookie = "SkillTags=" + "temporary" + "; " + expires;
+    if (!findSkillTagsCookie())
+    {
+        const d = new Date();
+        d.setTime(d.getTime() *1.01);
+        let expires = "expires="+ d.toUTCString();
+        document.cookie = "SkillTags=" + EncodeSkillTagsCookie() + "; " + expires;
+    }
+    else
+    {
+        DecodeSkillTagsCookie();
+    }
 }
-export function DefaultList()
+
+// creates a cookie value.
+export function EncodeSkillTagsCookie()
+{
+    let returnString = "";
+    for (let i = 0; i < stringAddresses.length-2; i++)
+    {
+        returnString += stringAddresses[i] + "`";    
+    }
+    returnString += stringAddresses[stringAddresses.length-1];
+    return returnString;
+}
+
+// overwrites the skills with the cookie found.
+export function DecodeSkillTagsCookie()
+{
+    let cookieToDecode = "";
+    const listOfCookies = decodeURIComponent(document.cookie).split(";");
+    for (let i = 0; i < listOfCookies.length; i++)
+    {
+        if (listOfCookies[i].indexOf("SkillTags") == 0)
+        {
+            let intermediate = listOfCookies[i].split("=");
+            cookieToDecode = intermediate[1];
+        }
+    }
+    for (let i = 0; i < cookieToDecode.length; i++)
+    {
+        stringAddresses = cookieToDecode.split("`");
+    }
+}
+
+// looks for the SkillTags cookie.
+function findSkillTagsCookie()
+{
+    const listOfCookies = decodeURIComponent(document.cookie).split(";");
+    for (let i = 0; i < listOfCookies.length; i++)
+    {
+        if (listOfCookies[i].indexOf("SkillTags") == 0)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+// The default structure of skills.
+export function DefaultAddresses()
 {
     // Programming section.
     stringAddresses.push("Programming");
@@ -35,12 +89,18 @@ export function DefaultList()
     stringAddresses.push("Programming|C");
     stringAddresses.push("Programming|Python");
     stringAddresses.push("Programming|Rust");
-    //GameDev Section.
+    // GameDev Section.
     stringAddresses.push("Game-Dev");
     stringAddresses.push("Game-Dev|Game Design");
     stringAddresses.push("Game-Dev|Game Development");
     stringAddresses.push("Game-Dev|Game Testing");
-    //Music section.
+    stringAddresses.push("Game-Dev|Godot");
+    stringAddresses.push("Game-Dev|Unity");
+    stringAddresses.push("Game-Dev|MonoGame");
+    // Esports section.
+    stringAddresses.push("Esports");
+    stringAddresses.push("Esports|PlayVS");
+    // Music section.
     stringAddresses.push("Music");
     stringAddresses.push("Music|Music Performance");
     stringAddresses.push("Music|Music Performance|Band");
@@ -48,17 +108,16 @@ export function DefaultList()
     stringAddresses.push("Music|Music Performance|Ensemble");
     stringAddresses.push("Music|Music Performance|Soloist");
     stringAddresses.push("Music|Music Composition");
-}
-export function DefaultAddresses()
-{
+    // Job Experience section.
+    stringAddresses.push("Job Experience");
+    // Awards section.
+    stringAddresses.push("Award");
     return stringAddresses;
 }
 
-// ok ok, go through the list, find all skills that don't have a subskill anymore, put that into a list and return it
-// something like that
+// finds all the subskills of a specific skill.
 export function SpecifySkills(skillName)
 {
-    //console.log("SpecifySkills OK")
     let sortedSkills = [];
     if (skillName == null)
     {
@@ -93,6 +152,7 @@ export function SpecifySkills(skillName)
     return sortedSkills;
 }
 
+// gets the entire address of a specific skill.
 export function SpecifySkillAddress(skillName)
 {
     for (let i = 0; i < stringAddresses.length; i++)
@@ -104,37 +164,3 @@ export function SpecifySkillAddress(skillName)
         }
     }
 }
-/* DEFAULT SKILLS LIST */
-/*PROGRAMMING
-{
-    WEB-DEV
-    {
-        FRONTEND, BACKEND, FULLSTACK
-    }
-    JS
-    JAVA
-    C#
-    C++
-    C
-    PYTHON
-    RUST
-    PHP
-}*/
-/*GAME-DEV  
-{
-    GAME DESIGN
-    GAME DEVELOPMENT
-    GAME TESTING
-}*/
-/*MUSIC
-{
-    MUSIC PERFORMANCE
-    {
-        BAND
-        ORCHESTRA
-        ENSEMBLE
-        SOLOIST
-    }
-    MUSIC COMPOSITION
-}*/
-/* DefaultList() should create a cookie with skilltags organized this way by default. */

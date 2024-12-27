@@ -157,7 +157,7 @@ function CreateSkillTag(skillTagDiv, index)
     return skillTag;
 }
 
-// this function might be very difficult to implement
+// Creates a dropdown menu for blank skill tags. 
 function SkillDropDownMenu(skillTag, skillName, tagName, parent, index)
 {
     let parentdiv = document.createElement("div");
@@ -181,7 +181,7 @@ function SkillDropDownMenu(skillTag, skillName, tagName, parent, index)
     }
 }
 
-// Closes the dropdown.
+// Closes dropdowns.
 function CloseDropDownMenu()
 {
     while (document.querySelector("[class=\"skillDropDown\"]") != null)
@@ -258,6 +258,7 @@ function AddToSkillColumn(skillName)
     }
 }
 
+// Dropdown menu for the skills column. allows you to change whether a skill will be visible or hidden on the resume.
 function SkillColumnDropDownMenu(parent)
 {
     CloseDropDownMenu();
@@ -436,3 +437,13 @@ function AdjustElements()
         skillTagList[i].setAttribute("index",skillTagList[i].parentNode.parentNode.getAttribute("index"));
     }
 }
+/* TODO:
+    Add a divider element
+    move the skill column down a bit (I'm thinking with some kinda vertical grid)
+    figure out how to encode and decode the *entire* resume with cookies
+    oh, also how to encode and decode the skills column
+    make a display page that removes all the editor-specific tools
+    make a help page
+    and then... it'll finally be finished. (for now)
+    There's still far away in the future stuff like CSH integration, but once I finish the help page, I'll make my repo public.
+*/
