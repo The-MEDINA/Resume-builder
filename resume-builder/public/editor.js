@@ -25,7 +25,7 @@ const q = document.createElement("p");
 const r = document.createElement("p");
 //const s = document.createElement("p");
 p.textContent = "Add elements column (Here you select elements to add)";
-q.textContent = "Resume column (goal is to click on each element to edit)";
+//q.textContent = "Resume column (goal is to click on each element to edit)";
 r.textContent = "Change elements column (edit everything about the element on the side)";
 //s.textContent = "skills column (where the fun part is, the tags :>)";
 
@@ -37,7 +37,7 @@ grid.appendChild(resume);
 grid.appendChild(skillTags);
 grid.appendChild(tweakElements);   
 addElements.appendChild(p); 
-resume.appendChild(q);
+//resume.appendChild(q);
 tweakElements.appendChild(r);
 //skillTags.appendChild(s);
 
@@ -52,6 +52,12 @@ const addElementButton = document.createElement("button");
 addElementButton.textContent = '|Add an element|';
 addElementButton.addEventListener('click', AddElement);
 addElements.appendChild(addElementButton);
+
+// Add divider button
+const addDividerButton = document.createElement("button");
+addDividerButton.textContent = '|Add a divider|';
+addDividerButton.addEventListener('click', AddDivider);
+addElements.appendChild(addDividerButton);
 
 // === Functions === Functions === Functions === Functions === Functions === Functions === Functions === Functions ===
 // Adds a title to the resume.
@@ -75,6 +81,18 @@ function AddElement()
     listOfElements[listOfElements.length-1].appendChild(CreateDate());
     listOfElements[listOfElements.length-1].appendChild(CreateDescription());
     listOfElements[listOfElements.length-1].appendChild(PrepareSkillTag(listOfElements.length-1));
+    listOfElements[listOfElements.length-1].appendChild(AddMovementButtons());
+    DrawElements();
+}
+
+// Adds a divider to the resume.
+function AddDivider()
+{
+    console.log("divider OK");
+    listOfElements.push(document.createElement("div"));
+    listOfElements[listOfElements.length-1].classList.add('Divider');
+    listOfElements[listOfElements.length-1].appendChild(CreateDivider());
+    listOfElements[listOfElements.length-1].setAttribute("index",[listOfElements.length-1]);
     listOfElements[listOfElements.length-1].appendChild(AddMovementButtons());
     DrawElements();
 }
@@ -133,6 +151,18 @@ function CreateDescription()
     elementDesc.textContent = "Description of something";
     createDescDiv.appendChild(elementDesc);
     return createDescDiv;
+}
+
+// Creates a divider with an <a> element inside of a <div>
+function CreateDivider()
+{
+    const createDividerDiv = document.createElement("div");
+    const dividerText = document.createElement("a");
+    dividerText.setAttribute("id","divider");
+    dividerText.addEventListener('click', function() {ChangeText(dividerText)});
+    dividerText.textContent = "Divide the resume";
+    createDividerDiv.appendChild(dividerText);
+    return createDividerDiv;
 }
 
 // Creates the initial blank skill tag that each element comes with.
@@ -414,7 +444,7 @@ function FinishChangeText(scannerDivToRemove, elementToChange, valueToChangeWith
         elementToChange.parentNode.remove();
         // this is such a bad fix... but it *does* work. The plan is to rewrite this for loop so that this isn't so nasty.
         for (let i = 0; i < listOfElements.length; i++){
-            if ((listOfElements[i].children.length == 2 && !listOfElements[i].classList.contains("Title")) || (listOfElements[i].children.length == 1 && listOfElements[i].classList.contains("Title")) ){
+            if ((listOfElements[i].children.length == 2 && !(listOfElements[i].classList.contains("Title") || listOfElements[i].classList.contains("Divider"))) || (listOfElements[i].children.length == 1 && (listOfElements[i].classList.contains("Title") || listOfElements[i].classList.contains("Divider")))){
                 DeleteSomething(i);
                 i -= 1;
             }
@@ -438,7 +468,6 @@ function AdjustElements()
     }
 }
 /* TODO:
-    Add a divider element
     move the skill column down a bit (I'm thinking with some kinda vertical grid)
     figure out how to encode and decode the *entire* resume with cookies
     oh, also how to encode and decode the skills column

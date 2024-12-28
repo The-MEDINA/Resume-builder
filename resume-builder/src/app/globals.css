@@ -53,6 +53,12 @@ body {
 #title {
   font-size: 50px;
 }
+.Divider {
+  border-bottom: solid;
+}
+#divider {
+  font-size: 20px;
+}
 #elementHeader {
   font-weight: bold;
 }
