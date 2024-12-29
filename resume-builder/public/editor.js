@@ -571,8 +571,8 @@ function DeleteResumeCookies()
     }
 }
 /* TODO:
-    figure out how to encode and decode the *entire* resume with cookies
-    oh, also how to encode and decode the skills column
+    figure out how to decode the *entire* resume with cookies
+    oh, also how decode the skills column
     make a display page that removes all the editor-specific tools
     make a help page
     and then... it'll finally be finished. (for now)
