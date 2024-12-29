@@ -16,18 +16,8 @@ let listOfSkills = [];
 grid.classList.add('editor-grid');
 addElements.classList.add('addElements');
 resume.classList.add('resume');
-skillTags.classList.add('skills');
+skillTags.classList.add('skillSideColumn');
 tweakElements.classList.add('tweakElements');
-
-// Elements for testing.
-const p = document.createElement("p");
-const q = document.createElement("p");
-const r = document.createElement("p");
-//const s = document.createElement("p");
-p.textContent = "Add elements column (Here you select elements to add)";
-//q.textContent = "Resume column (goal is to click on each element to edit)";
-r.textContent = "Change elements column (edit everything about the element on the side)";
-//s.textContent = "skills column (where the fun part is, the tags :>)";
 
 // Append elements to create the editor.
 app?.appendChild(grid);
@@ -36,10 +26,6 @@ grid.appendChild(spacer);
 grid.appendChild(resume);    
 grid.appendChild(skillTags);
 grid.appendChild(tweakElements);   
-addElements.appendChild(p); 
-//resume.appendChild(q);
-tweakElements.appendChild(r);
-//skillTags.appendChild(s);
 
 // Add title button
 const addTitleButton = document.createElement("button");
@@ -468,7 +454,6 @@ function AdjustElements()
     }
 }
 /* TODO:
-    move the skill column down a bit (I'm thinking with some kinda vertical grid)
     figure out how to encode and decode the *entire* resume with cookies
     oh, also how to encode and decode the skills column
     make a display page that removes all the editor-specific tools
