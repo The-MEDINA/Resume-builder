@@ -1,6 +1,12 @@
 import {Setup, SpecifySkills, SpecifySkillAddress } from "/skillTags.js";
 import { ImageSetup } from "/ImageHandler.js";
 
+document.cookie = "Index0=" + "Test";
+document.cookie = "Index1=" + "Test";
+document.cookie = "Index2=" + "Test";
+document.cookie = "Index3=" + "Test";
+document.cookie = "Index4=" + "Test";
+document.cookie = "Index5=" + "Test";
 /// === Setup === Setup === Setup === Setup === Setup === Setup === Setup === Setup === Setup ===
 Setup();
 const app = document.getElementById("app");
@@ -104,6 +110,7 @@ function DrawElements()
 function CreateTitle()
 {
     const titleDiv = document.createElement("div");
+    titleDiv.classList.add("TitleDiv");
     const thisTitle = document.createElement("button");
     thisTitle.setAttribute("id","title");
     thisTitle.addEventListener('click', function() {ChangeText(thisTitle)});
@@ -462,13 +469,54 @@ function AdjustElements()
     }
 }
 
-// Separats and saves the resume in a bunch of cookies. 
+// Separates and saves the resume in a bunch of cookies. 
 // For whatever reason, JSON methods aren't working... so I gotta do this manually.
 function EncodeResumeCookies()
 {
-    console.log("EncodeResumeCookies");
+    DeleteResumeCookies();
+    const d = new Date();
+    d.setTime(d.getTime() *1.01);
+    let expires = "expires="+ d.toUTCString();
+    for (let i = 0; i < listOfElements.length; i++)
+    {
+        let totalElementValue = "";
+
+        // All elements in titles are checked here.
+        if (listOfElements[i].classList.contains("Title"))
+        {
+            let childElements = listOfElements[i].children;
+            for (let k = 0; k < childElements.length; k++)
+            {
+                // Titles and TitleDivs are searched for and found here.
+                if (childElements[k].classList.contains("TitleDiv"))
+                {
+                    totalElementValue += "TitleDiv=" + childElements[k].firstChild.textContent + "`";
+                }
+            }
+            document.cookie = "Index" + i + "=Title`" + totalElementValue + ";" + expires;
+        }
+    }
+    //document.cookie = "SkillTags=" + EncodeSkillTagsCookie() + "; " + expires;
 }
 
+// Deletes any resume cookies.
+function DeleteResumeCookies()
+{
+    const listOfCookies = decodeURIComponent(document.cookie).split(";");
+    for (let i = 0; i < listOfCookies.length; i++)
+    {
+        /*
+        console.log(listOfCookies[i]);
+        console.log(listOfCookies[i].indexOf("Index"));
+        console.log(listOfCookies[i].substring(listOfCookies[i].indexOf("Index"),listOfCookies[i].indexOf("Index")+5));
+        */
+        if (listOfCookies[i].indexOf("Index") == 0 || listOfCookies[i].indexOf("Index") == 1)
+        {
+            let intermediate = listOfCookies[i].split("=");
+            document.cookie = intermediate[0] + "=; expires=Thu, 18 Dec 2013 12:00:00 UTC";
+        }
+    }
+}
 /* TODO:
     figure out how to encode and decode the *entire* resume with cookies
     oh, also how to encode and decode the skills column

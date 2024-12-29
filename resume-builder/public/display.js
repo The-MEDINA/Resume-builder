@@ -6,15 +6,16 @@ const skillsSection = document.createElement("div");
 displaySection.setAttribute("id","display-grid");
 resumeSection.setAttribute("id","theResume");
 skillsSection.setAttribute("id","theSkills");
+parent.appendChild(displaySection);
+displaySection.appendChild(resumeSection);
+displaySection.appendChild(skillsSection);
 
+// Testing.
 const p = document.createElement("p");
 const q = document.createElement("p");
 p.textContent = "resume section.";
 q.textContent = "skills section.";
-
-parent.appendChild(displaySection);
-displaySection.appendChild(resumeSection);
-displaySection.appendChild(skillsSection);
 resumeSection.appendChild(p);
 skillsSection.appendChild(q);
-console.log("why")
+
+let DecodedResumeElements = [];
