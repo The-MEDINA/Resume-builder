@@ -1,5 +1,6 @@
-import {Test, Setup, SpecifySkills, SpecifySkillAddress } from "/skillTags.js";
+import {Setup, SpecifySkills, SpecifySkillAddress } from "/skillTags.js";
 import { ImageSetup } from "/ImageHandler.js";
+
 /// === Setup === Setup === Setup === Setup === Setup === Setup === Setup === Setup === Setup ===
 Setup();
 const app = document.getElementById("app");
@@ -11,6 +12,13 @@ const skillTags = document.createElement("div");
 const spacer = document.createElement("div");
 let listOfElements = [];
 let listOfSkills = [];
+
+// Save button.
+const topNav = document.getElementsByClassName("topnav");
+const saveButton = document.createElement("button");
+saveButton.textContent = "|Save in browser|"
+saveButton.addEventListener('click', function() {EncodeResumeCookies()});
+topNav[0].appendChild(saveButton);
 
 // Adding classes to elements created.
 grid.classList.add('editor-grid');
@@ -74,7 +82,7 @@ function AddElement()
 // Adds a divider to the resume.
 function AddDivider()
 {
-    console.log("divider OK");
+    //console.log("divider OK");
     listOfElements.push(document.createElement("div"));
     listOfElements[listOfElements.length-1].classList.add('Divider');
     listOfElements[listOfElements.length-1].appendChild(CreateDivider());
@@ -453,6 +461,14 @@ function AdjustElements()
         skillTagList[i].setAttribute("index",skillTagList[i].parentNode.parentNode.getAttribute("index"));
     }
 }
+
+// Separats and saves the resume in a bunch of cookies. 
+// For whatever reason, JSON methods aren't working... so I gotta do this manually.
+function EncodeResumeCookies()
+{
+    console.log("EncodeResumeCookies");
+}
+
 /* TODO:
     figure out how to encode and decode the *entire* resume with cookies
     oh, also how to encode and decode the skills column

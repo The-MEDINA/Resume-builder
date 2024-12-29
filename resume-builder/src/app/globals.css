@@ -37,6 +37,10 @@ body {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr 1fr
 }
+#display-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr
+}
 .addElements {
   position: fixed;
   width: 15%;
@@ -60,6 +64,7 @@ body {
   font-size: 20px;
 }
 #elementHeader {
+  padding: 5;
   font-weight: bold;
 }
 #elementDate {
