@@ -1,12 +1,6 @@
 import {Setup, SpecifySkills, SpecifySkillAddress } from "/skillTags.js";
 import { ImageSetup } from "/ImageHandler.js";
 
-document.cookie = "Index0=" + "Test";
-document.cookie = "Index1=" + "Test";
-document.cookie = "Index2=" + "Test";
-document.cookie = "Index3=" + "Test";
-document.cookie = "Index4=" + "Test";
-document.cookie = "Index5=" + "Test";
 /// === Setup === Setup === Setup === Setup === Setup === Setup === Setup === Setup === Setup ===
 Setup();
 const app = document.getElementById("app");
@@ -122,6 +116,7 @@ function CreateTitle()
 function CreateHeader()
 {
     const elementHeaderDiv = document.createElement("div");
+    elementHeaderDiv.classList.add("HeaderDiv");
     const elementHeader = document.createElement("button");
     elementHeader.setAttribute("id","elementHeader");
     elementHeader.addEventListener('click', function() {ChangeText(elementHeader)});
@@ -134,6 +129,7 @@ function CreateHeader()
 function CreateDate()
 {
     const elementDateDiv = document.createElement("div");
+    elementDateDiv.classList.add("DateDiv");
     const elementDate = document.createElement("button");
     elementDate.setAttribute("id","elementDate");
     elementDate.addEventListener('click', function() {ChangeText(elementDate)});
@@ -146,6 +142,7 @@ function CreateDate()
 function CreateDescription()
 {
     const createDescDiv = document.createElement("div");
+    createDescDiv.classList.add("DescDiv");
     const elementDesc = document.createElement("button");
     elementDesc.setAttribute("id","elementDesc");
     elementDesc.addEventListener('click', function() {ChangeText(elementDesc)});
@@ -158,6 +155,7 @@ function CreateDescription()
 function CreateDivider()
 {
     const createDividerDiv = document.createElement("div");
+    createDividerDiv.classList.add("DividerDiv");
     const dividerText = document.createElement("a");
     dividerText.setAttribute("id","divider");
     dividerText.addEventListener('click', function() {ChangeText(dividerText)});
@@ -477,11 +475,12 @@ function EncodeResumeCookies()
     const d = new Date();
     d.setTime(d.getTime() *1.01);
     let expires = "expires="+ d.toUTCString();
+    
+    // Resume Elements are checked here.
     for (let i = 0; i < listOfElements.length; i++)
     {
         let totalElementValue = "";
-
-        // All elements in titles are checked here.
+        // Titles are checked here.
         if (listOfElements[i].classList.contains("Title"))
         {
             let childElements = listOfElements[i].children;
@@ -490,10 +489,64 @@ function EncodeResumeCookies()
                 // Titles and TitleDivs are searched for and found here.
                 if (childElements[k].classList.contains("TitleDiv"))
                 {
-                    totalElementValue += "TitleDiv=" + childElements[k].firstChild.textContent + "`";
+                    totalElementValue += "TitleDiv=" + childElements[k].firstChild.textContent;
                 }
             }
             document.cookie = "Index" + i + "=Title`" + totalElementValue + ";" + expires;
+        }
+
+        // Dividers are checked here.
+        if (listOfElements[i].classList.contains("Divider"))
+        {
+            totalElementValue += "DividerDiv=" + listOfElements[i].firstChild.firstChild.textContent;
+            document.cookie = "Index" + i + "=Divider`" + totalElementValue + ";" + expires;
+        }
+
+        // Elements are checked here.
+        if (listOfElements[i].classList.contains("Element"))
+            {
+                let childElements = listOfElements[i].children;
+                for (let k = 0; k < childElements.length; k++)
+                {
+                    // Headers are checked here.
+                    if (childElements[k].classList.contains("HeaderDiv"))
+                    {
+                        totalElementValue += "HeaderDiv=" + childElements[k].firstChild.textContent + "`";
+                    }
+                    // Dates are checked here.
+                    if (childElements[k].classList.contains("DateDiv"))
+                    {
+                        totalElementValue += "DateDiv=" + childElements[k].firstChild.textContent + "`";
+                    }
+                    // Dates are checked here.
+                    if (childElements[k].classList.contains("DescDiv"))
+                    {
+                        totalElementValue += "DescDiv=" + childElements[k].firstChild.textContent + "`";
+                    }
+                    if (childElements[k].classList.contains("skills"))
+                    {  
+                        const listOfElementSkills = childElements[k].children;
+                        let skillsInString = "";
+                        for (let j = 0; j < listOfElementSkills.length; j++)
+                        {
+                            if (listOfElementSkills[j].classList.contains("finishedSkill"))
+                            {
+                                skillsInString += listOfElementSkills[j].lastChild.textContent + "|"
+                            }
+                        }
+                        skillsInString = skillsInString.substring(0, skillsInString.length-1);
+                        totalElementValue += "skills=" + skillsInString;
+                    }
+                }
+                document.cookie = "Index" + i + "=Element`" + totalElementValue + ";" + expires;
+            }
+    }
+    // Skills are checked here.
+    for (let i = 0; i < listOfSkills.length; i++)
+    {
+        if (listOfSkills[i].getAttribute("id") == "showSkill")
+        {
+            document.cookie = "SklIdx" + i + "=" + listOfSkills[i].lastChild.textContent + ";" + expires;
         }
     }
     //document.cookie = "SkillTags=" + EncodeSkillTagsCookie() + "; " + expires;
@@ -505,12 +558,12 @@ function DeleteResumeCookies()
     const listOfCookies = decodeURIComponent(document.cookie).split(";");
     for (let i = 0; i < listOfCookies.length; i++)
     {
-        /*
-        console.log(listOfCookies[i]);
-        console.log(listOfCookies[i].indexOf("Index"));
-        console.log(listOfCookies[i].substring(listOfCookies[i].indexOf("Index"),listOfCookies[i].indexOf("Index")+5));
-        */
         if (listOfCookies[i].indexOf("Index") == 0 || listOfCookies[i].indexOf("Index") == 1)
+        {
+            let intermediate = listOfCookies[i].split("=");
+            document.cookie = intermediate[0] + "=; expires=Thu, 18 Dec 2013 12:00:00 UTC";
+        }
+        if (listOfCookies[i].indexOf("SklIdx") == 0 || listOfCookies[i].indexOf("SklIdx") == 1)
         {
             let intermediate = listOfCookies[i].split("=");
             document.cookie = intermediate[0] + "=; expires=Thu, 18 Dec 2013 12:00:00 UTC";
