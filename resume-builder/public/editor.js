@@ -12,6 +12,7 @@ const skillTags = document.createElement("div");
 const spacer = document.createElement("div");
 let listOfElements = [];
 let listOfSkills = [];
+DecodeResumeCookies();
 
 // Save button.
 const topNav = document.getElementsByClassName("topnav");
@@ -38,54 +39,54 @@ grid.appendChild(tweakElements);
 // Add title button
 const addTitleButton = document.createElement("button");
 addTitleButton.textContent = '|Add a title|';
-addTitleButton.addEventListener('click', AddTitle);
+addTitleButton.addEventListener('click', function() {AddTitle("Add a Title")});
 addElements.appendChild(addTitleButton);
 
 // Add element button
 const addElementButton = document.createElement("button");
 addElementButton.textContent = '|Add an element|';
-addElementButton.addEventListener('click', AddElement);
+addElementButton.addEventListener('click', function() {AddElement("Job title - location","DateStart - DateEnd","Description of something")});
 addElements.appendChild(addElementButton);
 
 // Add divider button
 const addDividerButton = document.createElement("button");
 addDividerButton.textContent = '|Add a divider|';
-addDividerButton.addEventListener('click', AddDivider);
+addDividerButton.addEventListener('click', function() {AddDivider("Divide the resume")});
 addElements.appendChild(addDividerButton);
 
 // === Functions === Functions === Functions === Functions === Functions === Functions === Functions === Functions ===
 // Adds a title to the resume.
-function AddTitle()
+function AddTitle(titleString)
 {
     listOfElements.push(document.createElement("div"));
     listOfElements[listOfElements.length-1].classList.add('Title');
-    listOfElements[listOfElements.length-1].appendChild(CreateTitle());
+    listOfElements[listOfElements.length-1].appendChild(CreateTitle(titleString));
     listOfElements[listOfElements.length-1].setAttribute("index",[listOfElements.length-1]);
     listOfElements[listOfElements.length-1].appendChild(AddMovementButtons());
     DrawElements();
 }
 
 // Adds an element to the resume.
-function AddElement()
+function AddElement(headerText, dateText, descText)
 {
     listOfElements.push(document.createElement("div"));
     listOfElements[listOfElements.length-1].classList.add('Element');
     listOfElements[listOfElements.length-1].setAttribute("index",[listOfElements.length-1]);
-    listOfElements[listOfElements.length-1].appendChild(CreateHeader());
-    listOfElements[listOfElements.length-1].appendChild(CreateDate());
-    listOfElements[listOfElements.length-1].appendChild(CreateDescription());
+    if (headerText != "") {listOfElements[listOfElements.length-1].appendChild(CreateHeader(headerText))};
+    if (dateText != "") {listOfElements[listOfElements.length-1].appendChild(CreateDate(dateText))};
+    if (descText != "") {listOfElements[listOfElements.length-1].appendChild(CreateDescription(descText))};
     listOfElements[listOfElements.length-1].appendChild(PrepareSkillTag(listOfElements.length-1));
     listOfElements[listOfElements.length-1].appendChild(AddMovementButtons());
     DrawElements();
 }
 
 // Adds a divider to the resume.
-function AddDivider()
+function AddDivider(dividerText)
 {
     //console.log("divider OK");
     listOfElements.push(document.createElement("div"));
     listOfElements[listOfElements.length-1].classList.add('Divider');
-    listOfElements[listOfElements.length-1].appendChild(CreateDivider());
+    listOfElements[listOfElements.length-1].appendChild(CreateDivider(dividerText));
     listOfElements[listOfElements.length-1].setAttribute("index",[listOfElements.length-1]);
     listOfElements[listOfElements.length-1].appendChild(AddMovementButtons());
     DrawElements();
@@ -101,65 +102,65 @@ function DrawElements()
 }
 
 // Creates the title with a <p> element inside of a <div> 
-function CreateTitle()
+function CreateTitle(titleString)
 {
     const titleDiv = document.createElement("div");
     titleDiv.classList.add("TitleDiv");
     const thisTitle = document.createElement("button");
     thisTitle.setAttribute("id","title");
     thisTitle.addEventListener('click', function() {ChangeText(thisTitle)});
-    thisTitle.textContent = ("Title");
+    thisTitle.textContent = titleString;
     titleDiv.appendChild(thisTitle);
     return titleDiv;
 }
 // Creates a basic elementHeader with a <button> element inside of a <div> 
-function CreateHeader()
+function CreateHeader(headerText)
 {
     const elementHeaderDiv = document.createElement("div");
     elementHeaderDiv.classList.add("HeaderDiv");
     const elementHeader = document.createElement("button");
     elementHeader.setAttribute("id","elementHeader");
     elementHeader.addEventListener('click', function() {ChangeText(elementHeader)});
-    elementHeader.textContent = "Job title - location";
+    elementHeader.textContent = headerText;
     elementHeaderDiv.appendChild(elementHeader);
     return elementHeaderDiv;
 }
 
 // Creates a basic date with a <button> element inside of a <div> 
-function CreateDate()
+function CreateDate(dateText)
 {
     const elementDateDiv = document.createElement("div");
     elementDateDiv.classList.add("DateDiv");
     const elementDate = document.createElement("button");
     elementDate.setAttribute("id","elementDate");
     elementDate.addEventListener('click', function() {ChangeText(elementDate)});
-    elementDate.textContent = "DateStart - DateEnd";
+    elementDate.textContent = dateText;
     elementDateDiv.appendChild(elementDate);
     return elementDateDiv;
 }
 
 // Creates a basic date with a <button> element inside of a <div> 
-function CreateDescription()
+function CreateDescription(descText)
 {
     const createDescDiv = document.createElement("div");
     createDescDiv.classList.add("DescDiv");
     const elementDesc = document.createElement("button");
     elementDesc.setAttribute("id","elementDesc");
     elementDesc.addEventListener('click', function() {ChangeText(elementDesc)});
-    elementDesc.textContent = "Description of something";
+    elementDesc.textContent = descText;
     createDescDiv.appendChild(elementDesc);
     return createDescDiv;
 }
 
 // Creates a divider with an <a> element inside of a <div>
-function CreateDivider()
+function CreateDivider(dividerTextContent)
 {
     const createDividerDiv = document.createElement("div");
     createDividerDiv.classList.add("DividerDiv");
     const dividerText = document.createElement("a");
     dividerText.setAttribute("id","divider");
     dividerText.addEventListener('click', function() {ChangeText(dividerText)});
-    dividerText.textContent = "Divide the resume";
+    dividerText.textContent = dividerTextContent;
     createDividerDiv.appendChild(dividerText);
     return createDividerDiv;
 }
@@ -228,7 +229,7 @@ function FinishedSkillTag(skillName, parent, index)
         const removeThese = document.querySelector("[id=\"temporary\"]"); 
         removeThese.remove();        
     }
-    document.querySelector("[id=\"blankSkillTag\"][index=\"" + index + "\"]").remove();    
+    if (document.querySelector("[id=\"blankSkillTag\"][index=\"" + index + "\"]") != null) {document.querySelector("[id=\"blankSkillTag\"][index=\"" + index + "\"]").remove()};    
     parent.appendChild(CreateTag(skillName))
     parent.appendChild(CreateSkillTag(parent, index));
     AddToSkillColumn(skillName);
@@ -237,31 +238,33 @@ function FinishedSkillTag(skillName, parent, index)
 // Creates the actual skill requested.
 function CreateTag(skillName)
 {
-    const finalSkillDiv = document.createElement("div");
-    finalSkillDiv.classList.add("finishedSkill");
-    const finalSkill = document.createElement("p");
-    finalSkill.addEventListener('click', function() {finalSkillDiv.remove(); AdjustSkillColumn()});
-    finalSkill.textContent = skillName;
-    const image = document.createElement("img")
-    ImageSetup(image, skillName);
-    finalSkillDiv.appendChild(image);
-    finalSkillDiv.appendChild(finalSkill);
-    finalSkill.classList.add("skillText");
-    image.classList.add("skillImage");
-    return finalSkillDiv
+    if (skillName != "")
+    {
+        const finalSkillDiv = document.createElement("div");
+        finalSkillDiv.classList.add("finishedSkill");
+        const finalSkill = document.createElement("p");
+        finalSkill.addEventListener('click', function() {finalSkillDiv.remove(); AdjustSkillColumn()});
+        finalSkill.textContent = skillName;
+        const image = document.createElement("img")
+        ImageSetup(image, skillName);
+        finalSkillDiv.appendChild(image);
+        finalSkillDiv.appendChild(finalSkill);
+        finalSkill.classList.add("skillText");
+        image.classList.add("skillImage");
+        return finalSkillDiv
+    }
 }
 
 // adds a skill to the skill column if it's not already there. Also lets you choose to hide the skills.
 function AddToSkillColumn(skillName)
 {
-    const listInSkillColumn = document.querySelectorAll("[class=\"skillColumn\"]");
     const totalSkills = SpecifySkillAddress(skillName);
     for (let j = 0; j < totalSkills.length; j++)
     {
         let skillFound = false;
-        for (let i = 0; i < listInSkillColumn.length; i++)
+        for (let i = 0; i < listOfSkills.length; i++)
             {
-                if (listInSkillColumn[i].lastChild.textContent == totalSkills[j])
+                if (listOfSkills[i].lastChild.textContent == totalSkills[j])
                 {
                     skillFound = true;
                 }
@@ -489,7 +492,7 @@ function EncodeResumeCookies()
                 // Titles and TitleDivs are searched for and found here.
                 if (childElements[k].classList.contains("TitleDiv"))
                 {
-                    totalElementValue += "TitleDiv=" + childElements[k].firstChild.textContent;
+                    totalElementValue += "TitleDivඞ" + childElements[k].firstChild.textContent;
                 }
             }
             document.cookie = "Index" + i + "=Title`" + totalElementValue + ";" + expires;
@@ -498,7 +501,7 @@ function EncodeResumeCookies()
         // Dividers are checked here.
         if (listOfElements[i].classList.contains("Divider"))
         {
-            totalElementValue += "DividerDiv=" + listOfElements[i].firstChild.firstChild.textContent;
+            totalElementValue += "DividerDivඞ" + listOfElements[i].firstChild.firstChild.textContent;
             document.cookie = "Index" + i + "=Divider`" + totalElementValue + ";" + expires;
         }
 
@@ -511,17 +514,17 @@ function EncodeResumeCookies()
                     // Headers are checked here.
                     if (childElements[k].classList.contains("HeaderDiv"))
                     {
-                        totalElementValue += "HeaderDiv=" + childElements[k].firstChild.textContent + "`";
+                        totalElementValue += "HeaderDivඞ" + childElements[k].firstChild.textContent + "`";
                     }
                     // Dates are checked here.
                     if (childElements[k].classList.contains("DateDiv"))
                     {
-                        totalElementValue += "DateDiv=" + childElements[k].firstChild.textContent + "`";
+                        totalElementValue += "DateDivඞ" + childElements[k].firstChild.textContent + "`";
                     }
                     // Dates are checked here.
                     if (childElements[k].classList.contains("DescDiv"))
                     {
-                        totalElementValue += "DescDiv=" + childElements[k].firstChild.textContent + "`";
+                        totalElementValue += "DescDivඞ" + childElements[k].firstChild.textContent + "`";
                     }
                     if (childElements[k].classList.contains("skills"))
                     {  
@@ -535,7 +538,7 @@ function EncodeResumeCookies()
                             }
                         }
                         skillsInString = skillsInString.substring(0, skillsInString.length-1);
-                        totalElementValue += "skills=" + skillsInString;
+                        totalElementValue += "skillsඞ" + skillsInString;
                     }
                 }
                 document.cookie = "Index" + i + "=Element`" + totalElementValue + ";" + expires;
@@ -550,6 +553,91 @@ function EncodeResumeCookies()
         }
     }
     //document.cookie = "SkillTags=" + EncodeSkillTagsCookie() + "; " + expires;
+}
+
+// Constructs a saved resume through any cookies found.
+function DecodeResumeCookies()
+{
+    const listOfCookies = decodeURIComponent(document.cookie).split(";");
+    let savedSkills = [];
+    // sets the resume elements.
+    for (let i = 0; i < listOfCookies.length; i++)
+    {
+        if (listOfCookies[i].indexOf("Index") == 0 || listOfCookies[i].indexOf("Index") == 1)
+        {
+            let rawCookie = listOfCookies[i].split("="); 
+            let intIndex = +(rawCookie[0].substring(rawCookie[0].indexOf("Index")+5));
+            let rawData = rawCookie[1].split("`");
+
+            // Decoding titles here.
+            if (rawData[0] == "Title")
+            {
+                let titleData = rawData[1].split("ඞ");
+                let titleContent = titleData[1];
+                AddTitle(titleContent);
+            }
+
+            // Decoding dividers here.
+            if (rawData[0] == "Divider")
+            {
+                let dividerData = rawData[1].split("ඞ");
+                let dividerContent = dividerData[1];
+                AddDivider(dividerContent);
+            }
+
+            // Decoding elements here (uh oh)
+            if (rawData[0] == "Element")
+            {
+                let headerText = "";
+                let dateText = "";
+                let descText = "";
+                let elementSkills = [];
+                for (let j = 1; j < rawData.length; j++)
+                {
+                    let elementData = rawData[j].split("ඞ");
+                    if (elementData[0] == "HeaderDiv")
+                    {
+                        headerText = elementData[1];
+                    }
+                    if (elementData[0] == "DateDiv")
+                    {
+                        dateText = elementData[1];
+                    }
+                    if (elementData[0] == "DescDiv")
+                    {
+                        descText = elementData[1];
+                    }
+                    if (elementData[0] == "skills")
+                    {
+                        if (elementData[1] != "")
+                        {
+                            elementSkills = elementData[1].split("|");
+                        }
+                    }
+                }
+                AddElement(headerText, dateText, descText);
+                for (let j = 0; j < elementSkills.length; j++)
+                {
+                    //FinishedSkillTag(elementSkills[j], listOfElements[intIndex].lastChild.previousElementSibling, intIndex);
+                    listOfElements[intIndex].lastChild.previousElementSibling.insertBefore(CreateTag(elementSkills[j]),listOfElements[intIndex].lastChild.previousElementSibling.firstChild);
+                    AddToSkillColumn(elementSkills[j]);
+                }
+            }
+        }
+        // Sets the skill column.
+        if (listOfCookies[i].indexOf("SklIdx") == 0 || listOfCookies[i].indexOf("SklIdx") == 1)
+        {
+            let skillData = listOfCookies[i].split("=");
+            savedSkills.push(skillData[1]);
+        }
+    }
+    for (let i = 0; i < listOfSkills.length; i++)
+    {
+        if (!savedSkills.includes(listOfSkills[i].lastChild.textContent))
+        {
+            listOfSkills[i].setAttribute("id","hideSkill");
+        }
+    }
 }
 
 // Deletes any resume cookies.

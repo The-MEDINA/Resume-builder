@@ -155,12 +155,14 @@ export function SpecifySkills(skillName)
 // gets the entire address of a specific skill.
 export function SpecifySkillAddress(skillName)
 {
+    let address = []
     for (let i = 0; i < stringAddresses.length; i++)
     {
-        const address = stringAddresses[i].split("|");
+        address = stringAddresses[i].split("|");
         if (address[address.length-1] == skillName)
         {
             return address;
         }
     }
+    return address;
 }
