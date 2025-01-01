@@ -1,4 +1,5 @@
 import Script from "next/script";
+import Link from "next/link";
 export default function Display() {
     return (
       <div>
@@ -10,7 +11,7 @@ export default function Display() {
         <Script type="module" src="display.js"/>
       </div>
     </div>
-      </div>
+    </div>
     );
   }
   

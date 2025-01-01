@@ -1,6 +1,5 @@
 import { DefaultAddresses } from "/skillTags.js";
 
-let path = [];
 let skillAddresses = DefaultAddresses();
 
 export async function ImageSetup(img, skillName)
