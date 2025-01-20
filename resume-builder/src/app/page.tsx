@@ -6,6 +6,7 @@ export default function Home() {
 <div className="topnav">
         <a>Resume Maker</a>
         <Link href="/Display">|Display resume|</Link>
+        <Link href="/Skills">|Edit skills|</Link>
     </div>
     <div className="content">
       <div id="app">
