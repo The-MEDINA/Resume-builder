@@ -1,17 +1,19 @@
 import Script from "next/script";
-import Link from "next/link";
+//import Link from "next/link";
+//import SkillsPage from 'next/dist/client/components/SkillsPage';
 export default function Skills() {
     return (
       <div>
         <div className="topnav">
-        <a>Resume Maker</a>
+          <a>Resume Maker</a>
     </div>
     <div className="content">
-      <div id="displayResume">
-        <Script type="module" src="/page scripts/skills.js"/>
+        <div>{Test()}</div>
       </div>
     </div>
-    </div>
     );
-  }
-  
+  } 
+export function Test(): String
+{
+  return "Test OK";
+}
