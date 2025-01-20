@@ -8,7 +8,7 @@ export default function Display() {
     </div>
     <div className="content">
       <div id="displayResume">
-        <Script type="module" src="/page scripts/display.js"/>
+        <Script type="module" src="display.js"/>
       </div>
     </div>
     </div>

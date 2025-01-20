@@ -9,7 +9,7 @@ export default function Home() {
     </div>
     <div className="content">
       <div id="app">
-        <Script type="module" src="/page scripts/editor.js"/>
+        <Script type="module" src="editor.js"/>
       </div>
     </div>
     </div>
