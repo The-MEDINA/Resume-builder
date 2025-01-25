@@ -1,4 +1,6 @@
+'use client'
 import Script from "next/script";
+import dynamic from "next/dynamic";
 import { GetSavedSkillList } from "../../../public/HelperScripts/skillTags";
 export default function Skills() {
     return (
@@ -16,7 +18,7 @@ export default function Skills() {
 /// Functions
 function Test(): String
 {
-  console.log(GetSavedSkillList());
+  GetSavedSkillList();
   return "Test OK";
 }
 

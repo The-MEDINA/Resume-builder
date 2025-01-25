@@ -18,7 +18,7 @@ export function Setup()
     if (!findSkillTagsCookie())
     {
         const d = new Date();
-        d.setTime(d.getTime() *1.01);
+        d.setTime(d.getTime()+1000*60*60*24*365);
         let expires = "expires="+ d.toUTCString();
         document.cookie = "SkillTags=" + EncodeSkillTagsCookie() + "; " + expires;
     }
@@ -32,7 +32,7 @@ export function Setup()
 export function EncodeSkillTagsCookie()
 {
     let returnString = "";
-    for (let i = 0; i < stringAddresses.length-2; i++)
+    for (let i = 0; i < stringAddresses.length-1; i++)
     {
         returnString += stringAddresses[i] + "`";    
     }
