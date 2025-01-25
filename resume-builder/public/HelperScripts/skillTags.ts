@@ -7,17 +7,9 @@
 export function GetSavedSkillList(): string[]
 {
   let returnValue: string[] = [];
-  /*let checkForDocument: boolean = true;
-  while(checkForDocument)
-  {
-    if (typeof window !== "undefined")
-    {*/
-        // some if statement that checks if the cookie is the youngest.
-        returnValue = DecodeSkillListCookie();
-        // another if statement to check if the CSH account's saved list is the youngest 
-    /*}
-    checkForDocument = false;
-  }*/
+    // some if statement that checks if the cookie is the youngest.
+    returnValue = DecodeSkillListCookie();
+    // another if statement to check if the CSH account's saved list is the youngest 
     return returnValue;
     // (I hope and dream this will one day be implemented)
 }
@@ -32,14 +24,20 @@ function DecodeSkillListCookie(): string[]
     {
       if (listOfCookies[i].indexOf("SkillTags") == 0)
       {
-          let intermediate = listOfCookies[i].split("=");
-          cookieToDecode = intermediate[1];
+        let intermediate = listOfCookies[i].split("=");
+        cookieToDecode = intermediate[1];
       }
     }
     for (let i = 0; i < cookieToDecode.length; i++)
     {
       allSkills = cookieToDecode.split("`");
     }
-    console.log(allSkills);
     return allSkills;
+}
+
+// Gets a skill name from its address.
+export function GetSkillFromAddress(address: String): String
+{
+  let skillAddress: String[] = address.split("|");
+  return skillAddress[skillAddress.length-1];
 }
