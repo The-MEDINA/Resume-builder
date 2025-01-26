@@ -36,8 +36,16 @@ function DecodeSkillListCookie(): string[]
 }
 
 // Gets a skill name from its address.
-export function GetSkillFromAddress(address: String): String
+export function GetSkillFromAddress(address: string): string
 {
-  let skillAddress: String[] = address.split("|");
+  let skillAddress: string[] = address.split("|");
   return skillAddress[skillAddress.length-1];
+}
+
+// Sets a skill's parent skill.
+export function SetParentSkill(address: string): string
+{
+  let skillAddress: string[] = address.split("|");
+  if (skillAddress.length <= 1) return "";
+  else return skillAddress[skillAddress.length-2];
 }
