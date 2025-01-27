@@ -4,7 +4,7 @@ import { Skill } from "@/app/Skills/page";
 //let skillAddresses = DefaultAddresses();
 export async function ImageSetup(image: any, skill: Skill)
 {
-    let skillAddress: string[] = skill.address.split("|");
+    let skillAddress: string[] = skill.address.split("/");
     let src = "img/Generic.png";
     let srcPrevious = "img/Generic.png";
     let final = null;

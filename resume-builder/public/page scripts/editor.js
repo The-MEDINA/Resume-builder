@@ -534,7 +534,7 @@ function EncodeResumeCookies()
                         {
                             if (listOfElementSkills[j].classList.contains("finishedSkill"))
                             {
-                                skillsInString += listOfElementSkills[j].lastChild.textContent + "|"
+                                skillsInString += listOfElementSkills[j].lastChild.textContent + "/"
                             }
                         }
                         skillsInString = skillsInString.substring(0, skillsInString.length-1);
@@ -611,7 +611,7 @@ function DecodeResumeCookies()
                     {
                         if (elementData[1] != "")
                         {
-                            elementSkills = elementData[1].split("|");
+                            elementSkills = elementData[1].split("/");
                         }
                     }
                 }

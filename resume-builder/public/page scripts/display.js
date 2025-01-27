@@ -86,7 +86,7 @@ function DisplayResumeCookies()
                     {
                         if (elementData[1] != "")
                         {
-                            elementSkills = elementData[1].split("|");
+                            elementSkills = elementData[1].split("/");
                         }
                     }
                 }

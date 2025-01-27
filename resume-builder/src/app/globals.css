@@ -110,4 +110,9 @@ body {
 }
 #messagebox{
   border: solid;
+  position: fixed;
+  background-color: #ededed;
+}
+#skillsList{
+  padding-top: 20px;
 }

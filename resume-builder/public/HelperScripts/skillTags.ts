@@ -1,4 +1,5 @@
 'use client'
+import { Skill } from "@/app/Skills/page";
 /// So in preparation of converting everything to typescript n stuff, it seems i'll need to wework how importing scripts works.
 /// this sounds like a good time to move to typescript, so... yeah.
 /// New thing to do: convert scripts from Javascript to Typescript.
@@ -38,14 +39,30 @@ function DecodeSkillListCookie(): string[]
 // Gets a skill name from its address.
 export function GetSkillFromAddress(address: string): string
 {
-  let skillAddress: string[] = address.split("|");
+  let skillAddress: string[] = address.split("/");
   return skillAddress[skillAddress.length-1];
 }
 
 // Sets a skill's parent skill.
 export function SetParentSkill(address: string): string
 {
-  let skillAddress: string[] = address.split("|");
+  let skillAddress: string[] = address.split("/");
   if (skillAddress.length <= 1) return "";
   else return skillAddress[skillAddress.length-2];
+}
+
+// checks if a skill is a subskill of another skill
+// Doesn't matter how many subskills follow, just if it is a subskill.
+export function IsSubSkill(parentSkill: Skill, potentialChild: Skill): boolean
+{
+  let skillAddress: string[] = parentSkill.address.split("/");
+  let potentialAddress: string[] = potentialChild.address.split("/");
+  for (let i = 0; i < skillAddress.length; i++)
+  {
+    if (skillAddress[i] != potentialAddress[i])
+    {
+      return false;
+    }
+  }
+  return true;
 }
