@@ -5,6 +5,9 @@ import { GetSavedSkillList, GetSkillFromAddress, SetParentSkill, IsSubSkill } fr
 import { ImageSetup } from "../../../public/HelperScripts/ImageHandler";
 let skillList: Skill[] = [];
 let holdOntoSkill: Skill;
+// I... really shouldn't be doing this... this is just here if new skill calls MoveSkills.
+let newBlankSkill: Skill = {name:"terrible", address:"work-", parent:"around"};
+let stopMoveSkills: boolean = false;
 document.addEventListener('DOMContentLoaded', function() {});
 
 export default function Skills() {
@@ -34,6 +37,7 @@ export default function Skills() {
 // Display something on the top messagebox. If the message is empty, display a default message.
 function Message(theMessage: string)
 {
+  //console.log("message was called")
   if (theMessage == "")
   {
     (document.getElementById("messageText") as HTMLParagraphElement).textContent = "Click on a skill to move it.";
@@ -41,6 +45,7 @@ function Message(theMessage: string)
   else
   {
     (document.getElementById("messageText") as HTMLParagraphElement).textContent = theMessage;
+    //console.log("adding custom text");
   }
 }
 
@@ -61,6 +66,17 @@ function DisplaySkills()
       DisplaySubSkills(skillList[i].name);
     }
   }
+    let newSkillParent = document.createElement("div");
+    let newSkill = document.createElement("button");
+    let newSkillImg = document.createElement("img");
+    newSkillImg.src = "img/Add.png"
+    newSkill.classList.add("skillText");
+    newSkillImg.classList.add("skillImage");
+    newSkillParent.appendChild(newSkillImg);
+    newSkillParent.appendChild(newSkill);
+    newSkill.textContent = "Add new skill / Move to Generic";
+    newSkill.addEventListener('click', function() {MoveSkills(newBlankSkill)});
+    document.getElementById("skillsList")?.appendChild(newSkillParent);
 }
 
 async function DisplaySubSkills(parentName: string)
@@ -106,50 +122,63 @@ function ArrayToSkillType(array: string[]): Skill[]
   return stringToSkills;
 }
 
-// 
-function MoveSkills(skillToMove: Skill)
+// Moves skills around. Also checks via the messagebox if the skill chosen is the one moving or its destination.
+async function MoveSkills(skillToMove: Skill)
 {
   if (document.getElementById("messagebox")?.textContent == "Click on a skill to move it." || document.getElementById("messagebox")?.textContent == "Cannot move parent skill into subskill.")
   {
     holdOntoSkill = skillToMove;
-    Message("Click on new skill, delete skill, or click on an existing skill to move the selected skill (" + skillToMove.name + ") to.");
-    /*
-    let newSkillParent = document.createElement("div");
-    let newSkill = document.createElement("button");
-    let newSkillImg = document.createElement("img");
-    newSkillImg.src = "img/Add.png"
-    newSkill.classList.add("skillText");
-    newSkillImg.classList.add("skillImage");
-    newSkillParent.appendChild(newSkillImg);
-    newSkillParent.appendChild(newSkill);
-    newSkill.textContent = "Add new skill or add to Generic";
-    document.getElementById("skillsList")?.appendChild(newSkillParent);*/
-  }
+    // new skill button (also for moving skills into generic)
+    if (skillToMove.name == "terrible" /* Should really check that the whole skill is the newSkills one and not just by name */)
+      {
+        stopMoveSkills = true;
+        if (skillList.includes(skillToMove))
+        {
+          // move existing skill
+        }
+        else
+        {
+          // create new skill
+          PromptForString();
+          document.addEventListener('methodFinished', () => {
+            DisplaySkills();
+            console.log(skillList);
+            stopMoveSkills = false;
+            Message("");
+          });
+        }  
+      }
+      else{
+        Message("Click on new skill, delete skill, or click on an existing skill to move the selected skill (" + skillToMove.name + ") to.");
+      }
+    }
   else
   {
-    // new skill button (also for moving skills into generic)
+    if (!stopMoveSkills)
+    {
+      if (IsSubSkill(holdOntoSkill,skillToMove))
+        {
+          Message("Cannot move parent skill into subskill.")
+        }
+        else
+        {
+          for (let i = 0; i < skillList.length; i++)
+            {
+              if ((skillList[i].name == holdOntoSkill.name) && (skillList[i].address == holdOntoSkill.address))
+              {
+                skillList[i].address = skillToMove.address + "/" + skillList[i].name;
+                skillList[i].parent = SetParentSkill(skillList[i].address);
+                holdOntoSkill = skillList[i];
+                break;
+              }
+            }
+            UpdateSubSkillAddress(holdOntoSkill);
+            DisplaySkills();
+            Message("");
+        }
+    }
     // delete skill button
     // move existing skills (I should check if the position to move it to is valid, as in not its own subskill)
-    if (IsSubSkill(holdOntoSkill,skillToMove))
-    {
-      Message("Cannot move parent skill into subskill.")
-    }
-    else
-    {
-      for (let i = 0; i < skillList.length; i++)
-        {
-          if ((skillList[i].name == holdOntoSkill.name) && (skillList[i].address == holdOntoSkill.address))
-          {
-            skillList[i].address = skillToMove.address + "/" + skillList[i].name;
-            skillList[i].parent = SetParentSkill(skillList[i].address);
-            holdOntoSkill = skillList[i];
-            break;
-          }
-        }
-        UpdateSubSkillAddress(holdOntoSkill);
-        DisplaySkills();
-        Message("");
-    }
   }
 }
 
@@ -166,15 +195,39 @@ function UpdateSubSkillAddress(parentSkill: Skill)
   }
 }
 
+async function PromptForString()
+{
+  Message("whyyyyyyyy");
+  let stringValue: string = "new";
+  const scanner = document.createElement("input");
+  scanner.classList.add("scanner");
+  document.getElementById("messagebox")?.appendChild(scanner);
+  scanner.addEventListener('keypress', function (event) {
+    if (event.key == "Enter") 
+      {
+      console.log(scanner.value);
+      stringValue = scanner.value;
+      skillList.push({name: stringValue, address: stringValue, parent:""});
+      EndPrompt();
+      }
+    }
+  );
+}
+
+function EndPrompt()
+{
+  let scanner = document.getElementsByClassName("scanner");
+  while (scanner.length > 0)
+    {
+      scanner[0].remove();
+    }
+    const event = new CustomEvent('methodFinished');
+    document.dispatchEvent(event);
+}
+
 // Skill object type.
 export type Skill = {
   name: string;
   address: string;
   parent: string;
 }
-
-/// So... ImageHandler won't play nice with this file for whatever reason. Somehow it manages to break everything.
-// I keep getting an error "saying server relative imports are not implemented yet", so it seems like it's not my fault this time.
-// (Shocking)
-// So... I think I need to copy-paste any functions that I need to grab. (that or rewrite them in some other way)
-// This is.. gonna be a lot harder than I thought.
