@@ -7,6 +7,7 @@ let skillList: Skill[] = [];
 let holdOntoSkill: Skill;
 // I... really shouldn't be doing this... this is just here if new skill calls MoveSkills.
 let newBlankSkill: Skill = {name:"terrible", address:"work-", parent:"around"};
+let throwAwaySkill: Skill = {name:"throwAwaySkill", address:"throwAwaySkill", parent:"throwAwaySkill"};
 let stopMoveSkills: boolean = false;
 document.addEventListener('DOMContentLoaded', function() {});
 
@@ -76,6 +77,7 @@ function DisplaySkills()
     newSkillParent.appendChild(newSkill);
     newSkill.textContent = "Add new skill / Move to Generic";
     newSkill.addEventListener('click', function() {MoveSkills(newBlankSkill)});
+    newSkillParent.setAttribute("id","newSkill");
     document.getElementById("skillsList")?.appendChild(newSkillParent);
 }
 
@@ -131,25 +133,32 @@ async function MoveSkills(skillToMove: Skill)
     // new skill button (also for moving skills into generic)
     if (skillToMove.name == "terrible" /* Should really check that the whole skill is the newSkills one and not just by name */)
       {
+        console.log("new");
         stopMoveSkills = true;
-        if (skillList.includes(skillToMove))
-        {
-          // move existing skill
-        }
-        else
-        {
-          // create new skill
+        if (!skillList.includes(skillToMove))
           PromptForString();
           document.addEventListener('methodFinished', () => {
             DisplaySkills();
-            console.log(skillList);
+            //console.log(skillList);
             stopMoveSkills = false;
             Message("");
           });
-        }  
       }
       else{
+        console.log("move");
         Message("Click on new skill, delete skill, or click on an existing skill to move the selected skill (" + skillToMove.name + ") to.");
+        let trashSkillParent = document.createElement("div");
+        let trashSkill = document.createElement("button");
+        let trashSkillImg = document.createElement("img");
+        trashSkillImg.src = "img/Trash.png"
+        trashSkill.classList.add("skillText");
+        trashSkillImg.classList.add("skillImage");
+        trashSkillParent.appendChild(trashSkillImg);
+        trashSkillParent.appendChild(trashSkill);
+        trashSkill.textContent = "Delete skill";
+        trashSkill.addEventListener('click', function() {MoveSkills(throwAwaySkill)});
+        trashSkillParent.setAttribute("id","trashSkill");
+        document.getElementById("skillsList")?.appendChild(trashSkillParent);
       }
     }
   else
@@ -159,6 +168,36 @@ async function MoveSkills(skillToMove: Skill)
       if (IsSubSkill(holdOntoSkill,skillToMove))
         {
           Message("Cannot move parent skill into subskill.")
+        }
+        else if (skillToMove.name == "terrible")
+        {
+          holdOntoSkill.address = holdOntoSkill.name;
+          holdOntoSkill.parent = "";
+          UpdateSubSkillAddress(holdOntoSkill);
+          DisplaySkills();
+          Message("");
+          RemoveDeleteSkill();
+        }
+        else if (skillToMove.name == "throwAwaySkill")
+        {
+          for (let i = 0; i < skillList.length; i++)
+          {
+            if (holdOntoSkill.name == skillList[i].name && holdOntoSkill.address == skillList[i].address)
+            {
+              const moveToGeneric: Skill = {name:holdOntoSkill.name, parent:"", address:""}
+              UpdateSubSkillAddress(moveToGeneric);
+              skillList.splice(i,1);
+              console.log(skillList);
+              break;
+            }
+          }
+          for (let i = 0; i < skillList.length; i++)
+          {
+            skillList[i].parent = SetParentSkill(skillList[i].address);
+          }
+          DisplaySkills();
+          Message("");
+          RemoveDeleteSkill();
         }
         else
         {
@@ -175,10 +214,9 @@ async function MoveSkills(skillToMove: Skill)
             UpdateSubSkillAddress(holdOntoSkill);
             DisplaySkills();
             Message("");
+            RemoveDeleteSkill();
         }
     }
-    // delete skill button
-    // move existing skills (I should check if the position to move it to is valid, as in not its own subskill)
   }
 }
 
@@ -187,17 +225,25 @@ function UpdateSubSkillAddress(parentSkill: Skill)
 {
   for (let i = 0; i < skillList.length; i++)
   {
+    console.log("index: " + i);
+    console.log("In list: " + skillList[i].parent)
+    console.log("Compare to: " + parentSkill.name)
     if (skillList[i].parent == parentSkill.name)
     {
+      console.log("THEY MATCH!")
+      console.log("Changing address to: /"+skillList[i].name);
       skillList[i].address = parentSkill.address + "/" + skillList[i].name;
       UpdateSubSkillAddress(skillList[i]);
     }
   }
+  console.log(skillList);
 }
 
+// Prompts for a string to complete making a new skill.
+// I hate how I coded this part, I should really rewrite it.
 async function PromptForString()
 {
-  Message("whyyyyyyyy");
+  Message("What's the name of the new skill?");
   let stringValue: string = "new";
   const scanner = document.createElement("input");
   scanner.classList.add("scanner");
@@ -205,8 +251,15 @@ async function PromptForString()
   scanner.addEventListener('keypress', function (event) {
     if (event.key == "Enter") 
       {
-      console.log(scanner.value);
-      stringValue = scanner.value;
+      if ((scanner.value == "") || (scanner.value == null))
+      {
+        stringValue = "new";
+      }
+      else
+      {
+        stringValue = scanner.value;
+      }
+      //console.log(stringValue);
       skillList.push({name: stringValue, address: stringValue, parent:""});
       EndPrompt();
       }
@@ -214,6 +267,7 @@ async function PromptForString()
   );
 }
 
+// Deletes the scanner and notifies anything waiting that it finished.
 function EndPrompt()
 {
   let scanner = document.getElementsByClassName("scanner");
@@ -223,6 +277,15 @@ function EndPrompt()
     }
     const event = new CustomEvent('methodFinished');
     document.dispatchEvent(event);
+}
+
+// deletes the trash skill button
+function RemoveDeleteSkill()
+{
+  while (document.getElementById("trashSkill") != null)
+  {
+    document.getElementById("trashSkill")?.remove();
+  }
 }
 
 // Skill object type.
