@@ -7,6 +7,7 @@ import { Skill } from "@/app/Skills/page";
 /// Searches through all available saved skill lists and picks the newest one to setup the skills.
 export function GetSavedSkillList(): string[]
 {
+  ////console.log("Hello?")
   let returnValue: string[] = [];
     // some if statement that checks if the cookie is the youngest.
     returnValue = DecodeSkillListCookie();
@@ -18,22 +19,63 @@ export function GetSavedSkillList(): string[]
 // Extension of GetSavedSkillList(). Returns the skill list in the cookie.
 function DecodeSkillListCookie(): string[]
 {
+  ////console.log("hello 2???")
     let cookieToDecode: string = "";
     let allSkills: string[] = [];
     const listOfCookies = decodeURIComponent(document.cookie).split(";");
+    ////console.log(listOfCookies);
     for (let i = 0; i < listOfCookies.length; i++)
     {
-      if (listOfCookies[i].indexOf("SkillTags") == 0)
+      if (listOfCookies[i].indexOf("SkillTags") == 0 || listOfCookies[i].indexOf("SkillTags") == 1)
       {
+        //console.log("found cookie")
         let intermediate = listOfCookies[i].split("=");
         cookieToDecode = intermediate[1];
       }
     }
-    for (let i = 0; i < cookieToDecode.length; i++)
+    //console.log(cookieToDecode.length)
+    //console.log(cookieToDecode)
+    //console.log("cookie string to skills string")
+    allSkills = cookieToDecode.split("`");
+    //console.log(allSkills)
+    // This prevents a bugged skill from spawning should the cookie have a "`" at the end.
+    // I should... just make it so that this thing doesn't make an invalid cookie by default.
+    // Checking for this does no harm though..
+    if (allSkills[allSkills.length-1] == "")
     {
-      allSkills = cookieToDecode.split("`");
+      allSkills.splice(allSkills.length-1,1);
     }
     return allSkills;
+}
+
+// creates a cookie value.
+export function EncodeNewCookieFromSkills(stringAddresses: Skill[])
+{
+  console.log(stringAddresses);
+  const listOfCookies = decodeURIComponent(document.cookie).split(";");
+  for (let i = 0; i < listOfCookies.length; i++)
+  {
+    if (listOfCookies[i].indexOf("SkillTags") == 0)
+    {
+        listOfCookies[i] = "SkillTags=;expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+        break;
+    }
+  }
+  let returnString = "";
+  for (let i = 0; i < stringAddresses.length-1; i++)
+  {
+    returnString += stringAddresses[i].address + "`";    
+  }
+  returnString += stringAddresses[stringAddresses.length-1].address;
+  /* Funny story, uhhh, this line above the comment? I forgot its purpose, deleted it, changed the for loop, and thought nothing of it.
+  ...Then I tried to debug something that was untraceable for like an hour.
+  Found the bug, and added a check for it in DecodeSkillListCookie.
+  Looked back at skillTags.js... and it had the fix in there already.
+  Maybe.. maybe I shouldn't be trusted with writing code. */
+  const d = new Date();
+  d.setTime(d.getTime()+1000*60*60*24*365);
+  let expires = "expires="+ d.toUTCString();
+  document.cookie = "SkillTags=" + returnString + "; " + expires;
 }
 
 // Gets a skill name from its address.

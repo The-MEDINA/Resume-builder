@@ -1,7 +1,7 @@
 'use client'
 import Script from "next/script";
 import dynamic from "next/dynamic";
-import { GetSavedSkillList, GetSkillFromAddress, SetParentSkill, IsSubSkill } from "../../../public/HelperScripts/skillTags";
+import { GetSavedSkillList, GetSkillFromAddress, SetParentSkill, IsSubSkill, EncodeNewCookieFromSkills } from "../../../public/HelperScripts/skillTags";
 import { ImageSetup } from "../../../public/HelperScripts/ImageHandler";
 let skillList: Skill[] = [];
 let holdOntoSkill: Skill;
@@ -9,20 +9,21 @@ let holdOntoSkill: Skill;
 let newBlankSkill: Skill = {name:"terrible", address:"work-", parent:"around"};
 let throwAwaySkill: Skill = {name:"throwAwaySkill", address:"throwAwaySkill", parent:"throwAwaySkill"};
 let stopMoveSkills: boolean = false;
-document.addEventListener('DOMContentLoaded', function() {});
 
 export default function Skills() {
   document.onreadystatechange = function () {
     if (document.readyState == "complete") {
     skillList = ArrayToSkillType(GetSavedSkillList());
     DisplaySkills();
+    document.getElementById("saveButton")?.addEventListener('click', function() {EncodeNewCookieFromSkills(skillList)});
     Message("");
   }
 }
     return (
       <div>
         <div className="topnav">
-          <a>Resume Maker</a>
+          <a>Resume Maker </a>
+          <button id="saveButton">|aaaaa|</button>
       </div>
     <div className="content">
         <div id="messagebox">
@@ -38,7 +39,7 @@ export default function Skills() {
 // Display something on the top messagebox. If the message is empty, display a default message.
 function Message(theMessage: string)
 {
-  //console.log("message was called")
+  ////console.log("message was called")
   if (theMessage == "")
   {
     (document.getElementById("messageText") as HTMLParagraphElement).textContent = "Click on a skill to move it.";
@@ -46,7 +47,7 @@ function Message(theMessage: string)
   else
   {
     (document.getElementById("messageText") as HTMLParagraphElement).textContent = theMessage;
-    //console.log("adding custom text");
+    ////console.log("adding custom text");
   }
 }
 
@@ -61,6 +62,7 @@ function DisplaySkills()
   {
     if (skillList[i].parent == "")
     {
+      console.log(skillList[i].name)
       let SkillToAppend = SkilltoDiv(skillList[i]);
       document.getElementById("skillsList")?.appendChild(SkillToAppend);
       SkillToAppend.style.paddingTop = (10 + "px");
@@ -83,11 +85,18 @@ function DisplaySkills()
 
 async function DisplaySubSkills(parentName: string)
 {
+  ////console.log(skillList)
   for (let i = 0; i < skillList.length; i++)
   {
     if (skillList[i].parent == parentName)
     {
       let SkillToAppend = SkilltoDiv(skillList[i]);
+      while (document.getElementById(skillList[i].parent) == null)
+      {
+        throw new Error("Found null getElementById");/* Had trouble with this thing getting null... 
+        throwing an error seems to also fix it, should the issue ever come up.
+        (It SHOULD be patched though)*/
+      }
       document.getElementById(skillList[i].parent)?.appendChild(SkillToAppend);
       SkillToAppend.style.paddingLeft = (20 + "px");
       DisplaySubSkills(skillList[i].name);
@@ -99,6 +108,7 @@ async function DisplaySubSkills(parentName: string)
 function SkilltoDiv(skillToConvert: Skill)
 {
   let parent = document.createElement("div");
+  //console.log("id will be: " + skillToConvert.name)
   parent.setAttribute("id",skillToConvert.name);
   let skillText = document.createElement("button");
   skillText.textContent = (skillToConvert.name + ": " + skillToConvert.address);
@@ -109,6 +119,7 @@ function SkilltoDiv(skillToConvert: Skill)
   parent.appendChild(skillImg);
   parent.appendChild(skillText);
   skillText.addEventListener('click', function() {MoveSkills(skillToConvert)});
+  //console.log("Skill converted: " + skillToConvert.name + " " + skillToConvert.parent + " " + skillToConvert.address)
   return parent;
 }
 
@@ -133,19 +144,19 @@ async function MoveSkills(skillToMove: Skill)
     // new skill button (also for moving skills into generic)
     if (skillToMove.name == "terrible" /* Should really check that the whole skill is the newSkills one and not just by name */)
       {
-        console.log("new");
+        ////console.log("new");
         stopMoveSkills = true;
         if (!skillList.includes(skillToMove))
           PromptForString();
           document.addEventListener('methodFinished', () => {
             DisplaySkills();
-            //console.log(skillList);
+            ////console.log(skillList);
             stopMoveSkills = false;
             Message("");
           });
       }
       else{
-        console.log("move");
+        ////console.log("move");
         Message("Click on new skill, delete skill, or click on an existing skill to move the selected skill (" + skillToMove.name + ") to.");
         let trashSkillParent = document.createElement("div");
         let trashSkill = document.createElement("button");
@@ -187,7 +198,7 @@ async function MoveSkills(skillToMove: Skill)
               const moveToGeneric: Skill = {name:holdOntoSkill.name, parent:"", address:""}
               UpdateSubSkillAddress(moveToGeneric);
               skillList.splice(i,1);
-              console.log(skillList);
+              ////console.log(skillList);
               break;
             }
           }
@@ -225,18 +236,25 @@ function UpdateSubSkillAddress(parentSkill: Skill)
 {
   for (let i = 0; i < skillList.length; i++)
   {
-    console.log("index: " + i);
-    console.log("In list: " + skillList[i].parent)
-    console.log("Compare to: " + parentSkill.name)
+    ////console.log("index: " + i);
+    ////console.log("In list: " + skillList[i].parent)
+    ////console.log("Compare to: " + parentSkill.name)
     if (skillList[i].parent == parentSkill.name)
     {
-      console.log("THEY MATCH!")
-      console.log("Changing address to: /"+skillList[i].name);
-      skillList[i].address = parentSkill.address + "/" + skillList[i].name;
+      ////console.log("THEY MATCH!")
+      ////console.log("Changing address to: /"+skillList[i].name);
+      if (parentSkill.address == "" || parentSkill.address == null)
+      {
+        skillList[i].address = skillList[i].name;
+      }
+      else
+      {
+        skillList[i].address = parentSkill.address + "/" + skillList[i].name;
+      }
       UpdateSubSkillAddress(skillList[i]);
     }
   }
-  console.log(skillList);
+  ////console.log(skillList);
 }
 
 // Prompts for a string to complete making a new skill.
@@ -259,7 +277,7 @@ async function PromptForString()
       {
         stringValue = scanner.value;
       }
-      //console.log(stringValue);
+      ////console.log(stringValue);
       skillList.push({name: stringValue, address: stringValue, parent:""});
       EndPrompt();
       }

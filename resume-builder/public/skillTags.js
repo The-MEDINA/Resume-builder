@@ -56,6 +56,7 @@ export function DecodeSkillTagsCookie()
     for (let i = 0; i < cookieToDecode.length; i++)
     {
         stringAddresses = cookieToDecode.split("`");
+        //console.log(stringAddresses);
     }
 }
 
@@ -65,7 +66,7 @@ function findSkillTagsCookie()
     const listOfCookies = decodeURIComponent(document.cookie).split(";");
     for (let i = 0; i < listOfCookies.length; i++)
     {
-        if (listOfCookies[i].indexOf("SkillTags") == 0)
+        if (listOfCookies[i].indexOf("SkillTags") == 0 || listOfCookies[i].indexOf("SkillTags") == 1)
         {
             return true;
         }
