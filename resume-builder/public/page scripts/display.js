@@ -86,7 +86,7 @@ function DisplayResumeCookies()
                     {
                         if (elementData[1] != "")
                         {
-                            elementSkills = elementData[1].split("|");
+                            elementSkills = elementData[1].split("/");
                         }
                     }
                 }
@@ -214,3 +214,6 @@ function PrintResume()
     topNav[0].remove();
     print();
 }
+
+//TODO: Add padding-top to the skill side column instead of just padding. Then bring back the images.
+// (Or something like that idk it's been a while)

@@ -1,7 +1,7 @@
 /* 
 Every skill is sorted into a list, and is formatted similarly to how directories work.
 simply add a skill by appending a string to the list.
-to add a subskill, add its parent skill before the subskill, but separate it with a "|".
+to add a subskill, add its parent skill before the subskill, but separate it with a "/".
 */
 let stringAddresses = [];
 
@@ -18,7 +18,7 @@ export function Setup()
     if (!findSkillTagsCookie())
     {
         const d = new Date();
-        d.setTime(d.getTime() *1.01);
+        d.setTime(d.getTime()+1000*60*60*24*365);
         let expires = "expires="+ d.toUTCString();
         document.cookie = "SkillTags=" + EncodeSkillTagsCookie() + "; " + expires;
     }
@@ -32,7 +32,7 @@ export function Setup()
 export function EncodeSkillTagsCookie()
 {
     let returnString = "";
-    for (let i = 0; i < stringAddresses.length-2; i++)
+    for (let i = 0; i < stringAddresses.length-1; i++)
     {
         returnString += stringAddresses[i] + "`";    
     }
@@ -56,6 +56,7 @@ export function DecodeSkillTagsCookie()
     for (let i = 0; i < cookieToDecode.length; i++)
     {
         stringAddresses = cookieToDecode.split("`");
+        //console.log(stringAddresses);
     }
 }
 
@@ -65,7 +66,7 @@ function findSkillTagsCookie()
     const listOfCookies = decodeURIComponent(document.cookie).split(";");
     for (let i = 0; i < listOfCookies.length; i++)
     {
-        if (listOfCookies[i].indexOf("SkillTags") == 0)
+        if (listOfCookies[i].indexOf("SkillTags") == 0 || listOfCookies[i].indexOf("SkillTags") == 1)
         {
             return true;
         }
@@ -78,36 +79,36 @@ export function DefaultAddresses()
 {
     // Programming section.
     stringAddresses.push("Programming");
-    stringAddresses.push("Programming|Web-Dev");
-    stringAddresses.push("Programming|Web-Dev|Frontend");
-    stringAddresses.push("Programming|Web-Dev|Backend");
-    stringAddresses.push("Programming|Web-Dev|Fullstack");
-    stringAddresses.push("Programming|Java");
-    stringAddresses.push("Programming|JavaScript");
-    stringAddresses.push("Programming|C#");
-    stringAddresses.push("Programming|C++");
-    stringAddresses.push("Programming|C");
-    stringAddresses.push("Programming|Python");
-    stringAddresses.push("Programming|Rust");
+    stringAddresses.push("Programming/Web-Dev");
+    stringAddresses.push("Programming/Web-Dev/Frontend");
+    stringAddresses.push("Programming/Web-Dev/Backend");
+    stringAddresses.push("Programming/Web-Dev/Fullstack");
+    stringAddresses.push("Programming/Java");
+    stringAddresses.push("Programming/JavaScript");
+    stringAddresses.push("Programming/C#");
+    stringAddresses.push("Programming/C++");
+    stringAddresses.push("Programming/C");
+    stringAddresses.push("Programming/Python");
+    stringAddresses.push("Programming/Rust");
     // GameDev Section.
     stringAddresses.push("Game-Dev");
-    stringAddresses.push("Game-Dev|Game Design");
-    stringAddresses.push("Game-Dev|Game Development");
-    stringAddresses.push("Game-Dev|Game Testing");
-    stringAddresses.push("Game-Dev|Godot");
-    stringAddresses.push("Game-Dev|Unity");
-    stringAddresses.push("Game-Dev|MonoGame");
+    stringAddresses.push("Game-Dev/Game Design");
+    stringAddresses.push("Game-Dev/Game Development");
+    stringAddresses.push("Game-Dev/Game Testing");
+    stringAddresses.push("Game-Dev/Godot");
+    stringAddresses.push("Game-Dev/Unity");
+    stringAddresses.push("Game-Dev/MonoGame");
     // Esports section.
     stringAddresses.push("Esports");
-    stringAddresses.push("Esports|PlayVS");
+    stringAddresses.push("Esports/PlayVS");
     // Music section.
     stringAddresses.push("Music");
-    stringAddresses.push("Music|Music Performance");
-    stringAddresses.push("Music|Music Performance|Band");
-    stringAddresses.push("Music|Music Performance|Orchestra");
-    stringAddresses.push("Music|Music Performance|Ensemble");
-    stringAddresses.push("Music|Music Performance|Soloist");
-    stringAddresses.push("Music|Music Composition");
+    stringAddresses.push("Music/Music Performance");
+    stringAddresses.push("Music/Music Performance/Band");
+    stringAddresses.push("Music/Music Performance/Orchestra");
+    stringAddresses.push("Music/Music Performance/Ensemble");
+    stringAddresses.push("Music/Music Performance/Soloist");
+    stringAddresses.push("Music/Music Composition");
     // Job Experience section.
     stringAddresses.push("Job Experience");
     // Awards section.
@@ -123,7 +124,7 @@ export function SpecifySkills(skillName)
     {
         for (let i = 0; i < stringAddresses.length; i++)
         {
-            const skill = stringAddresses[i].split("|");
+            const skill = stringAddresses[i].split("/");
             if (skill.length == 1)
             {
                 sortedSkills.push(skill[0]);
@@ -134,7 +135,7 @@ export function SpecifySkills(skillName)
     {
         for (let i = 0; i < stringAddresses.length; i++)
         {
-            let skill = stringAddresses[i].split("|");
+            let skill = stringAddresses[i].split("/");
             if (skill.includes(skillName))
             {
                 for (let i = 0; i < skill.indexOf(skillName)+1; i++)
@@ -158,7 +159,7 @@ export function SpecifySkillAddress(skillName)
     let address = []
     for (let i = 0; i < stringAddresses.length; i++)
     {
-        address = stringAddresses[i].split("|");
+        address = stringAddresses[i].split("/");
         if (address[address.length-1] == skillName)
         {
             return address;

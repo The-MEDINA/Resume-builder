@@ -6,9 +6,9 @@ A Resume and CV maker made to take better advantage of the web.
 
 This is a [Next.js](https://nextjs.org) project.
 
-You'll need npm stuff to get the project started. (pnpm also recommended)
+This means you'll need to download [Node.js](https://nodejs.org/en/download/) to run the local server and see changes.
 
-Navigate to the resume-builder folder in the project.
+To start the local server, navigate to the resume-builder folder in the project.
 
 Then, start the development server:
 
@@ -16,12 +16,10 @@ Then, start the development server:
 npm run dev
 # or
 yarn dev
-# or (the one I recommend)
+# or
 pnpm dev
 # or
 bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-All the pages are run by scripts stored in the public folder. the scripts match their page name. Edit those to make changes to each page.
