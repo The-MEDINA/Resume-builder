@@ -85,11 +85,13 @@ export function DefaultAddresses()
     stringAddresses.push("Programming/Web-Dev/Fullstack");
     stringAddresses.push("Programming/Java");
     stringAddresses.push("Programming/JavaScript");
+    stringAddresses.push("Programming/JavaScript/TypeScript");
     stringAddresses.push("Programming/C#");
     stringAddresses.push("Programming/C++");
     stringAddresses.push("Programming/C");
     stringAddresses.push("Programming/Python");
     stringAddresses.push("Programming/Rust");
+    stringAddresses.push("Programming/PHP");
     // GameDev Section.
     stringAddresses.push("Game-Dev");
     stringAddresses.push("Game-Dev/Game Design");
@@ -97,7 +99,8 @@ export function DefaultAddresses()
     stringAddresses.push("Game-Dev/Game Testing");
     stringAddresses.push("Game-Dev/Godot");
     stringAddresses.push("Game-Dev/Unity");
-    stringAddresses.push("Game-Dev/MonoGame");
+    stringAddresses.push("Game-Dev/Monogame");
+    stringAddresses.push("Game-Dev/Unreal Engine");
     // Esports section.
     stringAddresses.push("Esports");
     stringAddresses.push("Esports/PlayVS");
@@ -109,8 +112,15 @@ export function DefaultAddresses()
     stringAddresses.push("Music/Music Performance/Ensemble");
     stringAddresses.push("Music/Music Performance/Soloist");
     stringAddresses.push("Music/Music Composition");
-    // Job Experience section.
-    stringAddresses.push("Job Experience");
+    // misc or generic Experience section.
+    stringAddresses.push("Experience");
+    stringAddresses.push("Experience/Job Experience");
+    stringAddresses.push("Experience/Leadership");
+    stringAddresses.push("Experience/Competition");
+    stringAddresses.push("Experience/Competition/UIL");
+    // RIT section.
+    stringAddresses.push("RIT");
+    stringAddresses.push("RIT/CSH");
     // Awards section.
     stringAddresses.push("Award");
     return stringAddresses;

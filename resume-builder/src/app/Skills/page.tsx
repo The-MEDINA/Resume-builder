@@ -23,7 +23,7 @@ export default function Skills() {
       <div>
         <div className="topnav">
           <a>Resume Maker </a>
-          <button id="saveButton">|aaaaa|</button>
+          <button id="saveButton">|Save skills list|</button>
       </div>
     <div className="content">
         <div id="messagebox">
