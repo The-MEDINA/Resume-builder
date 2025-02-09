@@ -1,14 +1,10 @@
 'use client'
-import Script from "next/script";
-import dynamic from "next/dynamic";
 import { GetSavedSkillList, GetSkillFromAddress, SetParentSkill, IsSubSkill, EncodeNewCookieFromSkills } from "../../../public/HelperScripts/skillTags";
 import { ImageSetup } from "../../../public/HelperScripts/ImageHandler";
 let skillList: Skill[] = [];
 let holdOntoSkill: Skill;
-// I... really shouldn't be doing this... this is just here if new skill calls MoveSkills.
-let newBlankSkill: Skill = {name:"terrible", address:"work-", parent:"around"};
-let throwAwaySkill: Skill = {name:"throwAwaySkill", address:"throwAwaySkill", parent:"throwAwaySkill"};
-let stopMoveSkills: boolean = false;
+let isSkillSelected: boolean = false;
+let NewSkillInProgress: boolean = false;
 
 export default function Skills() {
   document.onreadystatechange = function () {
@@ -39,7 +35,6 @@ export default function Skills() {
 // Display something on the top messagebox. If the message is empty, display a default message.
 function Message(theMessage: string)
 {
-  ////console.log("message was called")
   if (theMessage == "")
   {
     (document.getElementById("messageText") as HTMLParagraphElement).textContent = "Click on a skill to move it.";
@@ -47,7 +42,6 @@ function Message(theMessage: string)
   else
   {
     (document.getElementById("messageText") as HTMLParagraphElement).textContent = theMessage;
-    ////console.log("adding custom text");
   }
 }
 
@@ -62,7 +56,6 @@ function DisplaySkills()
   {
     if (skillList[i].parent == "")
     {
-      console.log(skillList[i].name)
       let SkillToAppend = SkilltoDiv(skillList[i]);
       document.getElementById("skillsList")?.appendChild(SkillToAppend);
       SkillToAppend.style.paddingTop = (10 + "px");
@@ -78,14 +71,13 @@ function DisplaySkills()
     newSkillParent.appendChild(newSkillImg);
     newSkillParent.appendChild(newSkill);
     newSkill.textContent = "Add new skill / Move to Generic";
-    newSkill.addEventListener('click', function() {MoveSkills(newBlankSkill)});
+    newSkill.addEventListener('click', function() {NewSkill()});
     newSkillParent.setAttribute("id","newSkill");
     document.getElementById("skillsList")?.appendChild(newSkillParent);
 }
 
 async function DisplaySubSkills(parentName: string)
 {
-  ////console.log(skillList)
   for (let i = 0; i < skillList.length; i++)
   {
     if (skillList[i].parent == parentName)
@@ -108,7 +100,6 @@ async function DisplaySubSkills(parentName: string)
 function SkilltoDiv(skillToConvert: Skill)
 {
   let parent = document.createElement("div");
-  //console.log("id will be: " + skillToConvert.name)
   parent.setAttribute("id",skillToConvert.name);
   let skillText = document.createElement("button");
   skillText.textContent = (skillToConvert.name + ": " + skillToConvert.address);
@@ -119,7 +110,6 @@ function SkilltoDiv(skillToConvert: Skill)
   parent.appendChild(skillImg);
   parent.appendChild(skillText);
   skillText.addEventListener('click', function() {MoveSkills(skillToConvert)});
-  //console.log("Skill converted: " + skillToConvert.name + " " + skillToConvert.parent + " " + skillToConvert.address)
   return parent;
 }
 
@@ -135,28 +125,14 @@ function ArrayToSkillType(array: string[]): Skill[]
   return stringToSkills;
 }
 
-// Moves skills around. Also checks via the messagebox if the skill chosen is the one moving or its destination.
+// Moves skills around.
 async function MoveSkills(skillToMove: Skill)
 {
-  if (document.getElementById("messagebox")?.textContent == "Click on a skill to move it." || document.getElementById("messagebox")?.textContent == "Cannot move parent skill into subskill.")
+  if (!isSkillSelected)
   {
+    isSkillSelected = true;
     holdOntoSkill = skillToMove;
-    // new skill button (also for moving skills into generic)
-    if (skillToMove.name == "terrible" /* Should really check that the whole skill is the newSkills one and not just by name */)
       {
-        ////console.log("new");
-        stopMoveSkills = true;
-        if (!skillList.includes(skillToMove))
-          PromptForString();
-          document.addEventListener('methodFinished', () => {
-            DisplaySkills();
-            ////console.log(skillList);
-            stopMoveSkills = false;
-            Message("");
-          });
-      }
-      else{
-        ////console.log("move");
         Message("Click on new skill, delete skill, or click on an existing skill to move the selected skill (" + skillToMove.name + ") to.");
         let trashSkillParent = document.createElement("div");
         let trashSkill = document.createElement("button");
@@ -167,68 +143,87 @@ async function MoveSkills(skillToMove: Skill)
         trashSkillParent.appendChild(trashSkillImg);
         trashSkillParent.appendChild(trashSkill);
         trashSkill.textContent = "Delete skill";
-        trashSkill.addEventListener('click', function() {MoveSkills(throwAwaySkill)});
+        trashSkill.addEventListener('click', function() {DeleteSkill()});
         trashSkillParent.setAttribute("id","trashSkill");
         document.getElementById("skillsList")?.appendChild(trashSkillParent);
       }
     }
-  else
+  else if (!NewSkillInProgress)
   {
-    if (!stopMoveSkills)
+    if (IsSubSkill(holdOntoSkill,skillToMove))
     {
-      if (IsSubSkill(holdOntoSkill,skillToMove))
+      Message("Cannot move parent skill into subskill.")
+      isSkillSelected = false;
+    }
+    else
+    {
+      for (let i = 0; i < skillList.length; i++)
         {
-          Message("Cannot move parent skill into subskill.")
-        }
-        else if (skillToMove.name == "terrible")
-        {
-          holdOntoSkill.address = holdOntoSkill.name;
-          holdOntoSkill.parent = "";
-          UpdateSubSkillAddress(holdOntoSkill);
-          DisplaySkills();
-          Message("");
-          RemoveDeleteSkill();
-        }
-        else if (skillToMove.name == "throwAwaySkill")
-        {
-          for (let i = 0; i < skillList.length; i++)
-          {
-            if (holdOntoSkill.name == skillList[i].name && holdOntoSkill.address == skillList[i].address)
+          if ((skillList[i].name == holdOntoSkill.name) && (skillList[i].address == holdOntoSkill.address))
             {
-              const moveToGeneric: Skill = {name:holdOntoSkill.name, parent:"", address:""}
-              UpdateSubSkillAddress(moveToGeneric);
-              skillList.splice(i,1);
-              ////console.log(skillList);
+              skillList[i].address = skillToMove.address + "/" + skillList[i].name;
+              skillList[i].parent = SetParentSkill(skillList[i].address);
+              holdOntoSkill = skillList[i];
               break;
             }
           }
-          for (let i = 0; i < skillList.length; i++)
-          {
-            skillList[i].parent = SetParentSkill(skillList[i].address);
-          }
-          DisplaySkills();
-          Message("");
-          RemoveDeleteSkill();
-        }
-        else
-        {
-          for (let i = 0; i < skillList.length; i++)
-            {
-              if ((skillList[i].name == holdOntoSkill.name) && (skillList[i].address == holdOntoSkill.address))
-              {
-                skillList[i].address = skillToMove.address + "/" + skillList[i].name;
-                skillList[i].parent = SetParentSkill(skillList[i].address);
-                holdOntoSkill = skillList[i];
-                break;
-              }
-            }
-            UpdateSubSkillAddress(holdOntoSkill);
-            DisplaySkills();
-            Message("");
-            RemoveDeleteSkill();
-        }
+        UpdateSubSkillAddress(holdOntoSkill);
+        DisplaySkills();
+        Message("");
+        RemoveDeleteSkill();
+        isSkillSelected = false;
     }
   }
+}
+
+// Prompts for a name and then creates a new skill, or moves an existing skill to generic.
+async function NewSkill()
+{
+  if (!isSkillSelected)
+  {
+    isSkillSelected = true;
+    NewSkillInProgress = true;
+    PromptForString();
+    document.addEventListener('methodFinished', () => {
+      DisplaySkills();
+      Message("");
+      NewSkillInProgress = false;
+      isSkillSelected = false;
+    });
+  }
+  else
+  {
+    holdOntoSkill.address = holdOntoSkill.name;
+    holdOntoSkill.parent = "";
+    UpdateSubSkillAddress(holdOntoSkill);
+    DisplaySkills();
+    Message("");
+    RemoveDeleteSkill();
+    isSkillSelected = false;
+  }
+}
+
+// Deletes the skill that was selected. 
+function DeleteSkill()
+{
+  for (let i = 0; i < skillList.length; i++)
+    {
+      if (holdOntoSkill.name == skillList[i].name && holdOntoSkill.address == skillList[i].address)
+      {
+        const moveToGeneric: Skill = {name:holdOntoSkill.name, parent:"", address:""}
+        UpdateSubSkillAddress(moveToGeneric);
+        skillList.splice(i,1);
+        break;
+      }
+    }
+    for (let i = 0; i < skillList.length; i++)
+    {
+      skillList[i].parent = SetParentSkill(skillList[i].address);
+    }
+    DisplaySkills();
+    Message("");
+    RemoveDeleteSkill();
+    isSkillSelected = false;
 }
 
 // finds subskills of a skill that was changed, and updates all of their addresses accordingly.
@@ -236,13 +231,8 @@ function UpdateSubSkillAddress(parentSkill: Skill)
 {
   for (let i = 0; i < skillList.length; i++)
   {
-    ////console.log("index: " + i);
-    ////console.log("In list: " + skillList[i].parent)
-    ////console.log("Compare to: " + parentSkill.name)
     if (skillList[i].parent == parentSkill.name)
     {
-      ////console.log("THEY MATCH!")
-      ////console.log("Changing address to: /"+skillList[i].name);
       if (parentSkill.address == "" || parentSkill.address == null)
       {
         skillList[i].address = skillList[i].name;
@@ -254,7 +244,6 @@ function UpdateSubSkillAddress(parentSkill: Skill)
       UpdateSubSkillAddress(skillList[i]);
     }
   }
-  ////console.log(skillList);
 }
 
 // Prompts for a string to complete making a new skill.
@@ -277,7 +266,6 @@ async function PromptForString()
       {
         stringValue = scanner.value;
       }
-      ////console.log(stringValue);
       skillList.push({name: stringValue, address: stringValue, parent:""});
       EndPrompt();
       }

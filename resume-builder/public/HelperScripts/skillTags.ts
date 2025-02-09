@@ -7,7 +7,6 @@ import { Skill } from "@/app/Skills/page";
 /// Searches through all available saved skill lists and picks the newest one to setup the skills.
 export function GetSavedSkillList(): string[]
 {
-  ////console.log("Hello?")
   let returnValue: string[] = [];
     // some if statement that checks if the cookie is the youngest.
     returnValue = DecodeSkillListCookie();
@@ -19,25 +18,18 @@ export function GetSavedSkillList(): string[]
 // Extension of GetSavedSkillList(). Returns the skill list in the cookie.
 function DecodeSkillListCookie(): string[]
 {
-  ////console.log("hello 2???")
     let cookieToDecode: string = "";
     let allSkills: string[] = [];
     const listOfCookies = decodeURIComponent(document.cookie).split(";");
-    ////console.log(listOfCookies);
     for (let i = 0; i < listOfCookies.length; i++)
     {
       if (listOfCookies[i].indexOf("SkillTags") == 0 || listOfCookies[i].indexOf("SkillTags") == 1)
       {
-        //console.log("found cookie")
         let intermediate = listOfCookies[i].split("=");
         cookieToDecode = intermediate[1];
       }
     }
-    //console.log(cookieToDecode.length)
-    //console.log(cookieToDecode)
-    //console.log("cookie string to skills string")
     allSkills = cookieToDecode.split("`");
-    //console.log(allSkills)
     // This prevents a bugged skill from spawning should the cookie have a "`" at the end.
     // I should... just make it so that this thing doesn't make an invalid cookie by default.
     // Checking for this does no harm though..
@@ -51,7 +43,6 @@ function DecodeSkillListCookie(): string[]
 // creates a cookie value.
 export function EncodeNewCookieFromSkills(stringAddresses: Skill[])
 {
-  console.log(stringAddresses);
   const listOfCookies = decodeURIComponent(document.cookie).split(";");
   for (let i = 0; i < listOfCookies.length; i++)
   {
