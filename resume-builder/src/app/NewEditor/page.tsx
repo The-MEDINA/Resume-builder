@@ -1,5 +1,6 @@
 'use client'
 import { Skill } from "@/app/Skills/page";
+import { split } from "postcss/lib/list";
 let resume: any = [];
 export default function NewEditor() {
   document.onreadystatechange = function () {
@@ -40,6 +41,20 @@ export default function NewEditor() {
 }
 
 /// Functions
+// Takes a string, identifies the css option, and uses the correct function to apply the value to the HTML element given.
+function AddCSSFromString(HTMLElement: any, rawString: string)
+{
+  let splitString: string[] = rawString.split(":");
+  for (let i = 0; i < splitString.length; i++)
+  {
+    splitString[i] = splitString[i].trim();
+  }
+  switch (splitString[0])
+  {
+    case ("display"): { HTMLElement.style.display = splitString[1]; break; }
+    case ("justify-content"): { HTMLElement.style.justifyContent = splitString[1]; break; }
+  }
+}
 // puts the resume onto the website.
 function DisplayResume()
 {
@@ -50,35 +65,8 @@ function DisplayResume()
   }
   for (let i = 0; i < resume.length; i++)
   {
-    if (resume[i] instanceof Title)
-    {
-      DisplayTitle();
-    }
+    resume[i].Display();
   }
-}
-
-function DisplayDescription()
-{
-
-}
-
-function DisplayDate()
-{
-
-}
-
-function DisplaySubtitle()
-{
-
-}
-
-function DisplayTitle()
-{
-  console.log("DisplayTitle()");
-}
-function DisplaySkill()
-{
-
 }
 
 function AddTitle()
@@ -88,8 +76,39 @@ function AddTitle()
   resume.push(newTitle);
   DisplayResume();
 }
+/// The base that all resume elements draw from.
+interface ResumeElement {
+  text: string;
+  textSize: number;
+  cssOptions: string[];
+  Display: (any);
+}
 
-/// Types & classes
+// Title class.
+class Title implements ResumeElement {
+  text: string;
+  textSize: number;
+  cssOptions: string[];
+  public constructor()
+  {
+    this.text = "new title";
+    this.textSize = 48;
+    this.cssOptions = ["display: flex","justify-content: center"];
+  }
+
+  Display()
+  {
+    let displayText = document.createElement("p");
+    displayText.textContent = this.text;
+    displayText.style.fontSize = (this.textSize + "px");
+    for (let i = 0; i < this.cssOptions.length; i++)
+    {
+      AddCSSFromString(displayText, this.cssOptions[i]);
+    }
+    document.getElementById("Resume")?.appendChild(displayText);
+  }
+}
+
 // Description class, Used for long text. Medium size.
 class Description {
   text: string;
@@ -117,15 +136,6 @@ class Subtitle {
   }
 }
 
-// Title class. Largest size.
-class Title {
-  text: string;
-  public constructor()
-  {
-    this.text = "new title";
-  }
-}
-
 // Experience class. Is a preset group of basic types.
 class Experience {
   titles: Subtitle[];
@@ -137,16 +147,6 @@ class Experience {
     this.titles = [];
     this.dates = [];
     this.desc = [];
-    this.skills = [];
-  }
-}
-
-// SkillBox class. 
-// The idea is that it's gonna place just a row or column of skills that can be interacted with to filter skills in the display page.
-class SkillBox {
-  skills: Skill[];
-  public constructor()
-  {
     this.skills = [];
   }
 }
