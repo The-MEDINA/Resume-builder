@@ -7,6 +7,7 @@ export default function Home() {
         <a>Resume Maker</a>
         <Link href="/Display">|Display resume|</Link>
         <Link href="/Skills">|Edit skills|</Link>
+        <Link href="/NewEditor">|new editor|</Link>
     </div>
     <div className="content">
       <div id="app">
