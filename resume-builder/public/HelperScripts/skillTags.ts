@@ -1,8 +1,5 @@
 'use client'
 import { Skill } from "@/app/Skills/page";
-/// So in preparation of converting everything to typescript n stuff, it seems i'll need to wework how importing scripts works.
-/// this sounds like a good time to move to typescript, so... yeah.
-/// New thing to do: convert scripts from Javascript to Typescript.
 
 /// Searches through all available saved skill lists and picks the newest one to setup the skills.
 export function GetSavedSkillList(): string[]
@@ -11,8 +8,8 @@ export function GetSavedSkillList(): string[]
     // some if statement that checks if the cookie is the youngest.
     returnValue = DecodeSkillListCookie();
     // another if statement to check if the CSH account's saved list is the youngest 
-    return returnValue;
     // (I hope and dream this will one day be implemented)
+    return returnValue;
 }
 
 // Extension of GetSavedSkillList(). Returns the skill list in the cookie.
@@ -98,4 +95,57 @@ export function IsSubSkill(parentSkill: Skill, potentialChild: Skill): boolean
     }
   }
   return true;
+}
+
+// The default skill list in its raw string format.
+export function DefaultSkillListString(): string[]
+{
+  let stringAddresses: string[] = []; 
+  // Programming section.
+  stringAddresses.push("Programming");
+  stringAddresses.push("Programming/Web-Dev");
+  stringAddresses.push("Programming/Web-Dev/Frontend");
+  stringAddresses.push("Programming/Web-Dev/Backend");
+  stringAddresses.push("Programming/Web-Dev/Fullstack");
+  stringAddresses.push("Programming/Java");
+  stringAddresses.push("Programming/JavaScript");
+  stringAddresses.push("Programming/JavaScript/TypeScript");
+  stringAddresses.push("Programming/C#");
+  stringAddresses.push("Programming/C++");
+  stringAddresses.push("Programming/C");
+  stringAddresses.push("Programming/Python");
+  stringAddresses.push("Programming/Rust");
+  stringAddresses.push("Programming/PHP");
+  // GameDev Section.
+  stringAddresses.push("Game-Dev");
+  stringAddresses.push("Game-Dev/Game Design");
+  stringAddresses.push("Game-Dev/Game Development");
+  stringAddresses.push("Game-Dev/Game Testing");
+  stringAddresses.push("Game-Dev/Godot");
+  stringAddresses.push("Game-Dev/Unity");
+  stringAddresses.push("Game-Dev/Monogame");
+  stringAddresses.push("Game-Dev/Unreal Engine");
+  // Esports section.
+  stringAddresses.push("Esports");
+  stringAddresses.push("Esports/PlayVS");
+  // Music section.
+  stringAddresses.push("Music");
+  stringAddresses.push("Music/Music Performance");
+  stringAddresses.push("Music/Music Performance/Band");
+  stringAddresses.push("Music/Music Performance/Orchestra");
+  stringAddresses.push("Music/Music Performance/Ensemble");
+  stringAddresses.push("Music/Music Performance/Soloist");
+  stringAddresses.push("Music/Music Composition");
+  // misc or generic Experience section.
+  stringAddresses.push("Experience");
+  stringAddresses.push("Experience/Job Experience");
+  stringAddresses.push("Experience/Leadership");
+  stringAddresses.push("Experience/Competition");
+  stringAddresses.push("Experience/Competition/UIL");
+  // RIT section.
+  stringAddresses.push("RIT");
+  stringAddresses.push("RIT/CSH");
+  // Awards section.
+  stringAddresses.push("Award");
+  return stringAddresses;
 }
