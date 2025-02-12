@@ -26,9 +26,7 @@ export default function NewEditor() {
           <button id="addRawTitle">|add title|</button>
           <button id="addExperience">|add experience|</button>
         </div>
-        <div id="Resume">
-        <p>resume</p>
-        </div>
+        <div id="Resume"></div>
         <div id="editElements">
         <p>edit</p>
         </div>
