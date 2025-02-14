@@ -73,6 +73,23 @@ export function GetSkillFromAddress(address: string): string
   return skillAddress[skillAddress.length-1];
 }
 
+// gets the full address from a skill name.
+export function GetAddressFromSkillName(name: string): string
+{
+  let skillsList = GetSavedSkillList();
+  let returnString: string = name;
+  for (let i = 0; i < skillsList.length; i++)
+  {
+    let skillAddress: string[] = skillsList[i].split("/");
+    if (skillAddress[skillAddress.length-1] == name)
+    {
+      returnString = skillsList[i];
+      break;
+    }
+  }
+  return returnString;
+}
+
 // Sets a skill's parent skill.
 export function SetParentSkill(address: string): string
 {

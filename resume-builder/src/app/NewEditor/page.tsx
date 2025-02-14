@@ -1,6 +1,6 @@
 'use client'
 import { ArrayToSkillType, Skill } from "@/app/Skills/page";
-import { GetSavedSkillList } from "../../../public/HelperScripts/skillTags";
+import { GetSavedSkillList, GetAddressFromSkillName, SetParentSkill } from "../../../public/HelperScripts/skillTags";
 let resume: any = [];
 let listOfSkills: Skill[] = ArrayToSkillType(GetSavedSkillList());
 export default function NewEditor() {
@@ -61,6 +61,7 @@ function AddCSSFromString(HTMLElement: any, rawString: string)
     case ("justify-content"): { HTMLElement.style.justifyContent = splitString[1]; break; }
     case ("font-size"): { HTMLElement.style.fontSize = splitString[1]; break; }
     case ("border"): { HTMLElement.style.border = splitString[1]; break; }
+    default: { throw new Error("Could not find a style method HTMLElement.style." + splitString[1]); }
   }
 }
 
@@ -140,24 +141,56 @@ function AddElementGroup(elementName: string)
 
 // Creates a dropdown menu of a specific set of skills.
 // As much as I hate my previous implementation of this, the general idea is the only way I can think of.
-function SkillDropDownMenu(parent: string, parentToAppendTo: any)
+function SkillDropDownMenu(parent: string, parentToAppendTo: any, destination: Skills[])
 {
   console.log("SkillDropDownMenu(string)");
   let parentdiv = document.createElement("div");
   for (let i = 0; i < listOfSkills.length; i++)
   {
     parentdiv.classList.add("skillDropDown");
+    parentdiv.setAttribute("id","temporary");
     if (listOfSkills[i].parent == parent)
     {
       let skillHolder = document.createElement("div");
+      skillHolder.setAttribute("id","temporary")
       let skill = document.createElement("button");
       skill.textContent = listOfSkills[i].name;
-      // something about adding an event somewhere in here.
-      skill.addEventListener('mouseover', function() {SkillDropDownMenu(listOfSkills[i].name, skillHolder)});
+      // So there's just a straight up error here but it lets my code run??? HUH
+      skill.addEventListener('click', function() {DeleteTemporary(); AddToSkillsBox(destination, skill.textContent)});
+      skill.addEventListener('mouseover', function() {SkillDropDownMenu(listOfSkills[i].name, skillHolder, destination)});
       skillHolder.appendChild(skill);
       parentdiv.appendChild(skillHolder);
       parentToAppendTo.appendChild(parentdiv);
     }
+  }
+}
+
+// Adds a skill to a specified list of skills if it doesn't already exist.
+// this only exists because I couldn't find a better way to add to a skillbox's skills list.
+function AddToSkillsBox(destination: Skills[], skillName: string)
+{
+  let skillToAdd: Skills = new Skills(skillName);
+  let duplicateSkill: boolean = false;
+  for (let i = 0; i < destination.length; i++)
+  {
+    if ((destination[i].name == skillToAdd.name) && (destination[i].address == skillToAdd.address) && (destination[i].parent == skillToAdd.parent))
+    {
+      duplicateSkill = true;
+    }
+  }
+  if (!duplicateSkill)
+  {
+    destination.push(skillToAdd);
+  }
+  console.log(resume);
+}
+
+//
+function DeleteTemporary()
+{
+  while (document.getElementById("temporary") != null)
+  {
+    document.getElementById("temporary")?.remove();
   }
 }
 
@@ -307,16 +340,16 @@ class Subtitle implements ResumeElement{
 
 // skills class.
 // I literally only need this because I didn't realize types are just converted to strings or something at runtime.
-class Skills{
+class Skills {
   name: string;
   parent: string;
   address: string;
   cssOptions: string[];
-  public constructor(skillType: Skill)
+  public constructor(skillName: string)
   {
-    this.name = skillType.name;    
-    this.parent = skillType.parent;    
-    this.address = skillType.address;  
+    this.name = skillName;  
+    this.address = GetAddressFromSkillName(this.name);  
+    this.parent = SetParentSkill(this.name);   
     this.cssOptions = ["display: inline-block", "border: solid"]; 
   }
 }
@@ -340,7 +373,9 @@ class SkillsBox {
     // something about appending skills here.
     let addButton = document.createElement("button");
     addButton.textContent = "|Add new skill|";
-    addButton.addEventListener('mouseover', function() {SkillDropDownMenu("", parent)});
+    let skillsCopy: Skills[] = this.skills;
+    addButton.addEventListener('mouseover', function() {DeleteTemporary(); SkillDropDownMenu("", parent, skillsCopy)});
+    addButton.addEventListener('click', function() {DeleteTemporary()});
     parent.appendChild(addButton)
     return parent;
   }
