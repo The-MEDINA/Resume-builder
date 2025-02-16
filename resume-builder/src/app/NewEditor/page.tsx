@@ -1,6 +1,7 @@
 'use client'
 import { ArrayToSkillType, Skill } from "@/app/Skills/page";
 import { GetSavedSkillList, GetAddressFromSkillName, SetParentSkill } from "../../../public/HelperScripts/skillTags";
+import { ImageSetup, ImageSetupFromRawAddress } from "../../../public/HelperScripts/ImageHandler";
 let resume: any = [];
 let listOfSkills: Skill[] = ArrayToSkillType(GetSavedSkillList());
 export default function NewEditor() {
@@ -12,6 +13,7 @@ export default function NewEditor() {
       document.getElementById("addRawDate")?.addEventListener('click', function() {AddRawElement("Date")});
       document.getElementById("addRawDesc")?.addEventListener('click', function() {AddRawElement("Description")});
       document.getElementById("addRawTitle")?.addEventListener('click', function() {AddRawElement("Title")});
+      document.getElementById("addSkillsBox")?.addEventListener('click', function() {AddRawElement("SkillsBox")});
       document.getElementById("addExperience")?.addEventListener('click', function() {AddElementGroup("Experience")});
       console.log(listOfSkills);
       // something something look for and load a previously saved resume somewhere
@@ -31,6 +33,7 @@ export default function NewEditor() {
           <button id="addRawDate">|add date|</button>
           <button id="addRawDesc">|add description|</button>
           <button id="addRawTitle">|add title|</button>
+          <button id="addSkillsBox">|add skills box|</button>
           <button id="addExperience">|add experience|</button>
         </div>
         <div id="Resume"></div>
@@ -111,6 +114,13 @@ function AddRawElement(elementName: string)
       DisplayResume();
       break;
     }
+    case ("SkillsBox"): 
+    {
+      let newBox = new SkillsBox();
+      resume.push(newBox);
+      DisplayResume();
+      break;
+    }
     default:
       {
         throw new Error("AddRawElement received a string that is not any basic resume element.");
@@ -140,10 +150,8 @@ function AddElementGroup(elementName: string)
 }
 
 // Creates a dropdown menu of a specific set of skills.
-// As much as I hate my previous implementation of this, the general idea is the only way I can think of.
 function SkillDropDownMenu(parent: string, parentToAppendTo: any, destination: Skills[])
 {
-  console.log("SkillDropDownMenu(string)");
   let parentdiv = document.createElement("div");
   for (let i = 0; i < listOfSkills.length; i++)
   {
@@ -180,12 +188,28 @@ function AddToSkillsBox(destination: Skills[], skillName: string)
   }
   if (!duplicateSkill)
   {
+
     destination.push(skillToAdd);
   }
-  console.log(resume);
+  DisplayResume();
 }
 
-//
+// Removes a skill from a specified list of skills.
+function RemoveFromSkillsBox(destination: Skills[], skillInString: string)
+{
+  let skillToRemove = new Skills(skillInString);
+  for (let i = 0; i < destination.length; i++)
+  {
+    if (destination[i].Equals(skillToRemove))
+    {
+      destination.splice(i,1);
+      break;
+    }
+  }
+  DisplayResume();
+}
+
+// Deletes everything labeled temporary.
 function DeleteTemporary()
 {
   while (document.getElementById("temporary") != null)
@@ -195,6 +219,7 @@ function DeleteTemporary()
 }
 
 /// The base that all of the fundamental resume elements draw from.
+/// Do be aware though, groups do NOT implement this.
 interface ResumeElement {
   text: string;
   cssOptions: string[];
@@ -352,6 +377,36 @@ class Skills {
     this.parent = SetParentSkill(this.name);   
     this.cssOptions = ["display: inline-block", "border: solid"]; 
   }
+
+  ConvertToHTML(parentSkillsBox: Skills[])
+  {
+    let parent = document.createElement("div");
+    for (let i = 0; i < this.cssOptions.length; i++)
+    {
+      AddCSSFromString(parent, this.cssOptions[i]);
+    }
+    let img = document.createElement("img");
+    ImageSetupFromRawAddress(img, this.address);
+    let name = document.createElement("p");
+    img.classList.add("skillImage");
+    name.classList.add("skillText");
+    name.textContent = this.name;
+    // It happened again, howww :sob:
+    name.addEventListener('click', function() {RemoveFromSkillsBox(parentSkillsBox, name.textContent)});
+    parent.appendChild(img);
+    parent.appendChild(name);
+    return parent;
+  }
+
+  // checks if two skills are identical.
+  Equals(skillToCompare: Skills)
+  {
+    if ((this.name == skillToCompare.name) && (this.parent == skillToCompare.parent) && (this.address == skillToCompare.address))
+    {
+      return true;
+    }
+    return false;
+  }
 }
 // skillsBox class.
 // We'll see if this is necessary or not later.
@@ -364,13 +419,27 @@ class SkillsBox {
 
   Display()
   {
-
+    let parent = document.createElement("div");
+    for (let i = 0; i < this.skills.length; i++)
+    {
+      parent.appendChild(this.skills[i].ConvertToHTML(this.skills));
+    }
+    let addButton = document.createElement("button");
+    addButton.textContent = "|Add new skill|";
+    let skillsCopy: Skills[] = this.skills;
+    addButton.addEventListener('mouseover', function() {DeleteTemporary(); SkillDropDownMenu("", parent, skillsCopy)});
+    addButton.addEventListener('click', function() {DeleteTemporary()});
+    parent.appendChild(addButton)
+    document.getElementById("Resume")?.appendChild(parent);
   }
 
   ConvertToHTML()
   {
     let parent = document.createElement("div");
-    // something about appending skills here.
+    for (let i = 0; i < this.skills.length; i++)
+    {
+      parent.appendChild(this.skills[i].ConvertToHTML(this.skills));
+    }
     let addButton = document.createElement("button");
     addButton.textContent = "|Add new skill|";
     let skillsCopy: Skills[] = this.skills;
