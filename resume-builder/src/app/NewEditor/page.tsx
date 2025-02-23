@@ -2,6 +2,7 @@
 import { ArrayToSkillType, Skill } from "@/app/Skills/page";
 import { GetSavedSkillList, GetAddressFromSkillName, SetParentSkill } from "../../../public/HelperScripts/skillTags";
 import { ImageSetupFromRawAddress } from "../../../public/HelperScripts/ImageHandler";
+import Display from "../Display/page";
 let resume: any = [];
 let listOfSkills: Skill[] = ArrayToSkillType(GetSavedSkillList());
 export default function NewEditor() {
@@ -78,6 +79,7 @@ function DisplayResume()
   }
   for (let i = 0; i < resume.length; i++)
   {
+    resume[i].index = i;
     resume[i].Display();
   }
 }
@@ -88,35 +90,35 @@ function AddRawElement(elementName: string)
   {
     case ("Title"): 
     {
-      let newTitle = new Title();
+      let newTitle = new Title(resume.length);
       resume.push(newTitle);
       DisplayResume();
       break;
     }
     case ("Subtitle"): 
     {
-      let newSubtitle = new Subtitle();
+      let newSubtitle = new Subtitle(resume.length);
       resume.push(newSubtitle);
       DisplayResume();
       break;
     }
     case ("Description"): 
     {
-      let newDesc = new Description();
+      let newDesc = new Description(resume.length);
       resume.push(newDesc);
       DisplayResume();
       break;
     }
     case ("Date"): 
     {
-      let newDate = new Date();
+      let newDate = new Date(resume.length);
       resume.push(newDate);
       DisplayResume();
       break;
     }
     case ("SkillsBox"): 
     {
-      let newBox = new SkillsBox();
+      let newBox = new SkillsBox(resume.length);
       resume.push(newBox);
       DisplayResume();
       break;
@@ -135,10 +137,10 @@ function AddElementGroup(elementName: string)
   {
     case ("Experience"): 
     {
-      let newExp = new Experience();
-      let newTitle = new Subtitle();
-      let newDate = new Date();
-      let newDesc = new Description();
+      let newExp = new Experience(resume.length);
+      let newTitle = new Subtitle(resume.length);
+      let newDate = new Date(resume.length);
+      let newDesc = new Description(resume.length);
       newExp.titles.push(newTitle);
       newExp.dates.push(newDate);
       newExp.desc.push(newDesc);
@@ -163,8 +165,7 @@ function SkillDropDownMenu(parent: string, parentToAppendTo: any, destination: S
       skillHolder.setAttribute("id","temporary")
       let skill = document.createElement("button");
       skill.textContent = listOfSkills[i].name;
-      // So there's just a straight up error here but it lets my code run??? HUH
-      skill.addEventListener('click', function() {DeleteTemporary(); AddToSkillsBox(destination, skill.textContent)});
+      skill.addEventListener('click', function() {DeleteTemporary(); AddToSkillsBox(destination, skill.textContent!)});
       skill.addEventListener('mouseover', function() {SkillDropDownMenu(listOfSkills[i].name, skillHolder, destination)});
       skillHolder.appendChild(skill);
       parentdiv.appendChild(skillHolder);
@@ -218,11 +219,52 @@ function DeleteTemporary()
   }
 }
 
+// brings up a text box that allows you to edit the text of the element you clicked on.
+function EditText(element: any)
+{
+  if (document.getElementsByClassName("scanner").length == 0)
+  {
+    FindElementOnPage(element)!.textContent = "";
+    const scannerDiv = document.createElement("div");
+    scannerDiv.setAttribute("id","temporary");
+    const scanner = document.createElement("input");
+    scanner.value = element.text;
+    scanner.classList.add("scanner");
+    scannerDiv.appendChild(scanner);
+    FindElementOnPage(element)?.appendChild(scannerDiv);
+    scanner.addEventListener('keypress', function (event) {if (event.key == "Enter") {
+      element.text = scanner.value;
+      DeleteTemporary();
+      if (element.text == "" || element.text == null)
+      {
+        resume.splice(element.index,1);
+      } 
+      DisplayResume();
+    }});
+  }
+}
+
+// Finds the element specified on the page.
+function FindElementOnPage(element: ResumeElement)
+{
+  let ids = (document.querySelectorAll("[index=\"" + element.index + "\"]"))
+  console.log(ids);
+  if (ids.length > 1 || ids.length == 0)
+  {
+    return document.getElementById("Resume");
+  }
+  else
+  {
+    return ids[0];
+  }
+}
+
 /// The base that all of the fundamental resume elements draw from.
 /// Do be aware though, groups do NOT implement this.
 interface ResumeElement {
   text: string;
   cssOptions: string[];
+  index: number;
 
   // directly adds the element to the page.
   Display: (any);
@@ -235,8 +277,10 @@ interface ResumeElement {
 class Title implements ResumeElement {
   text: string;
   cssOptions: string[];
-  public constructor()
+  index: number;
+  public constructor(i: number)
   {
+    this.index = i;
     this.text = "New Title";
     this.cssOptions = ["display: flex","justify-content: center","font-size: 48px"];
   }
@@ -245,10 +289,13 @@ class Title implements ResumeElement {
   {
     let displayText = document.createElement("p");
     displayText.textContent = this.text;
+    let editText = this;
+    displayText.addEventListener('click', function() {EditText(editText)});
     for (let i = 0; i < this.cssOptions.length; i++)
     {
       AddCSSFromString(displayText, this.cssOptions[i]);
     }
+    displayText.setAttribute("index",this.index.toString());
     document.getElementById("Resume")?.appendChild(displayText);
   }
 
@@ -260,6 +307,7 @@ class Title implements ResumeElement {
     {
       AddCSSFromString(displayText, this.cssOptions[i]);
     }
+    displayText.setAttribute("index",this.index.toString());
     return displayText;
   }
 }
@@ -268,8 +316,10 @@ class Title implements ResumeElement {
 class Description implements ResumeElement {
   text: string;
   cssOptions: string[];
-  public constructor()
+  index: number;
+  public constructor(i: number)
   {
+    this.index = i;
     this.text = "New description that says a lot of words about something.";
     this.cssOptions = ["font-size: 16px"];
   }
@@ -301,8 +351,10 @@ class Description implements ResumeElement {
 class Date implements ResumeElement {
   text: string;
   cssOptions: string[];
-  public constructor()
+  index: number;
+  public constructor(i: number)
   {
+    this.index = i;
     this.text = "Date start - Date end";
     this.cssOptions = ["font-size: 12px"];
   }
@@ -334,8 +386,10 @@ class Date implements ResumeElement {
 class Subtitle implements ResumeElement{
   text: string;
   cssOptions: string[];
-  public constructor()
+  index: number;
+  public constructor(i: number)
   {
+    this.index = i;
     this.text = "New Job title";
     this.cssOptions = ["font-size: 24px"];
   }
@@ -391,8 +445,7 @@ class Skills {
     img.classList.add("skillImage");
     name.classList.add("skillText");
     name.textContent = this.name;
-    // It happened again, howww :sob:
-    name.addEventListener('click', function() {RemoveFromSkillsBox(parentSkillsBox, name.textContent)});
+    name.addEventListener('click', function() {RemoveFromSkillsBox(parentSkillsBox, name.textContent!)});
     parent.appendChild(img);
     parent.appendChild(name);
     return parent;
@@ -413,8 +466,10 @@ class SkillsBox implements ResumeElement{
   text: string;
   cssOptions: string[];
   skills: Skills[];
-  public constructor()
+  index: number;
+  public constructor(i: number)
   {
+    this.index = i;
     this.skills = [];
     this.text = "";
     this.cssOptions = [];
@@ -468,12 +523,14 @@ class Experience {
   desc: Description[];
   skillsBox: SkillsBox;
   cssOptions: string[];
-  public constructor()
+  index: number;
+  public constructor(i: number)
   {
+    this.index = i;
     this.titles = [];
     this.dates = [];
     this.desc = [];
-    this.skillsBox = new SkillsBox();
+    this.skillsBox = new SkillsBox(this.index);
     this.cssOptions = [];
   }
 
