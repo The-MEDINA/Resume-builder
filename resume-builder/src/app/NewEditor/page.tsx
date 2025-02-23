@@ -1,7 +1,7 @@
 'use client'
 import { ArrayToSkillType, Skill } from "@/app/Skills/page";
 import { GetSavedSkillList, GetAddressFromSkillName, SetParentSkill } from "../../../public/HelperScripts/skillTags";
-import { ImageSetup, ImageSetupFromRawAddress } from "../../../public/HelperScripts/ImageHandler";
+import { ImageSetupFromRawAddress } from "../../../public/HelperScripts/ImageHandler";
 let resume: any = [];
 let listOfSkills: Skill[] = ArrayToSkillType(GetSavedSkillList());
 export default function NewEditor() {
@@ -409,17 +409,24 @@ class Skills {
   }
 }
 // skillsBox class.
-// We'll see if this is necessary or not later.
-class SkillsBox {
+class SkillsBox implements ResumeElement{
+  text: string;
+  cssOptions: string[];
   skills: Skills[];
   public constructor()
   {
     this.skills = [];
+    this.text = "";
+    this.cssOptions = [];
   }
 
   Display()
   {
     let parent = document.createElement("div");
+    for (let i = 0; i < this.cssOptions.length; i++)
+    {
+      AddCSSFromString(parent, this.cssOptions[i]);
+    }
     for (let i = 0; i < this.skills.length; i++)
     {
       parent.appendChild(this.skills[i].ConvertToHTML(this.skills));
@@ -436,6 +443,10 @@ class SkillsBox {
   ConvertToHTML()
   {
     let parent = document.createElement("div");
+    for (let i = 0; i < this.cssOptions.length; i++)
+    {
+      AddCSSFromString(parent, this.cssOptions[i]);
+    }
     for (let i = 0; i < this.skills.length; i++)
     {
       parent.appendChild(this.skills[i].ConvertToHTML(this.skills));
@@ -485,3 +496,7 @@ class Experience {
     document.getElementById("Resume")?.appendChild(parent);
   }
 }
+// TODO: move ALL of these objects to another class.
+// bring the text editing stuff from editor.js to here.
+// bring the movement buttons from editor.js to here.
+// Make it so you can delete elements (the experience object might need a small rewrite for that).
