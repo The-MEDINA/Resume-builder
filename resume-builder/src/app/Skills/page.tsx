@@ -1,5 +1,5 @@
 'use client'
-import { GetSavedSkillList, GetSkillFromAddress, SetParentSkill, IsSubSkill, EncodeNewCookieFromSkills } from "../../../public/HelperScripts/skillTags";
+import { GetSavedSkillList, GetSkillFromAddress, SetParentSkill, IsSubSkill, EncodeNewCookieFromSkills, DefaultSkillListString } from "../../../public/HelperScripts/skillTags";
 import { ImageSetup } from "../../../public/HelperScripts/ImageHandler";
 let skillList: Skill[] = [];
 let holdOntoSkill: Skill;
@@ -12,6 +12,7 @@ export default function Skills() {
     skillList = ArrayToSkillType(GetSavedSkillList());
     DisplaySkills();
     document.getElementById("saveButton")?.addEventListener('click', function() {EncodeNewCookieFromSkills(skillList)});
+    document.getElementById("resetButton")?.addEventListener('click', function() {EncodeNewCookieFromSkills(ArrayToSkillType(DefaultSkillListString())); DisplaySkills()});
     Message("");
   }
 }
@@ -20,6 +21,7 @@ export default function Skills() {
         <div className="topnav">
           <a>Resume Maker </a>
           <button id="saveButton">|Save skills list|</button>
+          <button id="resetButton">|Reset skills in browser|</button>
       </div>
     <div className="content">
         <div id="messagebox">
@@ -114,7 +116,7 @@ function SkilltoDiv(skillToConvert: Skill)
 }
 
 // Converts a list of strings to a list of Skill types.
-function ArrayToSkillType(array: string[]): Skill[]
+export function ArrayToSkillType(array: string[]): Skill[]
 {
   let stringToSkills: Skill[] = [];
   for (let i = 0; i < array.length; i++)
