@@ -2,7 +2,7 @@
 import { ArrayToSkillType, Skill } from "@/app/Skills/page";
 import { GetSavedSkillList, GetAddressFromSkillName, SetParentSkill } from "../../../public/HelperScripts/skillTags";
 import { ImageSetupFromRawAddress } from "../../../public/HelperScripts/ImageHandler";
-import Display from "../Display/page";
+import Link from "next/link";
 let resume: any = [];
 let listOfSkills: Skill[] = ArrayToSkillType(GetSavedSkillList());
 export default function NewEditor() {
@@ -11,13 +11,15 @@ export default function NewEditor() {
     {
       document.getElementById("app")?.classList.add('editor-grid');
       document.getElementById("addRawSubtitle")?.addEventListener('click', function() {AddRawElement("Subtitle")});
-      document.getElementById("addRawDate")?.addEventListener('click', function() {AddRawElement("Date")});
+      document.getElementById("addRawDateText")?.addEventListener('click', function() {AddRawElement("DateText")});
       document.getElementById("addRawDesc")?.addEventListener('click', function() {AddRawElement("Description")});
       document.getElementById("addRawTitle")?.addEventListener('click', function() {AddRawElement("Title")});
       document.getElementById("addSkillsBox")?.addEventListener('click', function() {AddRawElement("SkillsBox")});
-      document.getElementById("addExperience")?.addEventListener('click', function() {AddElementGroup("Experience")});
+      document.getElementById("addExperience")?.addEventListener('click', function() {AddRawElement("Experience")});
+      document.getElementById("save")?.addEventListener('click', function() {EncodeResumeCookie()});
       console.log(listOfSkills);
       // something something look for and load a previously saved resume somewhere
+      LoadExistingResumeCookie();
       DisplayResume();
     }
   }
@@ -25,13 +27,15 @@ export default function NewEditor() {
     <div>
 <div className="topnav">
         <a>Resume Maker</a>
+        <button id="save">|Save in browser|</button>
+        <Link href="/NewDisplay">|new presentation page|</Link>
     </div>
     <div className="content">
       <div id="app">
         <div id="addElements">
           <p>add</p>
           <button id="addRawSubtitle">|add subtitle|</button>
-          <button id="addRawDate">|add date|</button>
+          <button id="addRawDateText">|add DateText|</button>
           <button id="addRawDesc">|add description|</button>
           <button id="addRawTitle">|add title|</button>
           <button id="addSkillsBox">|add skills box|</button>
@@ -109,15 +113,28 @@ function AddRawElement(elementName: string)
       DisplayResume();
       break;
     }
-    case ("Date"): 
+    case ("DateText"): 
     {
-      let newDate = new Date(resume.length);
-      resume.push(newDate);
+      let newDateText = new DateText(resume.length);
+      resume.push(newDateText);
       DisplayResume();
       break;
     }
     case ("SkillsBox"): 
     {
+      let newBox = new SkillsBox(resume.length);
+      resume.push(newBox);
+      DisplayResume();
+      break;
+    }
+    case ("Experience"):
+    {
+      let newSubtitle = new Subtitle(resume.length);
+      resume.push(newSubtitle);
+      let newDateText = new DateText(resume.length);
+      resume.push(newDateText);
+      let newDesc = new Description(resume.length);
+      resume.push(newDesc);
       let newBox = new SkillsBox(resume.length);
       resume.push(newBox);
       DisplayResume();
@@ -130,26 +147,6 @@ function AddRawElement(elementName: string)
   }
 }
 
-// puts element groups, like experience, into the resume.
-function AddElementGroup(elementName: string)
-{
-  switch (elementName)
-  {
-    case ("Experience"): 
-    {
-      let newExp = new Experience(resume.length);
-      let newTitle = new Subtitle(resume.length);
-      let newDate = new Date(resume.length);
-      let newDesc = new Description(resume.length);
-      newExp.titles.push(newTitle);
-      newExp.dates.push(newDate);
-      newExp.desc.push(newDesc);
-      resume.push(newExp);
-      DisplayResume();
-      break;
-    }
-  }
-}
 
 // Creates a dropdown menu of a specific set of skills.
 function SkillDropDownMenu(parent: string, parentToAppendTo: any, destination: Skills[])
@@ -244,11 +241,10 @@ function EditText(element: any)
   }
 }
 
-// Finds the element specified on the page.
+// Finds the element specified on the page. Returns the resume if it's not found.
 function FindElementOnPage(element: ResumeElement)
 {
   let ids = (document.querySelectorAll("[index=\"" + element.index + "\"]"))
-  console.log(ids);
   if (ids.length > 1 || ids.length == 0)
   {
     return document.getElementById("Resume");
@@ -259,9 +255,102 @@ function FindElementOnPage(element: ResumeElement)
   }
 }
 
+// finds and loads an existing resume in the browser.
+function LoadExistingResumeCookie()
+{
+  const listOfCookies = decodeURIComponent(document.cookie).split(";");
+  for (let i = 0; i < listOfCookies.length; i++)
+  {
+    if (listOfCookies[i].indexOf("element") == 0 || listOfCookies[i].indexOf("element") == 1)
+    {
+      let intermediate = listOfCookies[i].split("=");
+      let generic: any = JSON.parse(intermediate[1]);
+      switch (generic.type)
+      {
+        case ("Title"): 
+        {
+          let cookieObj = new Title(generic.index);
+          cookieObj.text = generic.text;
+          cookieObj.cssOptions = generic.cssOptions;
+          resume.push(cookieObj);
+          break;
+        }
+        case ("Subtitle"):         
+        {
+          let cookieObj = new Subtitle(generic.index);
+          cookieObj.text = generic.text;
+          cookieObj.cssOptions = generic.cssOptions;
+          resume.push(cookieObj);
+          break;
+        }
+        case ("DateText"):         
+        {
+          let cookieObj = new DateText(generic.index);
+          cookieObj.text = generic.text;
+          cookieObj.cssOptions = generic.cssOptions;
+          resume.push(cookieObj);
+          break;
+        }
+        case ("Description"):         
+        {
+          let cookieObj = new Description(generic.index);
+          cookieObj.text = generic.text;
+          cookieObj.cssOptions = generic.cssOptions;
+          resume.push(cookieObj);
+          break;
+        }
+        case ("SkillsBox"):         
+        {
+          let cookieObj = new SkillsBox(generic.index);
+          cookieObj.text = generic.text;
+          cookieObj.cssOptions = generic.cssOptions;
+          let skillsArray: Skills[] = [];
+          for (let j = 0; j < generic.skills.length; j++)
+          {
+            let skill: Skills = new Skills(generic.skills[j].name);
+            skillsArray.push(skill);
+          }
+          cookieObj.skills = skillsArray;
+          resume.push(cookieObj);
+          break;
+        }
+        default: { throw new Error("Could not find a matching object for " + generic.type); }
+      }
+    }
+  }
+}
+
+// Saves a resume in the browser.
+// oh my god.. JSON makes this SO much easier.
+function EncodeResumeCookie()
+{
+  DeleteResumeCookie();
+  const d = new Date();
+  d.setTime(d.getTime() *1.01);
+  let expires = "expires="+ d.toUTCString();
+  for (let i = 0; i < resume.length; i++)
+  {
+    document.cookie = "element" + i + "=" + JSON.stringify(resume[i]) + ";" + expires;
+  }
+}
+
+// Deletes a resume saved in the browser.
+function DeleteResumeCookie()
+{
+  const listOfCookies = decodeURIComponent(document.cookie).split(";");
+  for (let i = 0; i < listOfCookies.length; i++)
+  {
+    if (listOfCookies[i].indexOf("element") == 0 || listOfCookies[i].indexOf("element") == 1)
+    {
+      let intermediate = listOfCookies[i].split("=");
+      document.cookie = intermediate[0] + "=; expires=Thu, 18 Dec 2013 12:00:00 UTC";
+    }
+  }
+}
+
 /// The base that all of the fundamental resume elements draw from.
-/// Do be aware though, groups do NOT implement this.
 interface ResumeElement {
+  type: string;
   text: string;
   cssOptions: string[];
   index: number;
@@ -275,11 +364,13 @@ interface ResumeElement {
 
 // Title class.
 class Title implements ResumeElement {
+  type: string;
   text: string;
   cssOptions: string[];
   index: number;
   public constructor(i: number)
   {
+    this.type = "Title";
     this.index = i;
     this.text = "New Title";
     this.cssOptions = ["display: flex","justify-content: center","font-size: 48px"];
@@ -289,8 +380,8 @@ class Title implements ResumeElement {
   {
     let displayText = document.createElement("p");
     displayText.textContent = this.text;
-    let editText = this;
-    displayText.addEventListener('click', function() {EditText(editText)});
+    let self = this;
+    displayText.addEventListener('click', function() {EditText(self)});
     for (let i = 0; i < this.cssOptions.length; i++)
     {
       AddCSSFromString(displayText, this.cssOptions[i]);
@@ -314,11 +405,13 @@ class Title implements ResumeElement {
 
 // Description class, Used for long text. Medium size.
 class Description implements ResumeElement {
+  type: string;
   text: string;
   cssOptions: string[];
   index: number;
   public constructor(i: number)
   {
+    this.type = "Description";
     this.index = i;
     this.text = "New description that says a lot of words about something.";
     this.cssOptions = ["font-size: 16px"];
@@ -328,10 +421,13 @@ class Description implements ResumeElement {
   {
     let displayText = document.createElement("p");
     displayText.textContent = this.text;
+    let self = this;
+    displayText.addEventListener('click', function() {EditText(self)});
     for (let i = 0; i < this.cssOptions.length; i++)
     {
       AddCSSFromString(displayText, this.cssOptions[i]);
     }
+    displayText.setAttribute("index",this.index.toString());
     document.getElementById("Resume")?.appendChild(displayText);
   }
 
@@ -343,19 +439,22 @@ class Description implements ResumeElement {
     {
       AddCSSFromString(displayText, this.cssOptions[i]);
     }
+    displayText.setAttribute("index",this.index.toString());
     return displayText;
   }
 }
 
-// Date class. Smallest size.
-class Date implements ResumeElement {
+// DateText class. Smallest size.
+class DateText implements ResumeElement {
+  type: string;
   text: string;
   cssOptions: string[];
   index: number;
   public constructor(i: number)
   {
+    this.type = "DateText";
     this.index = i;
-    this.text = "Date start - Date end";
+    this.text = "DateText start - DateText end";
     this.cssOptions = ["font-size: 12px"];
   }
 
@@ -363,10 +462,13 @@ class Date implements ResumeElement {
   {
     let displayText = document.createElement("p");
     displayText.textContent = this.text;
+    let self = this;
+    displayText.addEventListener('click', function() {EditText(self)});
     for (let i = 0; i < this.cssOptions.length; i++)
     {
       AddCSSFromString(displayText, this.cssOptions[i]);
     }
+    displayText.setAttribute("index",this.index.toString());
     document.getElementById("Resume")?.appendChild(displayText);
   }
 
@@ -378,17 +480,20 @@ class Date implements ResumeElement {
     {
       AddCSSFromString(displayText, this.cssOptions[i]);
     }
+    displayText.setAttribute("index",this.index.toString());
     return displayText;
   }
 }
 
 // Subtitle class, used for the title of things like job experiences. Large size.
 class Subtitle implements ResumeElement{
+  type: string;
   text: string;
   cssOptions: string[];
   index: number;
   public constructor(i: number)
   {
+    this.type = "Subtitle";
     this.index = i;
     this.text = "New Job title";
     this.cssOptions = ["font-size: 24px"];
@@ -398,10 +503,13 @@ class Subtitle implements ResumeElement{
   {
     let displayText = document.createElement("p");
     displayText.textContent = this.text;
+    let self = this;
+    displayText.addEventListener('click', function() {EditText(self)});
     for (let i = 0; i < this.cssOptions.length; i++)
     {
       AddCSSFromString(displayText, this.cssOptions[i]);
     }
+    displayText.setAttribute("index",this.index.toString());
     document.getElementById("Resume")?.appendChild(displayText);
   }
 
@@ -413,6 +521,7 @@ class Subtitle implements ResumeElement{
     {
       AddCSSFromString(displayText, this.cssOptions[i]);
     }
+    displayText.setAttribute("index",this.index.toString());
     return displayText;
   }
 }
@@ -463,12 +572,14 @@ class Skills {
 }
 // skillsBox class.
 class SkillsBox implements ResumeElement{
+  type: string;
   text: string;
   cssOptions: string[];
   skills: Skills[];
   index: number;
   public constructor(i: number)
   {
+    this.type = "SkillsBox";
     this.index = i;
     this.skills = [];
     this.text = "";
@@ -491,7 +602,12 @@ class SkillsBox implements ResumeElement{
     let skillsCopy: Skills[] = this.skills;
     addButton.addEventListener('mouseover', function() {DeleteTemporary(); SkillDropDownMenu("", parent, skillsCopy)});
     addButton.addEventListener('click', function() {DeleteTemporary()});
-    parent.appendChild(addButton)
+    parent.appendChild(addButton);
+    let deleteButton = document.createElement("button");
+    deleteButton.textContent = "|Remove skills box|";
+    let indexCopy = this.index;
+    deleteButton.addEventListener('click', function() {resume.splice(indexCopy,1); DisplayResume();});
+    parent.appendChild(deleteButton);
     document.getElementById("Resume")?.appendChild(parent);
   }
 
@@ -511,49 +627,14 @@ class SkillsBox implements ResumeElement{
     let skillsCopy: Skills[] = this.skills;
     addButton.addEventListener('mouseover', function() {DeleteTemporary(); SkillDropDownMenu("", parent, skillsCopy)});
     addButton.addEventListener('click', function() {DeleteTemporary()});
-    parent.appendChild(addButton)
+    parent.appendChild(addButton);
+    let deleteButton = document.createElement("button");
+    deleteButton.textContent = "|Remove skills box|";
+    let indexCopy = this.index;
+    deleteButton.addEventListener('click', function() {resume.splice(indexCopy,1); DisplayResume();});
+    parent.appendChild(deleteButton);
     return parent;
   }
 }
 
-// Experience class. Is a preset group of basic types.
-class Experience {
-  titles: Subtitle[];
-  dates: Date[];
-  desc: Description[];
-  skillsBox: SkillsBox;
-  cssOptions: string[];
-  index: number;
-  public constructor(i: number)
-  {
-    this.index = i;
-    this.titles = [];
-    this.dates = [];
-    this.desc = [];
-    this.skillsBox = new SkillsBox(this.index);
-    this.cssOptions = [];
-  }
-
-  Display()
-  {
-    let parent = document.createElement("div");
-    for (let i = 0; i < this.titles.length; i++)
-    {
-      parent.appendChild(this.titles[i].ConvertToHTML());
-    }
-    for (let i = 0; i < this.dates.length; i++)
-    {
-      parent.appendChild(this.dates[i].ConvertToHTML());
-    }
-    for (let i = 0; i < this.desc.length; i++)
-    {
-      parent.appendChild(this.desc[i].ConvertToHTML());
-    }
-    parent.appendChild(this.skillsBox.ConvertToHTML());
-    document.getElementById("Resume")?.appendChild(parent);
-  }
-}
 // TODO: move ALL of these objects to another class.
-// bring the text editing stuff from editor.js to here.
-// bring the movement buttons from editor.js to here.
-// Make it so you can delete elements (the experience object might need a small rewrite for that).
