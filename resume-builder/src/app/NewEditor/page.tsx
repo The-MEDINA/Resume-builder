@@ -5,6 +5,7 @@ import { ImageSetupFromRawAddress } from "../../../public/HelperScripts/ImageHan
 import Link from "next/link";
 let resume: any = [];
 let listOfSkills: Skill[] = ArrayToSkillType(GetSavedSkillList());
+let lockEditing: boolean = false;
 export default function NewEditor() {
   document.onreadystatechange = function () {
     if (document.readyState == "complete") 
@@ -85,6 +86,7 @@ function DisplayResume()
   {
     resume[i].index = i;
     resume[i].Display();
+    document.getElementById("Resume")?.appendChild(CreateMovementButtons(i));
   }
 }
 
@@ -348,6 +350,44 @@ function DeleteResumeCookie()
   }
 }
 
+function CreateMovementButtons(index: number)
+{
+  let parent = document.createElement("div");
+  let upButton = document.createElement("button");
+  upButton.textContent = "|^|";
+  upButton.addEventListener('click', function() {MoveElementUp(index)});
+  let downButton = document.createElement("button");
+  downButton.textContent = "|v|";
+  downButton.addEventListener('click', function() {MoveElementDown(index)});
+  parent.appendChild(upButton);
+  parent.appendChild(downButton);
+  return parent;
+}
+
+function MoveElementUp(index: number)
+{
+  lockEditing = true;
+  if (index != 0)
+  {
+    let holdThis = resume[index-1];
+    resume[index-1] = resume[index];
+    resume[index] = holdThis;
+    DisplayResume();
+  }
+  lockEditing = false;
+}
+
+function MoveElementDown(index: number)
+{
+  if (index != resume.length-1)
+    {
+      let holdThis = resume[index+1];
+      resume[index+1] = resume[index];
+      resume[index] = holdThis;
+      DisplayResume();
+    }
+}
+
 /// The base that all of the fundamental resume elements draw from.
 interface ResumeElement {
   type: string;
@@ -387,6 +427,7 @@ class Title implements ResumeElement {
       AddCSSFromString(displayText, this.cssOptions[i]);
     }
     displayText.setAttribute("index",this.index.toString());
+    //displayText.appendChild(CreateMovementButtons(this.index));
     document.getElementById("Resume")?.appendChild(displayText);
   }
 
@@ -636,5 +677,3 @@ class SkillsBox implements ResumeElement{
     return parent;
   }
 }
-
-// TODO: move ALL of these objects to another class.
