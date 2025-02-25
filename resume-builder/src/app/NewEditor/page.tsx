@@ -403,7 +403,7 @@ interface ResumeElement {
 }
 
 // Title class.
-class Title implements ResumeElement {
+export class Title implements ResumeElement {
   type: string;
   text: string;
   cssOptions: string[];
@@ -427,7 +427,6 @@ class Title implements ResumeElement {
       AddCSSFromString(displayText, this.cssOptions[i]);
     }
     displayText.setAttribute("index",this.index.toString());
-    //displayText.appendChild(CreateMovementButtons(this.index));
     document.getElementById("Resume")?.appendChild(displayText);
   }
 
@@ -445,7 +444,7 @@ class Title implements ResumeElement {
 }
 
 // Description class, Used for long text. Medium size.
-class Description implements ResumeElement {
+export class Description implements ResumeElement {
   type: string;
   text: string;
   cssOptions: string[];
@@ -486,7 +485,7 @@ class Description implements ResumeElement {
 }
 
 // DateText class. Smallest size.
-class DateText implements ResumeElement {
+export class DateText implements ResumeElement {
   type: string;
   text: string;
   cssOptions: string[];
@@ -527,7 +526,7 @@ class DateText implements ResumeElement {
 }
 
 // Subtitle class, used for the title of things like job experiences. Large size.
-class Subtitle implements ResumeElement{
+export class Subtitle implements ResumeElement{
   type: string;
   text: string;
   cssOptions: string[];
@@ -569,7 +568,7 @@ class Subtitle implements ResumeElement{
 
 // skills class.
 // I literally only need this because I didn't realize types are just converted to strings or something at runtime.
-class Skills {
+export class Skills {
   name: string;
   parent: string;
   address: string;
@@ -612,7 +611,7 @@ class Skills {
   }
 }
 // skillsBox class.
-class SkillsBox implements ResumeElement{
+export class SkillsBox implements ResumeElement{
   type: string;
   text: string;
   cssOptions: string[];
@@ -674,6 +673,20 @@ class SkillsBox implements ResumeElement{
     let indexCopy = this.index;
     deleteButton.addEventListener('click', function() {resume.splice(indexCopy,1); DisplayResume();});
     parent.appendChild(deleteButton);
+    return parent;
+  }
+
+  ConvertToHTMLForPresentPage()
+  {
+    let parent = document.createElement("div");
+    for (let i = 0; i < this.cssOptions.length; i++)
+    {
+      AddCSSFromString(parent, this.cssOptions[i]);
+    }
+    for (let i = 0; i < this.skills.length; i++)
+    {
+      parent.appendChild(this.skills[i].ConvertToHTML(this.skills));
+    }
     return parent;
   }
 }
