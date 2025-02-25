@@ -1,7 +1,6 @@
 'use client'
-import Script from "next/script";
+import { SkillsBox, Skills, Title, Subtitle, DateText, Description } from "../../../public/HelperScripts/Elements";
 import Link from "next/link";
-import { Title, Subtitle, DateText, Description, SkillsBox, Skills } from "@/app/NewEditor/page";
 let presentResume: any = [];
 export default function NewDisplay() {
     document.onreadystatechange = function () {
@@ -9,17 +8,6 @@ export default function NewDisplay() {
         {
           document.getElementById("print")?.addEventListener('click', function() {PrintResume()});
           LoadExistingResumeCookie();
-          for (let i = 0; i < presentResume.length; i++)
-          {
-            if (presentResume[i].type == "SkillsBox")
-            {
-                document.getElementById("app")?.appendChild(presentResume[i].ConvertToHTMLForPresentPage());
-            }
-            else
-            {
-                document.getElementById("app")?.appendChild(presentResume[i].ConvertToHTML());
-            }
-          }
         }
       }
   return (
@@ -100,6 +88,7 @@ function LoadExistingResumeCookie()
       }
     }
   }
+  PresentResume();
 }
 
 // brings up a printing dialog for the resume.
@@ -109,4 +98,19 @@ function PrintResume()
     const content = document.getElementsByClassName("content");
     content[0].classList.remove("content");
     print();
+}
+
+function PresentResume()
+{
+  for (let i = 0; i < presentResume.length; i++)
+  {
+    if (presentResume[i].type == "SkillsBox")
+    {
+        document.getElementById("app")?.appendChild(presentResume[i].ConvertToHTMLForPresentPage());
+    }
+    else
+    {
+        document.getElementById("app")?.appendChild(presentResume[i].ConvertToHTML());
+    }
+  }
 }
