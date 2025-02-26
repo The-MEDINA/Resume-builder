@@ -1,6 +1,5 @@
 'use client'
 import { SkillsBox, Skills, Title, Subtitle, DateText, Description } from "../../../public/HelperScripts/Elements";
-import Link from "next/link";
 let presentResume: any = [];
 export default function NewDisplay() {
     document.onreadystatechange = function () {
@@ -106,11 +105,15 @@ function PresentResume()
   {
     if (presentResume[i].type == "SkillsBox")
     {
-        document.getElementById("app")?.appendChild(presentResume[i].ConvertToHTMLForPresentPage());
+      document.getElementById("app")?.appendChild(presentResume[i].ConvertToHTMLForPresentPage());
     }
     else
     {
-        document.getElementById("app")?.appendChild(presentResume[i].ConvertToHTML());
+      let element = document.getElementById("app")?.appendChild(presentResume[i].ConvertToHTML());
+      // so for animating you might wanna reference these links:
+      // https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API/Using_the_Web_Animations_API
+      // https://stackoverflow.com/questions/18481550/how-to-dynamically-create-keyframe-css-animations
+      element.animate([{paddingTop:"10px", opacity:0},{paddingTop:"0px", opacity:1}],{duration: 500, easing: "ease-out"});
     }
   }
 }
