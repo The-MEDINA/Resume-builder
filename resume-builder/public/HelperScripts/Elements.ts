@@ -303,3 +303,44 @@ export class SkillsBox implements ResumeElement{
     return parent;
   }
 }
+
+// divider class.
+export class Divider implements ResumeElement{
+  type: string;
+  text: string;
+  cssOptions: string[];
+  index: number;
+  public constructor(i: number)
+  {
+    this.type = "Divider";
+    this.index = i;
+    this.text = "New divider";
+    this.cssOptions = ["border-bottom: solid","font-size: 24px"];
+  }
+
+  Display()
+  {
+    let displayText = document.createElement("p");
+    displayText.textContent = this.text;
+    let self = this;
+    displayText.addEventListener('click', function() {EditText(self)});
+    for (let i = 0; i < this.cssOptions.length; i++)
+    {
+      AddCSSFromString(displayText, this.cssOptions[i]);
+    }
+    displayText.setAttribute("index",this.index.toString());
+    document.getElementById("Resume")?.appendChild(displayText);
+  }
+
+  ConvertToHTML()
+  {
+    let displayText = document.createElement("p");
+    displayText.textContent = this.text;
+    for (let i = 0; i < this.cssOptions.length; i++)
+    {
+      AddCSSFromString(displayText, this.cssOptions[i]);
+    }
+    displayText.setAttribute("index",this.index.toString());
+    return displayText;
+  }
+}

@@ -1,7 +1,7 @@
 'use client'
 import { ArrayToSkillType, Skill } from "@/app/Skills/page";
 import { GetSavedSkillList } from "../../public/HelperScripts/skillTags";
-import { SkillsBox, Skills, Title, Subtitle, DateText, Description, ResumeElement } from "../../public/HelperScripts/Elements";
+import { SkillsBox, Skills, Title, Subtitle, DateText, Description, ResumeElement, Divider } from "../../public/HelperScripts/Elements";
 import Link from "next/link";
 export let resume: any = [];
 let listOfSkills: Skill[] = ArrayToSkillType(GetSavedSkillList());
@@ -11,6 +11,7 @@ export default function NewEditor() {
     {
       document.getElementById("app")?.classList.add('editor-grid');
       document.getElementById("addRawSubtitle")?.addEventListener('click', function() {AddRawElement("Subtitle")});
+      document.getElementById("addDivider")?.addEventListener('click', function() {AddRawElement("Divider")});
       document.getElementById("addRawDateText")?.addEventListener('click', function() {AddRawElement("DateText")});
       document.getElementById("addRawDesc")?.addEventListener('click', function() {AddRawElement("Description")});
       document.getElementById("addRawTitle")?.addEventListener('click', function() {AddRawElement("Title")});
@@ -34,6 +35,7 @@ export default function NewEditor() {
         <div id="addElements">
           <p>add</p>
           <button id="addRawSubtitle">|add subtitle|</button>
+          <button id="addDivider">|add divider|</button>
           <button id="addRawDateText">|add DateText|</button>
           <button id="addRawDesc">|add description|</button>
           <button id="addRawTitle">|add title|</button>
@@ -68,6 +70,7 @@ export function AddCSSFromString(HTMLElement: any, rawString: string)
     case ("justify-content"): { HTMLElement.style.justifyContent = splitString[1]; break; }
     case ("font-size"): { HTMLElement.style.fontSize = splitString[1]; break; }
     case ("border"): { HTMLElement.style.border = splitString[1]; break; }
+    case ("border-bottom"): { HTMLElement.style.borderBottom = splitString[1]; break; }
     default: { throw new Error("Could not find a style method HTMLElement.style." + splitString[1]); }
   }
 }
@@ -124,6 +127,13 @@ function AddRawElement(elementName: string)
     {
       let newBox = new SkillsBox(resume.length);
       resume.push(newBox);
+      DisplayResume();
+      break;
+    }
+    case ("Divider"): 
+    {
+      let newDivider = new Divider(resume.length);
+      resume.push(newDivider);
       DisplayResume();
       break;
     }
@@ -272,6 +282,14 @@ function LoadExistingResumeCookie()
           cookieObj.text = generic.text;
           cookieObj.cssOptions = generic.cssOptions;
           resume.push(cookieObj);
+          break;
+        }
+        case ("Divider"):         
+        {
+          let dividerObj = new Divider(generic.index);
+          dividerObj.text = generic.text;
+          dividerObj.cssOptions = generic.cssOptions;
+          resume.push(dividerObj);
           break;
         }
         case ("SkillsBox"):         

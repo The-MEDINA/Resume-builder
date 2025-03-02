@@ -1,5 +1,5 @@
 'use client'
-import { SkillsBox, Skills, Title, Subtitle, DateText, Description } from "../../../public/HelperScripts/Elements";
+import { SkillsBox, Skills, Title, Subtitle, DateText, Description, Divider } from "../../../public/HelperScripts/Elements";
 let presentResume: any = [];
 export default function NewDisplay() {
     document.onreadystatechange = function () {
@@ -66,6 +66,14 @@ function LoadExistingResumeCookie()
           cookieObj.text = generic.text;
           cookieObj.cssOptions = generic.cssOptions;
           presentResume.push(cookieObj);
+          break;
+        }
+        case ("Divider"):         
+        {
+          let dividerObj = new Divider(generic.index);
+          dividerObj.text = generic.text;
+          dividerObj.cssOptions = generic.cssOptions;
+          presentResume.push(dividerObj);
           break;
         }
         case ("SkillsBox"):         
