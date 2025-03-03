@@ -1,6 +1,7 @@
 'use client'
 import { SkillsBox, Skills, Title, Subtitle, DateText, Description, Divider } from "../../../public/HelperScripts/Elements";
 let presentResume: any = [];
+let searchBySkills: any = [];
 export default function NewDisplay() {
     document.onreadystatechange = function () {
         if (document.readyState == "complete") 
@@ -123,5 +124,20 @@ function PresentResume()
       // https://stackoverflow.com/questions/18481550/how-to-dynamically-create-keyframe-css-animations
       element.animate([{paddingTop:"10px", opacity:0},{paddingTop:"0px", opacity:1}],{duration: 500, easing: "ease-out"});
     }
+  }
+}
+
+export function FilterBySkills(skillName: string)
+{
+  console.log("FilterBySkills " + skillName);
+  if (searchBySkills.includes(skillName))
+  {
+    console.log("remove " + skillName);
+    searchBySkills.splice(searchBySkills.indexOf(skillName),1);
+  }
+  else
+  {
+    console.log("add " + skillName);
+    searchBySkills.push(skillName);
   }
 }

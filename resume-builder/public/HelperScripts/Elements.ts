@@ -1,4 +1,5 @@
-import { AddCSSFromString, EditText, RemoveFromSkillsBox, DeleteTemporary, SkillDropDownMenu, resume, DisplayResume } from "@/app/page";
+import { EditText, RemoveFromSkillsBox, DeleteTemporary, SkillDropDownMenu, resume, DisplayResume } from "@/app/page";
+import { FilterBySkills } from "@/app/Present/page"; 
 import { GetAddressFromSkillName, SetParentSkill } from "../../public/HelperScripts/skillTags";
 import { ImageSetupFromRawAddress } from "../../public/HelperScripts/ImageHandler";
 /// The base that all of the fundamental resume elements draw from.
@@ -212,6 +213,24 @@ export class Skills {
     parent.appendChild(name);
     return parent;
   }
+  ConvertToHTMLForPresentPage(parentSkillsBox: Skills[])
+  {
+    let parent = document.createElement("div");
+    for (let i = 0; i < this.cssOptions.length; i++)
+    {
+      AddCSSFromString(parent, this.cssOptions[i]);
+    }
+    let img = document.createElement("img");
+    ImageSetupFromRawAddress(img, this.address);
+    let name = document.createElement("p");
+    img.classList.add("skillImage");
+    name.classList.add("skillText");
+    name.textContent = this.name;
+    name.addEventListener('click', function() {FilterBySkills(name.textContent!)});
+    parent.appendChild(img);
+    parent.appendChild(name);
+    return parent;
+  }
 
   // checks if two skills are identical.
   Equals(skillToCompare: Skills)
@@ -298,7 +317,7 @@ export class SkillsBox implements ResumeElement{
     }
     for (let i = 0; i < this.skills.length; i++)
     {
-      parent.appendChild(this.skills[i].ConvertToHTML(this.skills));
+      parent.appendChild(this.skills[i].ConvertToHTMLForPresentPage(this.skills));
     }
     return parent;
   }
@@ -342,5 +361,24 @@ export class Divider implements ResumeElement{
     }
     displayText.setAttribute("index",this.index.toString());
     return displayText;
+  }
+}
+
+// Takes a string, identifies the css option, and uses the correct function to apply the value to the HTML element given.
+export function AddCSSFromString(HTMLElement: any, rawString: string)
+{
+  let splitString: string[] = rawString.split(":");
+  for (let i = 0; i < splitString.length; i++)
+  {
+    splitString[i] = splitString[i].trim();
+  }
+  switch (splitString[0])
+  {
+    case ("display"): { HTMLElement.style.display = splitString[1]; break; }
+    case ("justify-content"): { HTMLElement.style.justifyContent = splitString[1]; break; }
+    case ("font-size"): { HTMLElement.style.fontSize = splitString[1]; break; }
+    case ("border"): { HTMLElement.style.border = splitString[1]; break; }
+    case ("border-bottom"): { HTMLElement.style.borderBottom = splitString[1]; break; }
+    default: { throw new Error("Could not find a style method HTMLElement.style." + splitString[1]); }
   }
 }

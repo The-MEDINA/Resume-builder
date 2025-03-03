@@ -29,6 +29,7 @@ export default function NewEditor() {
         <a>Resume Maker</a>
         <button id="save">|Save in browser|</button>
         <Link href="/Present">|Present|</Link>
+        <Link href="/Skills">|edit skills|</Link>
     </div>
     <div className="content">
       <div id="app">
@@ -56,25 +57,6 @@ export default function NewEditor() {
 }
 
 /// Functions
-// Takes a string, identifies the css option, and uses the correct function to apply the value to the HTML element given.
-export function AddCSSFromString(HTMLElement: any, rawString: string)
-{
-  let splitString: string[] = rawString.split(":");
-  for (let i = 0; i < splitString.length; i++)
-  {
-    splitString[i] = splitString[i].trim();
-  }
-  switch (splitString[0])
-  {
-    case ("display"): { HTMLElement.style.display = splitString[1]; break; }
-    case ("justify-content"): { HTMLElement.style.justifyContent = splitString[1]; break; }
-    case ("font-size"): { HTMLElement.style.fontSize = splitString[1]; break; }
-    case ("border"): { HTMLElement.style.border = splitString[1]; break; }
-    case ("border-bottom"): { HTMLElement.style.borderBottom = splitString[1]; break; }
-    default: { throw new Error("Could not find a style method HTMLElement.style." + splitString[1]); }
-  }
-}
-
 // puts the resume onto the website.
 export function DisplayResume()
 {
@@ -161,6 +143,7 @@ function AddRawElement(elementName: string)
 // Creates a dropdown menu of a specific set of skills.
 export function SkillDropDownMenu(parent: string, parentToAppendTo: any, destination: Skills[])
 {
+  console.log("skill drop down");
   let parentdiv = document.createElement("div");
   for (let i = 0; i < listOfSkills.length; i++)
   {
