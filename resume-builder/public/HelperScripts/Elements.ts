@@ -2,6 +2,7 @@ import { EditText, RemoveFromSkillsBox, DeleteTemporary, SkillDropDownMenu, resu
 import { FilterBySkills } from "@/app/Present/page"; 
 import { GetAddressFromSkillName, SetParentSkill } from "../../public/HelperScripts/skillTags";
 import { ImageSetupFromRawAddress } from "../../public/HelperScripts/ImageHandler";
+import { group } from "console";
 /// The base that all of the fundamental resume elements draw from.
 export interface ResumeElement {
   type: string;
@@ -364,6 +365,37 @@ export class Divider implements ResumeElement{
   }
 }
 
+// group class. NOT based off of a ResumeElement.
+export class Group {
+  type: string;
+  elements: ResumeElement[];
+  index: number;
+  public constructor(i: number)
+  {
+    this.index = i;
+    this.elements = [];
+    this.type = "Group";
+  } 
+  Display()
+  {
+    let groupDiv = document.createElement("div");
+    groupDiv.setAttribute("id","groupBox");
+    for (let i = 0; i < this.elements.length; i++)
+    {
+      let child = groupDiv.appendChild(this.elements[i].ConvertToHTML()); 
+      child.appendChild(GroupMovementButtons(this.elements[i].index, this));
+    }
+    let removeButton = document.createElement("p");
+    removeButton.textContent = "|remove group|";
+    let indexCopy = this.index;
+    removeButton.addEventListener('click', function() {resume.splice(indexCopy,1); DisplayResume();});
+    groupDiv.appendChild(removeButton);
+    document.getElementById("Resume")?.appendChild(groupDiv);
+  }
+
+  ConvertToHTML() { }
+}
+
 // Takes a string, identifies the css option, and uses the correct function to apply the value to the HTML element given.
 export function AddCSSFromString(HTMLElement: any, rawString: string)
 {
@@ -381,4 +413,54 @@ export function AddCSSFromString(HTMLElement: any, rawString: string)
     case ("border-bottom"): { HTMLElement.style.borderBottom = splitString[1]; break; }
     default: { throw new Error("Could not find a style method HTMLElement.style." + splitString[1]); }
   }
+}
+
+// Adds movement buttons to any resume element in a group.
+function GroupMovementButtons(index: number, groupBox: Group)
+{
+  let parent = document.createElement("div");
+  let upButton = document.createElement("button");
+  upButton.textContent = "|^|";
+  upButton.addEventListener('click', function() {MoveUp(index, groupBox)});
+  let downButton = document.createElement("button");
+  downButton.textContent = "|v|";
+  downButton.addEventListener('click', function() {MoveDown(index, groupBox)});
+  parent.appendChild(upButton);
+  parent.appendChild(downButton);
+  return parent;
+}
+
+function MoveUp(index: number, groupBox: Group)
+{
+  if (!(index-1 == groupBox.index))
+  {
+    let holdThis = groupBox.elements[(index-2)-groupBox.index];
+    groupBox.elements[(index-2)-groupBox.index] = groupBox.elements[(index-1)-groupBox.index];
+    groupBox.elements[(index-1)-groupBox.index] = holdThis;
+  }
+  else
+  {
+    let holdThis = groupBox.elements[(index-1) - groupBox.index];
+    groupBox.elements.splice(0,1);
+    resume.splice(groupBox.index, 0, holdThis);
+  }
+  DisplayResume();
+}
+
+function MoveDown(index: number, groupBox: Group)
+{
+  if (!(index == (groupBox.index + groupBox.elements.length)))
+  {
+    let holdThis = groupBox.elements[(index-1)-groupBox.index];
+    groupBox.elements[(index-1)-groupBox.index] = groupBox.elements[(index)-groupBox.index];
+    groupBox.elements[(index)-groupBox.index] = holdThis;
+  }
+  else
+  {
+    console.log("move out from bottom");
+    let holdThis = groupBox.elements[(index-1) - groupBox.index];
+    groupBox.elements.splice(groupBox.elements.length-1,1);
+    resume.splice(groupBox.index + groupBox.elements.length, 0, holdThis);
+  }
+  DisplayResume();
 }

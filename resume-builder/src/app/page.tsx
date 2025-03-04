@@ -1,7 +1,7 @@
 'use client'
 import { ArrayToSkillType, Skill } from "@/app/Skills/page";
 import { GetSavedSkillList } from "../../public/HelperScripts/skillTags";
-import { SkillsBox, Skills, Title, Subtitle, DateText, Description, ResumeElement, Divider } from "../../public/HelperScripts/Elements";
+import { SkillsBox, Skills, Title, Subtitle, DateText, Description, ResumeElement, Divider, Group } from "../../public/HelperScripts/Elements";
 import Link from "next/link";
 export let resume: any = [];
 let listOfSkills: Skill[] = ArrayToSkillType(GetSavedSkillList());
@@ -17,6 +17,7 @@ export default function NewEditor() {
       document.getElementById("addRawTitle")?.addEventListener('click', function() {AddRawElement("Title")});
       document.getElementById("addSkillsBox")?.addEventListener('click', function() {AddRawElement("SkillsBox")});
       document.getElementById("addExperience")?.addEventListener('click', function() {AddRawElement("Experience")});
+      document.getElementById("addGroup")?.addEventListener('click', function() {AddRawElement("Group")});
       document.getElementById("save")?.addEventListener('click', function() {EncodeResumeCookie()});
       console.log(listOfSkills);
       LoadExistingResumeCookie();
@@ -42,6 +43,7 @@ export default function NewEditor() {
           <button id="addRawTitle">|add title|</button>
           <button id="addSkillsBox">|add skills box|</button>
           <button id="addExperience">|add experience|</button>
+          <button id="addGroup">|add group box|</button>
         </div>
         <div id="Resume"></div>
         <div id="editElements">
@@ -60,6 +62,7 @@ export default function NewEditor() {
 // puts the resume onto the website.
 export function DisplayResume()
 {
+  let indexNumber = 0;
   console.log(resume);
   while (document.getElementById("Resume")?.firstChild != null)
   {
@@ -67,9 +70,18 @@ export function DisplayResume()
   }
   for (let i = 0; i < resume.length; i++)
   {
-    resume[i].index = i;
+    resume[i].index = indexNumber;
+    if (resume[i].type == "Group")
+    {
+      for (let j = 0; j < resume[i].elements.length; j++)
+      {
+        indexNumber++;
+        resume[i].elements[j].index = indexNumber;
+      }
+    }
     resume[i].Display();
     document.getElementById("Resume")?.appendChild(CreateMovementButtons(i));
+    indexNumber++;
   }
 }
 
@@ -129,6 +141,13 @@ function AddRawElement(elementName: string)
       resume.push(newDesc);
       let newBox = new SkillsBox(resume.length);
       resume.push(newBox);
+      DisplayResume();
+      break;
+    }
+    case ("Group"): 
+    {
+      let newGroup = new Group(resume.length);
+      resume.push(newGroup);
       DisplayResume();
       break;
     }
@@ -324,6 +343,7 @@ function DeleteResumeCookie()
   }
 }
 
+// Adds movement buttons to any resume element.
 function CreateMovementButtons(index: number)
 {
   let parent = document.createElement("div");
@@ -342,9 +362,17 @@ function MoveElementUp(index: number)
 {
   if (index != 0)
   {
-    let holdThis = resume[index-1];
-    resume[index-1] = resume[index];
-    resume[index] = holdThis;
+    if (resume[index].type != "Group" && resume[index-1].type == "Group")
+    {
+      resume[index-1].elements.push(resume[index]);
+      resume.splice(index,1); 
+    }
+    else
+    {
+      let holdThis = resume[index-1];
+      resume[index-1] = resume[index];
+      resume[index] = holdThis;
+    }
     DisplayResume();
   }
 }
@@ -352,12 +380,20 @@ function MoveElementUp(index: number)
 function MoveElementDown(index: number)
 {
   if (index != resume.length-1)
+  {
+    if (resume[index].type != "Group" && resume[index+1].type == "Group")
+    {
+      resume[index+1].elements.splice(0,0,resume[index]);
+      resume.splice(index,1); 
+    }
+    else
     {
       let holdThis = resume[index+1];
       resume[index+1] = resume[index];
       resume[index] = holdThis;
-      DisplayResume();
     }
+    DisplayResume();
+  }
 }
 
 // brings up a text box that allows you to edit the text of the element you clicked on.

@@ -102,7 +102,7 @@ body {
 #showSkill{
   border: solid;
 }
-#hideSkill{
+#groupBox{
   border: dashed;
 }
 .skillSideColumn {
