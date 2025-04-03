@@ -252,6 +252,7 @@ function LoadExistingResumeCookie()
     {
       let intermediate = listOfCookies[i].split("=");
       let generic: any = JSON.parse(intermediate[1]);
+      console.log(intermediate[1])
       switch (generic.type)
       {
         case ("Title"): 
@@ -297,6 +298,7 @@ function LoadExistingResumeCookie()
         case ("SkillsBox"):         
         {
           let cookieObj = new SkillsBox(generic.index);
+          console.log(cookieObj)
           cookieObj.text = generic.text;
           cookieObj.cssOptions = generic.cssOptions;
           let skillsArray: Skills[] = [];
@@ -307,6 +309,75 @@ function LoadExistingResumeCookie()
           }
           cookieObj.skills = skillsArray;
           resume.push(cookieObj);
+          break;
+        }
+        case ("Group"):         
+        {
+          let groupObj = new Group(generic.index);
+          for (let i = 0; i < generic.elements.length; i++)
+          {
+            // Yeah, uhh.. this is basically just the method copy pasted again.
+            // I REALLY need to clean this up and move it to another method later.
+            switch (generic.elements[i].type)
+            {
+              case("Title"):
+              {
+                let cookieObj = new Title(generic.elements[i].index);
+                cookieObj.text = generic.elements[i].text;
+                cookieObj.cssOptions = generic.elements[i].cssOptions;
+                groupObj.elements.push(cookieObj);
+                break;
+              }
+              case("Subtitle"):
+              {
+                let cookieObj = new Subtitle(generic.elements[i].index);
+                cookieObj.text = generic.elements[i].text;
+                cookieObj.cssOptions = generic.elements[i].cssOptions;
+                groupObj.elements.push(cookieObj);
+                break;
+              }
+              case("DateText"):
+              {
+                let cookieObj = new DateText(generic.elements[i].index);
+                cookieObj.text = generic.elements[i].text;
+                cookieObj.cssOptions = generic.elements[i].cssOptions;
+                groupObj.elements.push(cookieObj);
+                break;
+              }
+              case("Description"):
+              {
+                let cookieObj = new Description(generic.elements[i].index);
+                cookieObj.text = generic.elements[i].text;
+                cookieObj.cssOptions = generic.elements[i].cssOptions;
+                groupObj.elements.push(cookieObj);
+                break;
+              }
+              case("Divider"):
+              {
+                let cookieObj = new Divider(generic.elements[i].index);
+                cookieObj.text = generic.elements[i].text;
+                cookieObj.cssOptions = generic.elements[i].cssOptions;
+                groupObj.elements.push(cookieObj);
+                break;
+              }
+              case ("SkillsBox"):         
+              {
+                let cookieObj = new SkillsBox(generic.elements[i].index);
+                cookieObj.text = generic.elements[i].text;
+                cookieObj.cssOptions = generic.elements[i].cssOptions;
+                let skillsArray: Skills[] = [];
+                for (let j = 0; j < generic.elements[i].skills.length; j++)
+                {
+                  let skill: Skills = new Skills(generic.elements[i].skills[j].name);
+                  skillsArray.push(skill);
+                }
+                cookieObj.skills = skillsArray;
+                groupObj.elements.push(cookieObj);
+                break;
+              }
+            }
+          }
+          resume.push(groupObj);
           break;
         }
         default: { throw new Error("Could not find a matching object for " + generic.type); }

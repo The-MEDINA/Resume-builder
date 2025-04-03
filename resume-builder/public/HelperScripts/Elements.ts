@@ -382,6 +382,7 @@ export class Group {
     groupDiv.setAttribute("id","groupBox");
     for (let i = 0; i < this.elements.length; i++)
     {
+      console.log(this.elements[i]);
       let child = groupDiv.appendChild(this.elements[i].ConvertToHTML()); 
       child.appendChild(GroupMovementButtons(this.elements[i].index, this));
     }

@@ -1,5 +1,5 @@
 'use client'
-import { SkillsBox, Skills, Title, Subtitle, DateText, Description, Divider } from "../../../public/HelperScripts/Elements";
+import { SkillsBox, Skills, Title, Subtitle, DateText, Description, Divider, Group } from "../../../public/HelperScripts/Elements";
 let presentResume: any = [];
 let searchBySkills: any = [];
 export default function NewDisplay() {
@@ -92,6 +92,75 @@ function LoadExistingResumeCookie()
           presentResume.push(cookieObj);
           break;
         }
+        case ("Group"):         
+                {
+                  let groupObj = new Group(generic.index);
+                  for (let i = 0; i < generic.elements.length; i++)
+                  {
+                    // Yeah, uhh.. this is basically just the method copy pasted again.
+                    // I REALLY need to clean this up and move it to another method later.
+                    switch (generic.elements[i].type)
+                    {
+                      case("Title"):
+                      {
+                        let cookieObj = new Title(generic.elements[i].index);
+                        cookieObj.text = generic.elements[i].text;
+                        cookieObj.cssOptions = generic.elements[i].cssOptions;
+                        groupObj.elements.push(cookieObj);
+                        break;
+                      }
+                      case("Subtitle"):
+                      {
+                        let cookieObj = new Subtitle(generic.elements[i].index);
+                        cookieObj.text = generic.elements[i].text;
+                        cookieObj.cssOptions = generic.elements[i].cssOptions;
+                        groupObj.elements.push(cookieObj);
+                        break;
+                      }
+                      case("DateText"):
+                      {
+                        let cookieObj = new DateText(generic.elements[i].index);
+                        cookieObj.text = generic.elements[i].text;
+                        cookieObj.cssOptions = generic.elements[i].cssOptions;
+                        groupObj.elements.push(cookieObj);
+                        break;
+                      }
+                      case("Description"):
+                      {
+                        let cookieObj = new Description(generic.elements[i].index);
+                        cookieObj.text = generic.elements[i].text;
+                        cookieObj.cssOptions = generic.elements[i].cssOptions;
+                        groupObj.elements.push(cookieObj);
+                        break;
+                      }
+                      case("Divider"):
+                      {
+                        let cookieObj = new Divider(generic.elements[i].index);
+                        cookieObj.text = generic.elements[i].text;
+                        cookieObj.cssOptions = generic.elements[i].cssOptions;
+                        groupObj.elements.push(cookieObj);
+                        break;
+                      }
+                      case ("SkillsBox"):         
+                      {
+                        let cookieObj = new SkillsBox(generic.elements[i].index);
+                        cookieObj.text = generic.elements[i].text;
+                        cookieObj.cssOptions = generic.elements[i].cssOptions;
+                        let skillsArray: Skills[] = [];
+                        for (let j = 0; j < generic.elements[i].skills.length; j++)
+                        {
+                          let skill: Skills = new Skills(generic.elements[i].skills[j].name);
+                          skillsArray.push(skill);
+                        }
+                        cookieObj.skills = skillsArray;
+                        groupObj.elements.push(cookieObj);
+                        break;
+                      }
+                    }
+                  }
+                  presentResume.push(groupObj);
+                  break;
+                }
         default: { throw new Error("Could not find a matching object for " + generic.type); }
       }
     }
@@ -118,11 +187,35 @@ function PresentResume()
     }
     else
     {
-      let element = document.getElementById("app")?.appendChild(presentResume[i].ConvertToHTML());
+      let element;
+      if (presentResume[i].type == "Group")
+      {
+        let groupDiv = document.createElement("div");
+        for (let j = 0; j < presentResume[i].elements.length; j++)
+        {
+          // change this later to not be so nasty oml
+          // (condense some of these if/else statements jeez)
+          // this is some HIDEOUS programming tbh... but I mean, it gets the job done.
+          if (presentResume[i].elements[j].type == "SkillsBox")
+          {
+            element = groupDiv.appendChild(presentResume[i].elements[j].ConvertToHTMLForPresentPage());
+          }
+          else
+          {
+            element = groupDiv.appendChild(presentResume[i].elements[j].ConvertToHTML());
+          }
+          document.getElementById("app")?.appendChild(groupDiv);
+          element.animate([{paddingTop:"10px", opacity:0},{paddingTop:"0px", opacity:1}],{duration: 500, easing: "ease-out"});
+        }
+      }
+      else
+      {
+        element = document.getElementById("app")?.appendChild(presentResume[i].ConvertToHTML());
+        element.animate([{paddingTop:"10px", opacity:0},{paddingTop:"0px", opacity:1}],{duration: 500, easing: "ease-out"});
+      }
       // so for animating you might wanna reference these links:
       // https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API/Using_the_Web_Animations_API
       // https://stackoverflow.com/questions/18481550/how-to-dynamically-create-keyframe-css-animations
-      element.animate([{paddingTop:"10px", opacity:0},{paddingTop:"0px", opacity:1}],{duration: 500, easing: "ease-out"});
     }
   }
 }
