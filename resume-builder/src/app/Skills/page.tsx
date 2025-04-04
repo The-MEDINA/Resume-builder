@@ -19,7 +19,7 @@ export default function Skills() {
     return (
       <div>
         <div className="topnav">
-          <a>Resume Maker </a>
+          <a>Resu-Me </a>
           <button id="saveButton">|Save skills list|</button>
           <button id="resetButton">|Reset skills in browser|</button>
       </div>

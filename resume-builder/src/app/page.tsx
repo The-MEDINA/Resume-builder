@@ -27,7 +27,7 @@ export default function NewEditor() {
   return (
     <div>
 <div className="topnav">
-        <a>Resume Maker</a>
+        <a>Resu-Me </a>
         <button id="save">|Save in browser|</button>
         <Link href="/Present">|Present|</Link>
         <Link href="/Skills">|edit skills|</Link>
