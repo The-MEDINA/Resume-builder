@@ -4,7 +4,7 @@ An interactive Resume / CV / Portfolio site designed for the web.
 
 ## Getting Started
 
-This is a [Next.js](https://nextjs.org) project. You'll need to install its [required packages](https://nextjs.org/docs/app/getting-started/installation) before messing with Resu-Me
+This is a [Next.js](https://nextjs.org) project. You'll need to install its [required packages](https://nextjs.org/docs/app/getting-started/installation) before messing with Resu-Me.
 
 You'll also need [Node.js](https://nodejs.org/en/download/) to run the local server and see changes.
 
