@@ -1616,6 +1616,7 @@ function MoveDown(index, groupBox) {
 var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, z: __turbopack_require_stub__ } = __turbopack_context__;
 {
 __turbopack_esm__({
+    "FilterBySkills": (()=>FilterBySkills),
     "default": (()=>NewDisplay)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
@@ -1643,7 +1644,7 @@ function NewDisplay() {
                         children: "Resume Maker"
                     }, void 0, false, {
                         fileName: "[project]/src/app/Present/page.tsx",
-                        lineNumber: 17,
+                        lineNumber: 16,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1651,13 +1652,13 @@ function NewDisplay() {
                         children: " |print|"
                     }, void 0, false, {
                         fileName: "[project]/src/app/Present/page.tsx",
-                        lineNumber: 18,
+                        lineNumber: 17,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/Present/page.tsx",
-                lineNumber: 16,
+                lineNumber: 15,
                 columnNumber: 1
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1666,18 +1667,18 @@ function NewDisplay() {
                     id: "app"
                 }, void 0, false, {
                     fileName: "[project]/src/app/Present/page.tsx",
-                    lineNumber: 21,
+                    lineNumber: 20,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/Present/page.tsx",
-                lineNumber: 20,
+                lineNumber: 19,
                 columnNumber: 5
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/Present/page.tsx",
-        lineNumber: 15,
+        lineNumber: 14,
         columnNumber: 5
     }, this);
 }
@@ -1879,6 +1880,16 @@ function PresentResume() {
         // https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API/Using_the_Web_Animations_API
         // https://stackoverflow.com/questions/18481550/how-to-dynamically-create-keyframe-css-animations
         }
+    }
+}
+function FilterBySkills(skillName) {
+    console.log("FilterBySkills " + skillName);
+    if (searchBySkills.includes(skillName)) {
+        console.log("remove " + skillName);
+        searchBySkills.splice(searchBySkills.indexOf(skillName), 1);
+    } else {
+        console.log("add " + skillName);
+        searchBySkills.push(skillName);
     }
 }
 }}),
