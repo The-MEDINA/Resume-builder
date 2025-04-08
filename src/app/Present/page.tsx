@@ -1,5 +1,6 @@
 'use client'
 import { SkillsBox, Skills, Title, Subtitle, DateText, Description, Divider, Group } from "../../../public/HelperScripts/Elements";
+//import { FilterBySkills } from "../../../public/HelperScripts/Present";
 let presentResume: any = [];
 let searchBySkills: any = [];
 export default function NewDisplay() {
@@ -217,20 +218,5 @@ function PresentResume()
       // https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API/Using_the_Web_Animations_API
       // https://stackoverflow.com/questions/18481550/how-to-dynamically-create-keyframe-css-animations
     }
-  }
-}
-
-export function FilterBySkills(skillName: string)
-{
-  console.log("FilterBySkills " + skillName);
-  if (searchBySkills.includes(skillName))
-  {
-    console.log("remove " + skillName);
-    searchBySkills.splice(searchBySkills.indexOf(skillName),1);
-  }
-  else
-  {
-    console.log("add " + skillName);
-    searchBySkills.push(skillName);
   }
 }

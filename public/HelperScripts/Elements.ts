@@ -1,5 +1,5 @@
 import { EditText, RemoveFromSkillsBox, DeleteTemporary, SkillDropDownMenu, resume, DisplayResume } from "@/app/page";
-import { FilterBySkills } from "@/app/Present/page"; 
+import { FilterBySkills } from "../HelperScripts/Present";
 import { GetAddressFromSkillName, SetParentSkill } from "../../public/HelperScripts/skillTags";
 import { ImageSetupFromRawAddress } from "../../public/HelperScripts/ImageHandler";
 import { group } from "console";
