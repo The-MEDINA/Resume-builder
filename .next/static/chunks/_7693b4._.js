@@ -265,7 +265,7 @@ let isSkillSelected = false;
 let NewSkillInProgress = false;
 function Skills() {
     document.onreadystatechange = function() {
-        if (document.readyState == "complete") {
+        if (typeof document != undefined && document.readyState == "complete") {
             skillList = (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ArrayToSkillType"])((0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["GetSavedSkillList"])());
             DisplaySkills();
             document.getElementById("saveButton")?.addEventListener('click', function() {

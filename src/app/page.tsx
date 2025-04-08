@@ -7,7 +7,7 @@ import Link from "next/link";
 let listOfSkills: Skill[] = ArrayToSkillType(GetSavedSkillList());
 export default function NewEditor() {
   document.onreadystatechange = function () {
-    if (document.readyState == "complete") 
+    if (typeof document != undefined && document.readyState == "complete") 
     {
       document.getElementById("app")?.classList.add('editor-grid');
       document.getElementById("addRawSubtitle")?.addEventListener('click', function() {AddRawElement("Subtitle")});

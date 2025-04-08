@@ -8,7 +8,7 @@ let NewSkillInProgress: boolean = false;
 
 export default function Skills() {
   document.onreadystatechange = function () {
-    if (document.readyState == "complete") {
+    if (typeof document != undefined && document.readyState == "complete") {
     skillList = ArrayToSkillType(GetSavedSkillList());
     DisplaySkills();
     document.getElementById("saveButton")?.addEventListener('click', function() {EncodeNewCookieFromSkills(skillList)});

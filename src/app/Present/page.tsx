@@ -5,7 +5,7 @@ let presentResume: any = [];
 let searchBySkills: any = [];
 export default function NewDisplay() {
     document.onreadystatechange = function () {
-        if (document.readyState == "complete") 
+        if (typeof document != undefined && document.readyState == "complete") 
         {
           document.getElementById("print")?.addEventListener('click', function() {PrintResume()});
           LoadExistingResumeCookie();

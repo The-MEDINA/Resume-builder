@@ -1097,7 +1097,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 let listOfSkills = (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ArrayToSkillType"])((0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["GetSavedSkillList"])());
 function NewEditor() {
     document.onreadystatechange = function() {
-        if (document.readyState == "complete") {
+        if (typeof document != undefined && document.readyState == "complete") {
             document.getElementById("app")?.classList.add('editor-grid');
             document.getElementById("addRawSubtitle")?.addEventListener('click', function() {
                 AddRawElement("Subtitle");
