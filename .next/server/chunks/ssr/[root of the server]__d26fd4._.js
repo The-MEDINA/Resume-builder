@@ -8,6 +8,28 @@ const mod = __turbopack_external_require__("next/dist/compiled/next-server/app-p
 
 module.exports = mod;
 }}),
+"[project]/public/HelperScripts/Present.ts [app-ssr] (ecmascript)": ((__turbopack_context__) => {
+"use strict";
+
+var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, z: __turbopack_require_stub__ } = __turbopack_context__;
+{
+__turbopack_esm__({
+    "FilterBySkills": (()=>FilterBySkills)
+});
+function FilterBySkills(skillName) {
+    console.log("FilterBySkills " + skillName);
+// okay, find a new way to implement this later
+/*if (searchBySkills.includes(skillName))
+  {
+    console.log("remove " + skillName);
+    searchBySkills.splice(searchBySkills.indexOf(skillName),1);
+  }
+  else
+  {
+    console.log("add " + skillName);
+    searchBySkills.push(skillName);
+  }*/ }
+}}),
 "[project]/public/HelperScripts/skillTags.ts [app-ssr] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
@@ -166,177 +188,6 @@ function ArrayToSkillType(array) {
         stringToSkills.push(newSkill);
     }
     return stringToSkills;
-}
-}}),
-"[project]/public/HelperScripts/Editor.ts [app-ssr] (ecmascript)": ((__turbopack_context__) => {
-"use strict";
-
-var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, z: __turbopack_require_stub__ } = __turbopack_context__;
-{
-// puts the resume onto the website.
-__turbopack_esm__({
-    "CreateMovementButtons": (()=>CreateMovementButtons),
-    "DeleteTemporary": (()=>DeleteTemporary),
-    "DisplayResume": (()=>DisplayResume),
-    "EditText": (()=>EditText),
-    "RemoveFromSkillsBox": (()=>RemoveFromSkillsBox),
-    "SkillDropDownMenu": (()=>SkillDropDownMenu)
-});
-var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/app/page.tsx [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/public/HelperScripts/skillTags.ts [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/public/HelperScripts/Elements.ts [app-ssr] (ecmascript)");
-;
-;
-;
-let listOfSkills = (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ArrayToSkillType"])((0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["GetSavedSkillList"])());
-function DisplayResume() {
-    let indexNumber = 0;
-    console.log(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"]);
-    while(document.getElementById("Resume")?.firstChild != null){
-        document.getElementById("Resume")?.firstChild?.remove();
-    }
-    for(let i = 0; i < __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"].length; i++){
-        __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"][i].index = indexNumber;
-        if (__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"][i].type == "Group") {
-            for(let j = 0; j < __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"][i].elements.length; j++){
-                indexNumber++;
-                __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"][i].elements[j].index = indexNumber;
-            }
-        }
-        __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"][i].Display();
-        document.getElementById("Resume")?.appendChild(CreateMovementButtons(i));
-        indexNumber++;
-    }
-}
-function CreateMovementButtons(index) {
-    let parent = document.createElement("div");
-    let upButton = document.createElement("button");
-    upButton.textContent = "|^|";
-    upButton.addEventListener('click', function() {
-        MoveElementUp(index);
-    });
-    let downButton = document.createElement("button");
-    downButton.textContent = "|v|";
-    downButton.addEventListener('click', function() {
-        MoveElementDown(index);
-    });
-    parent.appendChild(upButton);
-    parent.appendChild(downButton);
-    return parent;
-}
-function MoveElementUp(index) {
-    if (index != 0) {
-        if (__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"][index].type != "Group" && __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"][index - 1].type == "Group") {
-            __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"][index - 1].elements.push(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"][index]);
-            __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"].splice(index, 1);
-        } else {
-            let holdThis = __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"][index - 1];
-            __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"][index - 1] = __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"][index];
-            __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"][index] = holdThis;
-        }
-        DisplayResume();
-    }
-}
-function MoveElementDown(index) {
-    if (index != __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"].length - 1) {
-        if (__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"][index].type != "Group" && __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"][index + 1].type == "Group") {
-            __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"][index + 1].elements.splice(0, 0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"][index]);
-            __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"].splice(index, 1);
-        } else {
-            let holdThis = __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"][index + 1];
-            __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"][index + 1] = __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"][index];
-            __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"][index] = holdThis;
-        }
-        DisplayResume();
-    }
-}
-function SkillDropDownMenu(parent, parentToAppendTo, destination) {
-    console.log("skill drop down");
-    let parentdiv = document.createElement("div");
-    for(let i = 0; i < listOfSkills.length; i++){
-        parentdiv.classList.add("skillDropDown");
-        parentdiv.setAttribute("id", "temporary");
-        if (listOfSkills[i].parent == parent) {
-            let skillHolder = document.createElement("div");
-            skillHolder.setAttribute("id", "temporary");
-            let skill = document.createElement("button");
-            skill.textContent = listOfSkills[i].name;
-            skill.addEventListener('click', function() {
-                DeleteTemporary();
-                AddToSkillsBox(destination, skill.textContent);
-            });
-            skill.addEventListener('mouseover', function() {
-                SkillDropDownMenu(listOfSkills[i].name, skillHolder, destination);
-            });
-            skillHolder.appendChild(skill);
-            parentdiv.appendChild(skillHolder);
-            parentToAppendTo.appendChild(parentdiv);
-        }
-    }
-}
-function DeleteTemporary() {
-    while(document.getElementById("temporary") != null){
-        document.getElementById("temporary")?.remove();
-    }
-}
-// Adds a skill to a specified list of skills if it doesn't already exist.
-// this only exists because I couldn't find a better way to add to a skillbox's skills list.
-function AddToSkillsBox(destination, skillName) {
-    let skillToAdd = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Skills"](skillName);
-    let duplicateSkill = false;
-    for(let i = 0; i < destination.length; i++){
-        if (destination[i].name == skillToAdd.name && destination[i].address == skillToAdd.address && destination[i].parent == skillToAdd.parent) {
-            duplicateSkill = true;
-        }
-    }
-    if (!duplicateSkill) {
-        destination.push(skillToAdd);
-    }
-    DisplayResume();
-}
-function EditText(element) {
-    if (document.getElementsByClassName("scanner").length == 0) {
-        console.log("EditText");
-        FindElementOnPage(element).textContent = "";
-        const scannerDiv = document.createElement("div");
-        scannerDiv.setAttribute("id", "temporary");
-        const scanner = document.createElement("input");
-        scanner.value = element.text;
-        scanner.classList.add("scanner");
-        scannerDiv.appendChild(scanner);
-        FindElementOnPage(element)?.appendChild(scannerDiv);
-        scanner.addEventListener('keypress', function(event) {
-            if (event.key == "Enter") {
-                console.log(scanner.value);
-                element.text = scanner.value;
-                DeleteTemporary();
-                console.log(element.index);
-                if (element.text == "" || element.text == null) {
-                    __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"].splice(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"].indexOf(element), 1);
-                }
-                DisplayResume();
-            }
-        });
-    }
-}
-function RemoveFromSkillsBox(destination, skillInString) {
-    let skillToRemove = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Skills"](skillInString);
-    for(let i = 0; i < destination.length; i++){
-        if (destination[i].Equals(skillToRemove)) {
-            destination.splice(i, 1);
-            break;
-        }
-    }
-    DisplayResume();
-}
-// Finds the element specified on the page. Returns the resume if it's not found.
-function FindElementOnPage(element) {
-    let ids = document.querySelectorAll("[index=\"" + element.index + "\"]");
-    if (ids.length > 1 || ids.length == 0) {
-        return document.getElementById("Resume");
-    } else {
-        return ids[0];
-    }
 }
 }}),
 "[project]/src/app/page.tsx [app-ssr] (ecmascript)": ((__turbopack_context__) => {
@@ -668,27 +519,176 @@ function DeleteResumeCookie() {
     }
 }
 }}),
-"[project]/public/HelperScripts/Present.ts [app-ssr] (ecmascript)": ((__turbopack_context__) => {
+"[project]/public/HelperScripts/Editor.ts [app-ssr] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
 var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, z: __turbopack_require_stub__ } = __turbopack_context__;
 {
+// puts the resume onto the website.
 __turbopack_esm__({
-    "FilterBySkills": (()=>FilterBySkills)
+    "CreateMovementButtons": (()=>CreateMovementButtons),
+    "DeleteTemporary": (()=>DeleteTemporary),
+    "DisplayResume": (()=>DisplayResume),
+    "EditText": (()=>EditText),
+    "RemoveFromSkillsBox": (()=>RemoveFromSkillsBox),
+    "SkillDropDownMenu": (()=>SkillDropDownMenu)
 });
-function FilterBySkills(skillName) {
-    console.log("FilterBySkills " + skillName);
-// okay, find a new way to implement this later
-/*if (searchBySkills.includes(skillName))
-  {
-    console.log("remove " + skillName);
-    searchBySkills.splice(searchBySkills.indexOf(skillName),1);
-  }
-  else
-  {
-    console.log("add " + skillName);
-    searchBySkills.push(skillName);
-  }*/ }
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/app/page.tsx [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/public/HelperScripts/skillTags.ts [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/public/HelperScripts/Elements.ts [app-ssr] (ecmascript)");
+;
+;
+;
+let listOfSkills = (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ArrayToSkillType"])((0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["GetSavedSkillList"])());
+function DisplayResume() {
+    let indexNumber = 0;
+    console.log(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"]);
+    while(document.getElementById("Resume")?.firstChild != null){
+        document.getElementById("Resume")?.firstChild?.remove();
+    }
+    for(let i = 0; i < __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"].length; i++){
+        __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"][i].index = indexNumber;
+        if (__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"][i].type == "Group") {
+            for(let j = 0; j < __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"][i].elements.length; j++){
+                indexNumber++;
+                __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"][i].elements[j].index = indexNumber;
+            }
+        }
+        __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"][i].Display();
+        document.getElementById("Resume")?.appendChild(CreateMovementButtons(i));
+        indexNumber++;
+    }
+}
+function CreateMovementButtons(index) {
+    let parent = document.createElement("div");
+    let upButton = document.createElement("button");
+    upButton.textContent = "|^|";
+    upButton.addEventListener('click', function() {
+        MoveElementUp(index);
+    });
+    let downButton = document.createElement("button");
+    downButton.textContent = "|v|";
+    downButton.addEventListener('click', function() {
+        MoveElementDown(index);
+    });
+    parent.appendChild(upButton);
+    parent.appendChild(downButton);
+    return parent;
+}
+function MoveElementUp(index) {
+    if (index != 0) {
+        if (__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"][index].type != "Group" && __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"][index - 1].type == "Group") {
+            __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"][index - 1].elements.push(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"][index]);
+            __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"].splice(index, 1);
+        } else {
+            let holdThis = __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"][index - 1];
+            __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"][index - 1] = __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"][index];
+            __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"][index] = holdThis;
+        }
+        DisplayResume();
+    }
+}
+function MoveElementDown(index) {
+    if (index != __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"].length - 1) {
+        if (__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"][index].type != "Group" && __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"][index + 1].type == "Group") {
+            __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"][index + 1].elements.splice(0, 0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"][index]);
+            __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"].splice(index, 1);
+        } else {
+            let holdThis = __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"][index + 1];
+            __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"][index + 1] = __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"][index];
+            __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"][index] = holdThis;
+        }
+        DisplayResume();
+    }
+}
+function SkillDropDownMenu(parent, parentToAppendTo, destination) {
+    console.log("skill drop down");
+    let parentdiv = document.createElement("div");
+    for(let i = 0; i < listOfSkills.length; i++){
+        parentdiv.classList.add("skillDropDown");
+        parentdiv.setAttribute("id", "temporary");
+        if (listOfSkills[i].parent == parent) {
+            let skillHolder = document.createElement("div");
+            skillHolder.setAttribute("id", "temporary");
+            let skill = document.createElement("button");
+            skill.textContent = listOfSkills[i].name;
+            skill.addEventListener('click', function() {
+                DeleteTemporary();
+                AddToSkillsBox(destination, skill.textContent);
+            });
+            skill.addEventListener('mouseover', function() {
+                SkillDropDownMenu(listOfSkills[i].name, skillHolder, destination);
+            });
+            skillHolder.appendChild(skill);
+            parentdiv.appendChild(skillHolder);
+            parentToAppendTo.appendChild(parentdiv);
+        }
+    }
+}
+function DeleteTemporary() {
+    while(document.getElementById("temporary") != null){
+        document.getElementById("temporary")?.remove();
+    }
+}
+// Adds a skill to a specified list of skills if it doesn't already exist.
+// this only exists because I couldn't find a better way to add to a skillbox's skills list.
+function AddToSkillsBox(destination, skillName) {
+    let skillToAdd = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Skills"](skillName);
+    let duplicateSkill = false;
+    for(let i = 0; i < destination.length; i++){
+        if (destination[i].name == skillToAdd.name && destination[i].address == skillToAdd.address && destination[i].parent == skillToAdd.parent) {
+            duplicateSkill = true;
+        }
+    }
+    if (!duplicateSkill) {
+        destination.push(skillToAdd);
+    }
+    DisplayResume();
+}
+function EditText(element) {
+    if (document.getElementsByClassName("scanner").length == 0) {
+        console.log("EditText");
+        FindElementOnPage(element).textContent = "";
+        const scannerDiv = document.createElement("div");
+        scannerDiv.setAttribute("id", "temporary");
+        const scanner = document.createElement("input");
+        scanner.value = element.text;
+        scanner.classList.add("scanner");
+        scannerDiv.appendChild(scanner);
+        FindElementOnPage(element)?.appendChild(scannerDiv);
+        scanner.addEventListener('keypress', function(event) {
+            if (event.key == "Enter") {
+                console.log(scanner.value);
+                element.text = scanner.value;
+                DeleteTemporary();
+                console.log(element.index);
+                if (element.text == "" || element.text == null) {
+                    __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"].splice(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"].indexOf(element), 1);
+                }
+                DisplayResume();
+            }
+        });
+    }
+}
+function RemoveFromSkillsBox(destination, skillInString) {
+    let skillToRemove = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Skills"](skillInString);
+    for(let i = 0; i < destination.length; i++){
+        if (destination[i].Equals(skillToRemove)) {
+            destination.splice(i, 1);
+            break;
+        }
+    }
+    DisplayResume();
+}
+// Finds the element specified on the page. Returns the resume if it's not found.
+function FindElementOnPage(element) {
+    let ids = document.querySelectorAll("[index=\"" + element.index + "\"]");
+    if (ids.length > 1 || ids.length == 0) {
+        return document.getElementById("Resume");
+    } else {
+        return ids[0];
+    }
+}
 }}),
 "[project]/public/HelperScripts/ImageHandler.ts [app-ssr] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
@@ -758,12 +758,10 @@ __turbopack_esm__({
     "Subtitle": (()=>Subtitle),
     "Title": (()=>Title)
 });
-var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/app/page.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Present$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/public/HelperScripts/Present.ts [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/public/HelperScripts/Editor.ts [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/public/HelperScripts/skillTags.ts [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$ImageHandler$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/public/HelperScripts/ImageHandler.ts [app-ssr] (ecmascript)");
-;
 ;
 ;
 ;
@@ -1008,7 +1006,7 @@ class SkillsBox {
         deleteButton.textContent = "|Remove skills box|";
         let indexCopy = this.index;
         deleteButton.addEventListener('click', function() {
-            __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"].splice(indexCopy, 1);
+            __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"].splice(indexCopy, 1);
             (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DisplayResume"])();
         });
         parent.appendChild(deleteButton);
@@ -1037,7 +1035,7 @@ class SkillsBox {
         deleteButton.textContent = "|Remove skills box|";
         let indexCopy = this.index;
         deleteButton.addEventListener('click', function() {
-            __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"].splice(indexCopy, 1);
+            __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"].splice(indexCopy, 1);
             (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DisplayResume"])();
         });
         parent.appendChild(deleteButton);
@@ -1112,7 +1110,7 @@ class Group {
         removeButton.textContent = "|remove group|";
         let indexCopy = this.index;
         removeButton.addEventListener('click', function() {
-            __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"].splice(indexCopy, 1);
+            __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"].splice(indexCopy, 1);
             (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DisplayResume"])();
         });
         groupDiv.appendChild(removeButton);
@@ -1182,7 +1180,7 @@ function MoveUp(index, groupBox) {
     } else {
         let holdThis = groupBox.elements[index - 1 - groupBox.index];
         groupBox.elements.splice(0, 1);
-        __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"].splice(groupBox.index, 0, holdThis);
+        __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"].splice(groupBox.index, 0, holdThis);
     }
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DisplayResume"])();
 }
@@ -1195,7 +1193,7 @@ function MoveDown(index, groupBox) {
         //console.log("move out from bottom");
         let holdThis = groupBox.elements[index - 1 - groupBox.index];
         groupBox.elements.splice(groupBox.elements.length - 1, 1);
-        __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"].splice(groupBox.index + groupBox.elements.length, 0, holdThis);
+        __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"].splice(groupBox.index + groupBox.elements.length, 0, holdThis);
     }
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DisplayResume"])();
 }
@@ -2801,4 +2799,4 @@ if ((typeof exports.default === 'function' || typeof exports.default === 'object
 
 };
 
-//# sourceMappingURL=%5Broot%20of%20the%20server%5D__8b2d6a._.js.map
+//# sourceMappingURL=%5Broot%20of%20the%20server%5D__d26fd4._.js.map

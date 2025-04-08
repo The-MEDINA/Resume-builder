@@ -1,9 +1,9 @@
-import { resume } from "@/app/page";
 import { FilterBySkills } from "../HelperScripts/Present";
-import { DisplayResume, SkillDropDownMenu, DeleteTemporary, EditText, RemoveFromSkillsBox } from "../HelperScripts/Editor";
+import { DisplayResume, SkillDropDownMenu, DeleteTemporary, EditText, RemoveFromSkillsBox, resume } from "../HelperScripts/Editor";
 import { GetAddressFromSkillName, SetParentSkill } from "../../public/HelperScripts/skillTags";
 import { ImageSetupFromRawAddress } from "../../public/HelperScripts/ImageHandler";
 import { group } from "console";
+
 /// The base that all of the fundamental resume elements draw from.
 export interface ResumeElement {
   type: string;
