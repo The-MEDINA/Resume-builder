@@ -13,7 +13,7 @@ export default function NewDisplay() {
   return (
     <div>
 <div className="topnav">
-        <a>Resu-Me </a>
+        <a>Resume Maker</a>
         <button id="print"> |print|</button>
     </div>
     <div className="content">
