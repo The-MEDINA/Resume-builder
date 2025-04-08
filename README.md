@@ -4,7 +4,7 @@ A Resume and CV maker made to take better advantage of the web.
 
 ## Getting Started
 
-This is a [Next.js](https://nextjs.org) project.
+This is a [Next.js](https://nextjs.org) project. You'll need to install its [required packages](https://nextjs.org/docs/app/getting-started/installation) before messing with Resu-Me.
 
 This means you'll need to download [Node.js](https://nodejs.org/en/download/) to run the local server and see changes.
 
