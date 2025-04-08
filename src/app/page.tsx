@@ -1,6 +1,7 @@
 'use client'
 import { Skill } from "@/app/Skills/page";
 import { GetSavedSkillList, ArrayToSkillType } from "../../public/HelperScripts/skillTags";
+import { DisplayResume } from "../../public/HelperScripts/Editor";
 import { SkillsBox, Skills, Title, Subtitle, DateText, Description, ResumeElement, Divider, Group } from "../../public/HelperScripts/Elements";
 import Link from "next/link";
 export let resume: any = [];
@@ -59,32 +60,6 @@ export default function NewEditor() {
 }
 
 /// Functions
-// puts the resume onto the website.
-export function DisplayResume()
-{
-  let indexNumber = 0;
-  console.log(resume);
-  while (document.getElementById("Resume")?.firstChild != null)
-  {
-    document.getElementById("Resume")?.firstChild?.remove();
-  }
-  for (let i = 0; i < resume.length; i++)
-  {
-    resume[i].index = indexNumber;
-    if (resume[i].type == "Group")
-    {
-      for (let j = 0; j < resume[i].elements.length; j++)
-      {
-        indexNumber++;
-        resume[i].elements[j].index = indexNumber;
-      }
-    }
-    resume[i].Display();
-    document.getElementById("Resume")?.appendChild(CreateMovementButtons(i));
-    indexNumber++;
-  }
-}
-
 function AddRawElement(elementName: string)
 {
   switch (elementName)
@@ -411,59 +386,6 @@ function DeleteResumeCookie()
       let intermediate = listOfCookies[i].split("=");
       document.cookie = intermediate[0] + "=; expires=Thu, 18 Dec 2013 12:00:00 UTC";
     }
-  }
-}
-
-// Adds movement buttons to any resume element.
-function CreateMovementButtons(index: number)
-{
-  let parent = document.createElement("div");
-  let upButton = document.createElement("button");
-  upButton.textContent = "|^|";
-  upButton.addEventListener('click', function() {MoveElementUp(index)});
-  let downButton = document.createElement("button");
-  downButton.textContent = "|v|";
-  downButton.addEventListener('click', function() {MoveElementDown(index)});
-  parent.appendChild(upButton);
-  parent.appendChild(downButton);
-  return parent;
-}
-
-function MoveElementUp(index: number)
-{
-  if (index != 0)
-  {
-    if (resume[index].type != "Group" && resume[index-1].type == "Group")
-    {
-      resume[index-1].elements.push(resume[index]);
-      resume.splice(index,1); 
-    }
-    else
-    {
-      let holdThis = resume[index-1];
-      resume[index-1] = resume[index];
-      resume[index] = holdThis;
-    }
-    DisplayResume();
-  }
-}
-
-function MoveElementDown(index: number)
-{
-  if (index != resume.length-1)
-  {
-    if (resume[index].type != "Group" && resume[index+1].type == "Group")
-    {
-      resume[index+1].elements.splice(0,0,resume[index]);
-      resume.splice(index,1); 
-    }
-    else
-    {
-      let holdThis = resume[index+1];
-      resume[index+1] = resume[index];
-      resume[index] = holdThis;
-    }
-    DisplayResume();
   }
 }
 
