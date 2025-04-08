@@ -166,3 +166,15 @@ export function DefaultSkillListString(): string[]
   stringAddresses.push("Award");
   return stringAddresses;
 }
+
+// Converts a list of strings to a list of Skill types.
+export function ArrayToSkillType(array: string[]): Skill[]
+{
+  let stringToSkills: Skill[] = [];
+  for (let i = 0; i < array.length; i++)
+  {
+    const newSkill: Skill = {name:(GetSkillFromAddress(array[i])), address:(array[i]), parent:(SetParentSkill(array[i]))};
+    stringToSkills.push(newSkill);
+  }
+  return stringToSkills;
+}

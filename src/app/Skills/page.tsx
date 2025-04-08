@@ -1,5 +1,5 @@
 'use client'
-import { GetSavedSkillList, GetSkillFromAddress, SetParentSkill, IsSubSkill, EncodeNewCookieFromSkills, DefaultSkillListString } from "../../../public/HelperScripts/skillTags";
+import { GetSavedSkillList, GetSkillFromAddress, SetParentSkill, IsSubSkill, EncodeNewCookieFromSkills, DefaultSkillListString, ArrayToSkillType } from "../../../public/HelperScripts/skillTags";
 import { ImageSetup } from "../../../public/HelperScripts/ImageHandler";
 let skillList: Skill[] = [];
 let holdOntoSkill: Skill;
@@ -113,18 +113,6 @@ function SkilltoDiv(skillToConvert: Skill)
   parent.appendChild(skillText);
   skillText.addEventListener('click', function() {MoveSkills(skillToConvert)});
   return parent;
-}
-
-// Converts a list of strings to a list of Skill types.
-export function ArrayToSkillType(array: string[]): Skill[]
-{
-  let stringToSkills: Skill[] = [];
-  for (let i = 0; i < array.length; i++)
-  {
-    const newSkill: Skill = {name:(GetSkillFromAddress(array[i])), address:(array[i]), parent:(SetParentSkill(array[i]))};
-    stringToSkills.push(newSkill);
-  }
-  return stringToSkills;
 }
 
 // Moves skills around.

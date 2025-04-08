@@ -1,6 +1,6 @@
 'use client'
-import { ArrayToSkillType, Skill } from "@/app/Skills/page";
-import { GetSavedSkillList } from "../../public/HelperScripts/skillTags";
+import { Skill } from "@/app/Skills/page";
+import { GetSavedSkillList, ArrayToSkillType } from "../../public/HelperScripts/skillTags";
 import { SkillsBox, Skills, Title, Subtitle, DateText, Description, ResumeElement, Divider, Group } from "../../public/HelperScripts/Elements";
 import Link from "next/link";
 export let resume: any = [];

@@ -6,6 +6,7 @@
 var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, k: __turbopack_refresh__, m: module, z: __turbopack_require_stub__ } = __turbopack_context__;
 {
 __turbopack_esm__({
+    "ArrayToSkillType": (()=>ArrayToSkillType),
     "DefaultSkillListString": (()=>DefaultSkillListString),
     "EncodeNewCookieFromSkills": (()=>EncodeNewCookieFromSkills),
     "GetAddressFromSkillName": (()=>GetAddressFromSkillName),
@@ -154,7 +155,20 @@ function DefaultSkillListString() {
     return stringAddresses;
 }
 _c7 = DefaultSkillListString;
-var _c, _c1, _c2, _c3, _c4, _c5, _c6, _c7;
+function ArrayToSkillType(array) {
+    let stringToSkills = [];
+    for(let i = 0; i < array.length; i++){
+        const newSkill = {
+            name: GetSkillFromAddress(array[i]),
+            address: array[i],
+            parent: SetParentSkill(array[i])
+        };
+        stringToSkills.push(newSkill);
+    }
+    return stringToSkills;
+}
+_c8 = ArrayToSkillType;
+var _c, _c1, _c2, _c3, _c4, _c5, _c6, _c7, _c8;
 __turbopack_refresh__.register(_c, "GetSavedSkillList");
 __turbopack_refresh__.register(_c1, "DecodeSkillListCookie");
 __turbopack_refresh__.register(_c2, "EncodeNewCookieFromSkills");
@@ -163,6 +177,7 @@ __turbopack_refresh__.register(_c4, "GetAddressFromSkillName");
 __turbopack_refresh__.register(_c5, "SetParentSkill");
 __turbopack_refresh__.register(_c6, "IsSubSkill");
 __turbopack_refresh__.register(_c7, "DefaultSkillListString");
+__turbopack_refresh__.register(_c8, "ArrayToSkillType");
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_refresh__.registerExports(module, globalThis.$RefreshHelpers$);
 }
@@ -235,7 +250,6 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, k: __turbopack_refresh__, m: module, z: __turbopack_require_stub__ } = __turbopack_context__;
 {
 __turbopack_esm__({
-    "ArrayToSkillType": (()=>ArrayToSkillType),
     "default": (()=>Skills)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
@@ -252,13 +266,13 @@ let NewSkillInProgress = false;
 function Skills() {
     document.onreadystatechange = function() {
         if (document.readyState == "complete") {
-            skillList = ArrayToSkillType((0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["GetSavedSkillList"])());
+            skillList = (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ArrayToSkillType"])((0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["GetSavedSkillList"])());
             DisplaySkills();
             document.getElementById("saveButton")?.addEventListener('click', function() {
                 (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["EncodeNewCookieFromSkills"])(skillList);
             });
             document.getElementById("resetButton")?.addEventListener('click', function() {
-                (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["EncodeNewCookieFromSkills"])(ArrayToSkillType((0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DefaultSkillListString"])()));
+                (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["EncodeNewCookieFromSkills"])((0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ArrayToSkillType"])((0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DefaultSkillListString"])()));
                 DisplaySkills();
             });
             Message("");
@@ -409,19 +423,6 @@ function SkilltoDiv(skillToConvert) {
     return parent;
 }
 _c4 = SkilltoDiv;
-function ArrayToSkillType(array) {
-    let stringToSkills = [];
-    for(let i = 0; i < array.length; i++){
-        const newSkill = {
-            name: (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["GetSkillFromAddress"])(array[i]),
-            address: array[i],
-            parent: (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SetParentSkill"])(array[i])
-        };
-        stringToSkills.push(newSkill);
-    }
-    return stringToSkills;
-}
-_c5 = ArrayToSkillType;
 // Moves skills around.
 async function MoveSkills(skillToMove) {
     if (!isSkillSelected) {
@@ -465,7 +466,7 @@ async function MoveSkills(skillToMove) {
         }
     }
 }
-_c6 = MoveSkills;
+_c5 = MoveSkills;
 // Prompts for a name and then creates a new skill, or moves an existing skill to generic.
 async function NewSkill() {
     if (!isSkillSelected) {
@@ -488,7 +489,7 @@ async function NewSkill() {
         isSkillSelected = false;
     }
 }
-_c7 = NewSkill;
+_c6 = NewSkill;
 // Deletes the skill that was selected. 
 function DeleteSkill() {
     for(let i = 0; i < skillList.length; i++){
@@ -511,7 +512,7 @@ function DeleteSkill() {
     RemoveDeleteSkill();
     isSkillSelected = false;
 }
-_c8 = DeleteSkill;
+_c7 = DeleteSkill;
 // finds subskills of a skill that was changed, and updates all of their addresses accordingly.
 function UpdateSubSkillAddress(parentSkill) {
     for(let i = 0; i < skillList.length; i++){
@@ -525,7 +526,7 @@ function UpdateSubSkillAddress(parentSkill) {
         }
     }
 }
-_c9 = UpdateSubSkillAddress;
+_c8 = UpdateSubSkillAddress;
 // Prompts for a string to complete making a new skill.
 // I hate how I coded this part, I should really rewrite it.
 async function PromptForString() {
@@ -550,7 +551,7 @@ async function PromptForString() {
         }
     });
 }
-_c10 = PromptForString;
+_c9 = PromptForString;
 // Deletes the scanner and notifies anything waiting that it finished.
 function EndPrompt() {
     let scanner = document.getElementsByClassName("scanner");
@@ -560,28 +561,27 @@ function EndPrompt() {
     const event = new CustomEvent('methodFinished');
     document.dispatchEvent(event);
 }
-_c11 = EndPrompt;
+_c10 = EndPrompt;
 // deletes the trash skill button
 function RemoveDeleteSkill() {
     while(document.getElementById("trashSkill") != null){
         document.getElementById("trashSkill")?.remove();
     }
 }
-_c12 = RemoveDeleteSkill;
-var _c, _c1, _c2, _c3, _c4, _c5, _c6, _c7, _c8, _c9, _c10, _c11, _c12;
+_c11 = RemoveDeleteSkill;
+var _c, _c1, _c2, _c3, _c4, _c5, _c6, _c7, _c8, _c9, _c10, _c11;
 __turbopack_refresh__.register(_c, "Skills");
 __turbopack_refresh__.register(_c1, "Message");
 __turbopack_refresh__.register(_c2, "DisplaySkills");
 __turbopack_refresh__.register(_c3, "DisplaySubSkills");
 __turbopack_refresh__.register(_c4, "SkilltoDiv");
-__turbopack_refresh__.register(_c5, "ArrayToSkillType");
-__turbopack_refresh__.register(_c6, "MoveSkills");
-__turbopack_refresh__.register(_c7, "NewSkill");
-__turbopack_refresh__.register(_c8, "DeleteSkill");
-__turbopack_refresh__.register(_c9, "UpdateSubSkillAddress");
-__turbopack_refresh__.register(_c10, "PromptForString");
-__turbopack_refresh__.register(_c11, "EndPrompt");
-__turbopack_refresh__.register(_c12, "RemoveDeleteSkill");
+__turbopack_refresh__.register(_c5, "MoveSkills");
+__turbopack_refresh__.register(_c6, "NewSkill");
+__turbopack_refresh__.register(_c7, "DeleteSkill");
+__turbopack_refresh__.register(_c8, "UpdateSubSkillAddress");
+__turbopack_refresh__.register(_c9, "PromptForString");
+__turbopack_refresh__.register(_c10, "EndPrompt");
+__turbopack_refresh__.register(_c11, "RemoveDeleteSkill");
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_refresh__.registerExports(module, globalThis.$RefreshHelpers$);
 }
