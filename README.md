@@ -1,12 +1,12 @@
-# Resu-Me
+# Resume-builder
 
-An interactive Resume / CV / Portfolio site designed for the web.
+A Resume and CV maker made to take better advantage of the web.
 
 ## Getting Started
 
 This is a [Next.js](https://nextjs.org) project. You'll need to install its [required packages](https://nextjs.org/docs/app/getting-started/installation) before messing with Resu-Me.
 
-You'll also need [Node.js](https://nodejs.org/en/download/) to run the local server and see changes.
+This means you'll need to download [Node.js](https://nodejs.org/en/download/) to run the local server and see changes.
 
 To start the local server, navigate to the resume-builder folder in the project.
 
@@ -22,4 +22,4 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser to see the site and make changes.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
