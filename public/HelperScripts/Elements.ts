@@ -1,6 +1,6 @@
-import { EditText, RemoveFromSkillsBox, DeleteTemporary, SkillDropDownMenu, resume } from "@/app/page";
+import { resume } from "@/app/page";
 import { FilterBySkills } from "../HelperScripts/Present";
-import { DisplayResume } from "../HelperScripts/Editor";
+import { DisplayResume, SkillDropDownMenu, DeleteTemporary, EditText, RemoveFromSkillsBox } from "../HelperScripts/Editor";
 import { GetAddressFromSkillName, SetParentSkill } from "../../public/HelperScripts/skillTags";
 import { ImageSetupFromRawAddress } from "../../public/HelperScripts/ImageHandler";
 import { group } from "console";
@@ -383,7 +383,7 @@ export class Group {
     groupDiv.setAttribute("id","groupBox");
     for (let i = 0; i < this.elements.length; i++)
     {
-      console.log(this.elements[i]);
+      //console.log(this.elements[i]);
       let child = groupDiv.appendChild(this.elements[i].ConvertToHTML()); 
       child.appendChild(GroupMovementButtons(this.elements[i].index, this));
     }
@@ -459,7 +459,7 @@ function MoveDown(index: number, groupBox: Group)
   }
   else
   {
-    console.log("move out from bottom");
+    //console.log("move out from bottom");
     let holdThis = groupBox.elements[(index-1) - groupBox.index];
     groupBox.elements.splice(groupBox.elements.length-1,1);
     resume.splice(groupBox.index + groupBox.elements.length, 0, holdThis);

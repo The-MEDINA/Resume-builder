@@ -1,4 +1,4 @@
-(globalThis.TURBOPACK = globalThis.TURBOPACK || []).push(["static/chunks/_9e2a9a._.js", {
+(globalThis.TURBOPACK = globalThis.TURBOPACK || []).push(["static/chunks/_8c0834._.js", {
 
 "[project]/public/HelperScripts/skillTags.ts [app-client] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
@@ -178,6 +178,566 @@ __turbopack_refresh__.register(_c5, "SetParentSkill");
 __turbopack_refresh__.register(_c6, "IsSubSkill");
 __turbopack_refresh__.register(_c7, "DefaultSkillListString");
 __turbopack_refresh__.register(_c8, "ArrayToSkillType");
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_refresh__.registerExports(module, globalThis.$RefreshHelpers$);
+}
+}}),
+"[project]/public/HelperScripts/Present.ts [app-client] (ecmascript)": ((__turbopack_context__) => {
+"use strict";
+
+var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, k: __turbopack_refresh__, m: module, z: __turbopack_require_stub__ } = __turbopack_context__;
+{
+__turbopack_esm__({
+    "FilterBySkills": (()=>FilterBySkills)
+});
+function FilterBySkills(skillName) {
+    console.log("FilterBySkills " + skillName);
+// okay, find a new way to implement this later
+/*if (searchBySkills.includes(skillName))
+  {
+    console.log("remove " + skillName);
+    searchBySkills.splice(searchBySkills.indexOf(skillName),1);
+  }
+  else
+  {
+    console.log("add " + skillName);
+    searchBySkills.push(skillName);
+  }*/ }
+_c = FilterBySkills;
+var _c;
+__turbopack_refresh__.register(_c, "FilterBySkills");
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_refresh__.registerExports(module, globalThis.$RefreshHelpers$);
+}
+}}),
+"[project]/public/HelperScripts/ImageHandler.ts [app-client] (ecmascript)": ((__turbopack_context__) => {
+"use strict";
+
+var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, k: __turbopack_refresh__, m: module, z: __turbopack_require_stub__ } = __turbopack_context__;
+{
+__turbopack_esm__({
+    "ImageSetup": (()=>ImageSetup),
+    "ImageSetupFromRawAddress": (()=>ImageSetupFromRawAddress)
+});
+'use client';
+async function ImageSetup(image, skill) {
+    let skillAddress = skill.address.split("/");
+    let src = "img/Generic.png";
+    let srcPrevious = "img/Generic.png";
+    let final = null;
+    for(let i = 0; i < skillAddress.length; i++){
+        src = "img/" + ImageExceptions(skillAddress[i]) + ".png";
+        final = new Image();
+        final.src = src;
+        await final.decode().then(()=>{
+            srcPrevious = src;
+        }).catch(()=>{
+            src = srcPrevious;
+        });
+    }
+    image.src = src;
+}
+_c = ImageSetup;
+async function ImageSetupFromRawAddress(image, rawAddress) {
+    let skillAddress = rawAddress.split("/");
+    let src = "img/Generic.png";
+    let srcPrevious = "img/Generic.png";
+    let final = null;
+    for(let i = 0; i < skillAddress.length; i++){
+        src = "img/" + ImageExceptions(skillAddress[i]) + ".png";
+        final = new Image();
+        final.src = src;
+        await final.decode().then(()=>{
+            srcPrevious = src;
+        }).catch(()=>{
+            src = srcPrevious;
+        });
+    }
+    image.src = src;
+}
+_c1 = ImageSetupFromRawAddress;
+// I don't know why C#.png doesn't work, or why switch/case doesn't either...
+// That's the only reason for this method's existence.
+// just making it a method if anything else like this shows up.
+function ImageExceptions(skillImgName) {
+    if (skillImgName == "C#") skillImgName = "C sharp";
+    return skillImgName;
+}
+_c2 = ImageExceptions;
+var _c, _c1, _c2;
+__turbopack_refresh__.register(_c, "ImageSetup");
+__turbopack_refresh__.register(_c1, "ImageSetupFromRawAddress");
+__turbopack_refresh__.register(_c2, "ImageExceptions");
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_refresh__.registerExports(module, globalThis.$RefreshHelpers$);
+}
+}}),
+"[project]/public/HelperScripts/Elements.ts [app-client] (ecmascript)": ((__turbopack_context__) => {
+"use strict";
+
+var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, k: __turbopack_refresh__, m: module, z: __turbopack_require_stub__ } = __turbopack_context__;
+{
+__turbopack_esm__({
+    "AddCSSFromString": (()=>AddCSSFromString),
+    "DateText": (()=>DateText),
+    "Description": (()=>Description),
+    "Divider": (()=>Divider),
+    "Group": (()=>Group),
+    "Skills": (()=>Skills),
+    "SkillsBox": (()=>SkillsBox),
+    "Subtitle": (()=>Subtitle),
+    "Title": (()=>Title)
+});
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/app/page.tsx [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Present$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/public/HelperScripts/Present.ts [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/public/HelperScripts/Editor.ts [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/public/HelperScripts/skillTags.ts [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$ImageHandler$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/public/HelperScripts/ImageHandler.ts [app-client] (ecmascript)");
+;
+;
+;
+;
+;
+class Title {
+    type;
+    text;
+    cssOptions;
+    index;
+    constructor(i){
+        this.type = "Title";
+        this.index = i;
+        this.text = "New Title";
+        this.cssOptions = [
+            "display: flex",
+            "justify-content: center",
+            "font-size: 48px"
+        ];
+    }
+    Display() {
+        let displayText = document.createElement("p");
+        displayText.textContent = this.text;
+        let self = this;
+        displayText.addEventListener('click', function() {
+            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["EditText"])(self);
+        });
+        for(let i = 0; i < this.cssOptions.length; i++){
+            AddCSSFromString(displayText, this.cssOptions[i]);
+        }
+        displayText.setAttribute("index", this.index.toString());
+        document.getElementById("Resume")?.appendChild(displayText);
+    }
+    ConvertToHTML() {
+        let displayText = document.createElement("p");
+        displayText.textContent = this.text;
+        for(let i = 0; i < this.cssOptions.length; i++){
+            AddCSSFromString(displayText, this.cssOptions[i]);
+        }
+        displayText.setAttribute("index", this.index.toString());
+        return displayText;
+    }
+}
+class Description {
+    type;
+    text;
+    cssOptions;
+    index;
+    constructor(i){
+        this.type = "Description";
+        this.index = i;
+        this.text = "New description that says a lot of words about something.";
+        this.cssOptions = [
+            "font-size: 16px"
+        ];
+    }
+    Display() {
+        let displayText = document.createElement("p");
+        displayText.textContent = this.text;
+        let self = this;
+        displayText.addEventListener('click', function() {
+            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["EditText"])(self);
+        });
+        for(let i = 0; i < this.cssOptions.length; i++){
+            AddCSSFromString(displayText, this.cssOptions[i]);
+        }
+        displayText.setAttribute("index", this.index.toString());
+        document.getElementById("Resume")?.appendChild(displayText);
+    }
+    ConvertToHTML() {
+        let displayText = document.createElement("p");
+        displayText.textContent = this.text;
+        for(let i = 0; i < this.cssOptions.length; i++){
+            AddCSSFromString(displayText, this.cssOptions[i]);
+        }
+        displayText.setAttribute("index", this.index.toString());
+        return displayText;
+    }
+}
+class DateText {
+    type;
+    text;
+    cssOptions;
+    index;
+    constructor(i){
+        this.type = "DateText";
+        this.index = i;
+        this.text = "DateText start - DateText end";
+        this.cssOptions = [
+            "font-size: 12px"
+        ];
+    }
+    Display() {
+        let displayText = document.createElement("p");
+        displayText.textContent = this.text;
+        let self = this;
+        displayText.addEventListener('click', function() {
+            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["EditText"])(self);
+        });
+        for(let i = 0; i < this.cssOptions.length; i++){
+            AddCSSFromString(displayText, this.cssOptions[i]);
+        }
+        displayText.setAttribute("index", this.index.toString());
+        document.getElementById("Resume")?.appendChild(displayText);
+    }
+    ConvertToHTML() {
+        let displayText = document.createElement("p");
+        displayText.textContent = this.text;
+        for(let i = 0; i < this.cssOptions.length; i++){
+            AddCSSFromString(displayText, this.cssOptions[i]);
+        }
+        displayText.setAttribute("index", this.index.toString());
+        return displayText;
+    }
+}
+class Subtitle {
+    type;
+    text;
+    cssOptions;
+    index;
+    constructor(i){
+        this.type = "Subtitle";
+        this.index = i;
+        this.text = "New Job title";
+        this.cssOptions = [
+            "font-size: 24px"
+        ];
+    }
+    Display() {
+        let displayText = document.createElement("p");
+        displayText.textContent = this.text;
+        let self = this;
+        displayText.addEventListener('click', function() {
+            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["EditText"])(self);
+        });
+        for(let i = 0; i < this.cssOptions.length; i++){
+            AddCSSFromString(displayText, this.cssOptions[i]);
+        }
+        displayText.setAttribute("index", this.index.toString());
+        document.getElementById("Resume")?.appendChild(displayText);
+    }
+    ConvertToHTML() {
+        let displayText = document.createElement("p");
+        displayText.textContent = this.text;
+        for(let i = 0; i < this.cssOptions.length; i++){
+            AddCSSFromString(displayText, this.cssOptions[i]);
+        }
+        displayText.setAttribute("index", this.index.toString());
+        return displayText;
+    }
+}
+class Skills {
+    name;
+    parent;
+    address;
+    cssOptions;
+    constructor(skillName){
+        this.name = skillName;
+        this.address = (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["GetAddressFromSkillName"])(this.name);
+        this.parent = (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SetParentSkill"])(this.name);
+        this.cssOptions = [
+            "display: inline-block",
+            "border: solid"
+        ];
+    }
+    ConvertToHTML(parentSkillsBox) {
+        let parent = document.createElement("div");
+        for(let i = 0; i < this.cssOptions.length; i++){
+            AddCSSFromString(parent, this.cssOptions[i]);
+        }
+        let img = document.createElement("img");
+        (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$ImageHandler$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ImageSetupFromRawAddress"])(img, this.address);
+        let name = document.createElement("p");
+        img.classList.add("skillImage");
+        name.classList.add("skillText");
+        name.textContent = this.name;
+        name.addEventListener('click', function() {
+            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["RemoveFromSkillsBox"])(parentSkillsBox, name.textContent);
+        });
+        parent.appendChild(img);
+        parent.appendChild(name);
+        return parent;
+    }
+    ConvertToHTMLForPresentPage(parentSkillsBox) {
+        let parent = document.createElement("div");
+        for(let i = 0; i < this.cssOptions.length; i++){
+            AddCSSFromString(parent, this.cssOptions[i]);
+        }
+        let img = document.createElement("img");
+        (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$ImageHandler$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ImageSetupFromRawAddress"])(img, this.address);
+        let name = document.createElement("p");
+        img.classList.add("skillImage");
+        name.classList.add("skillText");
+        name.textContent = this.name;
+        name.addEventListener('click', function() {
+            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Present$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FilterBySkills"])(name.textContent);
+        });
+        parent.appendChild(img);
+        parent.appendChild(name);
+        return parent;
+    }
+    // checks if two skills are identical.
+    Equals(skillToCompare) {
+        if (this.name == skillToCompare.name && this.parent == skillToCompare.parent && this.address == skillToCompare.address) {
+            return true;
+        }
+        return false;
+    }
+}
+class SkillsBox {
+    type;
+    text;
+    cssOptions;
+    skills;
+    index;
+    constructor(i){
+        this.type = "SkillsBox";
+        this.index = i;
+        this.skills = [];
+        this.text = "";
+        this.cssOptions = [];
+    }
+    Display() {
+        let parent = document.createElement("div");
+        for(let i = 0; i < this.cssOptions.length; i++){
+            AddCSSFromString(parent, this.cssOptions[i]);
+        }
+        for(let i = 0; i < this.skills.length; i++){
+            parent.appendChild(this.skills[i].ConvertToHTML(this.skills));
+        }
+        let addButton = document.createElement("button");
+        addButton.textContent = "|Add new skill|";
+        let skillsCopy = this.skills;
+        addButton.addEventListener('mouseover', function() {
+            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DeleteTemporary"])();
+            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SkillDropDownMenu"])("", parent, skillsCopy);
+        });
+        addButton.addEventListener('click', function() {
+            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DeleteTemporary"])();
+        });
+        parent.appendChild(addButton);
+        let deleteButton = document.createElement("button");
+        deleteButton.textContent = "|Remove skills box|";
+        let indexCopy = this.index;
+        deleteButton.addEventListener('click', function() {
+            __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["resume"].splice(indexCopy, 1);
+            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DisplayResume"])();
+        });
+        parent.appendChild(deleteButton);
+        document.getElementById("Resume")?.appendChild(parent);
+    }
+    ConvertToHTML() {
+        let parent = document.createElement("div");
+        for(let i = 0; i < this.cssOptions.length; i++){
+            AddCSSFromString(parent, this.cssOptions[i]);
+        }
+        for(let i = 0; i < this.skills.length; i++){
+            parent.appendChild(this.skills[i].ConvertToHTML(this.skills));
+        }
+        let addButton = document.createElement("button");
+        addButton.textContent = "|Add new skill|";
+        let skillsCopy = this.skills;
+        addButton.addEventListener('mouseover', function() {
+            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DeleteTemporary"])();
+            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SkillDropDownMenu"])("", parent, skillsCopy);
+        });
+        addButton.addEventListener('click', function() {
+            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DeleteTemporary"])();
+        });
+        parent.appendChild(addButton);
+        let deleteButton = document.createElement("button");
+        deleteButton.textContent = "|Remove skills box|";
+        let indexCopy = this.index;
+        deleteButton.addEventListener('click', function() {
+            __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["resume"].splice(indexCopy, 1);
+            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DisplayResume"])();
+        });
+        parent.appendChild(deleteButton);
+        return parent;
+    }
+    ConvertToHTMLForPresentPage() {
+        let parent = document.createElement("div");
+        for(let i = 0; i < this.cssOptions.length; i++){
+            AddCSSFromString(parent, this.cssOptions[i]);
+        }
+        for(let i = 0; i < this.skills.length; i++){
+            parent.appendChild(this.skills[i].ConvertToHTMLForPresentPage(this.skills));
+        }
+        return parent;
+    }
+}
+class Divider {
+    type;
+    text;
+    cssOptions;
+    index;
+    constructor(i){
+        this.type = "Divider";
+        this.index = i;
+        this.text = "New divider";
+        this.cssOptions = [
+            "border-bottom: solid",
+            "font-size: 24px"
+        ];
+    }
+    Display() {
+        let displayText = document.createElement("p");
+        displayText.textContent = this.text;
+        let self = this;
+        displayText.addEventListener('click', function() {
+            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["EditText"])(self);
+        });
+        for(let i = 0; i < this.cssOptions.length; i++){
+            AddCSSFromString(displayText, this.cssOptions[i]);
+        }
+        displayText.setAttribute("index", this.index.toString());
+        document.getElementById("Resume")?.appendChild(displayText);
+    }
+    ConvertToHTML() {
+        let displayText = document.createElement("p");
+        displayText.textContent = this.text;
+        for(let i = 0; i < this.cssOptions.length; i++){
+            AddCSSFromString(displayText, this.cssOptions[i]);
+        }
+        displayText.setAttribute("index", this.index.toString());
+        return displayText;
+    }
+}
+class Group {
+    type;
+    elements;
+    index;
+    constructor(i){
+        this.index = i;
+        this.elements = [];
+        this.type = "Group";
+    }
+    Display() {
+        let groupDiv = document.createElement("div");
+        groupDiv.setAttribute("id", "groupBox");
+        for(let i = 0; i < this.elements.length; i++){
+            //console.log(this.elements[i]);
+            let child = groupDiv.appendChild(this.elements[i].ConvertToHTML());
+            child.appendChild(GroupMovementButtons(this.elements[i].index, this));
+        }
+        let removeButton = document.createElement("p");
+        removeButton.textContent = "|remove group|";
+        let indexCopy = this.index;
+        removeButton.addEventListener('click', function() {
+            __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["resume"].splice(indexCopy, 1);
+            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DisplayResume"])();
+        });
+        groupDiv.appendChild(removeButton);
+        document.getElementById("Resume")?.appendChild(groupDiv);
+    }
+    ConvertToHTML() {}
+}
+function AddCSSFromString(HTMLElement, rawString) {
+    let splitString = rawString.split(":");
+    for(let i = 0; i < splitString.length; i++){
+        splitString[i] = splitString[i].trim();
+    }
+    switch(splitString[0]){
+        case "display":
+            {
+                HTMLElement.style.display = splitString[1];
+                break;
+            }
+        case "justify-content":
+            {
+                HTMLElement.style.justifyContent = splitString[1];
+                break;
+            }
+        case "font-size":
+            {
+                HTMLElement.style.fontSize = splitString[1];
+                break;
+            }
+        case "border":
+            {
+                HTMLElement.style.border = splitString[1];
+                break;
+            }
+        case "border-bottom":
+            {
+                HTMLElement.style.borderBottom = splitString[1];
+                break;
+            }
+        default:
+            {
+                throw new Error("Could not find a style method HTMLElement.style." + splitString[1]);
+            }
+    }
+}
+_c = AddCSSFromString;
+// Adds movement buttons to any resume element in a group.
+function GroupMovementButtons(index, groupBox) {
+    let parent = document.createElement("div");
+    let upButton = document.createElement("button");
+    upButton.textContent = "|^|";
+    upButton.addEventListener('click', function() {
+        MoveUp(index, groupBox);
+    });
+    let downButton = document.createElement("button");
+    downButton.textContent = "|v|";
+    downButton.addEventListener('click', function() {
+        MoveDown(index, groupBox);
+    });
+    parent.appendChild(upButton);
+    parent.appendChild(downButton);
+    return parent;
+}
+_c1 = GroupMovementButtons;
+function MoveUp(index, groupBox) {
+    if (!(index - 1 == groupBox.index)) {
+        let holdThis = groupBox.elements[index - 2 - groupBox.index];
+        groupBox.elements[index - 2 - groupBox.index] = groupBox.elements[index - 1 - groupBox.index];
+        groupBox.elements[index - 1 - groupBox.index] = holdThis;
+    } else {
+        let holdThis = groupBox.elements[index - 1 - groupBox.index];
+        groupBox.elements.splice(0, 1);
+        __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["resume"].splice(groupBox.index, 0, holdThis);
+    }
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DisplayResume"])();
+}
+_c2 = MoveUp;
+function MoveDown(index, groupBox) {
+    if (!(index == groupBox.index + groupBox.elements.length)) {
+        let holdThis = groupBox.elements[index - 1 - groupBox.index];
+        groupBox.elements[index - 1 - groupBox.index] = groupBox.elements[index - groupBox.index];
+        groupBox.elements[index - groupBox.index] = holdThis;
+    } else {
+        //console.log("move out from bottom");
+        let holdThis = groupBox.elements[index - 1 - groupBox.index];
+        groupBox.elements.splice(groupBox.elements.length - 1, 1);
+        __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["resume"].splice(groupBox.index + groupBox.elements.length, 0, holdThis);
+    }
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DisplayResume"])();
+}
+_c3 = MoveDown;
+var _c, _c1, _c2, _c3;
+__turbopack_refresh__.register(_c, "AddCSSFromString");
+__turbopack_refresh__.register(_c1, "GroupMovementButtons");
+__turbopack_refresh__.register(_c2, "MoveUp");
+__turbopack_refresh__.register(_c3, "MoveDown");
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_refresh__.registerExports(module, globalThis.$RefreshHelpers$);
 }
@@ -860,852 +1420,7 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
     __turbopack_refresh__.registerExports(module, globalThis.$RefreshHelpers$);
 }
 }}),
-"[project]/public/HelperScripts/Present.ts [app-client] (ecmascript)": ((__turbopack_context__) => {
-"use strict";
-
-var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, k: __turbopack_refresh__, m: module, z: __turbopack_require_stub__ } = __turbopack_context__;
-{
-__turbopack_esm__({
-    "FilterBySkills": (()=>FilterBySkills)
-});
-function FilterBySkills(skillName) {
-    console.log("FilterBySkills " + skillName);
-// okay, find a new way to implement this later
-/*if (searchBySkills.includes(skillName))
-  {
-    console.log("remove " + skillName);
-    searchBySkills.splice(searchBySkills.indexOf(skillName),1);
-  }
-  else
-  {
-    console.log("add " + skillName);
-    searchBySkills.push(skillName);
-  }*/ }
-_c = FilterBySkills;
-var _c;
-__turbopack_refresh__.register(_c, "FilterBySkills");
-if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
-    __turbopack_refresh__.registerExports(module, globalThis.$RefreshHelpers$);
-}
-}}),
-"[project]/public/HelperScripts/ImageHandler.ts [app-client] (ecmascript)": ((__turbopack_context__) => {
-"use strict";
-
-var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, k: __turbopack_refresh__, m: module, z: __turbopack_require_stub__ } = __turbopack_context__;
-{
-__turbopack_esm__({
-    "ImageSetup": (()=>ImageSetup),
-    "ImageSetupFromRawAddress": (()=>ImageSetupFromRawAddress)
-});
-'use client';
-async function ImageSetup(image, skill) {
-    let skillAddress = skill.address.split("/");
-    let src = "img/Generic.png";
-    let srcPrevious = "img/Generic.png";
-    let final = null;
-    for(let i = 0; i < skillAddress.length; i++){
-        src = "img/" + ImageExceptions(skillAddress[i]) + ".png";
-        final = new Image();
-        final.src = src;
-        await final.decode().then(()=>{
-            srcPrevious = src;
-        }).catch(()=>{
-            src = srcPrevious;
-        });
-    }
-    image.src = src;
-}
-_c = ImageSetup;
-async function ImageSetupFromRawAddress(image, rawAddress) {
-    let skillAddress = rawAddress.split("/");
-    let src = "img/Generic.png";
-    let srcPrevious = "img/Generic.png";
-    let final = null;
-    for(let i = 0; i < skillAddress.length; i++){
-        src = "img/" + ImageExceptions(skillAddress[i]) + ".png";
-        final = new Image();
-        final.src = src;
-        await final.decode().then(()=>{
-            srcPrevious = src;
-        }).catch(()=>{
-            src = srcPrevious;
-        });
-    }
-    image.src = src;
-}
-_c1 = ImageSetupFromRawAddress;
-// I don't know why C#.png doesn't work, or why switch/case doesn't either...
-// That's the only reason for this method's existence.
-// just making it a method if anything else like this shows up.
-function ImageExceptions(skillImgName) {
-    if (skillImgName == "C#") skillImgName = "C sharp";
-    return skillImgName;
-}
-_c2 = ImageExceptions;
-var _c, _c1, _c2;
-__turbopack_refresh__.register(_c, "ImageSetup");
-__turbopack_refresh__.register(_c1, "ImageSetupFromRawAddress");
-__turbopack_refresh__.register(_c2, "ImageExceptions");
-if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
-    __turbopack_refresh__.registerExports(module, globalThis.$RefreshHelpers$);
-}
-}}),
-"[project]/public/HelperScripts/Elements.ts [app-client] (ecmascript)": ((__turbopack_context__) => {
-"use strict";
-
-var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, k: __turbopack_refresh__, m: module, z: __turbopack_require_stub__ } = __turbopack_context__;
-{
-__turbopack_esm__({
-    "AddCSSFromString": (()=>AddCSSFromString),
-    "DateText": (()=>DateText),
-    "Description": (()=>Description),
-    "Divider": (()=>Divider),
-    "Group": (()=>Group),
-    "Skills": (()=>Skills),
-    "SkillsBox": (()=>SkillsBox),
-    "Subtitle": (()=>Subtitle),
-    "Title": (()=>Title)
-});
-var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/app/page.tsx [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Present$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/public/HelperScripts/Present.ts [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/public/HelperScripts/Editor.ts [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/public/HelperScripts/skillTags.ts [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$ImageHandler$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/public/HelperScripts/ImageHandler.ts [app-client] (ecmascript)");
-;
-;
-;
-;
-;
-class Title {
-    type;
-    text;
-    cssOptions;
-    index;
-    constructor(i){
-        this.type = "Title";
-        this.index = i;
-        this.text = "New Title";
-        this.cssOptions = [
-            "display: flex",
-            "justify-content: center",
-            "font-size: 48px"
-        ];
-    }
-    Display() {
-        let displayText = document.createElement("p");
-        displayText.textContent = this.text;
-        let self = this;
-        displayText.addEventListener('click', function() {
-            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["EditText"])(self);
-        });
-        for(let i = 0; i < this.cssOptions.length; i++){
-            AddCSSFromString(displayText, this.cssOptions[i]);
-        }
-        displayText.setAttribute("index", this.index.toString());
-        document.getElementById("Resume")?.appendChild(displayText);
-    }
-    ConvertToHTML() {
-        let displayText = document.createElement("p");
-        displayText.textContent = this.text;
-        for(let i = 0; i < this.cssOptions.length; i++){
-            AddCSSFromString(displayText, this.cssOptions[i]);
-        }
-        displayText.setAttribute("index", this.index.toString());
-        return displayText;
-    }
-}
-class Description {
-    type;
-    text;
-    cssOptions;
-    index;
-    constructor(i){
-        this.type = "Description";
-        this.index = i;
-        this.text = "New description that says a lot of words about something.";
-        this.cssOptions = [
-            "font-size: 16px"
-        ];
-    }
-    Display() {
-        let displayText = document.createElement("p");
-        displayText.textContent = this.text;
-        let self = this;
-        displayText.addEventListener('click', function() {
-            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["EditText"])(self);
-        });
-        for(let i = 0; i < this.cssOptions.length; i++){
-            AddCSSFromString(displayText, this.cssOptions[i]);
-        }
-        displayText.setAttribute("index", this.index.toString());
-        document.getElementById("Resume")?.appendChild(displayText);
-    }
-    ConvertToHTML() {
-        let displayText = document.createElement("p");
-        displayText.textContent = this.text;
-        for(let i = 0; i < this.cssOptions.length; i++){
-            AddCSSFromString(displayText, this.cssOptions[i]);
-        }
-        displayText.setAttribute("index", this.index.toString());
-        return displayText;
-    }
-}
-class DateText {
-    type;
-    text;
-    cssOptions;
-    index;
-    constructor(i){
-        this.type = "DateText";
-        this.index = i;
-        this.text = "DateText start - DateText end";
-        this.cssOptions = [
-            "font-size: 12px"
-        ];
-    }
-    Display() {
-        let displayText = document.createElement("p");
-        displayText.textContent = this.text;
-        let self = this;
-        displayText.addEventListener('click', function() {
-            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["EditText"])(self);
-        });
-        for(let i = 0; i < this.cssOptions.length; i++){
-            AddCSSFromString(displayText, this.cssOptions[i]);
-        }
-        displayText.setAttribute("index", this.index.toString());
-        document.getElementById("Resume")?.appendChild(displayText);
-    }
-    ConvertToHTML() {
-        let displayText = document.createElement("p");
-        displayText.textContent = this.text;
-        for(let i = 0; i < this.cssOptions.length; i++){
-            AddCSSFromString(displayText, this.cssOptions[i]);
-        }
-        displayText.setAttribute("index", this.index.toString());
-        return displayText;
-    }
-}
-class Subtitle {
-    type;
-    text;
-    cssOptions;
-    index;
-    constructor(i){
-        this.type = "Subtitle";
-        this.index = i;
-        this.text = "New Job title";
-        this.cssOptions = [
-            "font-size: 24px"
-        ];
-    }
-    Display() {
-        let displayText = document.createElement("p");
-        displayText.textContent = this.text;
-        let self = this;
-        displayText.addEventListener('click', function() {
-            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["EditText"])(self);
-        });
-        for(let i = 0; i < this.cssOptions.length; i++){
-            AddCSSFromString(displayText, this.cssOptions[i]);
-        }
-        displayText.setAttribute("index", this.index.toString());
-        document.getElementById("Resume")?.appendChild(displayText);
-    }
-    ConvertToHTML() {
-        let displayText = document.createElement("p");
-        displayText.textContent = this.text;
-        for(let i = 0; i < this.cssOptions.length; i++){
-            AddCSSFromString(displayText, this.cssOptions[i]);
-        }
-        displayText.setAttribute("index", this.index.toString());
-        return displayText;
-    }
-}
-class Skills {
-    name;
-    parent;
-    address;
-    cssOptions;
-    constructor(skillName){
-        this.name = skillName;
-        this.address = (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["GetAddressFromSkillName"])(this.name);
-        this.parent = (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SetParentSkill"])(this.name);
-        this.cssOptions = [
-            "display: inline-block",
-            "border: solid"
-        ];
-    }
-    ConvertToHTML(parentSkillsBox) {
-        let parent = document.createElement("div");
-        for(let i = 0; i < this.cssOptions.length; i++){
-            AddCSSFromString(parent, this.cssOptions[i]);
-        }
-        let img = document.createElement("img");
-        (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$ImageHandler$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ImageSetupFromRawAddress"])(img, this.address);
-        let name = document.createElement("p");
-        img.classList.add("skillImage");
-        name.classList.add("skillText");
-        name.textContent = this.name;
-        name.addEventListener('click', function() {
-            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["RemoveFromSkillsBox"])(parentSkillsBox, name.textContent);
-        });
-        parent.appendChild(img);
-        parent.appendChild(name);
-        return parent;
-    }
-    ConvertToHTMLForPresentPage(parentSkillsBox) {
-        let parent = document.createElement("div");
-        for(let i = 0; i < this.cssOptions.length; i++){
-            AddCSSFromString(parent, this.cssOptions[i]);
-        }
-        let img = document.createElement("img");
-        (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$ImageHandler$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ImageSetupFromRawAddress"])(img, this.address);
-        let name = document.createElement("p");
-        img.classList.add("skillImage");
-        name.classList.add("skillText");
-        name.textContent = this.name;
-        name.addEventListener('click', function() {
-            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Present$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FilterBySkills"])(name.textContent);
-        });
-        parent.appendChild(img);
-        parent.appendChild(name);
-        return parent;
-    }
-    // checks if two skills are identical.
-    Equals(skillToCompare) {
-        if (this.name == skillToCompare.name && this.parent == skillToCompare.parent && this.address == skillToCompare.address) {
-            return true;
-        }
-        return false;
-    }
-}
-class SkillsBox {
-    type;
-    text;
-    cssOptions;
-    skills;
-    index;
-    constructor(i){
-        this.type = "SkillsBox";
-        this.index = i;
-        this.skills = [];
-        this.text = "";
-        this.cssOptions = [];
-    }
-    Display() {
-        let parent = document.createElement("div");
-        for(let i = 0; i < this.cssOptions.length; i++){
-            AddCSSFromString(parent, this.cssOptions[i]);
-        }
-        for(let i = 0; i < this.skills.length; i++){
-            parent.appendChild(this.skills[i].ConvertToHTML(this.skills));
-        }
-        let addButton = document.createElement("button");
-        addButton.textContent = "|Add new skill|";
-        let skillsCopy = this.skills;
-        addButton.addEventListener('mouseover', function() {
-            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DeleteTemporary"])();
-            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SkillDropDownMenu"])("", parent, skillsCopy);
-        });
-        addButton.addEventListener('click', function() {
-            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DeleteTemporary"])();
-        });
-        parent.appendChild(addButton);
-        let deleteButton = document.createElement("button");
-        deleteButton.textContent = "|Remove skills box|";
-        let indexCopy = this.index;
-        deleteButton.addEventListener('click', function() {
-            __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["resume"].splice(indexCopy, 1);
-            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DisplayResume"])();
-        });
-        parent.appendChild(deleteButton);
-        document.getElementById("Resume")?.appendChild(parent);
-    }
-    ConvertToHTML() {
-        let parent = document.createElement("div");
-        for(let i = 0; i < this.cssOptions.length; i++){
-            AddCSSFromString(parent, this.cssOptions[i]);
-        }
-        for(let i = 0; i < this.skills.length; i++){
-            parent.appendChild(this.skills[i].ConvertToHTML(this.skills));
-        }
-        let addButton = document.createElement("button");
-        addButton.textContent = "|Add new skill|";
-        let skillsCopy = this.skills;
-        addButton.addEventListener('mouseover', function() {
-            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DeleteTemporary"])();
-            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SkillDropDownMenu"])("", parent, skillsCopy);
-        });
-        addButton.addEventListener('click', function() {
-            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DeleteTemporary"])();
-        });
-        parent.appendChild(addButton);
-        let deleteButton = document.createElement("button");
-        deleteButton.textContent = "|Remove skills box|";
-        let indexCopy = this.index;
-        deleteButton.addEventListener('click', function() {
-            __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["resume"].splice(indexCopy, 1);
-            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DisplayResume"])();
-        });
-        parent.appendChild(deleteButton);
-        return parent;
-    }
-    ConvertToHTMLForPresentPage() {
-        let parent = document.createElement("div");
-        for(let i = 0; i < this.cssOptions.length; i++){
-            AddCSSFromString(parent, this.cssOptions[i]);
-        }
-        for(let i = 0; i < this.skills.length; i++){
-            parent.appendChild(this.skills[i].ConvertToHTMLForPresentPage(this.skills));
-        }
-        return parent;
-    }
-}
-class Divider {
-    type;
-    text;
-    cssOptions;
-    index;
-    constructor(i){
-        this.type = "Divider";
-        this.index = i;
-        this.text = "New divider";
-        this.cssOptions = [
-            "border-bottom: solid",
-            "font-size: 24px"
-        ];
-    }
-    Display() {
-        let displayText = document.createElement("p");
-        displayText.textContent = this.text;
-        let self = this;
-        displayText.addEventListener('click', function() {
-            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["EditText"])(self);
-        });
-        for(let i = 0; i < this.cssOptions.length; i++){
-            AddCSSFromString(displayText, this.cssOptions[i]);
-        }
-        displayText.setAttribute("index", this.index.toString());
-        document.getElementById("Resume")?.appendChild(displayText);
-    }
-    ConvertToHTML() {
-        let displayText = document.createElement("p");
-        displayText.textContent = this.text;
-        for(let i = 0; i < this.cssOptions.length; i++){
-            AddCSSFromString(displayText, this.cssOptions[i]);
-        }
-        displayText.setAttribute("index", this.index.toString());
-        return displayText;
-    }
-}
-class Group {
-    type;
-    elements;
-    index;
-    constructor(i){
-        this.index = i;
-        this.elements = [];
-        this.type = "Group";
-    }
-    Display() {
-        let groupDiv = document.createElement("div");
-        groupDiv.setAttribute("id", "groupBox");
-        for(let i = 0; i < this.elements.length; i++){
-            //console.log(this.elements[i]);
-            let child = groupDiv.appendChild(this.elements[i].ConvertToHTML());
-            child.appendChild(GroupMovementButtons(this.elements[i].index, this));
-        }
-        let removeButton = document.createElement("p");
-        removeButton.textContent = "|remove group|";
-        let indexCopy = this.index;
-        removeButton.addEventListener('click', function() {
-            __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["resume"].splice(indexCopy, 1);
-            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DisplayResume"])();
-        });
-        groupDiv.appendChild(removeButton);
-        document.getElementById("Resume")?.appendChild(groupDiv);
-    }
-    ConvertToHTML() {}
-}
-function AddCSSFromString(HTMLElement, rawString) {
-    let splitString = rawString.split(":");
-    for(let i = 0; i < splitString.length; i++){
-        splitString[i] = splitString[i].trim();
-    }
-    switch(splitString[0]){
-        case "display":
-            {
-                HTMLElement.style.display = splitString[1];
-                break;
-            }
-        case "justify-content":
-            {
-                HTMLElement.style.justifyContent = splitString[1];
-                break;
-            }
-        case "font-size":
-            {
-                HTMLElement.style.fontSize = splitString[1];
-                break;
-            }
-        case "border":
-            {
-                HTMLElement.style.border = splitString[1];
-                break;
-            }
-        case "border-bottom":
-            {
-                HTMLElement.style.borderBottom = splitString[1];
-                break;
-            }
-        default:
-            {
-                throw new Error("Could not find a style method HTMLElement.style." + splitString[1]);
-            }
-    }
-}
-_c = AddCSSFromString;
-// Adds movement buttons to any resume element in a group.
-function GroupMovementButtons(index, groupBox) {
-    let parent = document.createElement("div");
-    let upButton = document.createElement("button");
-    upButton.textContent = "|^|";
-    upButton.addEventListener('click', function() {
-        MoveUp(index, groupBox);
-    });
-    let downButton = document.createElement("button");
-    downButton.textContent = "|v|";
-    downButton.addEventListener('click', function() {
-        MoveDown(index, groupBox);
-    });
-    parent.appendChild(upButton);
-    parent.appendChild(downButton);
-    return parent;
-}
-_c1 = GroupMovementButtons;
-function MoveUp(index, groupBox) {
-    if (!(index - 1 == groupBox.index)) {
-        let holdThis = groupBox.elements[index - 2 - groupBox.index];
-        groupBox.elements[index - 2 - groupBox.index] = groupBox.elements[index - 1 - groupBox.index];
-        groupBox.elements[index - 1 - groupBox.index] = holdThis;
-    } else {
-        let holdThis = groupBox.elements[index - 1 - groupBox.index];
-        groupBox.elements.splice(0, 1);
-        __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["resume"].splice(groupBox.index, 0, holdThis);
-    }
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DisplayResume"])();
-}
-_c2 = MoveUp;
-function MoveDown(index, groupBox) {
-    if (!(index == groupBox.index + groupBox.elements.length)) {
-        let holdThis = groupBox.elements[index - 1 - groupBox.index];
-        groupBox.elements[index - 1 - groupBox.index] = groupBox.elements[index - groupBox.index];
-        groupBox.elements[index - groupBox.index] = holdThis;
-    } else {
-        //console.log("move out from bottom");
-        let holdThis = groupBox.elements[index - 1 - groupBox.index];
-        groupBox.elements.splice(groupBox.elements.length - 1, 1);
-        __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["resume"].splice(groupBox.index + groupBox.elements.length, 0, holdThis);
-    }
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DisplayResume"])();
-}
-_c3 = MoveDown;
-var _c, _c1, _c2, _c3;
-__turbopack_refresh__.register(_c, "AddCSSFromString");
-__turbopack_refresh__.register(_c1, "GroupMovementButtons");
-__turbopack_refresh__.register(_c2, "MoveUp");
-__turbopack_refresh__.register(_c3, "MoveDown");
-if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
-    __turbopack_refresh__.registerExports(module, globalThis.$RefreshHelpers$);
-}
-}}),
-"[project]/src/app/Present/page.tsx [app-client] (ecmascript)": ((__turbopack_context__) => {
-"use strict";
-
-var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, k: __turbopack_refresh__, m: module, z: __turbopack_require_stub__ } = __turbopack_context__;
-{
-__turbopack_esm__({
-    "default": (()=>NewDisplay)
-});
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/public/HelperScripts/Elements.ts [app-client] (ecmascript)");
-'use client';
-;
-;
-//import { FilterBySkills } from "../../../public/HelperScripts/Present";
-let presentResume = [];
-let searchBySkills = [];
-function NewDisplay() {
-    document.onreadystatechange = function() {
-        if (document.readyState == "complete") {
-            document.getElementById("print")?.addEventListener('click', function() {
-                PrintResume();
-            });
-            LoadExistingResumeCookie();
-        }
-    };
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "topnav",
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                        children: "Resume Maker"
-                    }, void 0, false, {
-                        fileName: "[project]/src/app/Present/page.tsx",
-                        lineNumber: 17,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                        id: "print",
-                        children: " |print|"
-                    }, void 0, false, {
-                        fileName: "[project]/src/app/Present/page.tsx",
-                        lineNumber: 18,
-                        columnNumber: 9
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "[project]/src/app/Present/page.tsx",
-                lineNumber: 16,
-                columnNumber: 1
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "content",
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    id: "app"
-                }, void 0, false, {
-                    fileName: "[project]/src/app/Present/page.tsx",
-                    lineNumber: 21,
-                    columnNumber: 9
-                }, this)
-            }, void 0, false, {
-                fileName: "[project]/src/app/Present/page.tsx",
-                lineNumber: 20,
-                columnNumber: 5
-            }, this)
-        ]
-    }, void 0, true, {
-        fileName: "[project]/src/app/Present/page.tsx",
-        lineNumber: 15,
-        columnNumber: 5
-    }, this);
-}
-_c = NewDisplay;
-// does the same thing as the function on the editor side.
-// I should.. make it return something instead of copy-pasting it.
-// I'll do it later (never)
-function LoadExistingResumeCookie() {
-    const listOfCookies = decodeURIComponent(document.cookie).split(";");
-    for(let i = 0; i < listOfCookies.length; i++){
-        if (listOfCookies[i].indexOf("element") == 0 || listOfCookies[i].indexOf("element") == 1) {
-            let intermediate = listOfCookies[i].split("=");
-            let generic = JSON.parse(intermediate[1]);
-            switch(generic.type){
-                case "Title":
-                    {
-                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Title"](generic.index);
-                        cookieObj.text = generic.text;
-                        cookieObj.cssOptions = generic.cssOptions;
-                        presentResume.push(cookieObj);
-                        break;
-                    }
-                case "Subtitle":
-                    {
-                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Subtitle"](generic.index);
-                        cookieObj.text = generic.text;
-                        cookieObj.cssOptions = generic.cssOptions;
-                        presentResume.push(cookieObj);
-                        break;
-                    }
-                case "DateText":
-                    {
-                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DateText"](generic.index);
-                        cookieObj.text = generic.text;
-                        cookieObj.cssOptions = generic.cssOptions;
-                        presentResume.push(cookieObj);
-                        break;
-                    }
-                case "Description":
-                    {
-                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Description"](generic.index);
-                        cookieObj.text = generic.text;
-                        cookieObj.cssOptions = generic.cssOptions;
-                        presentResume.push(cookieObj);
-                        break;
-                    }
-                case "Divider":
-                    {
-                        let dividerObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Divider"](generic.index);
-                        dividerObj.text = generic.text;
-                        dividerObj.cssOptions = generic.cssOptions;
-                        presentResume.push(dividerObj);
-                        break;
-                    }
-                case "SkillsBox":
-                    {
-                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SkillsBox"](generic.index);
-                        cookieObj.text = generic.text;
-                        cookieObj.cssOptions = generic.cssOptions;
-                        let skillsArray = [];
-                        for(let j = 0; j < generic.skills.length; j++){
-                            let skill = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Skills"](generic.skills[j].name);
-                            skillsArray.push(skill);
-                        }
-                        cookieObj.skills = skillsArray;
-                        presentResume.push(cookieObj);
-                        break;
-                    }
-                case "Group":
-                    {
-                        let groupObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Group"](generic.index);
-                        for(let i = 0; i < generic.elements.length; i++){
-                            // Yeah, uhh.. this is basically just the method copy pasted again.
-                            // I REALLY need to clean this up and move it to another method later.
-                            switch(generic.elements[i].type){
-                                case "Title":
-                                    {
-                                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Title"](generic.elements[i].index);
-                                        cookieObj.text = generic.elements[i].text;
-                                        cookieObj.cssOptions = generic.elements[i].cssOptions;
-                                        groupObj.elements.push(cookieObj);
-                                        break;
-                                    }
-                                case "Subtitle":
-                                    {
-                                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Subtitle"](generic.elements[i].index);
-                                        cookieObj.text = generic.elements[i].text;
-                                        cookieObj.cssOptions = generic.elements[i].cssOptions;
-                                        groupObj.elements.push(cookieObj);
-                                        break;
-                                    }
-                                case "DateText":
-                                    {
-                                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DateText"](generic.elements[i].index);
-                                        cookieObj.text = generic.elements[i].text;
-                                        cookieObj.cssOptions = generic.elements[i].cssOptions;
-                                        groupObj.elements.push(cookieObj);
-                                        break;
-                                    }
-                                case "Description":
-                                    {
-                                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Description"](generic.elements[i].index);
-                                        cookieObj.text = generic.elements[i].text;
-                                        cookieObj.cssOptions = generic.elements[i].cssOptions;
-                                        groupObj.elements.push(cookieObj);
-                                        break;
-                                    }
-                                case "Divider":
-                                    {
-                                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Divider"](generic.elements[i].index);
-                                        cookieObj.text = generic.elements[i].text;
-                                        cookieObj.cssOptions = generic.elements[i].cssOptions;
-                                        groupObj.elements.push(cookieObj);
-                                        break;
-                                    }
-                                case "SkillsBox":
-                                    {
-                                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SkillsBox"](generic.elements[i].index);
-                                        cookieObj.text = generic.elements[i].text;
-                                        cookieObj.cssOptions = generic.elements[i].cssOptions;
-                                        let skillsArray = [];
-                                        for(let j = 0; j < generic.elements[i].skills.length; j++){
-                                            let skill = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Skills"](generic.elements[i].skills[j].name);
-                                            skillsArray.push(skill);
-                                        }
-                                        cookieObj.skills = skillsArray;
-                                        groupObj.elements.push(cookieObj);
-                                        break;
-                                    }
-                            }
-                        }
-                        presentResume.push(groupObj);
-                        break;
-                    }
-                default:
-                    {
-                        throw new Error("Could not find a matching object for " + generic.type);
-                    }
-            }
-        }
-    }
-    PresentResume();
-}
-_c1 = LoadExistingResumeCookie;
-// brings up a printing dialog for the resume.
-function PrintResume() {
-    document.getElementsByClassName("topnav")[0].remove();
-    const content = document.getElementsByClassName("content");
-    content[0].classList.remove("content");
-    print();
-}
-_c2 = PrintResume;
-function PresentResume() {
-    for(let i = 0; i < presentResume.length; i++){
-        if (presentResume[i].type == "SkillsBox") {
-            document.getElementById("app")?.appendChild(presentResume[i].ConvertToHTMLForPresentPage());
-        } else {
-            let element;
-            if (presentResume[i].type == "Group") {
-                let groupDiv = document.createElement("div");
-                for(let j = 0; j < presentResume[i].elements.length; j++){
-                    // change this later to not be so nasty oml
-                    // (condense some of these if/else statements jeez)
-                    // this is some HIDEOUS programming tbh... but I mean, it gets the job done.
-                    if (presentResume[i].elements[j].type == "SkillsBox") {
-                        element = groupDiv.appendChild(presentResume[i].elements[j].ConvertToHTMLForPresentPage());
-                    } else {
-                        element = groupDiv.appendChild(presentResume[i].elements[j].ConvertToHTML());
-                    }
-                    document.getElementById("app")?.appendChild(groupDiv);
-                    element.animate([
-                        {
-                            paddingTop: "10px",
-                            opacity: 0
-                        },
-                        {
-                            paddingTop: "0px",
-                            opacity: 1
-                        }
-                    ], {
-                        duration: 500,
-                        easing: "ease-out"
-                    });
-                }
-            } else {
-                element = document.getElementById("app")?.appendChild(presentResume[i].ConvertToHTML());
-                element.animate([
-                    {
-                        paddingTop: "10px",
-                        opacity: 0
-                    },
-                    {
-                        paddingTop: "0px",
-                        opacity: 1
-                    }
-                ], {
-                    duration: 500,
-                    easing: "ease-out"
-                });
-            }
-        // so for animating you might wanna reference these links:
-        // https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API/Using_the_Web_Animations_API
-        // https://stackoverflow.com/questions/18481550/how-to-dynamically-create-keyframe-css-animations
-        }
-    }
-}
-_c3 = PresentResume;
-var _c, _c1, _c2, _c3;
-__turbopack_refresh__.register(_c, "NewDisplay");
-__turbopack_refresh__.register(_c1, "LoadExistingResumeCookie");
-__turbopack_refresh__.register(_c2, "PrintResume");
-__turbopack_refresh__.register(_c3, "PresentResume");
-if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
-    __turbopack_refresh__.registerExports(module, globalThis.$RefreshHelpers$);
-}
-}}),
-"[project]/src/app/Present/page.tsx [app-rsc] (ecmascript, Next.js server component, client modules)": ((__turbopack_context__) => {
+"[project]/src/app/page.tsx [app-rsc] (ecmascript, Next.js server component, client modules)": ((__turbopack_context__) => {
 
 var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, t: __turbopack_require_real__ } = __turbopack_context__;
 {
@@ -3106,4 +2821,4 @@ if ((typeof exports.default === 'function' || typeof exports.default === 'object
 }}),
 }]);
 
-//# sourceMappingURL=_9e2a9a._.js.map
+//# sourceMappingURL=_8c0834._.js.map
