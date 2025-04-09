@@ -1,28 +1,51 @@
 'use client'
+import { useEffect } from "react";
 import { SkillsBox, Skills, Title, Subtitle, DateText, Description, Divider, Group } from "../../../public/HelperScripts/Elements";
 //import { FilterBySkills } from "../../../public/HelperScripts/Present";
+
+//import dynamic from 'next/dynamic';
+
+export const runtime = 'edge';
+
+const isClient = () => typeof window !== 'undefined';
+
+/*
+import type { AppProps } from "next/app";
+
+let resolved = false;
+const App = ({ Component, pageProps }: AppProps) => {
+  return NewDisplay();
+};
+
+export default dynamic(() => Promise.resolve(App), {
+  ssr: false,
+});
+*/
 let presentResume: any = [];
 let searchBySkills: any = [];
+
 export default function NewDisplay() {
-    document.onreadystatechange = function () {
-        if (typeof document != undefined && document.readyState == "complete") 
-        {
-          document.getElementById("print")?.addEventListener('click', function() {PrintResume()});
-          LoadExistingResumeCookie();
-        }
+    console.log("newDisplay")
+    useEffect(() => {
+      if (isClient()){
+        document.getElementById("print")?.addEventListener('click', function() {PrintResume()});
+        LoadExistingResumeCookie();
+        PresentResume();
       }
-  return (
-    <div>
-<div className="topnav">
-        <a>Resume Maker</a>
-        <button id="print"> |print|</button>
-    </div>
-    <div className="content">
-        <div id="app"></div>
-    </div>
-    </div>
-  );
+    }, []);
+    return (
+      <div>
+  <div className="topnav">
+          <a>Resume Maker</a>
+          <button id="print"> |print|</button>
+      </div>
+      <div className="content">
+          <div id="app"></div>
+      </div>
+      </div>
+    );
 }
+
 
 // does the same thing as the function on the editor side.
 // I should.. make it return something instead of copy-pasting it.
@@ -166,7 +189,6 @@ function LoadExistingResumeCookie()
       }
     }
   }
-  PresentResume();
 }
 
 // brings up a printing dialog for the resume.
@@ -220,3 +242,36 @@ function PresentResume()
     }
   }
 }
+
+/*
+import {useState} from "react";
+
+function Resume() {
+  const [resumeElements, setResumeElements] = useState<string[]>([]);
+
+
+  return (
+    <div>
+      <div className="controls">
+        <button onClick={() => {
+          setResumeElements((elements) => {
+            const newElement = "hello!";
+            return elements.concat([newElement]);
+          })
+        }}>Add an element that says hello</button>
+      </div>
+    <div className="resume-page">
+        {resumeElements.map((resumeElement, i) => (
+          <ResumeElement element={resumeElement} key={i} />
+        ))}
+    </div>
+    </div>
+  )
+}
+
+function ResumeElement({element}: {element: string}) {
+  return (
+    <p>This is an element! The message I have is: {element}</p>
+  )
+}
+*/

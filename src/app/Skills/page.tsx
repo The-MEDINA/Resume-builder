@@ -1,21 +1,29 @@
 'use client'
 import { GetSavedSkillList, GetSkillFromAddress, SetParentSkill, IsSubSkill, EncodeNewCookieFromSkills, DefaultSkillListString, ArrayToSkillType } from "../../../public/HelperScripts/skillTags";
 import { ImageSetup } from "../../../public/HelperScripts/ImageHandler";
+import { useEffect } from "react";
+
+export const runtime = 'edge';
+const isClient = () => typeof window !== 'undefined';
+
 let skillList: Skill[] = [];
 let holdOntoSkill: Skill;
 let isSkillSelected: boolean = false;
 let NewSkillInProgress: boolean = false;
 
 export default function Skills() {
-  document.onreadystatechange = function () {
-    if (typeof document != undefined && document.readyState == "complete") {
-    skillList = ArrayToSkillType(GetSavedSkillList());
-    DisplaySkills();
-    document.getElementById("saveButton")?.addEventListener('click', function() {EncodeNewCookieFromSkills(skillList)});
-    document.getElementById("resetButton")?.addEventListener('click', function() {EncodeNewCookieFromSkills(ArrayToSkillType(DefaultSkillListString())); DisplaySkills()});
-    Message("");
-  }
-}
+    useEffect(() => {
+      if (isClient()){
+        console.log("useEffect")
+        console.log("window is defined")
+          console.log("document state changed")
+          skillList = ArrayToSkillType(GetSavedSkillList());
+          document.getElementById("saveButton")?.addEventListener('click', function() {EncodeNewCookieFromSkills(skillList)});
+          document.getElementById("resetButton")?.addEventListener('click', function() {EncodeNewCookieFromSkills(ArrayToSkillType(DefaultSkillListString())); DisplaySkills()});
+          Message("");
+          DisplaySkills();
+      }
+    }, []);
     return (
       <div>
         <div className="topnav">
@@ -50,6 +58,7 @@ function Message(theMessage: string)
 // Puts the skills on the webpage.
 function DisplaySkills()
 {
+  console.log("display?? please?");
   while (document.getElementById("skillsList")?.firstChild != null)
   {
     document.getElementById("skillsList")?.firstChild?.remove();
