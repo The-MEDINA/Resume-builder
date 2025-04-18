@@ -24,6 +24,7 @@ export default function NewEditor() {
         <button id="save">|Save in browser|</button>
         <Link href="/Present">|Present|</Link>
         <Link href="/Skills">|edit skills|</Link>
+        <Link href="/ReactEditor">|React-based editor|</Link>
     </div>
     <div className="content">
       <div id="app">
