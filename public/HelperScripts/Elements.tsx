@@ -9,12 +9,16 @@ export interface ResumeElement {
   text: string;
   cssOptions: string[];
   index: number;
-  //style: any; <- this is an object, and each element has its own.
+  //style <- this is an object, and each element has its own.
   // directly adds the element to the page.
   Display: (any);
 
   // returns itself as an HTML element.
   ConvertToHTML: (any);
+
+  // Returns a react node of the given element.
+  // needs an int for a key.
+  Editor(i: number): (any);
 }
 
 // Title class.
@@ -57,6 +61,15 @@ export class Title implements ResumeElement {
     }
     displayText.setAttribute("index",this.index.toString());
     return displayText;
+  }
+  Editor(i: number)
+  {
+    return (
+    <div key={i}>
+      <p style={this.style}>
+      {this.text}
+    </p>
+    </div>)
   }
 }
 
@@ -102,6 +115,15 @@ export class Description implements ResumeElement {
     displayText.setAttribute("index",this.index.toString());
     return displayText;
   }
+  Editor(i: number)
+  {
+    return (
+    <div key={i}>
+      <p style={this.style}>
+        {this.text}
+      </p>
+    </div>)
+  }
 }
 
 // DateText class. Smallest size.
@@ -145,6 +167,15 @@ export class DateText implements ResumeElement {
     displayText.setAttribute("index",this.index.toString());
     return displayText;
   }
+  Editor(i: number)
+  {
+    return (
+    <div key={i}>
+      <p style={this.style}>
+        {this.text}
+      </p>
+    </div>)
+  }
 }
 
 // Subtitle class, used for the title of things like job experiences. Large size.
@@ -187,6 +218,15 @@ export class Subtitle implements ResumeElement{
     }
     displayText.setAttribute("index",this.index.toString());
     return displayText;
+  }
+  Editor(i: number)
+  {
+    return (
+    <div key={i}>
+      <p style={this.style}>
+        {this.text}
+      </p>
+    </div>)
   }
 }
 
@@ -334,6 +374,16 @@ export class SkillsBox implements ResumeElement{
     }
     return parent;
   }
+  // TODO: Fix this one
+  Editor(i: number)
+  {
+    return (
+    <div key={i}>
+      <p>
+        we're gonna come back to this one later :{'<'}
+      </p>
+    </div>)
+  }
 }
 
 // divider class.
@@ -377,6 +427,15 @@ export class Divider implements ResumeElement{
     displayText.setAttribute("index",this.index.toString());
     return displayText;
   }
+  Editor(i: number)
+  {
+  return  (
+    <div key={i}>
+      <p style={this.style}>
+        {this.text}
+      </p>
+    </div>)
+  }
 }
 
 // group class. NOT based off of a ResumeElement.
@@ -407,8 +466,6 @@ export class Group {
     groupDiv.appendChild(removeButton);
     document.getElementById("Resume")?.appendChild(groupDiv);
   }
-
-  ConvertToHTML() { }
 }
 
 // Takes a string, identifies the css option, and uses the correct function to apply the value to the HTML element given.

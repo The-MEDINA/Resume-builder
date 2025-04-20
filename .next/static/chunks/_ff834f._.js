@@ -280,18 +280,25 @@ var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_
 __turbopack_esm__({
     "AddCSSFromString": (()=>AddCSSFromString),
     "DateText": (()=>DateText),
+    "DateTextStyle": (()=>DateTextStyle),
     "Description": (()=>Description),
+    "DescriptionStyle": (()=>DescriptionStyle),
     "Divider": (()=>Divider),
+    "DividerStyle": (()=>DividerStyle),
     "Group": (()=>Group),
     "Skills": (()=>Skills),
     "SkillsBox": (()=>SkillsBox),
     "Subtitle": (()=>Subtitle),
-    "Title": (()=>Title)
+    "SubtitleStyle": (()=>SubtitleStyle),
+    "Title": (()=>Title),
+    "TitleStyle": (()=>TitleStyle)
 });
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Present$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/public/HelperScripts/Present.ts [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/public/HelperScripts/Editor.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/public/HelperScripts/skillTags.ts [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$ImageHandler$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/public/HelperScripts/ImageHandler.ts [app-client] (ecmascript)");
+;
 ;
 ;
 ;
@@ -301,6 +308,7 @@ class Title {
     text;
     cssOptions;
     index;
+    style;
     constructor(i){
         this.type = "Title";
         this.index = i;
@@ -310,6 +318,7 @@ class Title {
             "justify-content: center",
             "font-size: 48px"
         ];
+        this.style = TitleStyle;
     }
     Display() {
         let displayText = document.createElement("p");
@@ -332,6 +341,22 @@ class Title {
         }
         displayText.setAttribute("index", this.index.toString());
         return displayText;
+    }
+    Editor(i) {
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                style: this.style,
+                children: this.text
+            }, void 0, false, {
+                fileName: "[project]/public/HelperScripts/Elements.tsx",
+                lineNumber: 69,
+                columnNumber: 7
+            }, this)
+        }, i, false, {
+            fileName: "[project]/public/HelperScripts/Elements.tsx",
+            lineNumber: 68,
+            columnNumber: 5
+        }, this);
     }
 }
 class Description {
@@ -339,6 +364,7 @@ class Description {
     text;
     cssOptions;
     index;
+    style;
     constructor(i){
         this.type = "Description";
         this.index = i;
@@ -346,6 +372,7 @@ class Description {
         this.cssOptions = [
             "font-size: 16px"
         ];
+        this.style = DescriptionStyle;
     }
     Display() {
         let displayText = document.createElement("p");
@@ -368,6 +395,22 @@ class Description {
         }
         displayText.setAttribute("index", this.index.toString());
         return displayText;
+    }
+    Editor(i) {
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                style: this.style,
+                children: this.text
+            }, void 0, false, {
+                fileName: "[project]/public/HelperScripts/Elements.tsx",
+                lineNumber: 122,
+                columnNumber: 7
+            }, this)
+        }, i, false, {
+            fileName: "[project]/public/HelperScripts/Elements.tsx",
+            lineNumber: 121,
+            columnNumber: 5
+        }, this);
     }
 }
 class DateText {
@@ -375,6 +418,7 @@ class DateText {
     text;
     cssOptions;
     index;
+    style;
     constructor(i){
         this.type = "DateText";
         this.index = i;
@@ -382,6 +426,7 @@ class DateText {
         this.cssOptions = [
             "font-size: 12px"
         ];
+        this.style = DateTextStyle;
     }
     Display() {
         let displayText = document.createElement("p");
@@ -404,6 +449,22 @@ class DateText {
         }
         displayText.setAttribute("index", this.index.toString());
         return displayText;
+    }
+    Editor(i) {
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                style: this.style,
+                children: this.text
+            }, void 0, false, {
+                fileName: "[project]/public/HelperScripts/Elements.tsx",
+                lineNumber: 174,
+                columnNumber: 7
+            }, this)
+        }, i, false, {
+            fileName: "[project]/public/HelperScripts/Elements.tsx",
+            lineNumber: 173,
+            columnNumber: 5
+        }, this);
     }
 }
 class Subtitle {
@@ -411,6 +472,7 @@ class Subtitle {
     text;
     cssOptions;
     index;
+    style;
     constructor(i){
         this.type = "Subtitle";
         this.index = i;
@@ -418,6 +480,7 @@ class Subtitle {
         this.cssOptions = [
             "font-size: 24px"
         ];
+        this.style = SubtitleStyle;
     }
     Display() {
         let displayText = document.createElement("p");
@@ -440,6 +503,22 @@ class Subtitle {
         }
         displayText.setAttribute("index", this.index.toString());
         return displayText;
+    }
+    Editor(i) {
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                style: this.style,
+                children: this.text
+            }, void 0, false, {
+                fileName: "[project]/public/HelperScripts/Elements.tsx",
+                lineNumber: 226,
+                columnNumber: 7
+            }, this)
+        }, i, false, {
+            fileName: "[project]/public/HelperScripts/Elements.tsx",
+            lineNumber: 225,
+            columnNumber: 5
+        }, this);
     }
 }
 class Skills {
@@ -581,12 +660,32 @@ class SkillsBox {
         }
         return parent;
     }
+    // TODO: Fix this one
+    Editor(i) {
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                children: [
+                    "we're gonna come back to this one later :",
+                    '<'
+                ]
+            }, void 0, true, {
+                fileName: "[project]/public/HelperScripts/Elements.tsx",
+                lineNumber: 382,
+                columnNumber: 7
+            }, this)
+        }, i, false, {
+            fileName: "[project]/public/HelperScripts/Elements.tsx",
+            lineNumber: 381,
+            columnNumber: 5
+        }, this);
+    }
 }
 class Divider {
     type;
     text;
     cssOptions;
     index;
+    style;
     constructor(i){
         this.type = "Divider";
         this.index = i;
@@ -595,6 +694,7 @@ class Divider {
             "border-bottom: solid",
             "font-size: 24px"
         ];
+        this.style = DividerStyle;
     }
     Display() {
         let displayText = document.createElement("p");
@@ -617,6 +717,22 @@ class Divider {
         }
         displayText.setAttribute("index", this.index.toString());
         return displayText;
+    }
+    Editor(i) {
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                style: this.style,
+                children: this.text
+            }, void 0, false, {
+                fileName: "[project]/public/HelperScripts/Elements.tsx",
+                lineNumber: 434,
+                columnNumber: 7
+            }, this)
+        }, i, false, {
+            fileName: "[project]/public/HelperScripts/Elements.tsx",
+            lineNumber: 433,
+            columnNumber: 5
+        }, this);
     }
 }
 class Group {
@@ -646,7 +762,6 @@ class Group {
         groupDiv.appendChild(removeButton);
         document.getElementById("Resume")?.appendChild(groupDiv);
     }
-    ConvertToHTML() {}
 }
 function AddCSSFromString(HTMLElement, rawString) {
     let splitString = rawString.split(":");
@@ -731,6 +846,24 @@ function MoveDown(index, groupBox) {
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DisplayResume"])();
 }
 _c3 = MoveDown;
+const TitleStyle = {
+    display: "flex",
+    justifyContent: "center",
+    fontSize: "48px"
+};
+const DescriptionStyle = {
+    fontSize: "16px"
+};
+const DateTextStyle = {
+    fontSize: "12px"
+};
+const SubtitleStyle = {
+    fontSize: "24px"
+};
+const DividerStyle = {
+    fontSize: "24px",
+    borderBottom: "solid"
+};
 var _c, _c1, _c2, _c3;
 __turbopack_refresh__.register(_c, "AddCSSFromString");
 __turbopack_refresh__.register(_c1, "GroupMovementButtons");
@@ -1199,22 +1332,19 @@ function DeleteResumeCookie() {
 }
 _c15 = DeleteResumeCookie;
 function EditorResume() {
-    let displayTheResume = resume.map((element)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-            children: element.text
-        }, element.index, false, {
-            fileName: "[project]/public/HelperScripts/Editor.tsx",
-            lineNumber: 471,
-            columnNumber: 5
-        }, this));
+    let displayTheResume = [];
+    for(let i = 0; i < resume.length; i++){
+        displayTheResume.push(resume[i].Editor(i));
+    }
     console.log(displayTheResume);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         children: displayTheResume
     }, void 0, false, {
         fileName: "[project]/public/HelperScripts/Editor.tsx",
-        lineNumber: 476,
+        lineNumber: 475,
         columnNumber: 11
     }, this);
-}
+} // resume[0].style = ({...TitleStyle, fontSize: "24px"}); <- Remember this, you can update css like this
 _c16 = EditorResume;
 var _c, _c1, _c2, _c3, _c4, _c5, _c6, _c7, _c8, _c9, _c10, _c11, _c12, _c13, _c14, _c15, _c16;
 __turbopack_refresh__.register(_c, "Setup");

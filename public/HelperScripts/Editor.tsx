@@ -467,11 +467,10 @@ function DeleteResumeCookie()
 // Turns the resume into a list of react elements that can be drawn.
 export function EditorResume()
 {
-  let displayTheResume = resume.map(element =>
-    <p key={element.index} style={element.style}>
-      {element.text}
-    </p>
-  )
+  let displayTheResume = [];
+  for (let i = 0; i < resume.length; i++){
+    displayTheResume.push(resume[i].Editor(i));
+  }
   console.log(displayTheResume);
   return (<div>{displayTheResume}</div>)
 }
