@@ -1,3 +1,3 @@
 {
-  "/ReactEditor/page": "app-edge-has-no-entrypoint"
+  "/ReactEditor/page": "app/ReactEditor/page.js"
 }

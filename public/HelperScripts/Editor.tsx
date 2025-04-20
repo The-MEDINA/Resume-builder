@@ -1,8 +1,9 @@
 // puts the resume onto the website.
 import { Skill } from "@/app/Skills/page";
-import { GetSavedSkillList, ArrayToSkillType } from "../../public/HelperScripts/skillTags";
-import { SkillsBox, Skills, Title, Subtitle, DateText, Description, ResumeElement, Divider, Group } from "../../public/HelperScripts/Elements";
+import { GetSavedSkillList, ArrayToSkillType } from "./skillTags";
+import { SkillsBox, Skills, Title, Subtitle, DateText, Description, ResumeElement, Divider, Group } from "./Elements";
 let listOfSkills: Skill[] = ArrayToSkillType(GetSavedSkillList());
+
 export let resume: any[] = [];
 
 export function Setup()
@@ -20,6 +21,13 @@ export function Setup()
     //console.log(listOfSkills);
     LoadExistingResumeCookie();
     DisplayResume(); 
+}
+
+export function Setup2()
+{
+  resume = [];
+  LoadExistingResumeCookie();
+  console.log(resume);
 }
 
 // finds and loads an existing resume in the browser.
@@ -454,4 +462,16 @@ function DeleteResumeCookie()
       document.cookie = intermediate[0] + "=; expires=Thu, 18 Dec 2013 12:00:00 UTC";
     }
   }
+}
+
+// Turns the resume into a list of react elements that can be drawn.
+export function EditorResume()
+{
+  let displayTheResume = resume.map(element =>
+    <p key={element.index} style={element.theme}>
+      {element.text}
+    </p>
+  )
+  console.log(displayTheResume);
+  return (<div>{displayTheResume}</div>)
 }

@@ -2,21 +2,17 @@
 import { Skill } from "@/app/Skills/page";
 import {useEffect} from "react";
 import { GetSavedSkillList, ArrayToSkillType } from "../../../public/HelperScripts/skillTags";
-import { DisplayResume, SkillDropDownMenu, DeleteTemporary, EditText, RemoveFromSkillsBox, LoadExistingResumeCookie, resume, Setup } from "../../../public/HelperScripts/Editor";
+import { EditorResume, Setup2 } from "../../../public/HelperScripts/Editor";
 import { SkillsBox, Skills, Title, Subtitle, DateText, Description, ResumeElement, Divider, Group } from "../../../public/HelperScripts/Elements";
 import Link from "next/link";
 
-export const runtime = 'edge';
+//export const runtime = 'edge';
 
 //const isClient = () => typeof window !== 'undefined';
 
 let listOfSkills: Skill[] = ArrayToSkillType(GetSavedSkillList());
-export default function ReaactEditor() {
-    /*useEffect(() => {
-      if (isClient()){
-        Setup();
-      }
-    }, []);*/
+export default function ReactEditor() {
+  Setup2();
   return (
     <div>
 <div className="topnav">
@@ -36,9 +32,11 @@ export default function ReaactEditor() {
           <button id="addRawTitle" onClick={() => console.log("title")}>|add title|</button>
           <button id="addSkillsBox" onClick={() => console.log("skillsBox")}>|add skills box|</button>
           <button id="addExperience" onClick={() => console.log("experience")}>|add experience|</button>
-          <button id="addGroup" onClick={() => console.log("group")}>|add group box|</button>
+          <button id="addGroup" onClick={() => {console.log("group"); console.log(listOfSkills)}}>|add group box|</button>
         </div>
-        <div id="Resume"></div>
+        <div id="Resume">
+            {EditorResume()}
+        </div>
         <div id="editElements">
         <p>edit</p>
         </div>

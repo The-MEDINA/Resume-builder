@@ -751,6 +751,7 @@ __turbopack_esm__({
     "DeleteTemporary": (()=>DeleteTemporary),
     "DisplayResume": (()=>DisplayResume),
     "EditText": (()=>EditText),
+    "EditorResume": (()=>EditorResume),
     "LoadExistingResumeCookie": (()=>LoadExistingResumeCookie),
     "RemoveFromSkillsBox": (()=>RemoveFromSkillsBox),
     "Setup": (()=>Setup),
@@ -1188,7 +1189,9 @@ function DeleteResumeCookie() {
     }
 }
 _c14 = DeleteResumeCookie;
-var _c, _c1, _c2, _c3, _c4, _c5, _c6, _c7, _c8, _c9, _c10, _c11, _c12, _c13, _c14;
+function EditorResume() {}
+_c15 = EditorResume;
+var _c, _c1, _c2, _c3, _c4, _c5, _c6, _c7, _c8, _c9, _c10, _c11, _c12, _c13, _c14, _c15;
 __turbopack_refresh__.register(_c, "Setup");
 __turbopack_refresh__.register(_c1, "LoadExistingResumeCookie");
 __turbopack_refresh__.register(_c2, "DisplayResume");
@@ -1204,6 +1207,7 @@ __turbopack_refresh__.register(_c11, "FindElementOnPage");
 __turbopack_refresh__.register(_c12, "AddRawElement");
 __turbopack_refresh__.register(_c13, "EncodeResumeCookie");
 __turbopack_refresh__.register(_c14, "DeleteResumeCookie");
+__turbopack_refresh__.register(_c15, "EditorResume");
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_refresh__.registerExports(module, globalThis.$RefreshHelpers$);
 }

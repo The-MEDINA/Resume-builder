@@ -55,9 +55,9 @@
         "server/edge/chunks/ssr/node_modules_1bbacb._.js",
         "server/edge/chunks/ssr/[root of the server]__e80017._.js",
         "server/edge/chunks/ssr/node_modules_0ce355._.js",
-        "server/edge/chunks/ssr/_67617a._.js",
+        "server/edge/chunks/ssr/_d9cff9._.js",
         "server/edge/chunks/ssr/node_modules_0ce355._.js",
-        "server/edge/chunks/ssr/_67617a._.js",
+        "server/edge/chunks/ssr/_d9cff9._.js",
         "server/app/page_client-reference-manifest.js",
         "server/edge/chunks/ssr/node_modules_next_dist_esm_server_web_79823c._.js",
         "server/edge/chunks/ssr/node_modules_next_dist_esm_server_app-render_ef354d._.js",
@@ -126,137 +126,9 @@
       "env": {
         "__NEXT_BUILD_ID": "development",
         "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "8svRZETgnUTEncCYMDe5HPu6pzBbAS5cU+ccFxYE5Os=",
-        "__NEXT_PREVIEW_MODE_ID": "d6dc29166f28d65b75ef79d92abfed8f",
-        "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "08294ee8b24002dc24150403ce4838a39fe141c395358e0e149c519c33cbd60a",
-        "__NEXT_PREVIEW_MODE_SIGNING_KEY": "e7a0a0758103d6e86dc6f898c18f88b049dd501410a63da75617a7ef4ad8c981"
-      }
-    },
-    "/ReactEditor/page": {
-      "files": [
-        "server/server-reference-manifest.js",
-        "server/middleware-build-manifest.js",
-        "server/middleware-react-loadable-manifest.js",
-        "server/next-font-manifest.js",
-        "server/interception-route-rewrite-manifest.js",
-        "server/edge/chunks/ssr/node_modules_1bbacb._.js",
-        "server/edge/chunks/ssr/[root of the server]__e80017._.js",
-        "server/edge/chunks/ssr/node_modules_1bbacb._.js",
-        "server/edge/chunks/ssr/[root of the server]__e80017._.js",
-        "server/edge/chunks/ssr/node_modules_1bbacb._.js",
-        "server/edge/chunks/ssr/[root of the server]__e80017._.js",
-        "server/edge/chunks/ssr/node_modules_1bbacb._.js",
-        "server/edge/chunks/ssr/[root of the server]__e80017._.js",
-        "server/edge/chunks/ssr/node_modules_1bbacb._.js",
-        "server/edge/chunks/ssr/[root of the server]__e80017._.js",
-        "server/edge/chunks/ssr/node_modules_1bbacb._.js",
-        "server/edge/chunks/ssr/[root of the server]__e80017._.js",
-        "server/edge/chunks/ssr/node_modules_1bbacb._.js",
-        "server/edge/chunks/ssr/[root of the server]__e80017._.js",
-        "server/edge/chunks/ssr/node_modules_1bbacb._.js",
-        "server/edge/chunks/ssr/[root of the server]__e80017._.js",
-        "server/edge/chunks/ssr/node_modules_1bbacb._.js",
-        "server/edge/chunks/ssr/[root of the server]__e80017._.js",
-        "server/edge/chunks/ssr/node_modules_1bbacb._.js",
-        "server/edge/chunks/ssr/[root of the server]__e80017._.js",
-        "server/edge/chunks/ssr/node_modules_1bbacb._.js",
-        "server/edge/chunks/ssr/[root of the server]__e80017._.js",
-        "server/edge/chunks/ssr/node_modules_1bbacb._.js",
-        "server/edge/chunks/ssr/[root of the server]__e80017._.js",
-        "server/edge/chunks/ssr/node_modules_1bbacb._.js",
-        "server/edge/chunks/ssr/[root of the server]__e80017._.js",
-        "server/edge/chunks/ssr/node_modules_1bbacb._.js",
-        "server/edge/chunks/ssr/[root of the server]__e80017._.js",
-        "server/edge/chunks/ssr/node_modules_1bbacb._.js",
-        "server/edge/chunks/ssr/[root of the server]__e80017._.js",
-        "server/edge/chunks/ssr/node_modules_1bbacb._.js",
-        "server/edge/chunks/ssr/[root of the server]__e80017._.js",
-        "server/edge/chunks/ssr/node_modules_1bbacb._.js",
-        "server/edge/chunks/ssr/[root of the server]__e80017._.js",
-        "server/edge/chunks/ssr/node_modules_1bbacb._.js",
-        "server/edge/chunks/ssr/[root of the server]__e80017._.js",
-        "server/edge/chunks/ssr/node_modules_1bbacb._.js",
-        "server/edge/chunks/ssr/[root of the server]__e80017._.js",
-        "server/edge/chunks/ssr/node_modules_1bbacb._.js",
-        "server/edge/chunks/ssr/[root of the server]__e80017._.js",
-        "server/edge/chunks/ssr/node_modules_1bbacb._.js",
-        "server/edge/chunks/ssr/[root of the server]__e80017._.js",
-        "server/edge/chunks/ssr/node_modules_1bbacb._.js",
-        "server/edge/chunks/ssr/[root of the server]__e80017._.js",
-        "server/edge/chunks/ssr/node_modules_0ce355._.js",
-        "server/edge/chunks/ssr/_ecb606._.js",
-        "server/edge/chunks/ssr/node_modules_0ce355._.js",
-        "server/edge/chunks/ssr/_ecb606._.js",
-        "server/app/ReactEditor/page_client-reference-manifest.js",
-        "server/edge/chunks/ssr/node_modules_next_dist_esm_server_web_79823c._.js",
-        "server/edge/chunks/ssr/node_modules_next_dist_esm_server_app-render_ef354d._.js",
-        "server/edge/chunks/ssr/node_modules_next_dist_esm_server_lib_420b36._.js",
-        "server/edge/chunks/ssr/node_modules_next_dist_esm_server_base-server_8e3f01.js",
-        "server/edge/chunks/ssr/node_modules_next_dist_esm_server_1a7276._.js",
-        "server/edge/chunks/ssr/node_modules_next_dist_esm_lib_c9bb88._.js",
-        "server/edge/chunks/ssr/node_modules_next_dist_esm_shared_lib_558d21._.js",
-        "server/edge/chunks/ssr/node_modules_next_dist_esm_client_components_router-reducer_7fe3cf._.js",
-        "server/edge/chunks/ssr/node_modules_next_dist_esm_client_components_segment-cache_b86139._.js",
-        "server/edge/chunks/ssr/node_modules_next_dist_esm_client_components_react-dev-overlay_b4bb68._.js",
-        "server/edge/chunks/ssr/node_modules_next_dist_esm_client_components_a4ae7d._.js",
-        "server/edge/chunks/ssr/node_modules_next_dist_esm_client_d9626f._.js",
-        "server/edge/chunks/ssr/node_modules_next_dist_esm_build_fcabff._.js",
-        "server/edge/chunks/ssr/node_modules_next_dist_esm_621df9._.js",
-        "server/edge/chunks/ssr/node_modules_next_dist_compiled_react_dad7b0._.js",
-        "server/edge/chunks/ssr/8069e_next_dist_compiled_react-dom_cjs_react-dom-server_edge_development_6380f0.js",
-        "server/edge/chunks/ssr/0f475_dist_compiled_react-dom_cjs_react-dom-server-legacy_browser_development_1c2a5b.js",
-        "server/edge/chunks/ssr/8069e_next_dist_compiled_react-dom_cjs_react-dom-server_edge_development_f3d0ca.js",
-        "server/edge/chunks/ssr/0f475_dist_compiled_react-dom_cjs_react-dom-server-legacy_browser_development_c4d500.js",
-        "server/edge/chunks/ssr/node_modules_next_dist_compiled_react-dom_cjs_96792f._.js",
-        "server/edge/chunks/ssr/node_modules_next_dist_compiled_react-dom_2bf541._.js",
-        "server/edge/chunks/ssr/node_modules_next_dist_compiled_react-server-dom-turbopack_4ac921._.js",
-        "server/edge/chunks/ssr/node_modules_next_dist_compiled_c3abac._.js",
-        "server/edge/chunks/ssr/node_modules_next_dist_3804ba._.js",
-        "server/edge/chunks/ssr/edge-wrapper_712df0.js",
-        "server/edge/chunks/ssr/node_modules_@swc_helpers_1301d4._.js",
-        "server/edge/chunks/ssr/[root of the server]__895a91._.js",
-        "server/edge/chunks/ssr/edge-wrapper_7c86d5.js"
-      ],
-      "name": "/ReactEditor",
-      "page": "/ReactEditor/page",
-      "matchers": [
-        {
-          "regexp": "^/ReactEditor(?:/)?$",
-          "originalSource": "/ReactEditor"
-        }
-      ],
-      "wasm": [],
-      "assets": [
-        {
-          "name": "server/edge/chunks/ssr/src_app_geistsans_9fc57718_module_b52d8e.css",
-          "filePath": "server/edge/chunks/ssr/src_app_geistsans_9fc57718_module_b52d8e.css"
-        },
-        {
-          "name": "server/edge/chunks/ssr/src_app_geistsans_9fc57718_module_b52d8e.css",
-          "filePath": "server/edge/chunks/ssr/src_app_geistsans_9fc57718_module_b52d8e.css"
-        },
-        {
-          "name": "server/edge/chunks/ssr/src_app_geistmono_b9f59162_module_b52d8e.css",
-          "filePath": "server/edge/chunks/ssr/src_app_geistmono_b9f59162_module_b52d8e.css"
-        },
-        {
-          "name": "server/edge/chunks/ssr/src_app_geistmono_b9f59162_module_b52d8e.css",
-          "filePath": "server/edge/chunks/ssr/src_app_geistmono_b9f59162_module_b52d8e.css"
-        },
-        {
-          "name": "server/edge/chunks/ssr/src_app_globals_b52d8e.css",
-          "filePath": "server/edge/chunks/ssr/src_app_globals_b52d8e.css"
-        },
-        {
-          "name": "server/edge/chunks/ssr/src_app_c7d265._.css",
-          "filePath": "server/edge/chunks/ssr/src_app_c7d265._.css"
-        }
-      ],
-      "env": {
-        "__NEXT_BUILD_ID": "development",
-        "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "8svRZETgnUTEncCYMDe5HPu6pzBbAS5cU+ccFxYE5Os=",
-        "__NEXT_PREVIEW_MODE_ID": "d6dc29166f28d65b75ef79d92abfed8f",
-        "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "08294ee8b24002dc24150403ce4838a39fe141c395358e0e149c519c33cbd60a",
-        "__NEXT_PREVIEW_MODE_SIGNING_KEY": "e7a0a0758103d6e86dc6f898c18f88b049dd501410a63da75617a7ef4ad8c981"
+        "__NEXT_PREVIEW_MODE_ID": "31b3020ec1fe4cb30bc4f765ce256852",
+        "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "3496c85dd1257ae14f712dd2556a0ce4156aa921c01e43892409b82ed210d8f8",
+        "__NEXT_PREVIEW_MODE_SIGNING_KEY": "edd18c2785b0b058f6bdfcab1046ffa3ede1d5424c61632b51a03b3e76b530d2"
       }
     }
   }

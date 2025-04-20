@@ -701,6 +701,7 @@ __turbopack_esm__({
     "DeleteTemporary": (()=>DeleteTemporary),
     "DisplayResume": (()=>DisplayResume),
     "EditText": (()=>EditText),
+    "EditorResume": (()=>EditorResume),
     "LoadExistingResumeCookie": (()=>LoadExistingResumeCookie),
     "RemoveFromSkillsBox": (()=>RemoveFromSkillsBox),
     "Setup": (()=>Setup),
@@ -1123,6 +1124,7 @@ function DeleteResumeCookie() {
         }
     }
 }
+function EditorResume() {}
 }}),
 "[project]/src/app/page.tsx [app-edge-ssr] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
