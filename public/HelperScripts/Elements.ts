@@ -1,8 +1,7 @@
-import { FilterBySkills } from "../HelperScripts/Present";
-import { DisplayResume, SkillDropDownMenu, DeleteTemporary, EditText, RemoveFromSkillsBox, resume } from "../HelperScripts/Editor";
-import { GetAddressFromSkillName, SetParentSkill } from "../../public/HelperScripts/skillTags";
-import { ImageSetupFromRawAddress } from "../../public/HelperScripts/ImageHandler";
-import { group } from "console";
+import { FilterBySkills } from "./Present";
+import { DisplayResume, SkillDropDownMenu, DeleteTemporary, EditText, RemoveFromSkillsBox, resume } from "./Editor";
+import { GetAddressFromSkillName, SetParentSkill } from "./skillTags";
+import { ImageSetupFromRawAddress } from "./ImageHandler";
 
 /// The base that all of the fundamental resume elements draw from.
 export interface ResumeElement {
@@ -10,7 +9,7 @@ export interface ResumeElement {
   text: string;
   cssOptions: string[];
   index: number;
-
+  //style: any; <- this is an object, and each element has its own.
   // directly adds the element to the page.
   Display: (any);
 
@@ -24,12 +23,14 @@ export class Title implements ResumeElement {
   text: string;
   cssOptions: string[];
   index: number;
+  style: typeof TitleStyle;
   public constructor(i: number)
   {
     this.type = "Title";
     this.index = i;
     this.text = "New Title";
     this.cssOptions = ["display: flex","justify-content: center","font-size: 48px"];
+    this.style = TitleStyle;
   }
 
   Display()
@@ -65,12 +66,15 @@ export class Description implements ResumeElement {
   text: string;
   cssOptions: string[];
   index: number;
+  style: typeof DescriptionStyle;
+
   public constructor(i: number)
   {
     this.type = "Description";
     this.index = i;
     this.text = "New description that says a lot of words about something.";
     this.cssOptions = ["font-size: 16px"];
+    this.style = DescriptionStyle;
   }
 
   Display()
@@ -106,12 +110,14 @@ export class DateText implements ResumeElement {
   text: string;
   cssOptions: string[];
   index: number;
+  style: typeof DateTextStyle;
   public constructor(i: number)
   {
     this.type = "DateText";
     this.index = i;
     this.text = "DateText start - DateText end";
     this.cssOptions = ["font-size: 12px"];
+    this.style = DateTextStyle;
   }
 
   Display()
@@ -147,12 +153,14 @@ export class Subtitle implements ResumeElement{
   text: string;
   cssOptions: string[];
   index: number;
+  style: typeof SubtitleStyle;
   public constructor(i: number)
   {
     this.type = "Subtitle";
     this.index = i;
     this.text = "New Job title";
     this.cssOptions = ["font-size: 24px"];
+    this.style = SubtitleStyle;
   }
 
   Display()
@@ -184,6 +192,9 @@ export class Subtitle implements ResumeElement{
 
 // skills class.
 // I literally only need this because I didn't realize types are just converted to strings or something at runtime.
+// I NEED TO CLEAN THAT UP AAAAAA
+// TODO: rewrite anything using the skills type to use a skills object.
+// (Looking at you skills page)
 export class Skills {
   name: string;
   parent: string;
@@ -331,12 +342,14 @@ export class Divider implements ResumeElement{
   text: string;
   cssOptions: string[];
   index: number;
+  style: typeof DividerStyle;
   public constructor(i: number)
   {
     this.type = "Divider";
     this.index = i;
     this.text = "New divider";
     this.cssOptions = ["border-bottom: solid","font-size: 24px"];
+    this.style = DividerStyle;
   }
 
   Display()
@@ -466,3 +479,31 @@ function MoveDown(index: number, groupBox: Group)
   }
   DisplayResume();
 }
+
+// The default style object for a Title element.
+export const TitleStyle = {
+  display: "flex",
+  justifyContent: "center",
+  fontSize: "48px",
+};
+
+// The default style object for a Description element.
+export const DescriptionStyle = {
+  fontSize: "16px",
+};
+
+// The default style object for a Date text element.
+export const DateTextStyle = {
+  fontSize: "12px",
+};
+
+// The default style object for a subtitle element.
+export const SubtitleStyle = {
+  fontSize: "24px",
+};
+
+// The default style object for a divider element.
+export const DividerStyle = {
+  fontSize: "24px",
+  borderBottom: "solid",
+};

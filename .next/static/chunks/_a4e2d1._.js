@@ -1,17 +1,9 @@
-module.exports = {
+(globalThis.TURBOPACK = globalThis.TURBOPACK || []).push(["static/chunks/_a4e2d1._.js", {
 
-"[externals]/next/dist/compiled/next-server/app-page.runtime.dev.js [external] (next/dist/compiled/next-server/app-page.runtime.dev.js, cjs)": (function(__turbopack_context__) {
-
-var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, m: module, e: exports, t: __turbopack_require_real__ } = __turbopack_context__;
-{
-const mod = __turbopack_external_require__("next/dist/compiled/next-server/app-page.runtime.dev.js", () => require("next/dist/compiled/next-server/app-page.runtime.dev.js"));
-
-module.exports = mod;
-}}),
-"[project]/public/HelperScripts/skillTags.ts [app-ssr] (ecmascript)": ((__turbopack_context__) => {
+"[project]/public/HelperScripts/skillTags.ts [app-client] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
-var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, z: __turbopack_require_stub__ } = __turbopack_context__;
+var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, k: __turbopack_refresh__, m: module, z: __turbopack_require_stub__ } = __turbopack_context__;
 {
 __turbopack_esm__({
     "ArrayToSkillType": (()=>ArrayToSkillType),
@@ -32,6 +24,7 @@ function GetSavedSkillList() {
     // (I hope and dream this will one day be implemented)
     return returnValue;
 }
+_c = GetSavedSkillList;
 // Extension of GetSavedSkillList(). Returns the skill list in the cookie.
 function DecodeSkillListCookie() {
     let cookieToDecode = "";
@@ -52,6 +45,7 @@ function DecodeSkillListCookie() {
     }
     return allSkills;
 }
+_c1 = DecodeSkillListCookie;
 function EncodeNewCookieFromSkills(stringAddresses) {
     const listOfCookies = decodeURIComponent(document.cookie).split(";");
     for(let i = 0; i < listOfCookies.length; i++){
@@ -74,10 +68,12 @@ function EncodeNewCookieFromSkills(stringAddresses) {
     let expires = "expires=" + d.toUTCString();
     document.cookie = "SkillTags=" + returnString + "; " + expires;
 }
+_c2 = EncodeNewCookieFromSkills;
 function GetSkillFromAddress(address) {
     let skillAddress = address.split("/");
     return skillAddress[skillAddress.length - 1];
 }
+_c3 = GetSkillFromAddress;
 function GetAddressFromSkillName(name) {
     let skillsList = GetSavedSkillList();
     let returnString = name;
@@ -90,11 +86,13 @@ function GetAddressFromSkillName(name) {
     }
     return returnString;
 }
+_c4 = GetAddressFromSkillName;
 function SetParentSkill(address) {
     let skillAddress = address.split("/");
     if (skillAddress.length <= 1) return "";
     else return skillAddress[skillAddress.length - 2];
 }
+_c5 = SetParentSkill;
 function IsSubSkill(parentSkill, potentialChild) {
     let skillAddress = parentSkill.address.split("/");
     let potentialAddress = potentialChild.address.split("/");
@@ -105,6 +103,7 @@ function IsSubSkill(parentSkill, potentialChild) {
     }
     return true;
 }
+_c6 = IsSubSkill;
 function DefaultSkillListString() {
     let stringAddresses = [];
     // Programming section.
@@ -155,6 +154,7 @@ function DefaultSkillListString() {
     stringAddresses.push("Award");
     return stringAddresses;
 }
+_c7 = DefaultSkillListString;
 function ArrayToSkillType(array) {
     let stringToSkills = [];
     for(let i = 0; i < array.length; i++){
@@ -167,11 +167,25 @@ function ArrayToSkillType(array) {
     }
     return stringToSkills;
 }
+_c8 = ArrayToSkillType;
+var _c, _c1, _c2, _c3, _c4, _c5, _c6, _c7, _c8;
+__turbopack_refresh__.register(_c, "GetSavedSkillList");
+__turbopack_refresh__.register(_c1, "DecodeSkillListCookie");
+__turbopack_refresh__.register(_c2, "EncodeNewCookieFromSkills");
+__turbopack_refresh__.register(_c3, "GetSkillFromAddress");
+__turbopack_refresh__.register(_c4, "GetAddressFromSkillName");
+__turbopack_refresh__.register(_c5, "SetParentSkill");
+__turbopack_refresh__.register(_c6, "IsSubSkill");
+__turbopack_refresh__.register(_c7, "DefaultSkillListString");
+__turbopack_refresh__.register(_c8, "ArrayToSkillType");
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_refresh__.registerExports(module, globalThis.$RefreshHelpers$);
+}
 }}),
-"[project]/public/HelperScripts/Present.ts [app-ssr] (ecmascript)": ((__turbopack_context__) => {
+"[project]/public/HelperScripts/Present.ts [app-client] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
-var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, z: __turbopack_require_stub__ } = __turbopack_context__;
+var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, k: __turbopack_refresh__, m: module, z: __turbopack_require_stub__ } = __turbopack_context__;
 {
 __turbopack_esm__({
     "FilterBySkills": (()=>FilterBySkills)
@@ -189,11 +203,17 @@ function FilterBySkills(skillName) {
     console.log("add " + skillName);
     searchBySkills.push(skillName);
   }*/ }
+_c = FilterBySkills;
+var _c;
+__turbopack_refresh__.register(_c, "FilterBySkills");
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_refresh__.registerExports(module, globalThis.$RefreshHelpers$);
+}
 }}),
-"[project]/public/HelperScripts/ImageHandler.ts [app-ssr] (ecmascript)": ((__turbopack_context__) => {
+"[project]/public/HelperScripts/ImageHandler.ts [app-client] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
-var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, z: __turbopack_require_stub__ } = __turbopack_context__;
+var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, k: __turbopack_refresh__, m: module, z: __turbopack_require_stub__ } = __turbopack_context__;
 {
 __turbopack_esm__({
     "ImageSetup": (()=>ImageSetup),
@@ -217,6 +237,7 @@ async function ImageSetup(image, skill) {
     }
     image.src = src;
 }
+_c = ImageSetup;
 async function ImageSetupFromRawAddress(image, rawAddress) {
     let skillAddress = rawAddress.split("/");
     let src = "img/Generic.png";
@@ -234,6 +255,7 @@ async function ImageSetupFromRawAddress(image, rawAddress) {
     }
     image.src = src;
 }
+_c1 = ImageSetupFromRawAddress;
 // I don't know why C#.png doesn't work, or why switch/case doesn't either...
 // That's the only reason for this method's existence.
 // just making it a method if anything else like this shows up.
@@ -241,32 +263,35 @@ function ImageExceptions(skillImgName) {
     if (skillImgName == "C#") skillImgName = "C sharp";
     return skillImgName;
 }
+_c2 = ImageExceptions;
+var _c, _c1, _c2;
+__turbopack_refresh__.register(_c, "ImageSetup");
+__turbopack_refresh__.register(_c1, "ImageSetupFromRawAddress");
+__turbopack_refresh__.register(_c2, "ImageExceptions");
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_refresh__.registerExports(module, globalThis.$RefreshHelpers$);
+}
 }}),
-"[project]/public/HelperScripts/Elements.ts [app-ssr] (ecmascript)": ((__turbopack_context__) => {
+"[project]/public/HelperScripts/Elements.tsx [app-client] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
-var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, z: __turbopack_require_stub__ } = __turbopack_context__;
+var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, k: __turbopack_refresh__, m: module, z: __turbopack_require_stub__ } = __turbopack_context__;
 {
 __turbopack_esm__({
     "AddCSSFromString": (()=>AddCSSFromString),
     "DateText": (()=>DateText),
-    "DateTextStyle": (()=>DateTextStyle),
     "Description": (()=>Description),
-    "DescriptionStyle": (()=>DescriptionStyle),
     "Divider": (()=>Divider),
-    "DividerStyle": (()=>DividerStyle),
     "Group": (()=>Group),
     "Skills": (()=>Skills),
     "SkillsBox": (()=>SkillsBox),
     "Subtitle": (()=>Subtitle),
-    "SubtitleStyle": (()=>SubtitleStyle),
-    "Title": (()=>Title),
-    "TitleStyle": (()=>TitleStyle)
+    "Title": (()=>Title)
 });
-var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Present$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/public/HelperScripts/Present.ts [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/public/HelperScripts/Editor.tsx [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/public/HelperScripts/skillTags.ts [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$ImageHandler$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/public/HelperScripts/ImageHandler.ts [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Present$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/public/HelperScripts/Present.ts [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/public/HelperScripts/Editor.tsx [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/public/HelperScripts/skillTags.ts [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$ImageHandler$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/public/HelperScripts/ImageHandler.ts [app-client] (ecmascript)");
 ;
 ;
 ;
@@ -276,7 +301,6 @@ class Title {
     text;
     cssOptions;
     index;
-    style;
     constructor(i){
         this.type = "Title";
         this.index = i;
@@ -286,14 +310,13 @@ class Title {
             "justify-content: center",
             "font-size: 48px"
         ];
-        this.style = TitleStyle;
     }
     Display() {
         let displayText = document.createElement("p");
         displayText.textContent = this.text;
         let self = this;
         displayText.addEventListener('click', function() {
-            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["EditText"])(self);
+            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["EditText"])(self);
         });
         for(let i = 0; i < this.cssOptions.length; i++){
             AddCSSFromString(displayText, this.cssOptions[i]);
@@ -316,7 +339,6 @@ class Description {
     text;
     cssOptions;
     index;
-    style;
     constructor(i){
         this.type = "Description";
         this.index = i;
@@ -324,14 +346,13 @@ class Description {
         this.cssOptions = [
             "font-size: 16px"
         ];
-        this.style = DescriptionStyle;
     }
     Display() {
         let displayText = document.createElement("p");
         displayText.textContent = this.text;
         let self = this;
         displayText.addEventListener('click', function() {
-            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["EditText"])(self);
+            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["EditText"])(self);
         });
         for(let i = 0; i < this.cssOptions.length; i++){
             AddCSSFromString(displayText, this.cssOptions[i]);
@@ -354,7 +375,6 @@ class DateText {
     text;
     cssOptions;
     index;
-    style;
     constructor(i){
         this.type = "DateText";
         this.index = i;
@@ -362,14 +382,13 @@ class DateText {
         this.cssOptions = [
             "font-size: 12px"
         ];
-        this.style = DateTextStyle;
     }
     Display() {
         let displayText = document.createElement("p");
         displayText.textContent = this.text;
         let self = this;
         displayText.addEventListener('click', function() {
-            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["EditText"])(self);
+            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["EditText"])(self);
         });
         for(let i = 0; i < this.cssOptions.length; i++){
             AddCSSFromString(displayText, this.cssOptions[i]);
@@ -392,7 +411,6 @@ class Subtitle {
     text;
     cssOptions;
     index;
-    style;
     constructor(i){
         this.type = "Subtitle";
         this.index = i;
@@ -400,14 +418,13 @@ class Subtitle {
         this.cssOptions = [
             "font-size: 24px"
         ];
-        this.style = SubtitleStyle;
     }
     Display() {
         let displayText = document.createElement("p");
         displayText.textContent = this.text;
         let self = this;
         displayText.addEventListener('click', function() {
-            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["EditText"])(self);
+            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["EditText"])(self);
         });
         for(let i = 0; i < this.cssOptions.length; i++){
             AddCSSFromString(displayText, this.cssOptions[i]);
@@ -432,8 +449,8 @@ class Skills {
     cssOptions;
     constructor(skillName){
         this.name = skillName;
-        this.address = (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["GetAddressFromSkillName"])(this.name);
-        this.parent = (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SetParentSkill"])(this.name);
+        this.address = (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["GetAddressFromSkillName"])(this.name);
+        this.parent = (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SetParentSkill"])(this.name);
         this.cssOptions = [
             "display: inline-block",
             "border: solid"
@@ -445,13 +462,13 @@ class Skills {
             AddCSSFromString(parent, this.cssOptions[i]);
         }
         let img = document.createElement("img");
-        (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$ImageHandler$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ImageSetupFromRawAddress"])(img, this.address);
+        (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$ImageHandler$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ImageSetupFromRawAddress"])(img, this.address);
         let name = document.createElement("p");
         img.classList.add("skillImage");
         name.classList.add("skillText");
         name.textContent = this.name;
         name.addEventListener('click', function() {
-            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["RemoveFromSkillsBox"])(parentSkillsBox, name.textContent);
+            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["RemoveFromSkillsBox"])(parentSkillsBox, name.textContent);
         });
         parent.appendChild(img);
         parent.appendChild(name);
@@ -463,13 +480,13 @@ class Skills {
             AddCSSFromString(parent, this.cssOptions[i]);
         }
         let img = document.createElement("img");
-        (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$ImageHandler$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ImageSetupFromRawAddress"])(img, this.address);
+        (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$ImageHandler$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ImageSetupFromRawAddress"])(img, this.address);
         let name = document.createElement("p");
         img.classList.add("skillImage");
         name.classList.add("skillText");
         name.textContent = this.name;
         name.addEventListener('click', function() {
-            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Present$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["FilterBySkills"])(name.textContent);
+            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Present$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FilterBySkills"])(name.textContent);
         });
         parent.appendChild(img);
         parent.appendChild(name);
@@ -508,19 +525,19 @@ class SkillsBox {
         addButton.textContent = "|Add new skill|";
         let skillsCopy = this.skills;
         addButton.addEventListener('mouseover', function() {
-            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DeleteTemporary"])();
-            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SkillDropDownMenu"])("", parent, skillsCopy);
+            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DeleteTemporary"])();
+            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SkillDropDownMenu"])("", parent, skillsCopy);
         });
         addButton.addEventListener('click', function() {
-            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DeleteTemporary"])();
+            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DeleteTemporary"])();
         });
         parent.appendChild(addButton);
         let deleteButton = document.createElement("button");
         deleteButton.textContent = "|Remove skills box|";
         let indexCopy = this.index;
         deleteButton.addEventListener('click', function() {
-            __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"].splice(indexCopy, 1);
-            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DisplayResume"])();
+            __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["resume"].splice(indexCopy, 1);
+            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DisplayResume"])();
         });
         parent.appendChild(deleteButton);
         document.getElementById("Resume")?.appendChild(parent);
@@ -537,19 +554,19 @@ class SkillsBox {
         addButton.textContent = "|Add new skill|";
         let skillsCopy = this.skills;
         addButton.addEventListener('mouseover', function() {
-            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DeleteTemporary"])();
-            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SkillDropDownMenu"])("", parent, skillsCopy);
+            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DeleteTemporary"])();
+            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SkillDropDownMenu"])("", parent, skillsCopy);
         });
         addButton.addEventListener('click', function() {
-            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DeleteTemporary"])();
+            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DeleteTemporary"])();
         });
         parent.appendChild(addButton);
         let deleteButton = document.createElement("button");
         deleteButton.textContent = "|Remove skills box|";
         let indexCopy = this.index;
         deleteButton.addEventListener('click', function() {
-            __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"].splice(indexCopy, 1);
-            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DisplayResume"])();
+            __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["resume"].splice(indexCopy, 1);
+            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DisplayResume"])();
         });
         parent.appendChild(deleteButton);
         return parent;
@@ -570,7 +587,6 @@ class Divider {
     text;
     cssOptions;
     index;
-    style;
     constructor(i){
         this.type = "Divider";
         this.index = i;
@@ -579,14 +595,13 @@ class Divider {
             "border-bottom: solid",
             "font-size: 24px"
         ];
-        this.style = DividerStyle;
     }
     Display() {
         let displayText = document.createElement("p");
         displayText.textContent = this.text;
         let self = this;
         displayText.addEventListener('click', function() {
-            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["EditText"])(self);
+            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["EditText"])(self);
         });
         for(let i = 0; i < this.cssOptions.length; i++){
             AddCSSFromString(displayText, this.cssOptions[i]);
@@ -625,8 +640,8 @@ class Group {
         removeButton.textContent = "|remove group|";
         let indexCopy = this.index;
         removeButton.addEventListener('click', function() {
-            __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"].splice(indexCopy, 1);
-            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DisplayResume"])();
+            __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["resume"].splice(indexCopy, 1);
+            (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DisplayResume"])();
         });
         groupDiv.appendChild(removeButton);
         document.getElementById("Resume")?.appendChild(groupDiv);
@@ -670,6 +685,7 @@ function AddCSSFromString(HTMLElement, rawString) {
             }
     }
 }
+_c = AddCSSFromString;
 // Adds movement buttons to any resume element in a group.
 function GroupMovementButtons(index, groupBox) {
     let parent = document.createElement("div");
@@ -687,6 +703,7 @@ function GroupMovementButtons(index, groupBox) {
     parent.appendChild(downButton);
     return parent;
 }
+_c1 = GroupMovementButtons;
 function MoveUp(index, groupBox) {
     if (!(index - 1 == groupBox.index)) {
         let holdThis = groupBox.elements[index - 2 - groupBox.index];
@@ -695,10 +712,11 @@ function MoveUp(index, groupBox) {
     } else {
         let holdThis = groupBox.elements[index - 1 - groupBox.index];
         groupBox.elements.splice(0, 1);
-        __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"].splice(groupBox.index, 0, holdThis);
+        __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["resume"].splice(groupBox.index, 0, holdThis);
     }
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DisplayResume"])();
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DisplayResume"])();
 }
+_c2 = MoveUp;
 function MoveDown(index, groupBox) {
     if (!(index == groupBox.index + groupBox.elements.length)) {
         let holdThis = groupBox.elements[index - 1 - groupBox.index];
@@ -708,33 +726,24 @@ function MoveDown(index, groupBox) {
         //console.log("move out from bottom");
         let holdThis = groupBox.elements[index - 1 - groupBox.index];
         groupBox.elements.splice(groupBox.elements.length - 1, 1);
-        __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["resume"].splice(groupBox.index + groupBox.elements.length, 0, holdThis);
+        __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["resume"].splice(groupBox.index + groupBox.elements.length, 0, holdThis);
     }
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DisplayResume"])();
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DisplayResume"])();
 }
-const TitleStyle = {
-    display: "flex",
-    justifyContent: "center",
-    fontSize: "48px"
-};
-const DescriptionStyle = {
-    fontSize: "16px"
-};
-const DateTextStyle = {
-    fontSize: "12px"
-};
-const SubtitleStyle = {
-    fontSize: "24px"
-};
-const DividerStyle = {
-    fontSize: "24px",
-    borderBottom: "solid"
-};
+_c3 = MoveDown;
+var _c, _c1, _c2, _c3;
+__turbopack_refresh__.register(_c, "AddCSSFromString");
+__turbopack_refresh__.register(_c1, "GroupMovementButtons");
+__turbopack_refresh__.register(_c2, "MoveUp");
+__turbopack_refresh__.register(_c3, "MoveDown");
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_refresh__.registerExports(module, globalThis.$RefreshHelpers$);
+}
 }}),
-"[project]/public/HelperScripts/Editor.tsx [app-ssr] (ecmascript)": ((__turbopack_context__) => {
+"[project]/public/HelperScripts/Editor.tsx [app-client] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
-var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, z: __turbopack_require_stub__ } = __turbopack_context__;
+var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, k: __turbopack_refresh__, m: module, z: __turbopack_require_stub__ } = __turbopack_context__;
 {
 // puts the resume onto the website.
 __turbopack_esm__({
@@ -750,13 +759,13 @@ __turbopack_esm__({
     "SkillDropDownMenu": (()=>SkillDropDownMenu),
     "resume": (()=>resume)
 });
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/public/HelperScripts/skillTags.ts [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/public/HelperScripts/Elements.ts [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/public/HelperScripts/skillTags.ts [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/public/HelperScripts/Elements.tsx [app-client] (ecmascript)");
 ;
 ;
 ;
-let listOfSkills = (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ArrayToSkillType"])((0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["GetSavedSkillList"])());
+let listOfSkills = (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ArrayToSkillType"])((0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["GetSavedSkillList"])());
 let resume = [];
 function Setup() {
     document.getElementById("app")?.classList.add('editor-grid');
@@ -791,11 +800,13 @@ function Setup() {
     LoadExistingResumeCookie();
     DisplayResume();
 }
+_c = Setup;
 function Setup2() {
     resume = [];
     LoadExistingResumeCookie();
     console.log(resume);
 }
+_c1 = Setup2;
 function LoadExistingResumeCookie() {
     const listOfCookies = decodeURIComponent(document.cookie).split(";");
     for(let i = 0; i < listOfCookies.length; i++){
@@ -806,7 +817,7 @@ function LoadExistingResumeCookie() {
             switch(generic.type){
                 case "Title":
                     {
-                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Title"](generic.index);
+                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Title"](generic.index);
                         cookieObj.text = generic.text;
                         cookieObj.cssOptions = generic.cssOptions;
                         resume.push(cookieObj);
@@ -814,7 +825,7 @@ function LoadExistingResumeCookie() {
                     }
                 case "Subtitle":
                     {
-                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Subtitle"](generic.index);
+                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Subtitle"](generic.index);
                         cookieObj.text = generic.text;
                         cookieObj.cssOptions = generic.cssOptions;
                         resume.push(cookieObj);
@@ -822,7 +833,7 @@ function LoadExistingResumeCookie() {
                     }
                 case "DateText":
                     {
-                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DateText"](generic.index);
+                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DateText"](generic.index);
                         cookieObj.text = generic.text;
                         cookieObj.cssOptions = generic.cssOptions;
                         resume.push(cookieObj);
@@ -830,7 +841,7 @@ function LoadExistingResumeCookie() {
                     }
                 case "Description":
                     {
-                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Description"](generic.index);
+                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Description"](generic.index);
                         cookieObj.text = generic.text;
                         cookieObj.cssOptions = generic.cssOptions;
                         resume.push(cookieObj);
@@ -838,7 +849,7 @@ function LoadExistingResumeCookie() {
                     }
                 case "Divider":
                     {
-                        let dividerObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Divider"](generic.index);
+                        let dividerObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Divider"](generic.index);
                         dividerObj.text = generic.text;
                         dividerObj.cssOptions = generic.cssOptions;
                         resume.push(dividerObj);
@@ -846,13 +857,13 @@ function LoadExistingResumeCookie() {
                     }
                 case "SkillsBox":
                     {
-                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SkillsBox"](generic.index);
+                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SkillsBox"](generic.index);
                         //console.log(cookieObj)
                         cookieObj.text = generic.text;
                         cookieObj.cssOptions = generic.cssOptions;
                         let skillsArray = [];
                         for(let j = 0; j < generic.skills.length; j++){
-                            let skill = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Skills"](generic.skills[j].name);
+                            let skill = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Skills"](generic.skills[j].name);
                             skillsArray.push(skill);
                         }
                         cookieObj.skills = skillsArray;
@@ -861,14 +872,14 @@ function LoadExistingResumeCookie() {
                     }
                 case "Group":
                     {
-                        let groupObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Group"](generic.index);
+                        let groupObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Group"](generic.index);
                         for(let i = 0; i < generic.elements.length; i++){
                             // Yeah, uhh.. this is basically just the method copy pasted again.
                             // I REALLY need to clean this up and move it to another method later.
                             switch(generic.elements[i].type){
                                 case "Title":
                                     {
-                                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Title"](generic.elements[i].index);
+                                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Title"](generic.elements[i].index);
                                         cookieObj.text = generic.elements[i].text;
                                         cookieObj.cssOptions = generic.elements[i].cssOptions;
                                         groupObj.elements.push(cookieObj);
@@ -876,7 +887,7 @@ function LoadExistingResumeCookie() {
                                     }
                                 case "Subtitle":
                                     {
-                                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Subtitle"](generic.elements[i].index);
+                                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Subtitle"](generic.elements[i].index);
                                         cookieObj.text = generic.elements[i].text;
                                         cookieObj.cssOptions = generic.elements[i].cssOptions;
                                         groupObj.elements.push(cookieObj);
@@ -884,7 +895,7 @@ function LoadExistingResumeCookie() {
                                     }
                                 case "DateText":
                                     {
-                                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DateText"](generic.elements[i].index);
+                                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DateText"](generic.elements[i].index);
                                         cookieObj.text = generic.elements[i].text;
                                         cookieObj.cssOptions = generic.elements[i].cssOptions;
                                         groupObj.elements.push(cookieObj);
@@ -892,7 +903,7 @@ function LoadExistingResumeCookie() {
                                     }
                                 case "Description":
                                     {
-                                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Description"](generic.elements[i].index);
+                                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Description"](generic.elements[i].index);
                                         cookieObj.text = generic.elements[i].text;
                                         cookieObj.cssOptions = generic.elements[i].cssOptions;
                                         groupObj.elements.push(cookieObj);
@@ -900,7 +911,7 @@ function LoadExistingResumeCookie() {
                                     }
                                 case "Divider":
                                     {
-                                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Divider"](generic.elements[i].index);
+                                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Divider"](generic.elements[i].index);
                                         cookieObj.text = generic.elements[i].text;
                                         cookieObj.cssOptions = generic.elements[i].cssOptions;
                                         groupObj.elements.push(cookieObj);
@@ -908,12 +919,12 @@ function LoadExistingResumeCookie() {
                                     }
                                 case "SkillsBox":
                                     {
-                                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SkillsBox"](generic.elements[i].index);
+                                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SkillsBox"](generic.elements[i].index);
                                         cookieObj.text = generic.elements[i].text;
                                         cookieObj.cssOptions = generic.elements[i].cssOptions;
                                         let skillsArray = [];
                                         for(let j = 0; j < generic.elements[i].skills.length; j++){
-                                            let skill = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Skills"](generic.elements[i].skills[j].name);
+                                            let skill = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Skills"](generic.elements[i].skills[j].name);
                                             skillsArray.push(skill);
                                         }
                                         cookieObj.skills = skillsArray;
@@ -933,6 +944,7 @@ function LoadExistingResumeCookie() {
         }
     }
 }
+_c2 = LoadExistingResumeCookie;
 function DisplayResume() {
     let indexNumber = 0;
     console.log(resume);
@@ -952,6 +964,7 @@ function DisplayResume() {
         indexNumber++;
     }
 }
+_c3 = DisplayResume;
 function CreateMovementButtons(index) {
     let parent = document.createElement("div");
     let upButton = document.createElement("button");
@@ -968,6 +981,7 @@ function CreateMovementButtons(index) {
     parent.appendChild(downButton);
     return parent;
 }
+_c4 = CreateMovementButtons;
 function MoveElementUp(index) {
     if (index != 0) {
         if (resume[index].type != "Group" && resume[index - 1].type == "Group") {
@@ -981,6 +995,7 @@ function MoveElementUp(index) {
         DisplayResume();
     }
 }
+_c5 = MoveElementUp;
 function MoveElementDown(index) {
     if (index != resume.length - 1) {
         if (resume[index].type != "Group" && resume[index + 1].type == "Group") {
@@ -994,6 +1009,7 @@ function MoveElementDown(index) {
         DisplayResume();
     }
 }
+_c6 = MoveElementDown;
 function SkillDropDownMenu(parent, parentToAppendTo, destination) {
     console.log("skill drop down");
     let parentdiv = document.createElement("div");
@@ -1018,15 +1034,17 @@ function SkillDropDownMenu(parent, parentToAppendTo, destination) {
         }
     }
 }
+_c7 = SkillDropDownMenu;
 function DeleteTemporary() {
     while(document.getElementById("temporary") != null){
         document.getElementById("temporary")?.remove();
     }
 }
+_c8 = DeleteTemporary;
 // Adds a skill to a specified list of skills if it doesn't already exist.
 // this only exists because I couldn't find a better way to add to a skillbox's skills list.
 function AddToSkillsBox(destination, skillName) {
-    let skillToAdd = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Skills"](skillName);
+    let skillToAdd = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Skills"](skillName);
     let duplicateSkill = false;
     for(let i = 0; i < destination.length; i++){
         if (destination[i].name == skillToAdd.name && destination[i].address == skillToAdd.address && destination[i].parent == skillToAdd.parent) {
@@ -1038,6 +1056,7 @@ function AddToSkillsBox(destination, skillName) {
     }
     DisplayResume();
 }
+_c9 = AddToSkillsBox;
 function EditText(element) {
     if (document.getElementsByClassName("scanner").length == 0) {
         console.log("EditText");
@@ -1063,8 +1082,9 @@ function EditText(element) {
         });
     }
 }
+_c10 = EditText;
 function RemoveFromSkillsBox(destination, skillInString) {
-    let skillToRemove = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Skills"](skillInString);
+    let skillToRemove = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Skills"](skillInString);
     for(let i = 0; i < destination.length; i++){
         if (destination[i].Equals(skillToRemove)) {
             destination.splice(i, 1);
@@ -1073,6 +1093,7 @@ function RemoveFromSkillsBox(destination, skillInString) {
     }
     DisplayResume();
 }
+_c11 = RemoveFromSkillsBox;
 // Finds the element specified on the page. Returns the resume if it's not found.
 function FindElementOnPage(element) {
     let ids = document.querySelectorAll("[index=\"" + element.index + "\"]");
@@ -1082,66 +1103,67 @@ function FindElementOnPage(element) {
         return ids[0];
     }
 }
+_c12 = FindElementOnPage;
 function AddRawElement(elementName) {
     switch(elementName){
         case "Title":
             {
-                let newTitle = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Title"](resume.length);
+                let newTitle = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Title"](resume.length);
                 resume.push(newTitle);
                 DisplayResume();
                 break;
             }
         case "Subtitle":
             {
-                let newSubtitle = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Subtitle"](resume.length);
+                let newSubtitle = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Subtitle"](resume.length);
                 resume.push(newSubtitle);
                 DisplayResume();
                 break;
             }
         case "Description":
             {
-                let newDesc = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Description"](resume.length);
+                let newDesc = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Description"](resume.length);
                 resume.push(newDesc);
                 DisplayResume();
                 break;
             }
         case "DateText":
             {
-                let newDateText = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DateText"](resume.length);
+                let newDateText = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DateText"](resume.length);
                 resume.push(newDateText);
                 DisplayResume();
                 break;
             }
         case "SkillsBox":
             {
-                let newBox = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SkillsBox"](resume.length);
+                let newBox = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SkillsBox"](resume.length);
                 resume.push(newBox);
                 DisplayResume();
                 break;
             }
         case "Divider":
             {
-                let newDivider = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Divider"](resume.length);
+                let newDivider = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Divider"](resume.length);
                 resume.push(newDivider);
                 DisplayResume();
                 break;
             }
         case "Experience":
             {
-                let newSubtitle = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Subtitle"](resume.length);
+                let newSubtitle = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Subtitle"](resume.length);
                 resume.push(newSubtitle);
-                let newDateText = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DateText"](resume.length);
+                let newDateText = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DateText"](resume.length);
                 resume.push(newDateText);
-                let newDesc = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Description"](resume.length);
+                let newDesc = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Description"](resume.length);
                 resume.push(newDesc);
-                let newBox = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SkillsBox"](resume.length);
+                let newBox = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SkillsBox"](resume.length);
                 resume.push(newBox);
                 DisplayResume();
                 break;
             }
         case "Group":
             {
-                let newGroup = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Group"](resume.length);
+                let newGroup = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Group"](resume.length);
                 resume.push(newGroup);
                 DisplayResume();
                 break;
@@ -1152,6 +1174,7 @@ function AddRawElement(elementName) {
             }
     }
 }
+_c13 = AddRawElement;
 // Saves a resume in the browser.
 // oh my god.. JSON makes this SO much easier.
 function EncodeResumeCookie() {
@@ -1163,6 +1186,7 @@ function EncodeResumeCookie() {
         document.cookie = "element" + i + "=" + JSON.stringify(resume[i]) + ";" + expires;
     }
 }
+_c14 = EncodeResumeCookie;
 // Deletes a resume saved in the browser.
 function DeleteResumeCookie() {
     const listOfCookies = decodeURIComponent(document.cookie).split(";");
@@ -1173,9 +1197,9 @@ function DeleteResumeCookie() {
         }
     }
 }
+_c15 = DeleteResumeCookie;
 function EditorResume() {
-    let displayTheResume = resume.map((element)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-            style: element.style,
+    let displayTheResume = resume.map((element)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
             children: element.text
         }, element.index, false, {
             fileName: "[project]/public/HelperScripts/Editor.tsx",
@@ -1183,328 +1207,687 @@ function EditorResume() {
             columnNumber: 5
         }, this));
     console.log(displayTheResume);
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         children: displayTheResume
     }, void 0, false, {
         fileName: "[project]/public/HelperScripts/Editor.tsx",
         lineNumber: 476,
         columnNumber: 11
     }, this);
-} // resume[0].style = ({...TitleStyle, fontSize: "24px"}); <- Remember this, you can update css like this
+}
+_c16 = EditorResume;
+var _c, _c1, _c2, _c3, _c4, _c5, _c6, _c7, _c8, _c9, _c10, _c11, _c12, _c13, _c14, _c15, _c16;
+__turbopack_refresh__.register(_c, "Setup");
+__turbopack_refresh__.register(_c1, "Setup2");
+__turbopack_refresh__.register(_c2, "LoadExistingResumeCookie");
+__turbopack_refresh__.register(_c3, "DisplayResume");
+__turbopack_refresh__.register(_c4, "CreateMovementButtons");
+__turbopack_refresh__.register(_c5, "MoveElementUp");
+__turbopack_refresh__.register(_c6, "MoveElementDown");
+__turbopack_refresh__.register(_c7, "SkillDropDownMenu");
+__turbopack_refresh__.register(_c8, "DeleteTemporary");
+__turbopack_refresh__.register(_c9, "AddToSkillsBox");
+__turbopack_refresh__.register(_c10, "EditText");
+__turbopack_refresh__.register(_c11, "RemoveFromSkillsBox");
+__turbopack_refresh__.register(_c12, "FindElementOnPage");
+__turbopack_refresh__.register(_c13, "AddRawElement");
+__turbopack_refresh__.register(_c14, "EncodeResumeCookie");
+__turbopack_refresh__.register(_c15, "DeleteResumeCookie");
+__turbopack_refresh__.register(_c16, "EditorResume");
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_refresh__.registerExports(module, globalThis.$RefreshHelpers$);
+}
 }}),
-"[project]/src/app/ReactEditor/page.tsx [app-ssr] (ecmascript)": ((__turbopack_context__) => {
+"[project]/src/app/page.tsx [app-client] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
-var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, z: __turbopack_require_stub__ } = __turbopack_context__;
+var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, k: __turbopack_refresh__, m: module, z: __turbopack_require_stub__ } = __turbopack_context__;
 {
 __turbopack_esm__({
-    "default": (()=>ReactEditor)
+    "default": (()=>NewEditor),
+    "runtime": (()=>runtime)
 });
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/public/HelperScripts/skillTags.ts [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/public/HelperScripts/Editor.tsx [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/client/app-dir/link.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/public/HelperScripts/skillTags.ts [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/public/HelperScripts/Editor.tsx [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/client/app-dir/link.js [app-client] (ecmascript)");
+;
+var _s = __turbopack_refresh__.signature();
 'use client';
 ;
 ;
 ;
 ;
-//export const runtime = 'edge';
-//const isClient = () => typeof window !== 'undefined';
-let listOfSkills = (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ArrayToSkillType"])((0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["GetSavedSkillList"])());
-function ReactEditor() {
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Setup2"])();
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+const runtime = 'edge';
+const isClient = ()=>"object" !== 'undefined';
+let listOfSkills = (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ArrayToSkillType"])((0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["GetSavedSkillList"])());
+function NewEditor() {
+    _s();
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "NewEditor.useEffect": ()=>{
+            if (isClient()) {
+                (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Setup"])();
+            }
+        }
+    }["NewEditor.useEffect"], []);
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "topnav",
                 children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
                         children: "Resume Maker"
                     }, void 0, false, {
-                        fileName: "[project]/src/app/ReactEditor/page.tsx",
-                        lineNumber: 19,
+                        fileName: "[project]/src/app/page.tsx",
+                        lineNumber: 23,
                         columnNumber: 9
                     }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                         id: "save",
                         children: "|Save in browser|"
                     }, void 0, false, {
-                        fileName: "[project]/src/app/ReactEditor/page.tsx",
-                        lineNumber: 20,
+                        fileName: "[project]/src/app/page.tsx",
+                        lineNumber: 24,
                         columnNumber: 9
                     }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                         href: "/Present",
                         children: "|Present|"
                     }, void 0, false, {
-                        fileName: "[project]/src/app/ReactEditor/page.tsx",
-                        lineNumber: 21,
+                        fileName: "[project]/src/app/page.tsx",
+                        lineNumber: 25,
                         columnNumber: 9
                     }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                         href: "/Skills",
                         children: "|edit skills|"
                     }, void 0, false, {
-                        fileName: "[project]/src/app/ReactEditor/page.tsx",
-                        lineNumber: 22,
+                        fileName: "[project]/src/app/page.tsx",
+                        lineNumber: 26,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                        href: "/ReactEditor",
+                        children: "|React-based editor|"
+                    }, void 0, false, {
+                        fileName: "[project]/src/app/page.tsx",
+                        lineNumber: 27,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
-                fileName: "[project]/src/app/ReactEditor/page.tsx",
-                lineNumber: 18,
+                fileName: "[project]/src/app/page.tsx",
+                lineNumber: 22,
                 columnNumber: 1
             }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "content",
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     id: "app",
-                    className: "editor-grid",
                     children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             id: "addElements",
                             children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                     children: "add"
                                 }, void 0, false, {
-                                    fileName: "[project]/src/app/ReactEditor/page.tsx",
-                                    lineNumber: 27,
-                                    columnNumber: 11
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                    id: "addRawSubtitle",
-                                    onClick: ()=>console.log("subtitle"),
-                                    children: "|add subtitle|"
-                                }, void 0, false, {
-                                    fileName: "[project]/src/app/ReactEditor/page.tsx",
-                                    lineNumber: 28,
-                                    columnNumber: 11
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                    id: "addDivider",
-                                    onClick: ()=>console.log("divider"),
-                                    children: "|add divider|"
-                                }, void 0, false, {
-                                    fileName: "[project]/src/app/ReactEditor/page.tsx",
-                                    lineNumber: 29,
-                                    columnNumber: 11
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                    id: "addRawDateText",
-                                    onClick: ()=>console.log("dateText"),
-                                    children: "|add DateText|"
-                                }, void 0, false, {
-                                    fileName: "[project]/src/app/ReactEditor/page.tsx",
-                                    lineNumber: 30,
-                                    columnNumber: 11
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                    id: "addRawDesc",
-                                    onClick: ()=>console.log("description"),
-                                    children: "|add description|"
-                                }, void 0, false, {
-                                    fileName: "[project]/src/app/ReactEditor/page.tsx",
-                                    lineNumber: 31,
-                                    columnNumber: 11
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                    id: "addRawTitle",
-                                    onClick: ()=>console.log("title"),
-                                    children: "|add title|"
-                                }, void 0, false, {
-                                    fileName: "[project]/src/app/ReactEditor/page.tsx",
+                                    fileName: "[project]/src/app/page.tsx",
                                     lineNumber: 32,
                                     columnNumber: 11
                                 }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                    id: "addSkillsBox",
-                                    onClick: ()=>console.log("skillsBox"),
-                                    children: "|add skills box|"
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                    id: "addRawSubtitle",
+                                    children: "|add subtitle|"
                                 }, void 0, false, {
-                                    fileName: "[project]/src/app/ReactEditor/page.tsx",
+                                    fileName: "[project]/src/app/page.tsx",
                                     lineNumber: 33,
                                     columnNumber: 11
                                 }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                    id: "addExperience",
-                                    onClick: ()=>console.log("experience"),
-                                    children: "|add experience|"
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                    id: "addDivider",
+                                    children: "|add divider|"
                                 }, void 0, false, {
-                                    fileName: "[project]/src/app/ReactEditor/page.tsx",
+                                    fileName: "[project]/src/app/page.tsx",
                                     lineNumber: 34,
                                     columnNumber: 11
                                 }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                    id: "addRawDateText",
+                                    children: "|add DateText|"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/app/page.tsx",
+                                    lineNumber: 35,
+                                    columnNumber: 11
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                    id: "addRawDesc",
+                                    children: "|add description|"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/app/page.tsx",
+                                    lineNumber: 36,
+                                    columnNumber: 11
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                    id: "addRawTitle",
+                                    children: "|add title|"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/app/page.tsx",
+                                    lineNumber: 37,
+                                    columnNumber: 11
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                    id: "addSkillsBox",
+                                    children: "|add skills box|"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/app/page.tsx",
+                                    lineNumber: 38,
+                                    columnNumber: 11
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                    id: "addExperience",
+                                    children: "|add experience|"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/app/page.tsx",
+                                    lineNumber: 39,
+                                    columnNumber: 11
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                     id: "addGroup",
-                                    onClick: ()=>{
-                                        console.log("group");
-                                        console.log(listOfSkills);
-                                    },
                                     children: "|add group box|"
                                 }, void 0, false, {
-                                    fileName: "[project]/src/app/ReactEditor/page.tsx",
-                                    lineNumber: 35,
+                                    fileName: "[project]/src/app/page.tsx",
+                                    lineNumber: 40,
                                     columnNumber: 11
                                 }, this)
                             ]
                         }, void 0, true, {
-                            fileName: "[project]/src/app/ReactEditor/page.tsx",
-                            lineNumber: 26,
+                            fileName: "[project]/src/app/page.tsx",
+                            lineNumber: 31,
                             columnNumber: 9
                         }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            id: "Resume",
-                            children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["EditorResume"])()
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            id: "Resume"
                         }, void 0, false, {
-                            fileName: "[project]/src/app/ReactEditor/page.tsx",
-                            lineNumber: 37,
+                            fileName: "[project]/src/app/page.tsx",
+                            lineNumber: 42,
                             columnNumber: 9
                         }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             id: "editElements",
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                 children: "edit"
                             }, void 0, false, {
-                                fileName: "[project]/src/app/ReactEditor/page.tsx",
-                                lineNumber: 41,
-                                columnNumber: 9
-                            }, this)
-                        }, void 0, false, {
-                            fileName: "[project]/src/app/ReactEditor/page.tsx",
-                            lineNumber: 40,
-                            columnNumber: 9
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            id: "editSkills",
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                children: "skills and options n stuff."
-                            }, void 0, false, {
-                                fileName: "[project]/src/app/ReactEditor/page.tsx",
+                                fileName: "[project]/src/app/page.tsx",
                                 lineNumber: 44,
                                 columnNumber: 9
                             }, this)
                         }, void 0, false, {
-                            fileName: "[project]/src/app/ReactEditor/page.tsx",
+                            fileName: "[project]/src/app/page.tsx",
                             lineNumber: 43,
+                            columnNumber: 9
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            id: "editSkills",
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                children: "skills and options n stuff."
+                            }, void 0, false, {
+                                fileName: "[project]/src/app/page.tsx",
+                                lineNumber: 47,
+                                columnNumber: 9
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "[project]/src/app/page.tsx",
+                            lineNumber: 46,
                             columnNumber: 9
                         }, this)
                     ]
                 }, void 0, true, {
-                    fileName: "[project]/src/app/ReactEditor/page.tsx",
-                    lineNumber: 25,
+                    fileName: "[project]/src/app/page.tsx",
+                    lineNumber: 30,
                     columnNumber: 7
                 }, this)
             }, void 0, false, {
-                fileName: "[project]/src/app/ReactEditor/page.tsx",
-                lineNumber: 24,
+                fileName: "[project]/src/app/page.tsx",
+                lineNumber: 29,
                 columnNumber: 5
             }, this)
         ]
     }, void 0, true, {
-        fileName: "[project]/src/app/ReactEditor/page.tsx",
-        lineNumber: 17,
+        fileName: "[project]/src/app/page.tsx",
+        lineNumber: 21,
         columnNumber: 5
     }, this);
 }
+_s(NewEditor, "OD7bBpZva5O2jO+Puf00hKivP7c=");
+_c = NewEditor;
+var _c;
+__turbopack_refresh__.register(_c, "NewEditor");
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_refresh__.registerExports(module, globalThis.$RefreshHelpers$);
+}
 }}),
-"[project]/src/app/ReactEditor/page.tsx [app-rsc] (ecmascript, Next.js server component, client modules ssr)": ((__turbopack_context__) => {
+"[project]/src/app/page.tsx [app-edge-rsc] (ecmascript, Next.js server component, client modules)": ((__turbopack_context__) => {
 
 var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, t: __turbopack_require_real__ } = __turbopack_context__;
 {
 }}),
-"[project]/node_modules/next/dist/server/route-modules/app-page/module.compiled.js [app-ssr] (ecmascript)": (function(__turbopack_context__) {
+"[project]/node_modules/next/dist/compiled/react/cjs/react-jsx-dev-runtime.development.js [app-client] (ecmascript)": (function(__turbopack_context__) {
 
-var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, m: module, e: exports, t: __turbopack_require_real__ } = __turbopack_context__;
+var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, m: module, e: exports, t: __turbopack_require_real__ } = __turbopack_context__;
 {
+/**
+ * @license React
+ * react-jsx-dev-runtime.development.js
+ *
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/build/polyfills/process.js [app-client] (ecmascript)");
 "use strict";
+"production" !== ("TURBOPACK compile-time value", "development") && function() {
+    function getComponentNameFromType(type) {
+        if (null == type) return null;
+        if ("function" === typeof type) return type.$$typeof === REACT_CLIENT_REFERENCE$2 ? null : type.displayName || type.name || null;
+        if ("string" === typeof type) return type;
+        switch(type){
+            case REACT_FRAGMENT_TYPE:
+                return "Fragment";
+            case REACT_PORTAL_TYPE:
+                return "Portal";
+            case REACT_PROFILER_TYPE:
+                return "Profiler";
+            case REACT_STRICT_MODE_TYPE:
+                return "StrictMode";
+            case REACT_SUSPENSE_TYPE:
+                return "Suspense";
+            case REACT_SUSPENSE_LIST_TYPE:
+                return "SuspenseList";
+        }
+        if ("object" === typeof type) switch("number" === typeof type.tag && console.error("Received an unexpected object in getComponentNameFromType(). This is likely a bug in React. Please file an issue."), type.$$typeof){
+            case REACT_CONTEXT_TYPE:
+                return (type.displayName || "Context") + ".Provider";
+            case REACT_CONSUMER_TYPE:
+                return (type._context.displayName || "Context") + ".Consumer";
+            case REACT_FORWARD_REF_TYPE:
+                var innerType = type.render;
+                type = type.displayName;
+                type || (type = innerType.displayName || innerType.name || "", type = "" !== type ? "ForwardRef(" + type + ")" : "ForwardRef");
+                return type;
+            case REACT_MEMO_TYPE:
+                return innerType = type.displayName || null, null !== innerType ? innerType : getComponentNameFromType(type.type) || "Memo";
+            case REACT_LAZY_TYPE:
+                innerType = type._payload;
+                type = type._init;
+                try {
+                    return getComponentNameFromType(type(innerType));
+                } catch (x) {}
+        }
+        return null;
+    }
+    function testStringCoercion(value) {
+        return "" + value;
+    }
+    function checkKeyStringCoercion(value) {
+        try {
+            testStringCoercion(value);
+            var JSCompiler_inline_result = !1;
+        } catch (e) {
+            JSCompiler_inline_result = !0;
+        }
+        if (JSCompiler_inline_result) {
+            JSCompiler_inline_result = console;
+            var JSCompiler_temp_const = JSCompiler_inline_result.error;
+            var JSCompiler_inline_result$jscomp$0 = "function" === typeof Symbol && Symbol.toStringTag && value[Symbol.toStringTag] || value.constructor.name || "Object";
+            JSCompiler_temp_const.call(JSCompiler_inline_result, "The provided key is an unsupported type %s. This value must be coerced to a string before using it here.", JSCompiler_inline_result$jscomp$0);
+            return testStringCoercion(value);
+        }
+    }
+    function disabledLog() {}
+    function disableLogs() {
+        if (0 === disabledDepth) {
+            prevLog = console.log;
+            prevInfo = console.info;
+            prevWarn = console.warn;
+            prevError = console.error;
+            prevGroup = console.group;
+            prevGroupCollapsed = console.groupCollapsed;
+            prevGroupEnd = console.groupEnd;
+            var props = {
+                configurable: !0,
+                enumerable: !0,
+                value: disabledLog,
+                writable: !0
+            };
+            Object.defineProperties(console, {
+                info: props,
+                log: props,
+                warn: props,
+                error: props,
+                group: props,
+                groupCollapsed: props,
+                groupEnd: props
+            });
+        }
+        disabledDepth++;
+    }
+    function reenableLogs() {
+        disabledDepth--;
+        if (0 === disabledDepth) {
+            var props = {
+                configurable: !0,
+                enumerable: !0,
+                writable: !0
+            };
+            Object.defineProperties(console, {
+                log: assign({}, props, {
+                    value: prevLog
+                }),
+                info: assign({}, props, {
+                    value: prevInfo
+                }),
+                warn: assign({}, props, {
+                    value: prevWarn
+                }),
+                error: assign({}, props, {
+                    value: prevError
+                }),
+                group: assign({}, props, {
+                    value: prevGroup
+                }),
+                groupCollapsed: assign({}, props, {
+                    value: prevGroupCollapsed
+                }),
+                groupEnd: assign({}, props, {
+                    value: prevGroupEnd
+                })
+            });
+        }
+        0 > disabledDepth && console.error("disabledDepth fell below zero. This is a bug in React. Please file an issue.");
+    }
+    function describeBuiltInComponentFrame(name) {
+        if (void 0 === prefix) try {
+            throw Error();
+        } catch (x) {
+            var match = x.stack.trim().match(/\n( *(at )?)/);
+            prefix = match && match[1] || "";
+            suffix = -1 < x.stack.indexOf("\n    at") ? " (<anonymous>)" : -1 < x.stack.indexOf("@") ? "@unknown:0:0" : "";
+        }
+        return "\n" + prefix + name + suffix;
+    }
+    function describeNativeComponentFrame(fn, construct) {
+        if (!fn || reentry) return "";
+        var frame = componentFrameCache.get(fn);
+        if (void 0 !== frame) return frame;
+        reentry = !0;
+        frame = Error.prepareStackTrace;
+        Error.prepareStackTrace = void 0;
+        var previousDispatcher = null;
+        previousDispatcher = ReactSharedInternals.H;
+        ReactSharedInternals.H = null;
+        disableLogs();
+        try {
+            var RunInRootFrame = {
+                DetermineComponentFrameRoot: function() {
+                    try {
+                        if (construct) {
+                            var Fake = function() {
+                                throw Error();
+                            };
+                            Object.defineProperty(Fake.prototype, "props", {
+                                set: function() {
+                                    throw Error();
+                                }
+                            });
+                            if ("object" === typeof Reflect && Reflect.construct) {
+                                try {
+                                    Reflect.construct(Fake, []);
+                                } catch (x) {
+                                    var control = x;
+                                }
+                                Reflect.construct(fn, [], Fake);
+                            } else {
+                                try {
+                                    Fake.call();
+                                } catch (x$0) {
+                                    control = x$0;
+                                }
+                                fn.call(Fake.prototype);
+                            }
+                        } else {
+                            try {
+                                throw Error();
+                            } catch (x$1) {
+                                control = x$1;
+                            }
+                            (Fake = fn()) && "function" === typeof Fake.catch && Fake.catch(function() {});
+                        }
+                    } catch (sample) {
+                        if (sample && control && "string" === typeof sample.stack) return [
+                            sample.stack,
+                            control.stack
+                        ];
+                    }
+                    return [
+                        null,
+                        null
+                    ];
+                }
+            };
+            RunInRootFrame.DetermineComponentFrameRoot.displayName = "DetermineComponentFrameRoot";
+            var namePropDescriptor = Object.getOwnPropertyDescriptor(RunInRootFrame.DetermineComponentFrameRoot, "name");
+            namePropDescriptor && namePropDescriptor.configurable && Object.defineProperty(RunInRootFrame.DetermineComponentFrameRoot, "name", {
+                value: "DetermineComponentFrameRoot"
+            });
+            var _RunInRootFrame$Deter = RunInRootFrame.DetermineComponentFrameRoot(), sampleStack = _RunInRootFrame$Deter[0], controlStack = _RunInRootFrame$Deter[1];
+            if (sampleStack && controlStack) {
+                var sampleLines = sampleStack.split("\n"), controlLines = controlStack.split("\n");
+                for(_RunInRootFrame$Deter = namePropDescriptor = 0; namePropDescriptor < sampleLines.length && !sampleLines[namePropDescriptor].includes("DetermineComponentFrameRoot");)namePropDescriptor++;
+                for(; _RunInRootFrame$Deter < controlLines.length && !controlLines[_RunInRootFrame$Deter].includes("DetermineComponentFrameRoot");)_RunInRootFrame$Deter++;
+                if (namePropDescriptor === sampleLines.length || _RunInRootFrame$Deter === controlLines.length) for(namePropDescriptor = sampleLines.length - 1, _RunInRootFrame$Deter = controlLines.length - 1; 1 <= namePropDescriptor && 0 <= _RunInRootFrame$Deter && sampleLines[namePropDescriptor] !== controlLines[_RunInRootFrame$Deter];)_RunInRootFrame$Deter--;
+                for(; 1 <= namePropDescriptor && 0 <= _RunInRootFrame$Deter; namePropDescriptor--, _RunInRootFrame$Deter--)if (sampleLines[namePropDescriptor] !== controlLines[_RunInRootFrame$Deter]) {
+                    if (1 !== namePropDescriptor || 1 !== _RunInRootFrame$Deter) {
+                        do if (namePropDescriptor--, _RunInRootFrame$Deter--, 0 > _RunInRootFrame$Deter || sampleLines[namePropDescriptor] !== controlLines[_RunInRootFrame$Deter]) {
+                            var _frame = "\n" + sampleLines[namePropDescriptor].replace(" at new ", " at ");
+                            fn.displayName && _frame.includes("<anonymous>") && (_frame = _frame.replace("<anonymous>", fn.displayName));
+                            "function" === typeof fn && componentFrameCache.set(fn, _frame);
+                            return _frame;
+                        }
+                        while (1 <= namePropDescriptor && 0 <= _RunInRootFrame$Deter)
+                    }
+                    break;
+                }
+            }
+        } finally{
+            reentry = !1, ReactSharedInternals.H = previousDispatcher, reenableLogs(), Error.prepareStackTrace = frame;
+        }
+        sampleLines = (sampleLines = fn ? fn.displayName || fn.name : "") ? describeBuiltInComponentFrame(sampleLines) : "";
+        "function" === typeof fn && componentFrameCache.set(fn, sampleLines);
+        return sampleLines;
+    }
+    function describeUnknownElementTypeFrameInDEV(type) {
+        if (null == type) return "";
+        if ("function" === typeof type) {
+            var prototype = type.prototype;
+            return describeNativeComponentFrame(type, !(!prototype || !prototype.isReactComponent));
+        }
+        if ("string" === typeof type) return describeBuiltInComponentFrame(type);
+        switch(type){
+            case REACT_SUSPENSE_TYPE:
+                return describeBuiltInComponentFrame("Suspense");
+            case REACT_SUSPENSE_LIST_TYPE:
+                return describeBuiltInComponentFrame("SuspenseList");
+        }
+        if ("object" === typeof type) switch(type.$$typeof){
+            case REACT_FORWARD_REF_TYPE:
+                return type = describeNativeComponentFrame(type.render, !1), type;
+            case REACT_MEMO_TYPE:
+                return describeUnknownElementTypeFrameInDEV(type.type);
+            case REACT_LAZY_TYPE:
+                prototype = type._payload;
+                type = type._init;
+                try {
+                    return describeUnknownElementTypeFrameInDEV(type(prototype));
+                } catch (x) {}
+        }
+        return "";
+    }
+    function getOwner() {
+        var dispatcher = ReactSharedInternals.A;
+        return null === dispatcher ? null : dispatcher.getOwner();
+    }
+    function hasValidKey(config) {
+        if (hasOwnProperty.call(config, "key")) {
+            var getter = Object.getOwnPropertyDescriptor(config, "key").get;
+            if (getter && getter.isReactWarning) return !1;
+        }
+        return void 0 !== config.key;
+    }
+    function defineKeyPropWarningGetter(props, displayName) {
+        function warnAboutAccessingKey() {
+            specialPropKeyWarningShown || (specialPropKeyWarningShown = !0, console.error("%s: `key` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. (https://react.dev/link/special-props)", displayName));
+        }
+        warnAboutAccessingKey.isReactWarning = !0;
+        Object.defineProperty(props, "key", {
+            get: warnAboutAccessingKey,
+            configurable: !0
+        });
+    }
+    function elementRefGetterWithDeprecationWarning() {
+        var componentName = getComponentNameFromType(this.type);
+        didWarnAboutElementRef[componentName] || (didWarnAboutElementRef[componentName] = !0, console.error("Accessing element.ref was removed in React 19. ref is now a regular prop. It will be removed from the JSX Element type in a future release."));
+        componentName = this.props.ref;
+        return void 0 !== componentName ? componentName : null;
+    }
+    function ReactElement(type, key, self, source, owner, props) {
+        self = props.ref;
+        type = {
+            $$typeof: REACT_ELEMENT_TYPE,
+            type: type,
+            key: key,
+            props: props,
+            _owner: owner
+        };
+        null !== (void 0 !== self ? self : null) ? Object.defineProperty(type, "ref", {
+            enumerable: !1,
+            get: elementRefGetterWithDeprecationWarning
+        }) : Object.defineProperty(type, "ref", {
+            enumerable: !1,
+            value: null
+        });
+        type._store = {};
+        Object.defineProperty(type._store, "validated", {
+            configurable: !1,
+            enumerable: !1,
+            writable: !0,
+            value: 0
+        });
+        Object.defineProperty(type, "_debugInfo", {
+            configurable: !1,
+            enumerable: !1,
+            writable: !0,
+            value: null
+        });
+        Object.freeze && (Object.freeze(type.props), Object.freeze(type));
+        return type;
+    }
+    function jsxDEVImpl(type, config, maybeKey, isStaticChildren, source, self) {
+        if ("string" === typeof type || "function" === typeof type || type === REACT_FRAGMENT_TYPE || type === REACT_PROFILER_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || type === REACT_OFFSCREEN_TYPE || "object" === typeof type && null !== type && (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_CONSUMER_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || type.$$typeof === REACT_CLIENT_REFERENCE$1 || void 0 !== type.getModuleId)) {
+            var children = config.children;
+            if (void 0 !== children) if (isStaticChildren) if (isArrayImpl(children)) {
+                for(isStaticChildren = 0; isStaticChildren < children.length; isStaticChildren++)validateChildKeys(children[isStaticChildren], type);
+                Object.freeze && Object.freeze(children);
+            } else console.error("React.jsx: Static children should always be an array. You are likely explicitly calling React.jsxs or React.jsxDEV. Use the Babel transform instead.");
+            else validateChildKeys(children, type);
+        } else {
+            children = "";
+            if (void 0 === type || "object" === typeof type && null !== type && 0 === Object.keys(type).length) children += " You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.";
+            null === type ? isStaticChildren = "null" : isArrayImpl(type) ? isStaticChildren = "array" : void 0 !== type && type.$$typeof === REACT_ELEMENT_TYPE ? (isStaticChildren = "<" + (getComponentNameFromType(type.type) || "Unknown") + " />", children = " Did you accidentally export a JSX literal instead of a component?") : isStaticChildren = typeof type;
+            console.error("React.jsx: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", isStaticChildren, children);
+        }
+        if (hasOwnProperty.call(config, "key")) {
+            children = getComponentNameFromType(type);
+            var keys = Object.keys(config).filter(function(k) {
+                return "key" !== k;
+            });
+            isStaticChildren = 0 < keys.length ? "{key: someKey, " + keys.join(": ..., ") + ": ...}" : "{key: someKey}";
+            didWarnAboutKeySpread[children + isStaticChildren] || (keys = 0 < keys.length ? "{" + keys.join(": ..., ") + ": ...}" : "{}", console.error('A props object containing a "key" prop is being spread into JSX:\n  let props = %s;\n  <%s {...props} />\nReact keys must be passed directly to JSX without using spread:\n  let props = %s;\n  <%s key={someKey} {...props} />', isStaticChildren, children, keys, children), didWarnAboutKeySpread[children + isStaticChildren] = !0);
+        }
+        children = null;
+        void 0 !== maybeKey && (checkKeyStringCoercion(maybeKey), children = "" + maybeKey);
+        hasValidKey(config) && (checkKeyStringCoercion(config.key), children = "" + config.key);
+        if ("key" in config) {
+            maybeKey = {};
+            for(var propName in config)"key" !== propName && (maybeKey[propName] = config[propName]);
+        } else maybeKey = config;
+        children && defineKeyPropWarningGetter(maybeKey, "function" === typeof type ? type.displayName || type.name || "Unknown" : type);
+        return ReactElement(type, children, self, source, getOwner(), maybeKey);
+    }
+    function validateChildKeys(node, parentType) {
+        if ("object" === typeof node && node && node.$$typeof !== REACT_CLIENT_REFERENCE) {
+            if (isArrayImpl(node)) for(var i = 0; i < node.length; i++){
+                var child = node[i];
+                isValidElement(child) && validateExplicitKey(child, parentType);
+            }
+            else if (isValidElement(node)) node._store && (node._store.validated = 1);
+            else if (null === node || "object" !== typeof node ? i = null : (i = MAYBE_ITERATOR_SYMBOL && node[MAYBE_ITERATOR_SYMBOL] || node["@@iterator"], i = "function" === typeof i ? i : null), "function" === typeof i && i !== node.entries && (i = i.call(node), i !== node)) for(; !(node = i.next()).done;)isValidElement(node.value) && validateExplicitKey(node.value, parentType);
+        }
+    }
+    function isValidElement(object) {
+        return "object" === typeof object && null !== object && object.$$typeof === REACT_ELEMENT_TYPE;
+    }
+    function validateExplicitKey(element, parentType) {
+        if (element._store && !element._store.validated && null == element.key && (element._store.validated = 1, parentType = getCurrentComponentErrorInfo(parentType), !ownerHasKeyUseWarning[parentType])) {
+            ownerHasKeyUseWarning[parentType] = !0;
+            var childOwner = "";
+            element && null != element._owner && element._owner !== getOwner() && (childOwner = null, "number" === typeof element._owner.tag ? childOwner = getComponentNameFromType(element._owner.type) : "string" === typeof element._owner.name && (childOwner = element._owner.name), childOwner = " It was passed a child from " + childOwner + ".");
+            var prevGetCurrentStack = ReactSharedInternals.getCurrentStack;
+            ReactSharedInternals.getCurrentStack = function() {
+                var stack = describeUnknownElementTypeFrameInDEV(element.type);
+                prevGetCurrentStack && (stack += prevGetCurrentStack() || "");
+                return stack;
+            };
+            console.error('Each child in a list should have a unique "key" prop.%s%s See https://react.dev/link/warning-keys for more information.', parentType, childOwner);
+            ReactSharedInternals.getCurrentStack = prevGetCurrentStack;
+        }
+    }
+    function getCurrentComponentErrorInfo(parentType) {
+        var info = "", owner = getOwner();
+        owner && (owner = getComponentNameFromType(owner.type)) && (info = "\n\nCheck the render method of `" + owner + "`.");
+        info || (parentType = getComponentNameFromType(parentType)) && (info = "\n\nCheck the top-level render call using <" + parentType + ">.");
+        return info;
+    }
+    var React = __turbopack_require__("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)"), REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler");
+    Symbol.for("react.provider");
+    var REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy"), REACT_OFFSCREEN_TYPE = Symbol.for("react.offscreen"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator, REACT_CLIENT_REFERENCE$2 = Symbol.for("react.client.reference"), ReactSharedInternals = React.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, hasOwnProperty = Object.prototype.hasOwnProperty, assign = Object.assign, REACT_CLIENT_REFERENCE$1 = Symbol.for("react.client.reference"), isArrayImpl = Array.isArray, disabledDepth = 0, prevLog, prevInfo, prevWarn, prevError, prevGroup, prevGroupCollapsed, prevGroupEnd;
+    disabledLog.__reactDisabledLog = !0;
+    var prefix, suffix, reentry = !1;
+    var componentFrameCache = new ("function" === typeof WeakMap ? WeakMap : Map)();
+    var REACT_CLIENT_REFERENCE = Symbol.for("react.client.reference"), specialPropKeyWarningShown;
+    var didWarnAboutElementRef = {};
+    var didWarnAboutKeySpread = {}, ownerHasKeyUseWarning = {};
+    exports.Fragment = REACT_FRAGMENT_TYPE;
+    exports.jsxDEV = function(type, config, maybeKey, isStaticChildren, source, self) {
+        return jsxDEVImpl(type, config, maybeKey, isStaticChildren, source, self);
+    };
+}();
+}}),
+"[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)": (function(__turbopack_context__) {
+
+var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, m: module, e: exports, t: __turbopack_require_real__ } = __turbopack_context__;
+{
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/build/polyfills/process.js [app-client] (ecmascript)");
+'use strict';
 if ("TURBOPACK compile-time falsy", 0) {
     "TURBOPACK unreachable";
 } else {
-    if ("TURBOPACK compile-time falsy", 0) {
-        "TURBOPACK unreachable";
-    } else {
-        if ("TURBOPACK compile-time truthy", 1) {
-            module.exports = __turbopack_require__("[externals]/next/dist/compiled/next-server/app-page.runtime.dev.js [external] (next/dist/compiled/next-server/app-page.runtime.dev.js, cjs)");
-        } else {
-            "TURBOPACK unreachable";
-        }
-    }
-} //# sourceMappingURL=module.compiled.js.map
-}}),
-"[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)": (function(__turbopack_context__) {
-
-var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, m: module, e: exports, t: __turbopack_require_real__ } = __turbopack_context__;
-{
-"use strict";
-module.exports = __turbopack_require__("[project]/node_modules/next/dist/server/route-modules/app-page/module.compiled.js [app-ssr] (ecmascript)").vendored['react-ssr'].ReactJsxDevRuntime; //# sourceMappingURL=react-jsx-dev-runtime.js.map
-}}),
-"[project]/node_modules/@swc/helpers/cjs/_interop_require_default.cjs [app-ssr] (ecmascript)": (function(__turbopack_context__) {
-
-var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, m: module, e: exports, t: __turbopack_require_real__ } = __turbopack_context__;
-{
-"use strict";
-function _interop_require_default(obj) {
-    return obj && obj.__esModule ? obj : {
-        default: obj
-    };
+    module.exports = __turbopack_require__("[project]/node_modules/next/dist/compiled/react/cjs/react-jsx-dev-runtime.development.js [app-client] (ecmascript)");
 }
-exports._ = _interop_require_default;
 }}),
-"[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-runtime.js [app-ssr] (ecmascript)": (function(__turbopack_context__) {
+"[project]/node_modules/next/dist/shared/lib/router/utils/querystring.js [app-client] (ecmascript)": (function(__turbopack_context__) {
 
-var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, m: module, e: exports, t: __turbopack_require_real__ } = __turbopack_context__;
-{
-"use strict";
-module.exports = __turbopack_require__("[project]/node_modules/next/dist/server/route-modules/app-page/module.compiled.js [app-ssr] (ecmascript)").vendored['react-ssr'].ReactJsxRuntime; //# sourceMappingURL=react-jsx-runtime.js.map
-}}),
-"[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)": (function(__turbopack_context__) {
-
-var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, m: module, e: exports, t: __turbopack_require_real__ } = __turbopack_context__;
-{
-"use strict";
-module.exports = __turbopack_require__("[project]/node_modules/next/dist/server/route-modules/app-page/module.compiled.js [app-ssr] (ecmascript)").vendored['react-ssr'].React; //# sourceMappingURL=react.js.map
-}}),
-"[project]/node_modules/@swc/helpers/cjs/_interop_require_wildcard.cjs [app-ssr] (ecmascript)": (function(__turbopack_context__) {
-
-var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, m: module, e: exports, t: __turbopack_require_real__ } = __turbopack_context__;
-{
-"use strict";
-function _getRequireWildcardCache(nodeInterop) {
-    if (typeof WeakMap !== "function") return null;
-    var cacheBabelInterop = new WeakMap();
-    var cacheNodeInterop = new WeakMap();
-    return (_getRequireWildcardCache = function(nodeInterop) {
-        return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
-    })(nodeInterop);
-}
-function _interop_require_wildcard(obj, nodeInterop) {
-    if (!nodeInterop && obj && obj.__esModule) return obj;
-    if (obj === null || typeof obj !== "object" && typeof obj !== "function") return {
-        default: obj
-    };
-    var cache = _getRequireWildcardCache(nodeInterop);
-    if (cache && cache.has(obj)) return cache.get(obj);
-    var newObj = {
-        __proto__: null
-    };
-    var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
-    for(var key in obj){
-        if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
-            var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
-            if (desc && (desc.get || desc.set)) Object.defineProperty(newObj, key, desc);
-            else newObj[key] = obj[key];
-        }
-    }
-    newObj.default = obj;
-    if (cache) cache.set(obj, newObj);
-    return newObj;
-}
-exports._ = _interop_require_wildcard;
-}}),
-"[project]/node_modules/next/dist/shared/lib/router/utils/querystring.js [app-ssr] (ecmascript)": (function(__turbopack_context__) {
-
-var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, m: module, e: exports, t: __turbopack_require_real__ } = __turbopack_context__;
+var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, m: module, e: exports, t: __turbopack_require_real__ } = __turbopack_context__;
 {
 "use strict";
 Object.defineProperty(exports, "__esModule", {
@@ -1579,9 +1962,9 @@ function assign(target) {
     return target;
 } //# sourceMappingURL=querystring.js.map
 }}),
-"[project]/node_modules/next/dist/shared/lib/router/utils/format-url.js [app-ssr] (ecmascript)": (function(__turbopack_context__) {
+"[project]/node_modules/next/dist/shared/lib/router/utils/format-url.js [app-client] (ecmascript)": (function(__turbopack_context__) {
 
-var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, m: module, e: exports, t: __turbopack_require_real__ } = __turbopack_context__;
+var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, m: module, e: exports, t: __turbopack_require_real__ } = __turbopack_context__;
 {
 // Format function modified from nodejs
 // Copyright Joyent, Inc. and other Node contributors.
@@ -1604,6 +1987,7 @@ var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/build/polyfills/process.js [app-client] (ecmascript)");
 "use strict";
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -1630,8 +2014,8 @@ _export(exports, {
         return urlObjectKeys;
     }
 });
-const _interop_require_wildcard = __turbopack_require__("[project]/node_modules/@swc/helpers/cjs/_interop_require_wildcard.cjs [app-ssr] (ecmascript)");
-const _querystring = /*#__PURE__*/ _interop_require_wildcard._(__turbopack_require__("[project]/node_modules/next/dist/shared/lib/router/utils/querystring.js [app-ssr] (ecmascript)"));
+const _interop_require_wildcard = __turbopack_require__("[project]/node_modules/@swc/helpers/cjs/_interop_require_wildcard.cjs [app-client] (ecmascript)");
+const _querystring = /*#__PURE__*/ _interop_require_wildcard._(__turbopack_require__("[project]/node_modules/next/dist/shared/lib/router/utils/querystring.js [app-client] (ecmascript)"));
 const slashedProtocols = /https?|ftp|gopher|file/;
 function formatUrl(urlObj) {
     let { auth, hostname } = urlObj;
@@ -1693,16 +2077,9 @@ function formatWithValidation(url) {
     return formatUrl(url);
 } //# sourceMappingURL=format-url.js.map
 }}),
-"[project]/node_modules/next/dist/server/route-modules/app-page/vendored/contexts/app-router-context.js [app-ssr] (ecmascript)": (function(__turbopack_context__) {
+"[project]/node_modules/next/dist/client/request-idle-callback.js [app-client] (ecmascript)": (function(__turbopack_context__) {
 
-var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, m: module, e: exports, t: __turbopack_require_real__ } = __turbopack_context__;
-{
-"use strict";
-module.exports = __turbopack_require__("[project]/node_modules/next/dist/server/route-modules/app-page/module.compiled.js [app-ssr] (ecmascript)").vendored['contexts'].AppRouterContext; //# sourceMappingURL=app-router-context.js.map
-}}),
-"[project]/node_modules/next/dist/client/request-idle-callback.js [app-ssr] (ecmascript)": (function(__turbopack_context__) {
-
-var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, m: module, e: exports, t: __turbopack_require_real__ } = __turbopack_context__;
+var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, m: module, e: exports, t: __turbopack_require_real__ } = __turbopack_context__;
 {
 "use strict";
 Object.defineProperty(exports, "__esModule", {
@@ -1748,9 +2125,9 @@ if ((typeof exports.default === 'function' || typeof exports.default === 'object
     module.exports = exports.default;
 } //# sourceMappingURL=request-idle-callback.js.map
 }}),
-"[project]/node_modules/next/dist/client/use-intersection.js [app-ssr] (ecmascript)": (function(__turbopack_context__) {
+"[project]/node_modules/next/dist/client/use-intersection.js [app-client] (ecmascript)": (function(__turbopack_context__) {
 
-var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, m: module, e: exports, t: __turbopack_require_real__ } = __turbopack_context__;
+var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, m: module, e: exports, t: __turbopack_require_real__ } = __turbopack_context__;
 {
 "use strict";
 Object.defineProperty(exports, "__esModule", {
@@ -1762,8 +2139,8 @@ Object.defineProperty(exports, "useIntersection", {
         return useIntersection;
     }
 });
-const _react = __turbopack_require__("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
-const _requestidlecallback = __turbopack_require__("[project]/node_modules/next/dist/client/request-idle-callback.js [app-ssr] (ecmascript)");
+const _react = __turbopack_require__("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
+const _requestidlecallback = __turbopack_require__("[project]/node_modules/next/dist/client/request-idle-callback.js [app-client] (ecmascript)");
 const hasIntersectionObserver = typeof IntersectionObserver === 'function';
 const observers = new Map();
 const idList = [];
@@ -1867,91 +2244,9 @@ if ((typeof exports.default === 'function' || typeof exports.default === 'object
     module.exports = exports.default;
 } //# sourceMappingURL=use-intersection.js.map
 }}),
-"[project]/node_modules/next/dist/client/components/router-reducer/router-reducer-types.js [app-ssr] (ecmascript)": (function(__turbopack_context__) {
+"[project]/node_modules/next/dist/client/use-merged-ref.js [app-client] (ecmascript)": (function(__turbopack_context__) {
 
-var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, m: module, e: exports, t: __turbopack_require_real__ } = __turbopack_context__;
-{
-"use strict";
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-0 && (module.exports = {
-    ACTION_HMR_REFRESH: null,
-    ACTION_NAVIGATE: null,
-    ACTION_PREFETCH: null,
-    ACTION_REFRESH: null,
-    ACTION_RESTORE: null,
-    ACTION_SERVER_ACTION: null,
-    ACTION_SERVER_PATCH: null,
-    PrefetchCacheEntryStatus: null,
-    PrefetchKind: null
-});
-function _export(target, all) {
-    for(var name in all)Object.defineProperty(target, name, {
-        enumerable: true,
-        get: all[name]
-    });
-}
-_export(exports, {
-    ACTION_HMR_REFRESH: function() {
-        return ACTION_HMR_REFRESH;
-    },
-    ACTION_NAVIGATE: function() {
-        return ACTION_NAVIGATE;
-    },
-    ACTION_PREFETCH: function() {
-        return ACTION_PREFETCH;
-    },
-    ACTION_REFRESH: function() {
-        return ACTION_REFRESH;
-    },
-    ACTION_RESTORE: function() {
-        return ACTION_RESTORE;
-    },
-    ACTION_SERVER_ACTION: function() {
-        return ACTION_SERVER_ACTION;
-    },
-    ACTION_SERVER_PATCH: function() {
-        return ACTION_SERVER_PATCH;
-    },
-    PrefetchCacheEntryStatus: function() {
-        return PrefetchCacheEntryStatus;
-    },
-    PrefetchKind: function() {
-        return PrefetchKind;
-    }
-});
-const ACTION_REFRESH = 'refresh';
-const ACTION_NAVIGATE = 'navigate';
-const ACTION_RESTORE = 'restore';
-const ACTION_SERVER_PATCH = 'server-patch';
-const ACTION_PREFETCH = 'prefetch';
-const ACTION_HMR_REFRESH = 'hmr-refresh';
-const ACTION_SERVER_ACTION = 'server-action';
-var PrefetchKind = /*#__PURE__*/ function(PrefetchKind) {
-    PrefetchKind["AUTO"] = "auto";
-    PrefetchKind["FULL"] = "full";
-    PrefetchKind["TEMPORARY"] = "temporary";
-    return PrefetchKind;
-}({});
-var PrefetchCacheEntryStatus = /*#__PURE__*/ function(PrefetchCacheEntryStatus) {
-    PrefetchCacheEntryStatus["fresh"] = "fresh";
-    PrefetchCacheEntryStatus["reusable"] = "reusable";
-    PrefetchCacheEntryStatus["expired"] = "expired";
-    PrefetchCacheEntryStatus["stale"] = "stale";
-    return PrefetchCacheEntryStatus;
-}({});
-if ((typeof exports.default === 'function' || typeof exports.default === 'object' && exports.default !== null) && typeof exports.default.__esModule === 'undefined') {
-    Object.defineProperty(exports.default, '__esModule', {
-        value: true
-    });
-    Object.assign(exports.default, exports);
-    module.exports = exports.default;
-} //# sourceMappingURL=router-reducer-types.js.map
-}}),
-"[project]/node_modules/next/dist/client/use-merged-ref.js [app-ssr] (ecmascript)": (function(__turbopack_context__) {
-
-var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, m: module, e: exports, t: __turbopack_require_real__ } = __turbopack_context__;
+var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, m: module, e: exports, t: __turbopack_require_real__ } = __turbopack_context__;
 {
 "use strict";
 Object.defineProperty(exports, "__esModule", {
@@ -1963,7 +2258,7 @@ Object.defineProperty(exports, "useMergedRef", {
         return useMergedRef;
     }
 });
-const _react = __turbopack_require__("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
+const _react = __turbopack_require__("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 function useMergedRef(refA, refB) {
     const cleanupA = (0, _react.useRef)(()=>{});
     const cleanupB = (0, _react.useRef)(()=>{});
@@ -2008,10 +2303,11 @@ if ((typeof exports.default === 'function' || typeof exports.default === 'object
     module.exports = exports.default;
 } //# sourceMappingURL=use-merged-ref.js.map
 }}),
-"[project]/node_modules/next/dist/shared/lib/utils.js [app-ssr] (ecmascript)": (function(__turbopack_context__) {
+"[project]/node_modules/next/dist/shared/lib/utils.js [app-client] (ecmascript)": (function(__turbopack_context__) {
 
-var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, m: module, e: exports, t: __turbopack_require_real__ } = __turbopack_context__;
+var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, m: module, e: exports, t: __turbopack_require_real__ } = __turbopack_context__;
 {
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/build/polyfills/process.js [app-client] (ecmascript)");
 "use strict";
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -2214,180 +2510,11 @@ function stringifyError(error) {
     });
 } //# sourceMappingURL=utils.js.map
 }}),
-"[project]/node_modules/next/dist/shared/lib/router/utils/parse-path.js [app-ssr] (ecmascript)": (function(__turbopack_context__) {
+"[project]/node_modules/next/dist/client/app-dir/link.js [app-client] (ecmascript)": (function(__turbopack_context__) {
 
-var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, m: module, e: exports, t: __turbopack_require_real__ } = __turbopack_context__;
+var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, m: module, e: exports, t: __turbopack_require_real__ } = __turbopack_context__;
 {
-/**
- * Given a path this function will find the pathname, query and hash and return
- * them. This is useful to parse full paths on the client side.
- * @param path A path to parse e.g. /foo/bar?id=1#hash
- */ "use strict";
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-Object.defineProperty(exports, "parsePath", {
-    enumerable: true,
-    get: function() {
-        return parsePath;
-    }
-});
-function parsePath(path) {
-    const hashIndex = path.indexOf('#');
-    const queryIndex = path.indexOf('?');
-    const hasQuery = queryIndex > -1 && (hashIndex < 0 || queryIndex < hashIndex);
-    if (hasQuery || hashIndex > -1) {
-        return {
-            pathname: path.substring(0, hasQuery ? queryIndex : hashIndex),
-            query: hasQuery ? path.substring(queryIndex, hashIndex > -1 ? hashIndex : undefined) : '',
-            hash: hashIndex > -1 ? path.slice(hashIndex) : ''
-        };
-    }
-    return {
-        pathname: path,
-        query: '',
-        hash: ''
-    };
-} //# sourceMappingURL=parse-path.js.map
-}}),
-"[project]/node_modules/next/dist/shared/lib/router/utils/add-path-prefix.js [app-ssr] (ecmascript)": (function(__turbopack_context__) {
-
-var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, m: module, e: exports, t: __turbopack_require_real__ } = __turbopack_context__;
-{
-"use strict";
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-Object.defineProperty(exports, "addPathPrefix", {
-    enumerable: true,
-    get: function() {
-        return addPathPrefix;
-    }
-});
-const _parsepath = __turbopack_require__("[project]/node_modules/next/dist/shared/lib/router/utils/parse-path.js [app-ssr] (ecmascript)");
-function addPathPrefix(path, prefix) {
-    if (!path.startsWith('/') || !prefix) {
-        return path;
-    }
-    const { pathname, query, hash } = (0, _parsepath.parsePath)(path);
-    return "" + prefix + pathname + query + hash;
-} //# sourceMappingURL=add-path-prefix.js.map
-}}),
-"[project]/node_modules/next/dist/shared/lib/router/utils/remove-trailing-slash.js [app-ssr] (ecmascript)": (function(__turbopack_context__) {
-
-var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, m: module, e: exports, t: __turbopack_require_real__ } = __turbopack_context__;
-{
-/**
- * Removes the trailing slash for a given route or page path. Preserves the
- * root page. Examples:
- *   - `/foo/bar/` -> `/foo/bar`
- *   - `/foo/bar` -> `/foo/bar`
- *   - `/` -> `/`
- */ "use strict";
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-Object.defineProperty(exports, "removeTrailingSlash", {
-    enumerable: true,
-    get: function() {
-        return removeTrailingSlash;
-    }
-});
-function removeTrailingSlash(route) {
-    return route.replace(/\/$/, '') || '/';
-} //# sourceMappingURL=remove-trailing-slash.js.map
-}}),
-"[project]/node_modules/next/dist/client/normalize-trailing-slash.js [app-ssr] (ecmascript)": (function(__turbopack_context__) {
-
-var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, m: module, e: exports, t: __turbopack_require_real__ } = __turbopack_context__;
-{
-"use strict";
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-Object.defineProperty(exports, "normalizePathTrailingSlash", {
-    enumerable: true,
-    get: function() {
-        return normalizePathTrailingSlash;
-    }
-});
-const _removetrailingslash = __turbopack_require__("[project]/node_modules/next/dist/shared/lib/router/utils/remove-trailing-slash.js [app-ssr] (ecmascript)");
-const _parsepath = __turbopack_require__("[project]/node_modules/next/dist/shared/lib/router/utils/parse-path.js [app-ssr] (ecmascript)");
-const normalizePathTrailingSlash = (path)=>{
-    if (!path.startsWith('/') || process.env.__NEXT_MANUAL_TRAILING_SLASH) {
-        return path;
-    }
-    const { pathname, query, hash } = (0, _parsepath.parsePath)(path);
-    if ("TURBOPACK compile-time falsy", 0) {
-        "TURBOPACK unreachable";
-    }
-    return "" + (0, _removetrailingslash.removeTrailingSlash)(pathname) + query + hash;
-};
-if ((typeof exports.default === 'function' || typeof exports.default === 'object' && exports.default !== null) && typeof exports.default.__esModule === 'undefined') {
-    Object.defineProperty(exports.default, '__esModule', {
-        value: true
-    });
-    Object.assign(exports.default, exports);
-    module.exports = exports.default;
-} //# sourceMappingURL=normalize-trailing-slash.js.map
-}}),
-"[project]/node_modules/next/dist/client/add-base-path.js [app-ssr] (ecmascript)": (function(__turbopack_context__) {
-
-var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, m: module, e: exports, t: __turbopack_require_real__ } = __turbopack_context__;
-{
-"use strict";
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-Object.defineProperty(exports, "addBasePath", {
-    enumerable: true,
-    get: function() {
-        return addBasePath;
-    }
-});
-const _addpathprefix = __turbopack_require__("[project]/node_modules/next/dist/shared/lib/router/utils/add-path-prefix.js [app-ssr] (ecmascript)");
-const _normalizetrailingslash = __turbopack_require__("[project]/node_modules/next/dist/client/normalize-trailing-slash.js [app-ssr] (ecmascript)");
-const basePath = ("TURBOPACK compile-time value", "") || '';
-function addBasePath(path, required) {
-    return (0, _normalizetrailingslash.normalizePathTrailingSlash)(("TURBOPACK compile-time falsy", 0) ? ("TURBOPACK unreachable", undefined) : (0, _addpathprefix.addPathPrefix)(path, basePath));
-}
-if ((typeof exports.default === 'function' || typeof exports.default === 'object' && exports.default !== null) && typeof exports.default.__esModule === 'undefined') {
-    Object.defineProperty(exports.default, '__esModule', {
-        value: true
-    });
-    Object.assign(exports.default, exports);
-    module.exports = exports.default;
-} //# sourceMappingURL=add-base-path.js.map
-}}),
-"[project]/node_modules/next/dist/shared/lib/utils/warn-once.js [app-ssr] (ecmascript)": (function(__turbopack_context__) {
-
-var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, m: module, e: exports, t: __turbopack_require_real__ } = __turbopack_context__;
-{
-"use strict";
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-Object.defineProperty(exports, "warnOnce", {
-    enumerable: true,
-    get: function() {
-        return warnOnce;
-    }
-});
-let warnOnce = (_)=>{};
-if ("TURBOPACK compile-time truthy", 1) {
-    const warnings = new Set();
-    warnOnce = (msg)=>{
-        if (!warnings.has(msg)) {
-            console.warn(msg);
-        }
-        warnings.add(msg);
-    };
-} //# sourceMappingURL=warn-once.js.map
-}}),
-"[project]/node_modules/next/dist/client/app-dir/link.js [app-ssr] (ecmascript)": (function(__turbopack_context__) {
-
-var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, m: module, e: exports, t: __turbopack_require_real__ } = __turbopack_context__;
-{
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/build/polyfills/process.js [app-client] (ecmascript)");
 'use client';
 "use strict";
 Object.defineProperty(exports, "__esModule", {
@@ -2399,17 +2526,17 @@ Object.defineProperty(exports, "default", {
         return _default;
     }
 });
-const _interop_require_default = __turbopack_require__("[project]/node_modules/@swc/helpers/cjs/_interop_require_default.cjs [app-ssr] (ecmascript)");
-const _jsxruntime = __turbopack_require__("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-runtime.js [app-ssr] (ecmascript)");
-const _react = /*#__PURE__*/ _interop_require_default._(__turbopack_require__("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)"));
-const _formaturl = __turbopack_require__("[project]/node_modules/next/dist/shared/lib/router/utils/format-url.js [app-ssr] (ecmascript)");
-const _approutercontextsharedruntime = __turbopack_require__("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/contexts/app-router-context.js [app-ssr] (ecmascript)");
-const _useintersection = __turbopack_require__("[project]/node_modules/next/dist/client/use-intersection.js [app-ssr] (ecmascript)");
-const _routerreducertypes = __turbopack_require__("[project]/node_modules/next/dist/client/components/router-reducer/router-reducer-types.js [app-ssr] (ecmascript)");
-const _usemergedref = __turbopack_require__("[project]/node_modules/next/dist/client/use-merged-ref.js [app-ssr] (ecmascript)");
-const _utils = __turbopack_require__("[project]/node_modules/next/dist/shared/lib/utils.js [app-ssr] (ecmascript)");
-const _addbasepath = __turbopack_require__("[project]/node_modules/next/dist/client/add-base-path.js [app-ssr] (ecmascript)");
-const _warnonce = __turbopack_require__("[project]/node_modules/next/dist/shared/lib/utils/warn-once.js [app-ssr] (ecmascript)");
+const _interop_require_default = __turbopack_require__("[project]/node_modules/@swc/helpers/cjs/_interop_require_default.cjs [app-client] (ecmascript)");
+const _jsxruntime = __turbopack_require__("[project]/node_modules/next/dist/compiled/react/jsx-runtime.js [app-client] (ecmascript)");
+const _react = /*#__PURE__*/ _interop_require_default._(__turbopack_require__("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)"));
+const _formaturl = __turbopack_require__("[project]/node_modules/next/dist/shared/lib/router/utils/format-url.js [app-client] (ecmascript)");
+const _approutercontextsharedruntime = __turbopack_require__("[project]/node_modules/next/dist/shared/lib/app-router-context.shared-runtime.js [app-client] (ecmascript)");
+const _useintersection = __turbopack_require__("[project]/node_modules/next/dist/client/use-intersection.js [app-client] (ecmascript)");
+const _routerreducertypes = __turbopack_require__("[project]/node_modules/next/dist/client/components/router-reducer/router-reducer-types.js [app-client] (ecmascript)");
+const _usemergedref = __turbopack_require__("[project]/node_modules/next/dist/client/use-merged-ref.js [app-client] (ecmascript)");
+const _utils = __turbopack_require__("[project]/node_modules/next/dist/shared/lib/utils.js [app-client] (ecmascript)");
+const _addbasepath = __turbopack_require__("[project]/node_modules/next/dist/client/add-base-path.js [app-client] (ecmascript)");
+const _warnonce = __turbopack_require__("[project]/node_modules/next/dist/shared/lib/utils/warn-once.js [app-client] (ecmascript)");
 function prefetch(router, href, options) {
     if (typeof window === 'undefined') {
         return;
@@ -2581,13 +2708,15 @@ function formatStringOrUrl(urlObjOrString) {
             }
         }
     }
-    const { href, as } = _react.default.useMemo(()=>{
-        const resolvedHref = formatStringOrUrl(hrefProp);
-        return {
-            href: resolvedHref,
-            as: asProp ? formatStringOrUrl(asProp) : resolvedHref
-        };
-    }, [
+    const { href, as } = _react.default.useMemo({
+        "Link.LinkComponent.useMemo": ()=>{
+            const resolvedHref = formatStringOrUrl(hrefProp);
+            return {
+                href: resolvedHref,
+                as: asProp ? formatStringOrUrl(asProp) : resolvedHref
+            };
+        }
+    }["Link.LinkComponent.useMemo"], [
         hrefProp,
         asProp
     ]);
@@ -2625,15 +2754,17 @@ function formatStringOrUrl(urlObjOrString) {
     const [setIntersectionRef, isVisible, resetVisible] = (0, _useintersection.useIntersection)({
         rootMargin: '200px'
     });
-    const setIntersectionWithResetRef = _react.default.useCallback((el)=>{
-        // Before the link getting observed, check if visible state need to be reset
-        if (previousAs.current !== as || previousHref.current !== href) {
-            resetVisible();
-            previousAs.current = as;
-            previousHref.current = href;
+    const setIntersectionWithResetRef = _react.default.useCallback({
+        "Link.LinkComponent.useCallback[setIntersectionWithResetRef]": (el)=>{
+            // Before the link getting observed, check if visible state need to be reset
+            if (previousAs.current !== as || previousHref.current !== href) {
+                resetVisible();
+                previousAs.current = as;
+                previousHref.current = href;
+            }
+            setIntersectionRef(el);
         }
-        setIntersectionRef(el);
-    }, [
+    }["Link.LinkComponent.useCallback[setIntersectionWithResetRef]"], [
         as,
         href,
         resetVisible,
@@ -2641,13 +2772,15 @@ function formatStringOrUrl(urlObjOrString) {
     ]);
     const setRef = (0, _usemergedref.useMergedRef)(setIntersectionWithResetRef, childRef);
     // Prefetch the URL if we haven't already and it's visible.
-    _react.default.useEffect(()=>{
-        // in dev, we only prefetch on hover to avoid wasting resources as the prefetch will trigger compiling the page.
-        if ("TURBOPACK compile-time truthy", 1) {
-            return;
+    _react.default.useEffect({
+        "Link.LinkComponent.useEffect": ()=>{
+            // in dev, we only prefetch on hover to avoid wasting resources as the prefetch will trigger compiling the page.
+            if ("TURBOPACK compile-time truthy", 1) {
+                return;
+            }
+            "TURBOPACK unreachable";
         }
-        "TURBOPACK unreachable";
-    }, [
+    }["Link.LinkComponent.useEffect"], [
         as,
         href,
         isVisible,
@@ -2733,7 +2866,6 @@ if ((typeof exports.default === 'function' || typeof exports.default === 'object
     module.exports = exports.default;
 } //# sourceMappingURL=link.js.map
 }}),
+}]);
 
-};
-
-//# sourceMappingURL=%5Broot%20of%20the%20server%5D__be34e7._.js.map
+//# sourceMappingURL=_a4e2d1._.js.map

@@ -1,7 +1,7 @@
 // puts the resume onto the website.
 import { Skill } from "@/app/Skills/page";
 import { GetSavedSkillList, ArrayToSkillType } from "./skillTags";
-import { SkillsBox, Skills, Title, Subtitle, DateText, Description, ResumeElement, Divider, Group } from "./Elements";
+import { SkillsBox, Skills, Title, Subtitle, DateText, Description, ResumeElement, Divider, Group, TitleStyle } from "./Elements";
 let listOfSkills: Skill[] = ArrayToSkillType(GetSavedSkillList());
 
 export let resume: any[] = [];
@@ -468,10 +468,11 @@ function DeleteResumeCookie()
 export function EditorResume()
 {
   let displayTheResume = resume.map(element =>
-    <p key={element.index} style={element.theme}>
+    <p key={element.index} style={element.style}>
       {element.text}
     </p>
   )
   console.log(displayTheResume);
   return (<div>{displayTheResume}</div>)
 }
+// resume[0].style = ({...TitleStyle, fontSize: "24px"}); <- Remember this, you can update css like this

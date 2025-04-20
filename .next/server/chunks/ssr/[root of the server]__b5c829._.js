@@ -242,7 +242,7 @@ function ImageExceptions(skillImgName) {
     return skillImgName;
 }
 }}),
-"[project]/public/HelperScripts/Elements.ts [app-ssr] (ecmascript)": ((__turbopack_context__) => {
+"[project]/public/HelperScripts/Elements.tsx [app-ssr] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
 var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, z: __turbopack_require_stub__ } = __turbopack_context__;
@@ -250,18 +250,13 @@ var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_
 __turbopack_esm__({
     "AddCSSFromString": (()=>AddCSSFromString),
     "DateText": (()=>DateText),
-    "DateTextStyle": (()=>DateTextStyle),
     "Description": (()=>Description),
-    "DescriptionStyle": (()=>DescriptionStyle),
     "Divider": (()=>Divider),
-    "DividerStyle": (()=>DividerStyle),
     "Group": (()=>Group),
     "Skills": (()=>Skills),
     "SkillsBox": (()=>SkillsBox),
     "Subtitle": (()=>Subtitle),
-    "SubtitleStyle": (()=>SubtitleStyle),
-    "Title": (()=>Title),
-    "TitleStyle": (()=>TitleStyle)
+    "Title": (()=>Title)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Present$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/public/HelperScripts/Present.ts [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/public/HelperScripts/Editor.tsx [app-ssr] (ecmascript)");
@@ -276,7 +271,6 @@ class Title {
     text;
     cssOptions;
     index;
-    style;
     constructor(i){
         this.type = "Title";
         this.index = i;
@@ -286,7 +280,6 @@ class Title {
             "justify-content: center",
             "font-size: 48px"
         ];
-        this.style = TitleStyle;
     }
     Display() {
         let displayText = document.createElement("p");
@@ -316,7 +309,6 @@ class Description {
     text;
     cssOptions;
     index;
-    style;
     constructor(i){
         this.type = "Description";
         this.index = i;
@@ -324,7 +316,6 @@ class Description {
         this.cssOptions = [
             "font-size: 16px"
         ];
-        this.style = DescriptionStyle;
     }
     Display() {
         let displayText = document.createElement("p");
@@ -354,7 +345,6 @@ class DateText {
     text;
     cssOptions;
     index;
-    style;
     constructor(i){
         this.type = "DateText";
         this.index = i;
@@ -362,7 +352,6 @@ class DateText {
         this.cssOptions = [
             "font-size: 12px"
         ];
-        this.style = DateTextStyle;
     }
     Display() {
         let displayText = document.createElement("p");
@@ -392,7 +381,6 @@ class Subtitle {
     text;
     cssOptions;
     index;
-    style;
     constructor(i){
         this.type = "Subtitle";
         this.index = i;
@@ -400,7 +388,6 @@ class Subtitle {
         this.cssOptions = [
             "font-size: 24px"
         ];
-        this.style = SubtitleStyle;
     }
     Display() {
         let displayText = document.createElement("p");
@@ -570,7 +557,6 @@ class Divider {
     text;
     cssOptions;
     index;
-    style;
     constructor(i){
         this.type = "Divider";
         this.index = i;
@@ -579,7 +565,6 @@ class Divider {
             "border-bottom: solid",
             "font-size: 24px"
         ];
-        this.style = DividerStyle;
     }
     Display() {
         let displayText = document.createElement("p");
@@ -712,24 +697,6 @@ function MoveDown(index, groupBox) {
     }
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Editor$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DisplayResume"])();
 }
-const TitleStyle = {
-    display: "flex",
-    justifyContent: "center",
-    fontSize: "48px"
-};
-const DescriptionStyle = {
-    fontSize: "16px"
-};
-const DateTextStyle = {
-    fontSize: "12px"
-};
-const SubtitleStyle = {
-    fontSize: "24px"
-};
-const DividerStyle = {
-    fontSize: "24px",
-    borderBottom: "solid"
-};
 }}),
 "[project]/public/HelperScripts/Editor.tsx [app-ssr] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
@@ -752,7 +719,7 @@ __turbopack_esm__({
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/public/HelperScripts/skillTags.ts [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/public/HelperScripts/Elements.ts [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/public/HelperScripts/Elements.tsx [app-ssr] (ecmascript)");
 ;
 ;
 ;
@@ -806,7 +773,7 @@ function LoadExistingResumeCookie() {
             switch(generic.type){
                 case "Title":
                     {
-                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Title"](generic.index);
+                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Title"](generic.index);
                         cookieObj.text = generic.text;
                         cookieObj.cssOptions = generic.cssOptions;
                         resume.push(cookieObj);
@@ -814,7 +781,7 @@ function LoadExistingResumeCookie() {
                     }
                 case "Subtitle":
                     {
-                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Subtitle"](generic.index);
+                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Subtitle"](generic.index);
                         cookieObj.text = generic.text;
                         cookieObj.cssOptions = generic.cssOptions;
                         resume.push(cookieObj);
@@ -822,7 +789,7 @@ function LoadExistingResumeCookie() {
                     }
                 case "DateText":
                     {
-                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DateText"](generic.index);
+                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DateText"](generic.index);
                         cookieObj.text = generic.text;
                         cookieObj.cssOptions = generic.cssOptions;
                         resume.push(cookieObj);
@@ -830,7 +797,7 @@ function LoadExistingResumeCookie() {
                     }
                 case "Description":
                     {
-                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Description"](generic.index);
+                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Description"](generic.index);
                         cookieObj.text = generic.text;
                         cookieObj.cssOptions = generic.cssOptions;
                         resume.push(cookieObj);
@@ -838,7 +805,7 @@ function LoadExistingResumeCookie() {
                     }
                 case "Divider":
                     {
-                        let dividerObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Divider"](generic.index);
+                        let dividerObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Divider"](generic.index);
                         dividerObj.text = generic.text;
                         dividerObj.cssOptions = generic.cssOptions;
                         resume.push(dividerObj);
@@ -846,13 +813,13 @@ function LoadExistingResumeCookie() {
                     }
                 case "SkillsBox":
                     {
-                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SkillsBox"](generic.index);
+                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SkillsBox"](generic.index);
                         //console.log(cookieObj)
                         cookieObj.text = generic.text;
                         cookieObj.cssOptions = generic.cssOptions;
                         let skillsArray = [];
                         for(let j = 0; j < generic.skills.length; j++){
-                            let skill = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Skills"](generic.skills[j].name);
+                            let skill = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Skills"](generic.skills[j].name);
                             skillsArray.push(skill);
                         }
                         cookieObj.skills = skillsArray;
@@ -861,14 +828,14 @@ function LoadExistingResumeCookie() {
                     }
                 case "Group":
                     {
-                        let groupObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Group"](generic.index);
+                        let groupObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Group"](generic.index);
                         for(let i = 0; i < generic.elements.length; i++){
                             // Yeah, uhh.. this is basically just the method copy pasted again.
                             // I REALLY need to clean this up and move it to another method later.
                             switch(generic.elements[i].type){
                                 case "Title":
                                     {
-                                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Title"](generic.elements[i].index);
+                                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Title"](generic.elements[i].index);
                                         cookieObj.text = generic.elements[i].text;
                                         cookieObj.cssOptions = generic.elements[i].cssOptions;
                                         groupObj.elements.push(cookieObj);
@@ -876,7 +843,7 @@ function LoadExistingResumeCookie() {
                                     }
                                 case "Subtitle":
                                     {
-                                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Subtitle"](generic.elements[i].index);
+                                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Subtitle"](generic.elements[i].index);
                                         cookieObj.text = generic.elements[i].text;
                                         cookieObj.cssOptions = generic.elements[i].cssOptions;
                                         groupObj.elements.push(cookieObj);
@@ -884,7 +851,7 @@ function LoadExistingResumeCookie() {
                                     }
                                 case "DateText":
                                     {
-                                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DateText"](generic.elements[i].index);
+                                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DateText"](generic.elements[i].index);
                                         cookieObj.text = generic.elements[i].text;
                                         cookieObj.cssOptions = generic.elements[i].cssOptions;
                                         groupObj.elements.push(cookieObj);
@@ -892,7 +859,7 @@ function LoadExistingResumeCookie() {
                                     }
                                 case "Description":
                                     {
-                                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Description"](generic.elements[i].index);
+                                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Description"](generic.elements[i].index);
                                         cookieObj.text = generic.elements[i].text;
                                         cookieObj.cssOptions = generic.elements[i].cssOptions;
                                         groupObj.elements.push(cookieObj);
@@ -900,7 +867,7 @@ function LoadExistingResumeCookie() {
                                     }
                                 case "Divider":
                                     {
-                                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Divider"](generic.elements[i].index);
+                                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Divider"](generic.elements[i].index);
                                         cookieObj.text = generic.elements[i].text;
                                         cookieObj.cssOptions = generic.elements[i].cssOptions;
                                         groupObj.elements.push(cookieObj);
@@ -908,12 +875,12 @@ function LoadExistingResumeCookie() {
                                     }
                                 case "SkillsBox":
                                     {
-                                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SkillsBox"](generic.elements[i].index);
+                                        let cookieObj = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SkillsBox"](generic.elements[i].index);
                                         cookieObj.text = generic.elements[i].text;
                                         cookieObj.cssOptions = generic.elements[i].cssOptions;
                                         let skillsArray = [];
                                         for(let j = 0; j < generic.elements[i].skills.length; j++){
-                                            let skill = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Skills"](generic.elements[i].skills[j].name);
+                                            let skill = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Skills"](generic.elements[i].skills[j].name);
                                             skillsArray.push(skill);
                                         }
                                         cookieObj.skills = skillsArray;
@@ -1026,7 +993,7 @@ function DeleteTemporary() {
 // Adds a skill to a specified list of skills if it doesn't already exist.
 // this only exists because I couldn't find a better way to add to a skillbox's skills list.
 function AddToSkillsBox(destination, skillName) {
-    let skillToAdd = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Skills"](skillName);
+    let skillToAdd = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Skills"](skillName);
     let duplicateSkill = false;
     for(let i = 0; i < destination.length; i++){
         if (destination[i].name == skillToAdd.name && destination[i].address == skillToAdd.address && destination[i].parent == skillToAdd.parent) {
@@ -1064,7 +1031,7 @@ function EditText(element) {
     }
 }
 function RemoveFromSkillsBox(destination, skillInString) {
-    let skillToRemove = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Skills"](skillInString);
+    let skillToRemove = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Skills"](skillInString);
     for(let i = 0; i < destination.length; i++){
         if (destination[i].Equals(skillToRemove)) {
             destination.splice(i, 1);
@@ -1086,62 +1053,62 @@ function AddRawElement(elementName) {
     switch(elementName){
         case "Title":
             {
-                let newTitle = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Title"](resume.length);
+                let newTitle = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Title"](resume.length);
                 resume.push(newTitle);
                 DisplayResume();
                 break;
             }
         case "Subtitle":
             {
-                let newSubtitle = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Subtitle"](resume.length);
+                let newSubtitle = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Subtitle"](resume.length);
                 resume.push(newSubtitle);
                 DisplayResume();
                 break;
             }
         case "Description":
             {
-                let newDesc = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Description"](resume.length);
+                let newDesc = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Description"](resume.length);
                 resume.push(newDesc);
                 DisplayResume();
                 break;
             }
         case "DateText":
             {
-                let newDateText = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DateText"](resume.length);
+                let newDateText = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DateText"](resume.length);
                 resume.push(newDateText);
                 DisplayResume();
                 break;
             }
         case "SkillsBox":
             {
-                let newBox = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SkillsBox"](resume.length);
+                let newBox = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SkillsBox"](resume.length);
                 resume.push(newBox);
                 DisplayResume();
                 break;
             }
         case "Divider":
             {
-                let newDivider = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Divider"](resume.length);
+                let newDivider = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Divider"](resume.length);
                 resume.push(newDivider);
                 DisplayResume();
                 break;
             }
         case "Experience":
             {
-                let newSubtitle = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Subtitle"](resume.length);
+                let newSubtitle = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Subtitle"](resume.length);
                 resume.push(newSubtitle);
-                let newDateText = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DateText"](resume.length);
+                let newDateText = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DateText"](resume.length);
                 resume.push(newDateText);
-                let newDesc = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Description"](resume.length);
+                let newDesc = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Description"](resume.length);
                 resume.push(newDesc);
-                let newBox = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SkillsBox"](resume.length);
+                let newBox = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SkillsBox"](resume.length);
                 resume.push(newBox);
                 DisplayResume();
                 break;
             }
         case "Group":
             {
-                let newGroup = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Group"](resume.length);
+                let newGroup = new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Group"](resume.length);
                 resume.push(newGroup);
                 DisplayResume();
                 break;
@@ -1175,7 +1142,6 @@ function DeleteResumeCookie() {
 }
 function EditorResume() {
     let displayTheResume = resume.map((element)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-            style: element.style,
             children: element.text
         }, element.index, false, {
             fileName: "[project]/public/HelperScripts/Editor.tsx",
@@ -1190,7 +1156,7 @@ function EditorResume() {
         lineNumber: 476,
         columnNumber: 11
     }, this);
-} // resume[0].style = ({...TitleStyle, fontSize: "24px"}); <- Remember this, you can update css like this
+}
 }}),
 "[project]/src/app/ReactEditor/page.tsx [app-ssr] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
@@ -2736,4 +2702,4 @@ if ((typeof exports.default === 'function' || typeof exports.default === 'object
 
 };
 
-//# sourceMappingURL=%5Broot%20of%20the%20server%5D__be34e7._.js.map
+//# sourceMappingURL=%5Broot%20of%20the%20server%5D__b5c829._.js.map
