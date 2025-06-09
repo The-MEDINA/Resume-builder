@@ -28,48 +28,42 @@ export class Title implements ResumeElement {
   cssOptions: string[];
   index: number;
   style: typeof TitleStyle;
-  public constructor(i: number)
-  {
+  public constructor(i: number) {
     this.type = "Title";
     this.index = i;
     this.text = "New Title";
-    this.cssOptions = ["display: flex","justify-content: center","font-size: 48px"];
+    this.cssOptions = ["display: flex", "justify-content: center", "font-size: 48px"];
     this.style = TitleStyle;
   }
 
-  Display()
-  {
+  Display() {
     let displayText = document.createElement("p");
     displayText.textContent = this.text;
     let self = this;
-    displayText.addEventListener('click', function() {EditText(self)});
-    for (let i = 0; i < this.cssOptions.length; i++)
-    {
+    displayText.addEventListener('click', function () { EditText(self) });
+    for (let i = 0; i < this.cssOptions.length; i++) {
       AddCSSFromString(displayText, this.cssOptions[i]);
     }
-    displayText.setAttribute("index",this.index.toString());
+    displayText.setAttribute("index", this.index.toString());
     document.getElementById("Resume")?.appendChild(displayText);
   }
 
-  ConvertToHTML()
-  {
+  ConvertToHTML() {
     let displayText = document.createElement("p");
     displayText.textContent = this.text;
-    for (let i = 0; i < this.cssOptions.length; i++)
-    {
+    for (let i = 0; i < this.cssOptions.length; i++) {
       AddCSSFromString(displayText, this.cssOptions[i]);
     }
-    displayText.setAttribute("index",this.index.toString());
+    displayText.setAttribute("index", this.index.toString());
     return displayText;
   }
-  Editor(i: number)
-  {
+  Editor(i: number) {
     return (
-    <div key={i}>
-      <p style={this.style}>
-      {this.text}
-    </p>
-    </div>)
+      <div key={i}>
+        <p style={this.style}>
+          {this.text}
+        </p>
+      </div>)
   }
 }
 
@@ -81,8 +75,7 @@ export class Description implements ResumeElement {
   index: number;
   style: typeof DescriptionStyle;
 
-  public constructor(i: number)
-  {
+  public constructor(i: number) {
     this.type = "Description";
     this.index = i;
     this.text = "New description that says a lot of words about something.";
@@ -90,39 +83,34 @@ export class Description implements ResumeElement {
     this.style = DescriptionStyle;
   }
 
-  Display()
-  {
+  Display() {
     let displayText = document.createElement("p");
     displayText.textContent = this.text;
     let self = this;
-    displayText.addEventListener('click', function() {EditText(self)});
-    for (let i = 0; i < this.cssOptions.length; i++)
-    {
+    displayText.addEventListener('click', function () { EditText(self) });
+    for (let i = 0; i < this.cssOptions.length; i++) {
       AddCSSFromString(displayText, this.cssOptions[i]);
     }
-    displayText.setAttribute("index",this.index.toString());
+    displayText.setAttribute("index", this.index.toString());
     document.getElementById("Resume")?.appendChild(displayText);
   }
 
-  ConvertToHTML()
-  {
+  ConvertToHTML() {
     let displayText = document.createElement("p");
     displayText.textContent = this.text;
-    for (let i = 0; i < this.cssOptions.length; i++)
-    {
+    for (let i = 0; i < this.cssOptions.length; i++) {
       AddCSSFromString(displayText, this.cssOptions[i]);
     }
-    displayText.setAttribute("index",this.index.toString());
+    displayText.setAttribute("index", this.index.toString());
     return displayText;
   }
-  Editor(i: number)
-  {
+  Editor(i: number) {
     return (
-    <div key={i}>
-      <p style={this.style}>
-        {this.text}
-      </p>
-    </div>)
+      <div key={i}>
+        <p style={this.style}>
+          {this.text}
+        </p>
+      </div>)
   }
 }
 
@@ -133,8 +121,7 @@ export class DateText implements ResumeElement {
   cssOptions: string[];
   index: number;
   style: typeof DateTextStyle;
-  public constructor(i: number)
-  {
+  public constructor(i: number) {
     this.type = "DateText";
     this.index = i;
     this.text = "DateText start - DateText end";
@@ -142,51 +129,45 @@ export class DateText implements ResumeElement {
     this.style = DateTextStyle;
   }
 
-  Display()
-  {
+  Display() {
     let displayText = document.createElement("p");
     displayText.textContent = this.text;
     let self = this;
-    displayText.addEventListener('click', function() {EditText(self)});
-    for (let i = 0; i < this.cssOptions.length; i++)
-    {
+    displayText.addEventListener('click', function () { EditText(self) });
+    for (let i = 0; i < this.cssOptions.length; i++) {
       AddCSSFromString(displayText, this.cssOptions[i]);
     }
-    displayText.setAttribute("index",this.index.toString());
+    displayText.setAttribute("index", this.index.toString());
     document.getElementById("Resume")?.appendChild(displayText);
   }
 
-  ConvertToHTML()
-  {
+  ConvertToHTML() {
     let displayText = document.createElement("p");
     displayText.textContent = this.text;
-    for (let i = 0; i < this.cssOptions.length; i++)
-    {
+    for (let i = 0; i < this.cssOptions.length; i++) {
       AddCSSFromString(displayText, this.cssOptions[i]);
     }
-    displayText.setAttribute("index",this.index.toString());
+    displayText.setAttribute("index", this.index.toString());
     return displayText;
   }
-  Editor(i: number)
-  {
+  Editor(i: number) {
     return (
-    <div key={i}>
-      <p style={this.style}>
-        {this.text}
-      </p>
-    </div>)
+      <div key={i}>
+        <p style={this.style}>
+          {this.text}
+        </p>
+      </div>)
   }
 }
 
 // Subtitle class, used for the title of things like job experiences. Large size.
-export class Subtitle implements ResumeElement{
+export class Subtitle implements ResumeElement {
   type: string;
   text: string;
   cssOptions: string[];
   index: number;
   style: typeof SubtitleStyle;
-  public constructor(i: number)
-  {
+  public constructor(i: number) {
     this.type = "Subtitle";
     this.index = i;
     this.text = "New Job title";
@@ -194,39 +175,34 @@ export class Subtitle implements ResumeElement{
     this.style = SubtitleStyle;
   }
 
-  Display()
-  {
+  Display() {
     let displayText = document.createElement("p");
     displayText.textContent = this.text;
     let self = this;
-    displayText.addEventListener('click', function() {EditText(self)});
-    for (let i = 0; i < this.cssOptions.length; i++)
-    {
+    displayText.addEventListener('click', function () { EditText(self) });
+    for (let i = 0; i < this.cssOptions.length; i++) {
       AddCSSFromString(displayText, this.cssOptions[i]);
     }
-    displayText.setAttribute("index",this.index.toString());
+    displayText.setAttribute("index", this.index.toString());
     document.getElementById("Resume")?.appendChild(displayText);
   }
 
-  ConvertToHTML()
-  {
+  ConvertToHTML() {
     let displayText = document.createElement("p");
     displayText.textContent = this.text;
-    for (let i = 0; i < this.cssOptions.length; i++)
-    {
+    for (let i = 0; i < this.cssOptions.length; i++) {
       AddCSSFromString(displayText, this.cssOptions[i]);
     }
-    displayText.setAttribute("index",this.index.toString());
+    displayText.setAttribute("index", this.index.toString());
     return displayText;
   }
-  Editor(i: number)
-  {
+  Editor(i: number) {
     return (
-    <div key={i}>
-      <p style={this.style}>
-        {this.text}
-      </p>
-    </div>)
+      <div key={i}>
+        <p style={this.style}>
+          {this.text}
+        </p>
+      </div>)
   }
 }
 
@@ -240,19 +216,16 @@ export class Skills {
   parent: string;
   address: string;
   cssOptions: string[];
-  public constructor(skillName: string)
-  {
-    this.name = skillName;  
-    this.address = GetAddressFromSkillName(this.name);  
-    this.parent = SetParentSkill(this.name);   
-    this.cssOptions = ["display: inline-block", "border: solid"]; 
+  public constructor(skillName: string) {
+    this.name = skillName;
+    this.address = GetAddressFromSkillName(this.name);
+    this.parent = SetParentSkill(this.name);
+    this.cssOptions = ["display: inline-block", "border: solid"];
   }
 
-  ConvertToHTML(parentSkillsBox: Skills[])
-  {
+  ConvertToHTML(parentSkillsBox: Skills[]) {
     let parent = document.createElement("div");
-    for (let i = 0; i < this.cssOptions.length; i++)
-    {
+    for (let i = 0; i < this.cssOptions.length; i++) {
       AddCSSFromString(parent, this.cssOptions[i]);
     }
     let img = document.createElement("img");
@@ -261,16 +234,14 @@ export class Skills {
     img.classList.add("skillImage");
     name.classList.add("skillText");
     name.textContent = this.name;
-    name.addEventListener('click', function() {RemoveFromSkillsBox(parentSkillsBox, name.textContent!)});
+    name.addEventListener('click', function () { RemoveFromSkillsBox(parentSkillsBox, name.textContent!) });
     parent.appendChild(img);
     parent.appendChild(name);
     return parent;
   }
-  ConvertToHTMLForPresentPage(parentSkillsBox: Skills[])
-  {
+  ConvertToHTMLForPresentPage(parentSkillsBox: Skills[]) {
     let parent = document.createElement("div");
-    for (let i = 0; i < this.cssOptions.length; i++)
-    {
+    for (let i = 0; i < this.cssOptions.length; i++) {
       AddCSSFromString(parent, this.cssOptions[i]);
     }
     let img = document.createElement("img");
@@ -279,31 +250,28 @@ export class Skills {
     img.classList.add("skillImage");
     name.classList.add("skillText");
     name.textContent = this.name;
-    name.addEventListener('click', function() {FilterBySkills(name.textContent!)});
+    name.addEventListener('click', function () { FilterBySkills(name.textContent!) });
     parent.appendChild(img);
     parent.appendChild(name);
     return parent;
   }
 
   // checks if two skills are identical.
-  Equals(skillToCompare: Skills)
-  {
-    if ((this.name == skillToCompare.name) && (this.parent == skillToCompare.parent) && (this.address == skillToCompare.address))
-    {
+  Equals(skillToCompare: Skills) {
+    if ((this.name == skillToCompare.name) && (this.parent == skillToCompare.parent) && (this.address == skillToCompare.address)) {
       return true;
     }
     return false;
   }
 }
 // skillsBox class.
-export class SkillsBox implements ResumeElement{
+export class SkillsBox implements ResumeElement {
   type: string;
   text: string;
   cssOptions: string[];
   skills: Skills[];
   index: number;
-  public constructor(i: number)
-  {
+  public constructor(i: number) {
     this.type = "SkillsBox";
     this.index = i;
     this.skills = [];
@@ -311,130 +279,114 @@ export class SkillsBox implements ResumeElement{
     this.cssOptions = [];
   }
 
-  Display()
-  {
+  Display() {
     let parent = document.createElement("div");
-    for (let i = 0; i < this.cssOptions.length; i++)
-    {
+    for (let i = 0; i < this.cssOptions.length; i++) {
       AddCSSFromString(parent, this.cssOptions[i]);
     }
-    for (let i = 0; i < this.skills.length; i++)
-    {
+    for (let i = 0; i < this.skills.length; i++) {
       parent.appendChild(this.skills[i].ConvertToHTML(this.skills));
     }
     let addButton = document.createElement("button");
     addButton.textContent = "|Add new skill|";
     let skillsCopy: Skills[] = this.skills;
-    addButton.addEventListener('mouseover', function() {DeleteTemporary(); SkillDropDownMenu("", parent, skillsCopy)});
-    addButton.addEventListener('click', function() {DeleteTemporary()});
+    addButton.addEventListener('mouseover', function () { DeleteTemporary(); SkillDropDownMenu("", parent, skillsCopy) });
+    addButton.addEventListener('click', function () { DeleteTemporary() });
     parent.appendChild(addButton);
     let deleteButton = document.createElement("button");
     deleteButton.textContent = "|Remove skills box|";
     let indexCopy = this.index;
-    deleteButton.addEventListener('click', function() {resume.splice(indexCopy,1); DisplayResume();});
+    deleteButton.addEventListener('click', function () { resume.splice(indexCopy, 1); DisplayResume(); });
     parent.appendChild(deleteButton);
     document.getElementById("Resume")?.appendChild(parent);
   }
 
-  ConvertToHTML()
-  {
+  ConvertToHTML() {
     let parent = document.createElement("div");
-    for (let i = 0; i < this.cssOptions.length; i++)
-    {
+    for (let i = 0; i < this.cssOptions.length; i++) {
       AddCSSFromString(parent, this.cssOptions[i]);
     }
-    for (let i = 0; i < this.skills.length; i++)
-    {
+    for (let i = 0; i < this.skills.length; i++) {
       parent.appendChild(this.skills[i].ConvertToHTML(this.skills));
     }
     let addButton = document.createElement("button");
     addButton.textContent = "|Add new skill|";
     let skillsCopy: Skills[] = this.skills;
-    addButton.addEventListener('mouseover', function() {DeleteTemporary(); SkillDropDownMenu("", parent, skillsCopy)});
-    addButton.addEventListener('click', function() {DeleteTemporary()});
+    addButton.addEventListener('mouseover', function () { DeleteTemporary(); SkillDropDownMenu("", parent, skillsCopy) });
+    addButton.addEventListener('click', function () { DeleteTemporary() });
     parent.appendChild(addButton);
     let deleteButton = document.createElement("button");
     deleteButton.textContent = "|Remove skills box|";
     let indexCopy = this.index;
-    deleteButton.addEventListener('click', function() {resume.splice(indexCopy,1); DisplayResume();});
+    deleteButton.addEventListener('click', function () { resume.splice(indexCopy, 1); DisplayResume(); });
     parent.appendChild(deleteButton);
     return parent;
   }
 
-  ConvertToHTMLForPresentPage()
-  {
+  ConvertToHTMLForPresentPage() {
     let parent = document.createElement("div");
-    for (let i = 0; i < this.cssOptions.length; i++)
-    {
+    for (let i = 0; i < this.cssOptions.length; i++) {
       AddCSSFromString(parent, this.cssOptions[i]);
     }
-    for (let i = 0; i < this.skills.length; i++)
-    {
+    for (let i = 0; i < this.skills.length; i++) {
       parent.appendChild(this.skills[i].ConvertToHTMLForPresentPage(this.skills));
     }
     return parent;
   }
   // TODO: Fix this one
-  Editor(i: number)
-  {
+  Editor(i: number) {
     return (
-    <div key={i}>
-      <p>
-        we're gonna come back to this one later :{'<'}
-      </p>
-    </div>)
+      <div key={i}>
+        <p>
+          we're gonna come back to this one later :{'<'}
+        </p>
+      </div>)
   }
 }
 
 // divider class.
-export class Divider implements ResumeElement{
+export class Divider implements ResumeElement {
   type: string;
   text: string;
   cssOptions: string[];
   index: number;
   style: typeof DividerStyle;
-  public constructor(i: number)
-  {
+  public constructor(i: number) {
     this.type = "Divider";
     this.index = i;
     this.text = "New divider";
-    this.cssOptions = ["border-bottom: solid","font-size: 24px"];
+    this.cssOptions = ["border-bottom: solid", "font-size: 24px"];
     this.style = DividerStyle;
   }
 
-  Display()
-  {
+  Display() {
     let displayText = document.createElement("p");
     displayText.textContent = this.text;
     let self = this;
-    displayText.addEventListener('click', function() {EditText(self)});
-    for (let i = 0; i < this.cssOptions.length; i++)
-    {
+    displayText.addEventListener('click', function () { EditText(self) });
+    for (let i = 0; i < this.cssOptions.length; i++) {
       AddCSSFromString(displayText, this.cssOptions[i]);
     }
-    displayText.setAttribute("index",this.index.toString());
+    displayText.setAttribute("index", this.index.toString());
     document.getElementById("Resume")?.appendChild(displayText);
   }
 
-  ConvertToHTML()
-  {
+  ConvertToHTML() {
     let displayText = document.createElement("p");
     displayText.textContent = this.text;
-    for (let i = 0; i < this.cssOptions.length; i++)
-    {
+    for (let i = 0; i < this.cssOptions.length; i++) {
       AddCSSFromString(displayText, this.cssOptions[i]);
     }
-    displayText.setAttribute("index",this.index.toString());
+    displayText.setAttribute("index", this.index.toString());
     return displayText;
   }
-  Editor(i: number)
-  {
-  return  (
-    <div key={i}>
-      <p style={this.style}>
-        {this.text}
-      </p>
-    </div>)
+  Editor(i: number) {
+    return (
+      <div key={i}>
+        <p style={this.style}>
+          {this.text}
+        </p>
+      </div>)
   }
 }
 
@@ -443,41 +395,35 @@ export class Group {
   type: string;
   elements: ResumeElement[];
   index: number;
-  public constructor(i: number)
-  {
+  public constructor(i: number) {
     this.index = i;
     this.elements = [];
     this.type = "Group";
-  } 
-  Display()
-  {
+  }
+  Display() {
     let groupDiv = document.createElement("div");
-    groupDiv.setAttribute("id","groupBox");
-    for (let i = 0; i < this.elements.length; i++)
-    {
+    groupDiv.setAttribute("id", "groupBox");
+    for (let i = 0; i < this.elements.length; i++) {
       //console.log(this.elements[i]);
-      let child = groupDiv.appendChild(this.elements[i].ConvertToHTML()); 
+      let child = groupDiv.appendChild(this.elements[i].ConvertToHTML());
       child.appendChild(GroupMovementButtons(this.elements[i].index, this));
     }
     let removeButton = document.createElement("p");
     removeButton.textContent = "|remove group|";
     let indexCopy = this.index;
-    removeButton.addEventListener('click', function() {resume.splice(indexCopy,1); DisplayResume();});
+    removeButton.addEventListener('click', function () { resume.splice(indexCopy, 1); DisplayResume(); });
     groupDiv.appendChild(removeButton);
     document.getElementById("Resume")?.appendChild(groupDiv);
   }
 }
 
 // Takes a string, identifies the css option, and uses the correct function to apply the value to the HTML element given.
-export function AddCSSFromString(HTMLElement: any, rawString: string)
-{
+export function AddCSSFromString(HTMLElement: any, rawString: string) {
   let splitString: string[] = rawString.split(":");
-  for (let i = 0; i < splitString.length; i++)
-  {
+  for (let i = 0; i < splitString.length; i++) {
     splitString[i] = splitString[i].trim();
   }
-  switch (splitString[0])
-  {
+  switch (splitString[0]) {
     case ("display"): { HTMLElement.style.display = splitString[1]; break; }
     case ("justify-content"): { HTMLElement.style.justifyContent = splitString[1]; break; }
     case ("font-size"): { HTMLElement.style.fontSize = splitString[1]; break; }
@@ -488,50 +434,43 @@ export function AddCSSFromString(HTMLElement: any, rawString: string)
 }
 
 // Adds movement buttons to any resume element in a group.
-function GroupMovementButtons(index: number, groupBox: Group)
-{
+function GroupMovementButtons(index: number, groupBox: Group) {
   let parent = document.createElement("div");
   let upButton = document.createElement("button");
   upButton.textContent = "|^|";
-  upButton.addEventListener('click', function() {MoveUp(index, groupBox)});
+  upButton.addEventListener('click', function () { MoveUp(index, groupBox) });
   let downButton = document.createElement("button");
   downButton.textContent = "|v|";
-  downButton.addEventListener('click', function() {MoveDown(index, groupBox)});
+  downButton.addEventListener('click', function () { MoveDown(index, groupBox) });
   parent.appendChild(upButton);
   parent.appendChild(downButton);
   return parent;
 }
 
-function MoveUp(index: number, groupBox: Group)
-{
-  if (!(index-1 == groupBox.index))
-  {
-    let holdThis = groupBox.elements[(index-2)-groupBox.index];
-    groupBox.elements[(index-2)-groupBox.index] = groupBox.elements[(index-1)-groupBox.index];
-    groupBox.elements[(index-1)-groupBox.index] = holdThis;
+function MoveUp(index: number, groupBox: Group) {
+  if (!(index - 1 == groupBox.index)) {
+    let holdThis = groupBox.elements[(index - 2) - groupBox.index];
+    groupBox.elements[(index - 2) - groupBox.index] = groupBox.elements[(index - 1) - groupBox.index];
+    groupBox.elements[(index - 1) - groupBox.index] = holdThis;
   }
-  else
-  {
-    let holdThis = groupBox.elements[(index-1) - groupBox.index];
-    groupBox.elements.splice(0,1);
+  else {
+    let holdThis = groupBox.elements[(index - 1) - groupBox.index];
+    groupBox.elements.splice(0, 1);
     resume.splice(groupBox.index, 0, holdThis);
   }
   DisplayResume();
 }
 
-function MoveDown(index: number, groupBox: Group)
-{
-  if (!(index == (groupBox.index + groupBox.elements.length)))
-  {
-    let holdThis = groupBox.elements[(index-1)-groupBox.index];
-    groupBox.elements[(index-1)-groupBox.index] = groupBox.elements[(index)-groupBox.index];
-    groupBox.elements[(index)-groupBox.index] = holdThis;
+function MoveDown(index: number, groupBox: Group) {
+  if (!(index == (groupBox.index + groupBox.elements.length))) {
+    let holdThis = groupBox.elements[(index - 1) - groupBox.index];
+    groupBox.elements[(index - 1) - groupBox.index] = groupBox.elements[(index) - groupBox.index];
+    groupBox.elements[(index) - groupBox.index] = holdThis;
   }
-  else
-  {
+  else {
     //console.log("move out from bottom");
-    let holdThis = groupBox.elements[(index-1) - groupBox.index];
-    groupBox.elements.splice(groupBox.elements.length-1,1);
+    let holdThis = groupBox.elements[(index - 1) - groupBox.index];
+    groupBox.elements.splice(groupBox.elements.length - 1, 1);
     resume.splice(groupBox.index + groupBox.elements.length, 0, holdThis);
   }
   DisplayResume();

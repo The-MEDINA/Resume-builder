@@ -311,13 +311,13 @@ class Title {
                 children: this.text
             }, void 0, false, {
                 fileName: "[project]/public/HelperScripts/Elements.tsx",
-                lineNumber: 69,
-                columnNumber: 7
+                lineNumber: 63,
+                columnNumber: 9
             }, this)
         }, i, false, {
             fileName: "[project]/public/HelperScripts/Elements.tsx",
-            lineNumber: 68,
-            columnNumber: 5
+            lineNumber: 62,
+            columnNumber: 7
         }, this);
     }
 }
@@ -365,13 +365,13 @@ class Description {
                 children: this.text
             }, void 0, false, {
                 fileName: "[project]/public/HelperScripts/Elements.tsx",
-                lineNumber: 122,
-                columnNumber: 7
+                lineNumber: 110,
+                columnNumber: 9
             }, this)
         }, i, false, {
             fileName: "[project]/public/HelperScripts/Elements.tsx",
-            lineNumber: 121,
-            columnNumber: 5
+            lineNumber: 109,
+            columnNumber: 7
         }, this);
     }
 }
@@ -419,13 +419,13 @@ class DateText {
                 children: this.text
             }, void 0, false, {
                 fileName: "[project]/public/HelperScripts/Elements.tsx",
-                lineNumber: 174,
-                columnNumber: 7
+                lineNumber: 156,
+                columnNumber: 9
             }, this)
         }, i, false, {
             fileName: "[project]/public/HelperScripts/Elements.tsx",
-            lineNumber: 173,
-            columnNumber: 5
+            lineNumber: 155,
+            columnNumber: 7
         }, this);
     }
 }
@@ -473,13 +473,13 @@ class Subtitle {
                 children: this.text
             }, void 0, false, {
                 fileName: "[project]/public/HelperScripts/Elements.tsx",
-                lineNumber: 226,
-                columnNumber: 7
+                lineNumber: 202,
+                columnNumber: 9
             }, this)
         }, i, false, {
             fileName: "[project]/public/HelperScripts/Elements.tsx",
-            lineNumber: 225,
-            columnNumber: 5
+            lineNumber: 201,
+            columnNumber: 7
         }, this);
     }
 }
@@ -632,13 +632,13 @@ class SkillsBox {
                 ]
             }, void 0, true, {
                 fileName: "[project]/public/HelperScripts/Elements.tsx",
-                lineNumber: 382,
-                columnNumber: 7
+                lineNumber: 340,
+                columnNumber: 9
             }, this)
         }, i, false, {
             fileName: "[project]/public/HelperScripts/Elements.tsx",
-            lineNumber: 381,
-            columnNumber: 5
+            lineNumber: 339,
+            columnNumber: 7
         }, this);
     }
 }
@@ -687,13 +687,13 @@ class Divider {
                 children: this.text
             }, void 0, false, {
                 fileName: "[project]/public/HelperScripts/Elements.tsx",
-                lineNumber: 434,
-                columnNumber: 7
+                lineNumber: 386,
+                columnNumber: 9
             }, this)
         }, i, false, {
             fileName: "[project]/public/HelperScripts/Elements.tsx",
-            lineNumber: 433,
-            columnNumber: 5
+            lineNumber: 385,
+            columnNumber: 7
         }, this);
     }
 }
@@ -834,7 +834,7 @@ __turbopack_esm__({
     "DeleteTemporary": (()=>DeleteTemporary),
     "DisplayResume": (()=>DisplayResume),
     "EditText": (()=>EditText),
-    "EditorResume": (()=>EditorResume),
+    "Editor": (()=>Editor),
     "LoadExistingResumeCookie": (()=>LoadExistingResumeCookie),
     "RemoveFromSkillsBox": (()=>RemoveFromSkillsBox),
     "Setup": (()=>Setup),
@@ -1265,19 +1265,183 @@ function DeleteResumeCookie() {
         }
     }
 }
-function EditorResume() {
-    let displayTheResume = [];
-    for(let i = 0; i < resume.length; i++){
-        displayTheResume.push(resume[i].Editor(i));
-    }
-    console.log(displayTheResume);
+function Editor() {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        children: displayTheResume
+        className: "editor-grid",
+        children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                id: "addElements",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        children: "add"
+                    }, void 0, false, {
+                        fileName: "[project]/public/HelperScripts/Editor.tsx",
+                        lineNumber: 425,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                        id: "addRawSubtitle",
+                        onClick: ()=>console.log("subtitle"),
+                        children: "|add subtitle|"
+                    }, void 0, false, {
+                        fileName: "[project]/public/HelperScripts/Editor.tsx",
+                        lineNumber: 426,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                        id: "addDivider",
+                        onClick: ()=>console.log("divider"),
+                        children: "|add divider|"
+                    }, void 0, false, {
+                        fileName: "[project]/public/HelperScripts/Editor.tsx",
+                        lineNumber: 427,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                        id: "addRawDateText",
+                        onClick: ()=>console.log("dateText"),
+                        children: "|add DateText|"
+                    }, void 0, false, {
+                        fileName: "[project]/public/HelperScripts/Editor.tsx",
+                        lineNumber: 428,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                        id: "addRawDesc",
+                        onClick: ()=>console.log("description"),
+                        children: "|add description|"
+                    }, void 0, false, {
+                        fileName: "[project]/public/HelperScripts/Editor.tsx",
+                        lineNumber: 429,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                        id: "addRawTitle",
+                        onClick: ()=>console.log("title"),
+                        children: "|add title|"
+                    }, void 0, false, {
+                        fileName: "[project]/public/HelperScripts/Editor.tsx",
+                        lineNumber: 430,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                        id: "addSkillsBox",
+                        onClick: ()=>console.log("skillsBox"),
+                        children: "|add skills box|"
+                    }, void 0, false, {
+                        fileName: "[project]/public/HelperScripts/Editor.tsx",
+                        lineNumber: 431,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                        id: "addExperience",
+                        onClick: ()=>console.log("experience"),
+                        children: "|add experience|"
+                    }, void 0, false, {
+                        fileName: "[project]/public/HelperScripts/Editor.tsx",
+                        lineNumber: 432,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                        id: "addGroup",
+                        onClick: ()=>{
+                            console.log("group");
+                            console.log(listOfSkills);
+                        },
+                        children: "|add group box|"
+                    }, void 0, false, {
+                        fileName: "[project]/public/HelperScripts/Editor.tsx",
+                        lineNumber: 433,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/public/HelperScripts/Editor.tsx",
+                lineNumber: 424,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                id: "Resume",
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(List, {
+                    list: resume
+                }, void 0, false, {
+                    fileName: "[project]/public/HelperScripts/Editor.tsx",
+                    lineNumber: 436,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
+                fileName: "[project]/public/HelperScripts/Editor.tsx",
+                lineNumber: 435,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                id: "editElements",
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                    children: "edit"
+                }, void 0, false, {
+                    fileName: "[project]/public/HelperScripts/Editor.tsx",
+                    lineNumber: 439,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
+                fileName: "[project]/public/HelperScripts/Editor.tsx",
+                lineNumber: 438,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                id: "editSkills",
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                    children: "skills and options n stuff."
+                }, void 0, false, {
+                    fileName: "[project]/public/HelperScripts/Editor.tsx",
+                    lineNumber: 442,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
+                fileName: "[project]/public/HelperScripts/Editor.tsx",
+                lineNumber: 441,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "[project]/public/HelperScripts/Editor.tsx",
+        lineNumber: 423,
+        columnNumber: 5
+    }, this);
+}
+// Displays all the resume elements present in the resume list.
+function List({ list }) {
+    const items = list.map((item)=>Item(item));
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
+        children: items
     }, void 0, false, {
         fileName: "[project]/public/HelperScripts/Editor.tsx",
-        lineNumber: 475,
-        columnNumber: 11
+        lineNumber: 452,
+        columnNumber: 5
     }, this);
+}
+function Item(item) {
+    console.log("called");
+    switch(item.type){
+        case "Title":
+            console.log("title found");
+            return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                    style: item.style,
+                    children: item.text
+                }, void 0, false, {
+                    fileName: "[project]/public/HelperScripts/Editor.tsx",
+                    lineNumber: 463,
+                    columnNumber: 11
+                }, this)
+            }, item.index, false, {
+                fileName: "[project]/public/HelperScripts/Editor.tsx",
+                lineNumber: 462,
+                columnNumber: 9
+            }, this);
+        default:
+            return null;
+    }
 } // resume[0].style = ({...TitleStyle, fontSize: "24px"}); <- Remember this, you can update css like this
 }}),
 "[project]/src/app/page.tsx [app-edge-ssr] (ecmascript)": ((__turbopack_context__) => {
