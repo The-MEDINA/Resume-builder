@@ -1,5 +1,6 @@
 // puts the resume onto the website.
 import { Skill } from "@/app/Skills/page";
+import { useState } from "react";
 import { GetSavedSkillList, ArrayToSkillType } from "./skillTags";
 import { SkillsBox, Skills, Title, Subtitle, DateText, Description, ResumeElement, Divider, Group, TitleStyle } from "./Elements";
 let listOfSkills: Skill[] = ArrayToSkillType(GetSavedSkillList());
@@ -430,7 +431,7 @@ export function Editor() {
         <button id="addRawTitle" onClick={() => console.log("title")}>|add title|</button>
         <button id="addSkillsBox" onClick={() => console.log("skillsBox")}>|add skills box|</button>
         <button id="addExperience" onClick={() => console.log("experience")}>|add experience|</button>
-        <button id="addGroup" onClick={() => { console.log("group"); console.log(listOfSkills) }}>|add group box|</button>
+        <button id="addGroup" onClick={() => { console.log("group"); console.log(resume) }}>|add group box|</button>
       </div>
       <div id="Resume">
         <List list={resume} />
@@ -447,21 +448,93 @@ export function Editor() {
 
 // Displays all the resume elements present in the resume list.
 function List({ list }) {
-  const items = list.map(item => Item(item));
+  const items = list.map(item => CreateItem(item));
   return (
     <ul>{items}</ul>
   )
 }
 
-function Item(item) {
-  console.log("called");
+// Turns a Resume element provided to "item" into JSX for the editor.
+// I don't really like making this a function, but if it doesn't cause any issues later down the line I guess it's okay.
+
+// TODO: Wewrite the switch/case to update content and only use 1 return.
+function CreateItem(item) {
+  let content: any = null;
+  const [EditItem, SetEditItem] = useState(-1);
+  const [Value, SetValue] = useState(item.text);
+  const keyDown = (event) => {
+    if (event.key == "Enter") {
+      item.text = Value;
+      SetEditItem(-1);
+    }
+  };
   switch (item.type) {
     case "Title":
-      console.log("title found");
+      {
+        if (EditItem == item.index) {
+          content = (<input value={Value} style={item.style} onChange={e => { SetValue(e.target.value) }} onKeyDown={keyDown} className="scanner"
+          />)
+        }
+        else {
+          content = (<p style={item.style} onClick={() => SetEditItem(item.index)}>
+            {item.text}
+          </p>)
+        }
+      }
+      return (
+        <div key={item.index}>
+          {content}
+        </div>)
+    case "Divider":
+      {
+        if (EditItem == item.index) {
+          content = (<input value={Value} style={item.style} onChange={e => { SetValue(e.target.value) }} onKeyDown={keyDown} className="scanner"
+          />)
+        }
+        else {
+          content = (<p style={item.style} onClick={() => SetEditItem(item.index)}>
+            {item.text}
+          </p>)
+        }
+      }
+      return (<div key={item.index}>
+        {content}
+      </div>)
+    case "Subtitle":
       return (
         <div key={item.index}>
           <p style={item.style}>
             {item.text}
+          </p>
+        </div>)
+    case "DateText":
+      return (
+        <div key={item.index}>
+          <p style={item.style}>
+            {item.text}
+          </p>
+        </div>)
+    case "Description":
+      return (
+        <div key={item.index}>
+          <p style={item.style}>
+            {item.text}
+          </p>
+        </div>)
+    case "SkillsBox":
+      return (
+        <div key={item.index}>
+          <p>
+            {/* TODO: Fix this one */}
+            we're gonna come back to this one later :{'<'}
+          </p>
+        </div>)
+    case "Group":
+      return (
+        <div key={item.index}>
+          <p>
+            {/* TODO: Also Fix this one. These are gonna cause issues aren't they? */}
+            Group box here... eventually. {'>'}:
           </p>
         </div>)
     default:

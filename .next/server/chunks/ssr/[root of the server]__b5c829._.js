@@ -1419,7 +1419,7 @@ function Editor() {
 }
 // Displays all the resume elements present in the resume list.
 function List({ list }) {
-    const items = list.map((item)=>Item(item));
+    const items = list.map((item)=>CreateItem(item));
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
         children: items
     }, void 0, false, {
@@ -1428,23 +1428,119 @@ function List({ list }) {
         columnNumber: 5
     }, this);
 }
-function Item(item) {
+// Turns a Resume element provided to "item" into JSX for the editor.
+// I don't really like making this a function, but if it doesn't cause any issues later down the line I guess it's okay.
+function CreateItem(item) {
     console.log("called");
     switch(item.type){
         case "Title":
-            console.log("title found");
             return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                     style: item.style,
                     children: item.text
                 }, void 0, false, {
                     fileName: "[project]/public/HelperScripts/Editor.tsx",
-                    lineNumber: 463,
+                    lineNumber: 464,
                     columnNumber: 11
                 }, this)
             }, item.index, false, {
                 fileName: "[project]/public/HelperScripts/Editor.tsx",
-                lineNumber: 462,
+                lineNumber: 463,
+                columnNumber: 9
+            }, this);
+        case "Divider":
+            return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                    style: item.style,
+                    children: item.text
+                }, void 0, false, {
+                    fileName: "[project]/public/HelperScripts/Editor.tsx",
+                    lineNumber: 470,
+                    columnNumber: 9
+                }, this)
+            }, item.index, false, {
+                fileName: "[project]/public/HelperScripts/Editor.tsx",
+                lineNumber: 469,
+                columnNumber: 15
+            }, this);
+        case "Subtitle":
+            return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                    style: item.style,
+                    children: item.text
+                }, void 0, false, {
+                    fileName: "[project]/public/HelperScripts/Editor.tsx",
+                    lineNumber: 477,
+                    columnNumber: 11
+                }, this)
+            }, item.index, false, {
+                fileName: "[project]/public/HelperScripts/Editor.tsx",
+                lineNumber: 476,
+                columnNumber: 9
+            }, this);
+        case "DateText":
+            return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                    style: item.style,
+                    children: item.text
+                }, void 0, false, {
+                    fileName: "[project]/public/HelperScripts/Editor.tsx",
+                    lineNumber: 484,
+                    columnNumber: 11
+                }, this)
+            }, item.index, false, {
+                fileName: "[project]/public/HelperScripts/Editor.tsx",
+                lineNumber: 483,
+                columnNumber: 9
+            }, this);
+        case "Description":
+            return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                    style: item.style,
+                    children: item.text
+                }, void 0, false, {
+                    fileName: "[project]/public/HelperScripts/Editor.tsx",
+                    lineNumber: 491,
+                    columnNumber: 11
+                }, this)
+            }, item.index, false, {
+                fileName: "[project]/public/HelperScripts/Editor.tsx",
+                lineNumber: 490,
+                columnNumber: 9
+            }, this);
+        case "SkillsBox":
+            return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                    children: [
+                        "we're gonna come back to this one later :",
+                        '<'
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/public/HelperScripts/Editor.tsx",
+                    lineNumber: 498,
+                    columnNumber: 11
+                }, this)
+            }, item.index, false, {
+                fileName: "[project]/public/HelperScripts/Editor.tsx",
+                lineNumber: 497,
+                columnNumber: 9
+            }, this);
+        case "Group":
+            return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                    children: [
+                        "Group box here... eventually. ",
+                        '>',
+                        ":"
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/public/HelperScripts/Editor.tsx",
+                    lineNumber: 506,
+                    columnNumber: 11
+                }, this)
+            }, item.index, false, {
+                fileName: "[project]/public/HelperScripts/Editor.tsx",
+                lineNumber: 505,
                 columnNumber: 9
             }, this);
         default:
@@ -1480,7 +1576,7 @@ function ReactEditor() {
                 className: "topnav",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                        children: "Resume Maker"
+                        children: "Resu-Me"
                     }, void 0, false, {
                         fileName: "[project]/src/app/ReactEditor/page.tsx",
                         lineNumber: 18,
