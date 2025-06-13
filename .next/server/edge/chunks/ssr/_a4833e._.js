@@ -202,8 +202,10 @@ __turbopack_esm__({
     "resume": (()=>resume)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-edge-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/compiled/react/index.js [app-edge-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/public/HelperScripts/skillTags.ts [app-edge-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/public/HelperScripts/Elements.tsx [app-edge-ssr] (ecmascript)");
+;
 ;
 ;
 ;
@@ -635,7 +637,7 @@ function Editor() {
                         children: "add"
                     }, void 0, false, {
                         fileName: "[project]/public/HelperScripts/Editor.tsx",
-                        lineNumber: 425,
+                        lineNumber: 426,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -644,7 +646,7 @@ function Editor() {
                         children: "|add subtitle|"
                     }, void 0, false, {
                         fileName: "[project]/public/HelperScripts/Editor.tsx",
-                        lineNumber: 426,
+                        lineNumber: 427,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -653,7 +655,7 @@ function Editor() {
                         children: "|add divider|"
                     }, void 0, false, {
                         fileName: "[project]/public/HelperScripts/Editor.tsx",
-                        lineNumber: 427,
+                        lineNumber: 428,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -662,7 +664,7 @@ function Editor() {
                         children: "|add DateText|"
                     }, void 0, false, {
                         fileName: "[project]/public/HelperScripts/Editor.tsx",
-                        lineNumber: 428,
+                        lineNumber: 429,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -671,7 +673,7 @@ function Editor() {
                         children: "|add description|"
                     }, void 0, false, {
                         fileName: "[project]/public/HelperScripts/Editor.tsx",
-                        lineNumber: 429,
+                        lineNumber: 430,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -680,7 +682,7 @@ function Editor() {
                         children: "|add title|"
                     }, void 0, false, {
                         fileName: "[project]/public/HelperScripts/Editor.tsx",
-                        lineNumber: 430,
+                        lineNumber: 431,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -689,7 +691,7 @@ function Editor() {
                         children: "|add skills box|"
                     }, void 0, false, {
                         fileName: "[project]/public/HelperScripts/Editor.tsx",
-                        lineNumber: 431,
+                        lineNumber: 432,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -698,25 +700,25 @@ function Editor() {
                         children: "|add experience|"
                     }, void 0, false, {
                         fileName: "[project]/public/HelperScripts/Editor.tsx",
-                        lineNumber: 432,
+                        lineNumber: 433,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                         id: "addGroup",
                         onClick: ()=>{
                             console.log("group");
-                            console.log(listOfSkills);
+                            console.log(resume);
                         },
                         children: "|add group box|"
                     }, void 0, false, {
                         fileName: "[project]/public/HelperScripts/Editor.tsx",
-                        lineNumber: 433,
+                        lineNumber: 434,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/public/HelperScripts/Editor.tsx",
-                lineNumber: 424,
+                lineNumber: 425,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -725,12 +727,12 @@ function Editor() {
                     list: resume
                 }, void 0, false, {
                     fileName: "[project]/public/HelperScripts/Editor.tsx",
-                    lineNumber: 436,
+                    lineNumber: 437,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/public/HelperScripts/Editor.tsx",
-                lineNumber: 435,
+                lineNumber: 436,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -739,12 +741,12 @@ function Editor() {
                     children: "edit"
                 }, void 0, false, {
                     fileName: "[project]/public/HelperScripts/Editor.tsx",
-                    lineNumber: 439,
+                    lineNumber: 440,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/public/HelperScripts/Editor.tsx",
-                lineNumber: 438,
+                lineNumber: 439,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -753,132 +755,228 @@ function Editor() {
                     children: "skills and options n stuff."
                 }, void 0, false, {
                     fileName: "[project]/public/HelperScripts/Editor.tsx",
-                    lineNumber: 442,
+                    lineNumber: 443,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/public/HelperScripts/Editor.tsx",
-                lineNumber: 441,
+                lineNumber: 442,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/public/HelperScripts/Editor.tsx",
-        lineNumber: 423,
+        lineNumber: 424,
         columnNumber: 5
     }, this);
 }
 // Displays all the resume elements present in the resume list.
 function List({ list }) {
-    const items = list.map((item)=>CreateItem(item));
+    const items = list.map((item)=>HandleItem(item));
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
         children: items
     }, void 0, false, {
         fileName: "[project]/public/HelperScripts/Editor.tsx",
-        lineNumber: 452,
+        lineNumber: 453,
         columnNumber: 5
     }, this);
 }
-// Turns a Resume element from the list into JSX for the editor.
+// Turns a Resume element provided to "item" into JSX for the editor.
 // I don't really like making this a function, but if it doesn't cause any issues later down the line I guess it's okay.
-function CreateItem(item) {
-    console.log("called");
+// TODO: Wewrite the switch/case to update content and only use 1 return.
+function HandleItem(item) {
+    let content = null;
+    const [EditItem, SetEditItem] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(-1);
+    const [Value, SetValue] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(item.text);
+    const keyDown = (event)=>{
+        if (event.key == "Enter") {
+            item.text = Value;
+            SetEditItem(-1);
+        }
+    };
     switch(item.type){
         case "Title":
-            return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                    style: item.style,
-                    children: item.text
-                }, void 0, false, {
-                    fileName: "[project]/public/HelperScripts/Editor.tsx",
-                    lineNumber: 464,
-                    columnNumber: 11
-                }, this)
-            }, item.index, false, {
-                fileName: "[project]/public/HelperScripts/Editor.tsx",
-                lineNumber: 463,
-                columnNumber: 9
-            }, this);
+            {
+                if (EditItem == item.index) {
+                    content = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                        value: Value,
+                        style: item.style,
+                        onChange: (e)=>{
+                            SetValue(e.target.value);
+                        },
+                        onKeyDown: keyDown,
+                        className: "scanner"
+                    }, void 0, false, {
+                        fileName: "[project]/public/HelperScripts/Editor.tsx",
+                        lineNumber: 474,
+                        columnNumber: 22
+                    }, this);
+                } else {
+                    content = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        style: item.style,
+                        onClick: ()=>SetEditItem(item.index),
+                        children: item.text
+                    }, void 0, false, {
+                        fileName: "[project]/public/HelperScripts/Editor.tsx",
+                        lineNumber: 478,
+                        columnNumber: 22
+                    }, this);
+                }
+            }
+            break;
         case "Divider":
-            return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                    style: item.style,
-                    children: item.text
-                }, void 0, false, {
-                    fileName: "[project]/public/HelperScripts/Editor.tsx",
-                    lineNumber: 470,
-                    columnNumber: 9
-                }, this)
-            }, item.index, false, {
-                fileName: "[project]/public/HelperScripts/Editor.tsx",
-                lineNumber: 469,
-                columnNumber: 15
-            }, this);
+            {
+                if (EditItem == item.index) {
+                    content = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                        value: Value,
+                        style: item.style,
+                        onChange: (e)=>{
+                            SetValue(e.target.value);
+                        },
+                        onKeyDown: keyDown,
+                        className: "scanner"
+                    }, void 0, false, {
+                        fileName: "[project]/public/HelperScripts/Editor.tsx",
+                        lineNumber: 487,
+                        columnNumber: 22
+                    }, this);
+                } else {
+                    content = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        style: item.style,
+                        onClick: ()=>SetEditItem(item.index),
+                        children: item.text
+                    }, void 0, false, {
+                        fileName: "[project]/public/HelperScripts/Editor.tsx",
+                        lineNumber: 491,
+                        columnNumber: 22
+                    }, this);
+                }
+            }
+            break;
         case "Subtitle":
-            return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                    style: item.style,
-                    children: item.text
-                }, void 0, false, {
-                    fileName: "[project]/public/HelperScripts/Editor.tsx",
-                    lineNumber: 477,
-                    columnNumber: 11
-                }, this)
-            }, item.index, false, {
-                fileName: "[project]/public/HelperScripts/Editor.tsx",
-                lineNumber: 476,
-                columnNumber: 9
-            }, this);
+            {
+                if (EditItem == item.index) {
+                    content = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                        value: Value,
+                        style: item.style,
+                        onChange: (e)=>{
+                            SetValue(e.target.value);
+                        },
+                        onKeyDown: keyDown,
+                        className: "scanner"
+                    }, void 0, false, {
+                        fileName: "[project]/public/HelperScripts/Editor.tsx",
+                        lineNumber: 500,
+                        columnNumber: 22
+                    }, this);
+                } else {
+                    content = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        style: item.style,
+                        onClick: ()=>SetEditItem(item.index),
+                        children: item.text
+                    }, void 0, false, {
+                        fileName: "[project]/public/HelperScripts/Editor.tsx",
+                        lineNumber: 504,
+                        columnNumber: 22
+                    }, this);
+                }
+            }
+            break;
         case "DateText":
-            return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                    style: item.style,
-                    children: item.text
-                }, void 0, false, {
-                    fileName: "[project]/public/HelperScripts/Editor.tsx",
-                    lineNumber: 484,
-                    columnNumber: 11
-                }, this)
-            }, item.index, false, {
-                fileName: "[project]/public/HelperScripts/Editor.tsx",
-                lineNumber: 483,
-                columnNumber: 9
-            }, this);
+            {
+                if (EditItem == item.index) {
+                    content = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                        value: Value,
+                        style: item.style,
+                        onChange: (e)=>{
+                            SetValue(e.target.value);
+                        },
+                        onKeyDown: keyDown,
+                        className: "scanner"
+                    }, void 0, false, {
+                        fileName: "[project]/public/HelperScripts/Editor.tsx",
+                        lineNumber: 513,
+                        columnNumber: 22
+                    }, this);
+                } else {
+                    content = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        style: item.style,
+                        onClick: ()=>SetEditItem(item.index),
+                        children: item.text
+                    }, void 0, false, {
+                        fileName: "[project]/public/HelperScripts/Editor.tsx",
+                        lineNumber: 517,
+                        columnNumber: 22
+                    }, this);
+                }
+            }
+            break;
         case "Description":
-            return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                    style: item.style,
-                    children: item.text
-                }, void 0, false, {
-                    fileName: "[project]/public/HelperScripts/Editor.tsx",
-                    lineNumber: 491,
-                    columnNumber: 9
-                }, this)
-            }, item.index, false, {
-                fileName: "[project]/public/HelperScripts/Editor.tsx",
-                lineNumber: 490,
-                columnNumber: 7
-            }, this);
+            {
+                if (EditItem == item.index) {
+                    content = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                        value: Value,
+                        style: item.style,
+                        onChange: (e)=>{
+                            SetValue(e.target.value);
+                        },
+                        onKeyDown: keyDown,
+                        className: "scanner"
+                    }, void 0, false, {
+                        fileName: "[project]/public/HelperScripts/Editor.tsx",
+                        lineNumber: 526,
+                        columnNumber: 22
+                    }, this);
+                } else {
+                    content = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        style: item.style,
+                        onClick: ()=>SetEditItem(item.index),
+                        children: item.text
+                    }, void 0, false, {
+                        fileName: "[project]/public/HelperScripts/Editor.tsx",
+                        lineNumber: 530,
+                        columnNumber: 22
+                    }, this);
+                }
+            }
+            break;
         case "SkillsBox":
-            return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+            {
+                content = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                     children: [
                         "we're gonna come back to this one later :",
                         '<'
                     ]
                 }, void 0, true, {
                     fileName: "[project]/public/HelperScripts/Editor.tsx",
-                    lineNumber: 498,
-                    columnNumber: 9
-                }, this)
-            }, item.index, false, {
-                fileName: "[project]/public/HelperScripts/Editor.tsx",
-                lineNumber: 497,
-                columnNumber: 7
-            }, this);
-        default:
-            return null;
+                    lineNumber: 538,
+                    columnNumber: 20
+                }, this);
+            }
+            break;
+        case "Group":
+            {
+                content = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                    children: [
+                        "Group box here... eventually. ",
+                        '>',
+                        ":"
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/public/HelperScripts/Editor.tsx",
+                    lineNumber: 546,
+                    columnNumber: 20
+                }, this);
+            }
+            break;
     }
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$edge$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        children: content
+    }, item.index, false, {
+        fileName: "[project]/public/HelperScripts/Editor.tsx",
+        lineNumber: 554,
+        columnNumber: 5
+    }, this);
 } // resume[0].style = ({...TitleStyle, fontSize: "24px"}); <- Remember this, you can update css like this
 }}),
 "[project]/public/HelperScripts/ImageHandler.ts [app-edge-ssr] (ecmascript)": ((__turbopack_context__) => {

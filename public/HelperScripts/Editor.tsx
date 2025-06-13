@@ -1,6 +1,6 @@
 // puts the resume onto the website.
 import { Skill } from "@/app/Skills/page";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { GetSavedSkillList, ArrayToSkillType } from "./skillTags";
 import { SkillsBox, Skills, Title, Subtitle, DateText, Description, ResumeElement, Divider, Group, TitleStyle } from "./Elements";
 let listOfSkills: Skill[] = ArrayToSkillType(GetSavedSkillList());
@@ -19,18 +19,20 @@ export function Setup() {
   document.getElementById("addGroup")?.addEventListener('click', function () { AddRawElement("Group") });
   document.getElementById("save")?.addEventListener('click', function () { EncodeResumeCookie() });
   //console.log(listOfSkills);
-  LoadExistingResumeCookie();
+  //LoadExistingResumeCookie();
   DisplayResume();
 }
 
 export function Setup2() {
   resume = [];
-  LoadExistingResumeCookie();
-  console.log(resume);
+  //LoadExistingResumeCookie();
 }
 
 // finds and loads an existing resume in the browser.
-export function LoadExistingResumeCookie() {
+/*
+  TODO: Change everything here to load into the variable Resume rather than resume.
+*/
+export function LoadExistingResumeCookie(push) {
   const listOfCookies = decodeURIComponent(document.cookie).split(";");
   for (let i = 0; i < listOfCookies.length; i++) {
     if (listOfCookies[i].indexOf("element") == 0 || listOfCookies[i].indexOf("element") == 1) {
@@ -44,6 +46,7 @@ export function LoadExistingResumeCookie() {
             cookieObj.text = generic.text;
             cookieObj.cssOptions = generic.cssOptions;
             resume.push(cookieObj);
+            push(cookieObj);
             break;
           }
         case ("Subtitle"):
@@ -420,6 +423,16 @@ function DeleteResumeCookie() {
 
 // React component that contains all the tools for editing the resume.
 export function Editor() {
+  console.log("editor called");
+  const [Resume, SetResume] = useState(BlankResume());
+
+  // Pass this into functions and use it like a variable to update the resume.
+  const PushToResume = (obj: any) => {
+    SetResume([...Resume, obj]);
+  }
+
+  useEffect(() => { LoadExistingResumeCookie(PushToResume) }, [])
+
   return (
     <div className="editor-grid">
       <div id="addElements">
@@ -428,13 +441,13 @@ export function Editor() {
         <button id="addDivider" onClick={() => console.log("divider")}>|add divider|</button>
         <button id="addRawDateText" onClick={() => console.log("dateText")}>|add DateText|</button>
         <button id="addRawDesc" onClick={() => console.log("description")}>|add description|</button>
-        <button id="addRawTitle" onClick={() => console.log("title")}>|add title|</button>
+        <button id="addRawTitle" onClick={() => SetResume([...Resume, new Title(Resume.length)])}>|add title|</button>
         <button id="addSkillsBox" onClick={() => console.log("skillsBox")}>|add skills box|</button>
         <button id="addExperience" onClick={() => console.log("experience")}>|add experience|</button>
         <button id="addGroup" onClick={() => { console.log("group"); console.log(resume) }}>|add group box|</button>
       </div>
       <div id="Resume">
-        <List list={resume} />
+        <List list={Resume} />
       </div>
       <div id="editElements">
         <p>edit</p>
@@ -446,19 +459,33 @@ export function Editor() {
   );
 }
 
+function AddElement(name: string) {
+  switch (name) {
+    case "Title":
+      {
+        resume.push(new Title(resume.length));
+        break;
+      }
+  }
+}
+
 // Displays all the resume elements present in the resume list.
 function List({ list }) {
-  const items = list.map(item => CreateItem(item));
+  const items = list.map(item => <HandleItem element={item} key={item.index}/>);
   return (
     <ul>{items}</ul>
   )
 }
 
-// Turns a Resume element provided to "item" into JSX for the editor.
-// I don't really like making this a function, but if it doesn't cause any issues later down the line I guess it's okay.
-
+// Turns a Resume element provided into JSX for the editor.
 // TODO: Wewrite the switch/case to update content and only use 1 return.
-function CreateItem(item) {
+function HandleItem({element}) {
+  const item = element;
+  console.log("called")
+  console.log(item)
+  console.log("Element: ")
+  console.log(element)
+  console.log("item type: " + item.type + " Element type: " + element.type)
   let content: any = null;
   const [EditItem, SetEditItem] = useState(-1);
   const [Value, SetValue] = useState(item.text);
@@ -471,6 +498,7 @@ function CreateItem(item) {
   switch (item.type) {
     case "Title":
       {
+        console.log("title found")
         if (EditItem == item.index) {
           content = (<input value={Value} style={item.style} onChange={e => { SetValue(e.target.value) }} onKeyDown={keyDown} className="scanner"
           />)
@@ -481,10 +509,7 @@ function CreateItem(item) {
           </p>)
         }
       }
-      return (
-        <div key={item.index}>
-          {content}
-        </div>)
+      break;
     case "Divider":
       {
         if (EditItem == item.index) {
@@ -497,49 +522,73 @@ function CreateItem(item) {
           </p>)
         }
       }
-      return (<div key={item.index}>
-        {content}
-      </div>)
+      break;
     case "Subtitle":
-      return (
-        <div key={item.index}>
-          <p style={item.style}>
+      {
+        if (EditItem == item.index) {
+          content = (<input value={Value} style={item.style} onChange={e => { SetValue(e.target.value) }} onKeyDown={keyDown} className="scanner"
+          />)
+        }
+        else {
+          content = (<p style={item.style} onClick={() => SetEditItem(item.index)}>
             {item.text}
-          </p>
-        </div>)
+          </p>)
+        }
+      }
+      break;
     case "DateText":
-      return (
-        <div key={item.index}>
-          <p style={item.style}>
+      {
+        if (EditItem == item.index) {
+          content = (<input value={Value} style={item.style} onChange={e => { SetValue(e.target.value) }} onKeyDown={keyDown} className="scanner"
+          />)
+        }
+        else {
+          content = (<p style={item.style} onClick={() => SetEditItem(item.index)}>
             {item.text}
-          </p>
-        </div>)
+          </p>)
+        }
+      }
+      break;
     case "Description":
-      return (
-        <div key={item.index}>
-          <p style={item.style}>
+      {
+        if (EditItem == item.index) {
+          content = (<input value={Value} style={item.style} onChange={e => { SetValue(e.target.value) }} onKeyDown={keyDown} className="scanner"
+          />)
+        }
+        else {
+          content = (<p style={item.style} onClick={() => SetEditItem(item.index)}>
             {item.text}
-          </p>
-        </div>)
+          </p>)
+        }
+      }
+      break;
     case "SkillsBox":
-      return (
-        <div key={item.index}>
-          <p>
-            {/* TODO: Fix this one */}
-            we're gonna come back to this one later :{'<'}
-          </p>
-        </div>)
+      {
+        content = (<p>
+          {/* TODO: Fix this one */}
+          we're gonna come back to the skills box later :{'<'}
+        </p>)
+      }
+      break;
     case "Group":
-      return (
-        <div key={item.index}>
-          <p>
-            {/* TODO: Also Fix this one. These are gonna cause issues aren't they? */}
-            Group box here... eventually. {'>'}:
-          </p>
-        </div>)
-    default:
-      return null;
+      {
+        content = (<p>
+          {/* TODO: Also Fix this one. These are gonna cause issues aren't they? */}
+          Group box here... eventually. {'>'}:
+        </p>)
+      }
+      break;
   }
+  return (
+    <div>
+      {content}
+    </div>)
+}
+
+// Returns an empty array for the resume because for some reason, not doing this would give me a type of 'never'
+// I don't know why, but this was the only way around it.
+function BlankResume(): any {
+  return [];
 }
 
 // resume[0].style = ({...TitleStyle, fontSize: "24px"}); <- Remember this, you can update css like this
