@@ -471,7 +471,7 @@ function AddElement(name: string) {
 
 // Displays all the resume elements present in the resume list.
 function List({ list }) {
-  const items = list.map(item => <HandleItem element={item} key={item.index}/>);
+  const items = list.map(item => <HandleItem element={item} key={item.index} />);
   return (
     <ul>{items}</ul>
   )
@@ -479,7 +479,7 @@ function List({ list }) {
 
 // Turns a Resume element provided into JSX for the editor.
 // TODO: Wewrite the switch/case to update content and only use 1 return.
-function HandleItem({element}) {
+function HandleItem({ element }) {
   const item = element;
   console.log("called")
   console.log(item)
