@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack://[project]/src/app/style.module.css"],"sourcesContent":[".skillStyle {\r\n    border: solid;\r\n    display: inline-block;\r\n}\r\n.skillImage{\r\n  display: inline-block;\r\n  height: 32px;\r\n}\r\n.skillText{\r\n  display: inline-block;\r\n}"],"names":[],"mappings":"AAAA;;;;;AAIA;;;;;AAIA"}},
+    {"offset": {"line": 14, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
+}

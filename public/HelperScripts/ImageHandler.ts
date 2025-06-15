@@ -20,6 +20,25 @@ export async function ImageSetup(image: any, skill: Skill)
     image.src = src;
 }
 
+// Uses a skill to search for an image and change the src provided in ChangeSrc.
+export async function SkillToSrc(skill: Skill, ChangeSrc: any)
+{
+    let skillAddress: string[] = skill.address.split("/");
+    let src = "img/Generic.png";
+    let srcPrevious = "img/Generic.png";
+    let final = null;
+    for (let i = 0; i < skillAddress.length; i++)
+    {
+        src = ("img/" + ImageExceptions(skillAddress[i]) + ".png");
+        final = new Image();
+        final.src = src;
+        await final.decode()
+        .then(() => { srcPrevious = src } )
+        .catch(() => { src = srcPrevious } )
+    }
+    ChangeSrc(src);
+}
+
 // Same thing as image setup, but takes a string rather than a skill type.
 // I can't seem to make overloads, so this will have to do.
 export async function ImageSetupFromRawAddress(image: any, rawAddress: string)

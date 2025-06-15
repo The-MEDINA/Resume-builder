@@ -3,6 +3,8 @@ import { Skill } from "@/app/Skills/page";
 import { useState, useEffect } from "react";
 import { GetSavedSkillList, ArrayToSkillType } from "./skillTags";
 import { SkillsBox, Skills, Title, Subtitle, DateText, Description, ResumeElement, Divider, Group, TitleStyle } from "./Elements";
+import { SkillToSrc } from "./ImageHandler";
+import styles from "../../src/app/style.module.css";
 let listOfSkills: Skill[] = ArrayToSkillType(GetSavedSkillList());
 
 export let resume: any[] = [];
@@ -55,6 +57,7 @@ export function LoadExistingResumeCookie(push) {
             cookieObj.text = generic.text;
             cookieObj.cssOptions = generic.cssOptions;
             resume.push(cookieObj);
+            push(cookieObj);
             break;
           }
         case ("DateText"):
@@ -63,6 +66,7 @@ export function LoadExistingResumeCookie(push) {
             cookieObj.text = generic.text;
             cookieObj.cssOptions = generic.cssOptions;
             resume.push(cookieObj);
+            push(cookieObj);
             break;
           }
         case ("Description"):
@@ -71,6 +75,7 @@ export function LoadExistingResumeCookie(push) {
             cookieObj.text = generic.text;
             cookieObj.cssOptions = generic.cssOptions;
             resume.push(cookieObj);
+            push(cookieObj);
             break;
           }
         case ("Divider"):
@@ -79,6 +84,7 @@ export function LoadExistingResumeCookie(push) {
             dividerObj.text = generic.text;
             dividerObj.cssOptions = generic.cssOptions;
             resume.push(dividerObj);
+            push(dividerObj);
             break;
           }
         case ("SkillsBox"):
@@ -94,6 +100,7 @@ export function LoadExistingResumeCookie(push) {
             }
             cookieObj.skills = skillsArray;
             resume.push(cookieObj);
+            push(cookieObj);
             break;
           }
         case ("Group"):
@@ -109,6 +116,7 @@ export function LoadExistingResumeCookie(push) {
                     cookieObj.text = generic.elements[i].text;
                     cookieObj.cssOptions = generic.elements[i].cssOptions;
                     groupObj.elements.push(cookieObj);
+
                     break;
                   }
                 case ("Subtitle"):
@@ -426,9 +434,9 @@ export function Editor() {
   console.log("editor called");
   const [Resume, SetResume] = useState(BlankResume());
 
-  // Pass this into functions and use it like a variable to update the resume.
+  // Pass this into functions and use it like a function to update the resume.
   const PushToResume = (obj: any) => {
-    SetResume([...Resume, obj]);
+    SetResume(Resume => ([...Resume, obj]));
   }
 
   useEffect(() => { LoadExistingResumeCookie(PushToResume) }, [])
@@ -437,7 +445,7 @@ export function Editor() {
     <div className="editor-grid">
       <div id="addElements">
         <p>add</p>
-        <button id="addRawSubtitle" onClick={() => console.log("subtitle")}>|add subtitle|</button>
+        <button id="addRawSubtitle" onClick={() => console.log(Resume)}>|add subtitle|</button>
         <button id="addDivider" onClick={() => console.log("divider")}>|add divider|</button>
         <button id="addRawDateText" onClick={() => console.log("dateText")}>|add DateText|</button>
         <button id="addRawDesc" onClick={() => console.log("description")}>|add description|</button>
@@ -481,11 +489,6 @@ function List({ list }) {
 // TODO: Wewrite the switch/case to update content and only use 1 return.
 function HandleItem({ element }) {
   const item = element;
-  console.log("called")
-  console.log(item)
-  console.log("Element: ")
-  console.log(element)
-  console.log("item type: " + item.type + " Element type: " + element.type)
   let content: any = null;
   const [EditItem, SetEditItem] = useState(-1);
   const [Value, SetValue] = useState(item.text);
@@ -498,7 +501,6 @@ function HandleItem({ element }) {
   switch (item.type) {
     case "Title":
       {
-        console.log("title found")
         if (EditItem == item.index) {
           content = (<input value={Value} style={item.style} onChange={e => { SetValue(e.target.value) }} onKeyDown={keyDown} className="scanner"
           />)
@@ -564,17 +566,16 @@ function HandleItem({ element }) {
       break;
     case "SkillsBox":
       {
-        content = (<p>
-          {/* TODO: Fix this one */}
-          we're gonna come back to the skills box later :{'<'}
-        </p>)
+        console.log(item);
+        console.log(item.skills);
+        content = (item.skills.map(rawSkill => <HandleSkill skill={rawSkill} key={(item.skills).indexOf(rawSkill)} />))
       }
       break;
     case "Group":
       {
         content = (<p>
-          {/* TODO: Also Fix this one. These are gonna cause issues aren't they? */}
-          Group box here... eventually. {'>'}:
+          {/* TODO: Fix this one */}
+          we're gonna come back to the group box later :{'<'}
         </p>)
       }
       break;
@@ -583,6 +584,24 @@ function HandleItem({ element }) {
     <div>
       {content}
     </div>)
+}
+
+// turns a skill from a skills box into a JSX element.
+function HandleSkill({ skill }) {
+
+  const [Src, SetSrc] = useState("img/Generic.png");
+  // Pass this into functions and use it like a function to change the src.
+  const ChangeSrc = (newSrc: string) => {
+    SetSrc(Src => newSrc);
+  }
+
+  useEffect(() => { SkillToSrc(skill, ChangeSrc) }, [])
+
+  return (<div className={styles.skillStyle}>
+    <img className={styles.skillImage} src={Src}></img>
+    <p className={styles.skillText}>{skill.name}</p>
+  </div>
+  )
 }
 
 // Returns an empty array for the resume because for some reason, not doing this would give me a type of 'never'

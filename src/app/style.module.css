@@ -1,0 +1,11 @@
+.skillStyle {
+    border: solid;
+    display: inline-block;
+}
+.skillImage{
+  display: inline-block;
+  height: 32px;
+}
+.skillText{
+  display: inline-block;
+}

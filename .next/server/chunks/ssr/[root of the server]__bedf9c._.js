@@ -197,7 +197,8 @@ var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_
 {
 __turbopack_esm__({
     "ImageSetup": (()=>ImageSetup),
-    "ImageSetupFromRawAddress": (()=>ImageSetupFromRawAddress)
+    "ImageSetupFromRawAddress": (()=>ImageSetupFromRawAddress),
+    "SkillToSrc": (()=>SkillToSrc)
 });
 'use client';
 async function ImageSetup(image, skill) {
@@ -216,6 +217,23 @@ async function ImageSetup(image, skill) {
         });
     }
     image.src = src;
+}
+async function SkillToSrc(skill, ChangeSrc) {
+    let skillAddress = skill.address.split("/");
+    let src = "img/Generic.png";
+    let srcPrevious = "img/Generic.png";
+    let final = null;
+    for(let i = 0; i < skillAddress.length; i++){
+        src = "img/" + ImageExceptions(skillAddress[i]) + ".png";
+        final = new Image();
+        final.src = src;
+        await final.decode().then(()=>{
+            srcPrevious = src;
+        }).catch(()=>{
+            src = srcPrevious;
+        });
+    }
+    ChangeSrc(src);
 }
 async function ImageSetupFromRawAddress(image, rawAddress) {
     let skillAddress = rawAddress.split("/");
@@ -831,6 +849,16 @@ const DividerStyle = {
     borderBottom: "solid"
 };
 }}),
+"[project]/src/app/style.module.css [app-client] (css module)": ((__turbopack_context__) => {
+
+var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, t: __turbopack_require_real__ } = __turbopack_context__;
+{
+__turbopack_export_value__({
+  "skillImage": "style-module__1R01EW__skillImage",
+  "skillStyle": "style-module__1R01EW__skillStyle",
+  "skillText": "style-module__1R01EW__skillText",
+});
+}}),
 "[project]/public/HelperScripts/Editor.tsx [app-ssr] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
@@ -854,11 +882,9 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$skillTags$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/public/HelperScripts/skillTags.ts [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/public/HelperScripts/Elements.tsx [app-ssr] (ecmascript)");
-(()=>{
-    const e = new Error("Cannot find module '../../src/app/style.css'");
-    e.code = 'MODULE_NOT_FOUND';
-    throw e;
-})();
+var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$ImageHandler$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/public/HelperScripts/ImageHandler.ts [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$style$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__ = __turbopack_import__("[project]/src/app/style.module.css [app-client] (css module)");
+;
 ;
 ;
 ;
@@ -1309,7 +1335,7 @@ function Editor() {
                         children: "add"
                     }, void 0, false, {
                         fileName: "[project]/public/HelperScripts/Editor.tsx",
-                        lineNumber: 446,
+                        lineNumber: 447,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1318,7 +1344,7 @@ function Editor() {
                         children: "|add subtitle|"
                     }, void 0, false, {
                         fileName: "[project]/public/HelperScripts/Editor.tsx",
-                        lineNumber: 447,
+                        lineNumber: 448,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1327,7 +1353,7 @@ function Editor() {
                         children: "|add divider|"
                     }, void 0, false, {
                         fileName: "[project]/public/HelperScripts/Editor.tsx",
-                        lineNumber: 448,
+                        lineNumber: 449,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1336,7 +1362,7 @@ function Editor() {
                         children: "|add DateText|"
                     }, void 0, false, {
                         fileName: "[project]/public/HelperScripts/Editor.tsx",
-                        lineNumber: 449,
+                        lineNumber: 450,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1345,7 +1371,7 @@ function Editor() {
                         children: "|add description|"
                     }, void 0, false, {
                         fileName: "[project]/public/HelperScripts/Editor.tsx",
-                        lineNumber: 450,
+                        lineNumber: 451,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1357,7 +1383,7 @@ function Editor() {
                         children: "|add title|"
                     }, void 0, false, {
                         fileName: "[project]/public/HelperScripts/Editor.tsx",
-                        lineNumber: 451,
+                        lineNumber: 452,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1366,7 +1392,7 @@ function Editor() {
                         children: "|add skills box|"
                     }, void 0, false, {
                         fileName: "[project]/public/HelperScripts/Editor.tsx",
-                        lineNumber: 452,
+                        lineNumber: 453,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1375,7 +1401,7 @@ function Editor() {
                         children: "|add experience|"
                     }, void 0, false, {
                         fileName: "[project]/public/HelperScripts/Editor.tsx",
-                        lineNumber: 453,
+                        lineNumber: 454,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1387,13 +1413,13 @@ function Editor() {
                         children: "|add group box|"
                     }, void 0, false, {
                         fileName: "[project]/public/HelperScripts/Editor.tsx",
-                        lineNumber: 454,
+                        lineNumber: 455,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/public/HelperScripts/Editor.tsx",
-                lineNumber: 445,
+                lineNumber: 446,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1402,12 +1428,12 @@ function Editor() {
                     list: Resume
                 }, void 0, false, {
                     fileName: "[project]/public/HelperScripts/Editor.tsx",
-                    lineNumber: 457,
+                    lineNumber: 458,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/public/HelperScripts/Editor.tsx",
-                lineNumber: 456,
+                lineNumber: 457,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1416,12 +1442,12 @@ function Editor() {
                     children: "edit"
                 }, void 0, false, {
                     fileName: "[project]/public/HelperScripts/Editor.tsx",
-                    lineNumber: 460,
+                    lineNumber: 461,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/public/HelperScripts/Editor.tsx",
-                lineNumber: 459,
+                lineNumber: 460,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1430,18 +1456,18 @@ function Editor() {
                     children: "skills and options n stuff."
                 }, void 0, false, {
                     fileName: "[project]/public/HelperScripts/Editor.tsx",
-                    lineNumber: 463,
+                    lineNumber: 464,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/public/HelperScripts/Editor.tsx",
-                lineNumber: 462,
+                lineNumber: 463,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/public/HelperScripts/Editor.tsx",
-        lineNumber: 444,
+        lineNumber: 445,
         columnNumber: 5
     }, this);
 }
@@ -1460,14 +1486,14 @@ function List({ list }) {
             element: item
         }, item.index, false, {
             fileName: "[project]/public/HelperScripts/Editor.tsx",
-            lineNumber: 481,
+            lineNumber: 482,
             columnNumber: 34
         }, this));
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
         children: items
     }, void 0, false, {
         fileName: "[project]/public/HelperScripts/Editor.tsx",
-        lineNumber: 483,
+        lineNumber: 484,
         columnNumber: 5
     }, this);
 }
@@ -1498,7 +1524,7 @@ function HandleItem({ element }) {
                         className: "scanner"
                     }, void 0, false, {
                         fileName: "[project]/public/HelperScripts/Editor.tsx",
-                        lineNumber: 504,
+                        lineNumber: 505,
                         columnNumber: 22
                     }, this);
                 } else {
@@ -1508,7 +1534,7 @@ function HandleItem({ element }) {
                         children: item.text
                     }, void 0, false, {
                         fileName: "[project]/public/HelperScripts/Editor.tsx",
-                        lineNumber: 508,
+                        lineNumber: 509,
                         columnNumber: 22
                     }, this);
                 }
@@ -1527,7 +1553,7 @@ function HandleItem({ element }) {
                         className: "scanner"
                     }, void 0, false, {
                         fileName: "[project]/public/HelperScripts/Editor.tsx",
-                        lineNumber: 517,
+                        lineNumber: 518,
                         columnNumber: 22
                     }, this);
                 } else {
@@ -1537,7 +1563,7 @@ function HandleItem({ element }) {
                         children: item.text
                     }, void 0, false, {
                         fileName: "[project]/public/HelperScripts/Editor.tsx",
-                        lineNumber: 521,
+                        lineNumber: 522,
                         columnNumber: 22
                     }, this);
                 }
@@ -1556,7 +1582,7 @@ function HandleItem({ element }) {
                         className: "scanner"
                     }, void 0, false, {
                         fileName: "[project]/public/HelperScripts/Editor.tsx",
-                        lineNumber: 530,
+                        lineNumber: 531,
                         columnNumber: 22
                     }, this);
                 } else {
@@ -1566,7 +1592,7 @@ function HandleItem({ element }) {
                         children: item.text
                     }, void 0, false, {
                         fileName: "[project]/public/HelperScripts/Editor.tsx",
-                        lineNumber: 534,
+                        lineNumber: 535,
                         columnNumber: 22
                     }, this);
                 }
@@ -1585,7 +1611,7 @@ function HandleItem({ element }) {
                         className: "scanner"
                     }, void 0, false, {
                         fileName: "[project]/public/HelperScripts/Editor.tsx",
-                        lineNumber: 543,
+                        lineNumber: 544,
                         columnNumber: 22
                     }, this);
                 } else {
@@ -1595,7 +1621,7 @@ function HandleItem({ element }) {
                         children: item.text
                     }, void 0, false, {
                         fileName: "[project]/public/HelperScripts/Editor.tsx",
-                        lineNumber: 547,
+                        lineNumber: 548,
                         columnNumber: 22
                     }, this);
                 }
@@ -1614,7 +1640,7 @@ function HandleItem({ element }) {
                         className: "scanner"
                     }, void 0, false, {
                         fileName: "[project]/public/HelperScripts/Editor.tsx",
-                        lineNumber: 556,
+                        lineNumber: 557,
                         columnNumber: 22
                     }, this);
                 } else {
@@ -1624,7 +1650,7 @@ function HandleItem({ element }) {
                         children: item.text
                     }, void 0, false, {
                         fileName: "[project]/public/HelperScripts/Editor.tsx",
-                        lineNumber: 560,
+                        lineNumber: 561,
                         columnNumber: 22
                     }, this);
                 }
@@ -1638,7 +1664,7 @@ function HandleItem({ element }) {
                         skill: rawSkill
                     }, item.skills.indexOf(rawSkill), false, {
                         fileName: "[project]/public/HelperScripts/Editor.tsx",
-                        lineNumber: 570,
+                        lineNumber: 571,
                         columnNumber: 48
                     }, this));
             }
@@ -1652,7 +1678,7 @@ function HandleItem({ element }) {
                     ]
                 }, void 0, true, {
                     fileName: "[project]/public/HelperScripts/Editor.tsx",
-                    lineNumber: 575,
+                    lineNumber: 576,
                     columnNumber: 20
                 }, this);
             }
@@ -1662,18 +1688,44 @@ function HandleItem({ element }) {
         children: content
     }, void 0, false, {
         fileName: "[project]/public/HelperScripts/Editor.tsx",
-        lineNumber: 583,
+        lineNumber: 584,
         columnNumber: 5
     }, this);
 }
 // turns a skill from a skills box into a JSX element.
 function HandleSkill({ skill }) {
+    const [Src, SetSrc] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("img/Generic.png");
+    // Pass this into functions and use it like a function to change the src.
+    const ChangeSrc = (newSrc)=>{
+        SetSrc((Src)=>newSrc);
+    };
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        (0, __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$ImageHandler$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SkillToSrc"])(skill, ChangeSrc);
+    }, []);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        style: skillStyle
-    }, void 0, false, {
+        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$style$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].skillStyle,
+        children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$style$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].skillImage,
+                src: Src
+            }, void 0, false, {
+                fileName: "[project]/public/HelperScripts/Editor.tsx",
+                lineNumber: 601,
+                columnNumber: 5
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$style$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].skillText,
+                children: skill.name
+            }, void 0, false, {
+                fileName: "[project]/public/HelperScripts/Editor.tsx",
+                lineNumber: 602,
+                columnNumber: 5
+            }, this)
+        ]
+    }, void 0, true, {
         fileName: "[project]/public/HelperScripts/Editor.tsx",
-        lineNumber: 590,
-        columnNumber: 10
+        lineNumber: 600,
+        columnNumber: 11
     }, this);
 }
 // Returns an empty array for the resume because for some reason, not doing this would give me a type of 'never'
@@ -3094,4 +3146,4 @@ if ((typeof exports.default === 'function' || typeof exports.default === 'object
 
 };
 
-//# sourceMappingURL=%5Broot%20of%20the%20server%5D__f4e777._.js.map
+//# sourceMappingURL=%5Broot%20of%20the%20server%5D__bedf9c._.js.map
