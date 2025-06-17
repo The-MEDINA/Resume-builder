@@ -1,5 +1,4 @@
 {
   "/page": "app-edge-has-no-entrypoint",
-  "/ReactEditor/page": "app/ReactEditor/page.js",
-  "/_not-found/page": "app/_not-found/page.js"
+  "/ReactEditor/page": "app/ReactEditor/page.js"
 }

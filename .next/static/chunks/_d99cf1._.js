@@ -1404,7 +1404,10 @@ function Editor() {
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                         id: "addRawSubtitle",
-                        onClick: ()=>console.log(Resume),
+                        onClick: ()=>SetResume([
+                                ...Resume,
+                                new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Subtitle"](Resume[Resume.length - 1].index + 1)
+                            ]),
                         children: "|add subtitle|"
                     }, void 0, false, {
                         fileName: "[project]/public/HelperScripts/Editor.tsx",
@@ -1413,7 +1416,10 @@ function Editor() {
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                         id: "addDivider",
-                        onClick: ()=>console.log("divider"),
+                        onClick: ()=>SetResume([
+                                ...Resume,
+                                new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Divider"](Resume[Resume.length - 1].index + 1)
+                            ]),
                         children: "|add divider|"
                     }, void 0, false, {
                         fileName: "[project]/public/HelperScripts/Editor.tsx",
@@ -1422,7 +1428,10 @@ function Editor() {
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                         id: "addRawDateText",
-                        onClick: ()=>console.log("dateText"),
+                        onClick: ()=>SetResume([
+                                ...Resume,
+                                new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DateText"](Resume[Resume.length - 1].index + 1)
+                            ]),
                         children: "|add DateText|"
                     }, void 0, false, {
                         fileName: "[project]/public/HelperScripts/Editor.tsx",
@@ -1431,7 +1440,10 @@ function Editor() {
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                         id: "addRawDesc",
-                        onClick: ()=>console.log("description"),
+                        onClick: ()=>SetResume([
+                                ...Resume,
+                                new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Description"](Resume[Resume.length - 1].index + 1)
+                            ]),
                         children: "|add description|"
                     }, void 0, false, {
                         fileName: "[project]/public/HelperScripts/Editor.tsx",
@@ -1442,7 +1454,7 @@ function Editor() {
                         id: "addRawTitle",
                         onClick: ()=>SetResume([
                                 ...Resume,
-                                new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Title"](Resume.length)
+                                new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Title"](Resume[Resume.length - 1].index + 1)
                             ]),
                         children: "|add title|"
                     }, void 0, false, {
@@ -1452,7 +1464,10 @@ function Editor() {
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                         id: "addSkillsBox",
-                        onClick: ()=>console.log("skillsBox"),
+                        onClick: ()=>SetResume([
+                                ...Resume,
+                                new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SkillsBox"](Resume[Resume.length - 1].index + 1)
+                            ]),
                         children: "|add skills box|"
                     }, void 0, false, {
                         fileName: "[project]/public/HelperScripts/Editor.tsx",
@@ -1472,7 +1487,7 @@ function Editor() {
                         id: "addGroup",
                         onClick: ()=>{
                             console.log("group");
-                            console.log(resume);
+                            console.log(Resume);
                         },
                         children: "|add group box|"
                     }, void 0, false, {
@@ -1537,40 +1552,31 @@ function Editor() {
 }
 _s(Editor, "v5j1OHIDAs0oU/YeEj0bZFdz2zo=");
 _c16 = Editor;
-function AddElement(name) {
-    switch(name){
-        case "Title":
-            {
-                resume.push(new __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$HelperScripts$2f$Elements$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Title"](resume.length));
-                break;
-            }
-    }
-}
-_c17 = AddElement;
 // Displays all the resume elements present in the resume list.
 function List({ list }) {
     const items = list.map((item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(HandleItem, {
             element: item
         }, item.index, false, {
             fileName: "[project]/public/HelperScripts/Editor.tsx",
-            lineNumber: 482,
+            lineNumber: 472,
             columnNumber: 34
         }, this));
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
         children: items
     }, void 0, false, {
         fileName: "[project]/public/HelperScripts/Editor.tsx",
-        lineNumber: 484,
+        lineNumber: 474,
         columnNumber: 5
     }, this);
 }
-_c18 = List;
+_c17 = List;
 // Turns a Resume element provided into JSX for the editor.
 // TODO: Wewrite the switch/case to update content and only use 1 return.
 function HandleItem({ element }) {
     _s1();
     const item = element;
     let content = null;
+    let controls = null;
     const [EditItem, SetEditItem] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(-1);
     const [Value, SetValue] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(item.text);
     const keyDown = (event)=>{
@@ -1593,7 +1599,7 @@ function HandleItem({ element }) {
                         className: "scanner"
                     }, void 0, false, {
                         fileName: "[project]/public/HelperScripts/Editor.tsx",
-                        lineNumber: 505,
+                        lineNumber: 496,
                         columnNumber: 22
                     }, this);
                 } else {
@@ -1603,7 +1609,7 @@ function HandleItem({ element }) {
                         children: item.text
                     }, void 0, false, {
                         fileName: "[project]/public/HelperScripts/Editor.tsx",
-                        lineNumber: 509,
+                        lineNumber: 500,
                         columnNumber: 22
                     }, this);
                 }
@@ -1622,7 +1628,7 @@ function HandleItem({ element }) {
                         className: "scanner"
                     }, void 0, false, {
                         fileName: "[project]/public/HelperScripts/Editor.tsx",
-                        lineNumber: 518,
+                        lineNumber: 509,
                         columnNumber: 22
                     }, this);
                 } else {
@@ -1632,7 +1638,7 @@ function HandleItem({ element }) {
                         children: item.text
                     }, void 0, false, {
                         fileName: "[project]/public/HelperScripts/Editor.tsx",
-                        lineNumber: 522,
+                        lineNumber: 513,
                         columnNumber: 22
                     }, this);
                 }
@@ -1651,7 +1657,7 @@ function HandleItem({ element }) {
                         className: "scanner"
                     }, void 0, false, {
                         fileName: "[project]/public/HelperScripts/Editor.tsx",
-                        lineNumber: 531,
+                        lineNumber: 522,
                         columnNumber: 22
                     }, this);
                 } else {
@@ -1661,7 +1667,7 @@ function HandleItem({ element }) {
                         children: item.text
                     }, void 0, false, {
                         fileName: "[project]/public/HelperScripts/Editor.tsx",
-                        lineNumber: 535,
+                        lineNumber: 526,
                         columnNumber: 22
                     }, this);
                 }
@@ -1680,7 +1686,7 @@ function HandleItem({ element }) {
                         className: "scanner"
                     }, void 0, false, {
                         fileName: "[project]/public/HelperScripts/Editor.tsx",
-                        lineNumber: 544,
+                        lineNumber: 535,
                         columnNumber: 22
                     }, this);
                 } else {
@@ -1690,7 +1696,7 @@ function HandleItem({ element }) {
                         children: item.text
                     }, void 0, false, {
                         fileName: "[project]/public/HelperScripts/Editor.tsx",
-                        lineNumber: 548,
+                        lineNumber: 539,
                         columnNumber: 22
                     }, this);
                 }
@@ -1709,7 +1715,7 @@ function HandleItem({ element }) {
                         className: "scanner"
                     }, void 0, false, {
                         fileName: "[project]/public/HelperScripts/Editor.tsx",
-                        lineNumber: 557,
+                        lineNumber: 548,
                         columnNumber: 22
                     }, this);
                 } else {
@@ -1719,7 +1725,7 @@ function HandleItem({ element }) {
                         children: item.text
                     }, void 0, false, {
                         fileName: "[project]/public/HelperScripts/Editor.tsx",
-                        lineNumber: 561,
+                        lineNumber: 552,
                         columnNumber: 22
                     }, this);
                 }
@@ -1733,9 +1739,31 @@ function HandleItem({ element }) {
                         skill: rawSkill
                     }, item.skills.indexOf(rawSkill), false, {
                         fileName: "[project]/public/HelperScripts/Editor.tsx",
-                        lineNumber: 571,
+                        lineNumber: 562,
                         columnNumber: 48
                     }, this));
+                controls = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                            children: "|add new skill|"
+                        }, void 0, false, {
+                            fileName: "[project]/public/HelperScripts/Editor.tsx",
+                            lineNumber: 564,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                            children: "|remove skills box|"
+                        }, void 0, false, {
+                            fileName: "[project]/public/HelperScripts/Editor.tsx",
+                            lineNumber: 565,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/public/HelperScripts/Editor.tsx",
+                    lineNumber: 563,
+                    columnNumber: 21
+                }, this);
             }
             break;
         case "Group":
@@ -1747,22 +1775,25 @@ function HandleItem({ element }) {
                     ]
                 }, void 0, true, {
                     fileName: "[project]/public/HelperScripts/Editor.tsx",
-                    lineNumber: 576,
+                    lineNumber: 571,
                     columnNumber: 20
                 }, this);
             }
             break;
     }
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        children: content
-    }, void 0, false, {
+        children: [
+            content,
+            controls
+        ]
+    }, void 0, true, {
         fileName: "[project]/public/HelperScripts/Editor.tsx",
-        lineNumber: 584,
+        lineNumber: 579,
         columnNumber: 5
     }, this);
 }
 _s1(HandleItem, "f/NeoqY76E5QEK0prF32mLirGKE=");
-_c19 = HandleItem;
+_c18 = HandleItem;
 // turns a skill from a skills box into a JSX element.
 function HandleSkill({ skill }) {
     _s2();
@@ -1784,7 +1815,7 @@ function HandleSkill({ skill }) {
                 src: Src
             }, void 0, false, {
                 fileName: "[project]/public/HelperScripts/Editor.tsx",
-                lineNumber: 601,
+                lineNumber: 597,
                 columnNumber: 5
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1792,25 +1823,25 @@ function HandleSkill({ skill }) {
                 children: skill.name
             }, void 0, false, {
                 fileName: "[project]/public/HelperScripts/Editor.tsx",
-                lineNumber: 602,
+                lineNumber: 598,
                 columnNumber: 5
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/public/HelperScripts/Editor.tsx",
-        lineNumber: 600,
+        lineNumber: 596,
         columnNumber: 11
     }, this);
 }
 _s2(HandleSkill, "/YJtTmHmk5wq3Le0DgoC1UNKheo=");
-_c20 = HandleSkill;
+_c19 = HandleSkill;
 // Returns an empty array for the resume because for some reason, not doing this would give me a type of 'never'
 // I don't know why, but this was the only way around it.
 function BlankResume() {
     return [];
 } // resume[0].style = ({...TitleStyle, fontSize: "24px"}); <- Remember this, you can update css like this
-_c21 = BlankResume;
-var _c, _c1, _c2, _c3, _c4, _c5, _c6, _c7, _c8, _c9, _c10, _c11, _c12, _c13, _c14, _c15, _c16, _c17, _c18, _c19, _c20, _c21;
+_c20 = BlankResume;
+var _c, _c1, _c2, _c3, _c4, _c5, _c6, _c7, _c8, _c9, _c10, _c11, _c12, _c13, _c14, _c15, _c16, _c17, _c18, _c19, _c20;
 __turbopack_refresh__.register(_c, "Setup");
 __turbopack_refresh__.register(_c1, "Setup2");
 __turbopack_refresh__.register(_c2, "LoadExistingResumeCookie");
@@ -1828,11 +1859,10 @@ __turbopack_refresh__.register(_c13, "AddRawElement");
 __turbopack_refresh__.register(_c14, "EncodeResumeCookie");
 __turbopack_refresh__.register(_c15, "DeleteResumeCookie");
 __turbopack_refresh__.register(_c16, "Editor");
-__turbopack_refresh__.register(_c17, "AddElement");
-__turbopack_refresh__.register(_c18, "List");
-__turbopack_refresh__.register(_c19, "HandleItem");
-__turbopack_refresh__.register(_c20, "HandleSkill");
-__turbopack_refresh__.register(_c21, "BlankResume");
+__turbopack_refresh__.register(_c17, "List");
+__turbopack_refresh__.register(_c18, "HandleItem");
+__turbopack_refresh__.register(_c19, "HandleSkill");
+__turbopack_refresh__.register(_c20, "BlankResume");
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_refresh__.registerExports(module, globalThis.$RefreshHelpers$);
 }

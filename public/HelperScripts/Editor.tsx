@@ -445,14 +445,14 @@ export function Editor() {
     <div className="editor-grid">
       <div id="addElements">
         <p>add</p>
-        <button id="addRawSubtitle" onClick={() => console.log(Resume)}>|add subtitle|</button>
-        <button id="addDivider" onClick={() => console.log("divider")}>|add divider|</button>
-        <button id="addRawDateText" onClick={() => console.log("dateText")}>|add DateText|</button>
-        <button id="addRawDesc" onClick={() => console.log("description")}>|add description|</button>
-        <button id="addRawTitle" onClick={() => SetResume([...Resume, new Title(Resume.length)])}>|add title|</button>
-        <button id="addSkillsBox" onClick={() => console.log("skillsBox")}>|add skills box|</button>
+        <button id="addRawSubtitle" onClick={() => SetResume([...Resume, new Subtitle(Resume[Resume.length - 1].index + 1)])}>|add subtitle|</button>
+        <button id="addDivider" onClick={() => SetResume([...Resume, new Divider(Resume[Resume.length - 1].index + 1)])}>|add divider|</button>
+        <button id="addRawDateText" onClick={() => SetResume([...Resume, new DateText(Resume[Resume.length - 1].index + 1)])}>|add DateText|</button>
+        <button id="addRawDesc" onClick={() => SetResume([...Resume, new Description(Resume[Resume.length - 1].index + 1)])}>|add description|</button>
+        <button id="addRawTitle" onClick={() => SetResume([...Resume, new Title(Resume[Resume.length - 1].index + 1)])}>|add title|</button>
+        <button id="addSkillsBox" onClick={() => SetResume([...Resume, new SkillsBox(Resume[Resume.length - 1].index + 1)])}>|add skills box|</button>
         <button id="addExperience" onClick={() => console.log("experience")}>|add experience|</button>
-        <button id="addGroup" onClick={() => { console.log("group"); console.log(resume) }}>|add group box|</button>
+        <button id="addGroup" onClick={() => { console.log("group"); console.log(Resume) }}>|add group box|</button>
       </div>
       <div id="Resume">
         <List list={Resume} />
@@ -465,16 +465,6 @@ export function Editor() {
       </div>
     </div>
   );
-}
-
-function AddElement(name: string) {
-  switch (name) {
-    case "Title":
-      {
-        resume.push(new Title(resume.length));
-        break;
-      }
-  }
 }
 
 // Displays all the resume elements present in the resume list.
@@ -490,6 +480,7 @@ function List({ list }) {
 function HandleItem({ element }) {
   const item = element;
   let content: any = null;
+  let controls: any = null;
   const [EditItem, SetEditItem] = useState(-1);
   const [Value, SetValue] = useState(item.text);
   const keyDown = (event) => {
@@ -569,6 +560,10 @@ function HandleItem({ element }) {
         console.log(item);
         console.log(item.skills);
         content = (item.skills.map(rawSkill => <HandleSkill skill={rawSkill} key={(item.skills).indexOf(rawSkill)} />))
+        controls = (<div>
+          <button>|add new skill|</button>
+          <button>|remove skills box|</button>
+        </div>)
       }
       break;
     case "Group":
@@ -583,6 +578,7 @@ function HandleItem({ element }) {
   return (
     <div>
       {content}
+      {controls}
     </div>)
 }
 
